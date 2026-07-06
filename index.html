@@ -35,28 +35,45 @@
           </span>
         </a>
 
-        <nav class="main-nav" aria-label="Основна навігація">
-          <a class="main-nav__link main-nav__link--active" href="./">Головна</a>
-          <a class="main-nav__link" href="#air">Ефір</a>
-          <a class="main-nav__link" href="#podcasts">Подкасти</a>
-          <a class="main-nav__link" href="#news">Новини</a>
-          <a class="main-nav__link" href="#events">Події</a>
-          <a class="main-nav__link" href="#about">Про нас</a>
-        </nav>
+        <button
+          class="site-header__menu-toggle"
+          type="button"
+          aria-controls="mobile-menu"
+          aria-expanded="false"
+          aria-label="Відкрити меню"
+        >
+          <svg class="icon site-header__menu-icon site-header__menu-icon--open" aria-hidden="true">
+            <use href="./assets/icons/lucide-sprite.svg#menu"></use>
+          </svg>
+          <svg class="icon site-header__menu-icon site-header__menu-icon--close" aria-hidden="true">
+            <use href="./assets/icons/lucide-sprite.svg#x"></use>
+          </svg>
+        </button>
 
-        <div class="site-header__actions">
-          <div class="language-switcher" aria-label="Вибір мови">
-            <a class="language-switcher__item language-switcher__item--active" href="./" aria-current="true">UA</a>
-            <a class="language-switcher__item" href="#pl">PL</a>
+        <div class="site-header__panel" id="mobile-menu">
+          <nav class="main-nav" aria-label="Основна навігація">
+            <a class="main-nav__link main-nav__link--active" href="./">Головна</a>
+            <a class="main-nav__link" href="#air">Ефір</a>
+            <a class="main-nav__link" href="#podcasts">Подкасти</a>
+            <a class="main-nav__link" href="#news">Новини</a>
+            <a class="main-nav__link" href="#events">Події</a>
+            <a class="main-nav__link" href="#about">Про нас</a>
+          </nav>
+
+          <div class="site-header__actions">
+            <div class="language-switcher" aria-label="Вибір мови">
+              <a class="language-switcher__item language-switcher__item--active" href="./" aria-current="true">UA</a>
+              <a class="language-switcher__item" href="#pl">PL</a>
+            </div>
+            <a class="button button--primary button--header" href="#live">
+              <span class="button__icon" aria-hidden="true">
+                <svg class="icon">
+                  <use href="./assets/icons/lucide-sprite.svg#play"></use>
+                </svg>
+              </span>
+              <span>Слухати live</span>
+            </a>
           </div>
-          <a class="button button--primary button--header" href="#live">
-            <span class="button__icon" aria-hidden="true">
-              <svg class="icon">
-                <use href="./assets/icons/lucide-sprite.svg#play"></use>
-              </svg>
-            </span>
-            <span>Слухати live</span>
-          </a>
         </div>
       </div>
     </header>
@@ -455,7 +472,7 @@
       </div>
 
       <div class="container site-footer__bottom">
-        <p>© 2025 Radio Prywoz. Усі права захищено.</p>
+        <p>© 2026 Radio Prywoz. Усі права захищено.</p>
         <p class="site-footer__made">
           <span>Створено з любов'ю для наших слухачів</span>
           <svg class="icon" aria-hidden="true">

@@ -15,6 +15,10 @@
   grid-template-columns: 280px 1fr auto;
 }
 
+.site-header__panel {
+  display: contents;
+}
+
 .logo {
   display: flex;
   min-width: 0;
@@ -100,6 +104,10 @@
   gap: 28px;
 }
 
+.site-header__menu-toggle {
+  display: none;
+}
+
 .language-switcher {
   display: inline-flex;
   overflow: hidden;
@@ -135,18 +143,6 @@
   position: relative;
   padding-block: 50px 18px;
   overflow: hidden;
-}
-
-.hero::before {
-  position: absolute;
-  top: 50px;
-  right: -250px;
-  z-index: -1;
-  width: 760px;
-  height: 480px;
-  border-radius: 50%;
-  background: rgba(246, 180, 113, 0.18);
-  content: "";
 }
 
 .hero__grid {
@@ -216,7 +212,7 @@
   gap: 18px;
   grid-template-columns: minmax(150px, 1fr) auto;
   margin-top: 26px;
-  padding: 14px 18px 14px 104px;
+  padding: 14px 18px 14px 126px;
   overflow: hidden;
   border: 1px solid var(--color-border-strong);
   border-radius: var(--radius-md);
@@ -231,9 +227,9 @@
 .live-player__record {
   position: absolute;
   top: 50%;
-  left: -68px;
-  width: 138px;
-  height: 138px;
+  left: -84px;
+  width: 170px;
+  height: 170px;
   border-radius: 50%;
   box-shadow:
     0 12px 26px rgba(37, 13, 0, 0.22),
@@ -339,7 +335,11 @@
 }
 
 .live-player--playing .live-player__record {
-  animation: record-spin 18s linear infinite;
+  animation: record-spin 24s linear infinite;
+}
+
+.live-player--switching .live-player__record {
+  animation: record-swap 820ms ease-in-out;
 }
 
 .live-player__volume {
@@ -840,15 +840,98 @@
   }
 }
 
-@media (max-width: 1180px) {
-  .site-header__inner {
-    grid-template-columns: 1fr;
-    padding-block: 18px 24px;
+@keyframes record-swap {
+  0% {
+    transform: translateY(-50%) translateX(0) rotate(0deg);
   }
 
-  .main-nav,
+  42% {
+    transform: translateY(-50%) translateX(-72px) rotate(-16deg);
+  }
+
+  58% {
+    transform: translateY(-50%) translateX(-72px) rotate(-16deg);
+  }
+
+  100% {
+    transform: translateY(-50%) translateX(0) rotate(0deg);
+  }
+}
+
+@media (max-width: 1180px) {
+  .site-header__inner {
+    grid-template-columns: 1fr auto;
+    padding-block: 14px;
+  }
+
+  .site-header__menu-toggle {
+    display: grid;
+    width: 48px;
+    height: 48px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    place-items: center;
+    color: var(--color-text);
+    background: rgba(255, 255, 255, 0.76);
+    box-shadow: 0 10px 22px rgba(55, 24, 10, 0.08);
+  }
+
+  .site-header__menu-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .site-header__menu-icon--close,
+  .site-header--menu-open .site-header__menu-icon--open {
+    display: none;
+  }
+
+  .site-header--menu-open .site-header__menu-icon--close {
+    display: block;
+  }
+
+  .site-header__panel {
+    display: grid;
+    grid-column: 1 / -1;
+    max-height: 0;
+    visibility: hidden;
+    overflow: hidden;
+    opacity: 0;
+    transition:
+      max-height 260ms ease,
+      opacity 180ms ease,
+      visibility 180ms ease;
+  }
+
+  .site-header--menu-open .site-header__panel {
+    max-height: 520px;
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .main-nav {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px 18px;
+    justify-content: stretch;
+    padding-top: 18px;
+  }
+
+  .main-nav__link {
+    padding-block: 12px;
+  }
+
   .site-header__actions {
-    justify-content: flex-start;
+    display: grid;
+    justify-content: start;
+    justify-items: start;
+    gap: 14px;
+    padding-top: 16px;
+  }
+
+  .language-switcher {
+    width: max-content;
+    justify-self: start;
   }
 
   .hero__grid {
@@ -898,10 +981,12 @@
 
 @media (max-width: 767px) {
   .site-header__inner,
-  .main-nav,
-  .site-header__actions,
   .hero-actions {
     align-items: stretch;
+  }
+
+  .site-header__inner {
+    gap: 14px;
   }
 
   .logo {
@@ -933,15 +1018,12 @@
   }
 
   .main-nav {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 6px 18px;
+    gap: 2px;
+    grid-template-columns: 1fr;
   }
 
-  .site-header__actions {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 14px;
+  .site-header__actions .button--header {
+    width: 100%;
   }
 
   .hero {
@@ -963,7 +1045,7 @@
 
   .live-player {
     grid-template-columns: 1fr;
-    padding-left: 82px;
+    padding-left: 96px;
   }
 
   .live-player__controls {
@@ -973,9 +1055,9 @@
   }
 
   .live-player__record {
-    left: -56px;
-    width: 116px;
-    height: 116px;
+    left: -74px;
+    width: 150px;
+    height: 150px;
   }
 
   .live-player__volume {
