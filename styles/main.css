@@ -70,7 +70,25 @@ a {
 }
 
 .page {
+  position: relative;
   overflow-x: hidden;
+}
+
+.page::before {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  background:
+    radial-gradient(circle at 35% 28%, rgba(255, 221, 163, 0.2), transparent 30%),
+    rgba(22, 12, 31, 0.34);
+  content: "";
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 420ms ease;
+}
+
+.page--audio-focus::before {
+  opacity: 1;
 }
 
 .container {

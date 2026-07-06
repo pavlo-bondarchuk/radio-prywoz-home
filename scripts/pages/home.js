@@ -83,6 +83,7 @@ if (player && audio && playButton && volumeRange) {
         await audio.play();
       } catch {
         player.classList.remove("live-player--playing");
+        document.body.classList.remove("page--audio-focus");
       }
       return;
     }
@@ -91,12 +92,14 @@ if (player && audio && playButton && volumeRange) {
   });
 
   audio.addEventListener("play", () => {
+    document.body.classList.add("page--audio-focus");
     player.classList.add("live-player--playing");
     playButtonIcon?.setAttribute("href", `${iconPath}#pause`);
     playButton.setAttribute("aria-label", "Поставити ефір на паузу");
   });
 
   audio.addEventListener("pause", () => {
+    document.body.classList.remove("page--audio-focus");
     player.classList.remove("live-player--playing");
     playButtonIcon?.setAttribute("href", `${iconPath}#play`);
     playButton.setAttribute("aria-label", "Відтворити ефір");
