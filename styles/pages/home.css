@@ -29,21 +29,9 @@
 }
 
 .site-header__signal {
-  position: relative;
   width: 18px;
   height: 18px;
-  border: 2px solid var(--color-accent);
-  border-block-color: transparent;
-  border-radius: 50%;
-}
-
-.site-header__signal::before {
-  position: absolute;
-  inset: 4px;
-  border: 2px solid var(--color-accent);
-  border-block-color: transparent;
-  border-radius: 50%;
-  content: "";
+  color: var(--color-accent);
 }
 
 .site-header__service-link {
@@ -286,9 +274,9 @@
 }
 
 .hero-tags__icon {
+  width: 20px;
+  height: 20px;
   color: var(--color-primary);
-  font-size: 20px;
-  line-height: 1;
 }
 
 .live-player {
@@ -384,8 +372,7 @@
 .live-player__control {
   width: 32px;
   height: 44px;
-  font-size: 42px;
-  line-height: 1;
+  font-size: 22px;
 }
 
 .live-player__play {
@@ -397,19 +384,10 @@
 }
 
 .live-player__play-icon {
-  width: 0;
-  height: 0;
-  margin-left: 5px;
-  border-block: 13px solid transparent;
-  border-left: 18px solid #ffffff;
-}
-
-.live-player--playing .live-player__play-icon {
-  width: 16px;
-  height: 24px;
-  margin-left: 0;
-  border: 0;
-  border-inline: 5px solid #ffffff;
+  width: 30px;
+  height: 30px;
+  color: #ffffff;
+  fill: currentColor;
 }
 
 .live-player--playing .live-player__record {
@@ -424,7 +402,8 @@
 }
 
 .live-player__volume-icon {
-  font-size: 20px;
+  width: 20px;
+  height: 20px;
 }
 
 .live-player__volume-range {
@@ -492,9 +471,9 @@
 }
 
 .feature-list__icon {
+  width: 30px;
+  height: 30px;
   color: var(--color-primary);
-  font-size: 30px;
-  line-height: 1;
 }
 
 .feature-list__title {
@@ -554,6 +533,11 @@
   font-size: 14px;
   font-weight: 800;
   background: #1f2224;
+}
+
+.socials__link .icon {
+  width: 14px;
+  height: 14px;
 }
 
 .footer-nav,

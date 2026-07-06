@@ -1,9 +1,12 @@
 const player = document.querySelector(".live-player");
 const audio = document.querySelector(".live-player__audio");
 const playButton = document.querySelector(".live-player__play");
+const playButtonIcon = document.querySelector(".live-player__play-icon use");
 const volumeRange = document.querySelector(".live-player__volume-range");
 
 if (player && audio && playButton && volumeRange) {
+  const iconPath = "./assets/icons/lucide-sprite.svg";
+
   audio.volume = Number(volumeRange.value);
 
   playButton.addEventListener("click", async () => {
@@ -21,11 +24,13 @@ if (player && audio && playButton && volumeRange) {
 
   audio.addEventListener("play", () => {
     player.classList.add("live-player--playing");
+    playButtonIcon?.setAttribute("href", `${iconPath}#pause`);
     playButton.setAttribute("aria-label", "Поставити ефір на паузу");
   });
 
   audio.addEventListener("pause", () => {
     player.classList.remove("live-player--playing");
+    playButtonIcon?.setAttribute("href", `${iconPath}#play`);
     playButton.setAttribute("aria-label", "Відтворити ефір");
   });
 

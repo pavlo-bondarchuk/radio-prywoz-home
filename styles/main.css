@@ -87,6 +87,14 @@ a {
   border: 0;
 }
 
+.icon {
+  display: block;
+  width: 1em;
+  height: 1em;
+  flex: 0 0 auto;
+  stroke: currentColor;
+}
+
 .button {
   display: inline-flex;
   min-height: 56px;
@@ -146,38 +154,24 @@ a {
 }
 
 .button__icon {
+  display: grid;
   width: 26px;
   height: 26px;
   border-radius: 50%;
+  place-items: center;
+  color: var(--color-primary);
   background: #ffffff;
 }
 
-.button__icon::before {
-  display: block;
-  width: 0;
-  height: 0;
-  margin: 7px 0 0 10px;
-  border-block: 6px solid transparent;
-  border-left: 8px solid var(--color-primary);
-  content: "";
+.button__icon .icon {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
 }
 
 .button__mail {
   width: 22px;
-  height: 16px;
-  border: 2px solid currentColor;
-  border-radius: 3px;
-}
-
-.button__mail::before {
-  display: block;
-  width: 12px;
-  height: 12px;
-  margin: -2px auto 0;
-  border-right: 2px solid currentColor;
-  border-bottom: 2px solid currentColor;
-  content: "";
-  transform: rotate(45deg);
+  height: 22px;
 }
 
 @media (max-width: 767px) {
