@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+      name="description"
+      content="Radio Prywoz — перше українське інтернет-радіо в Польщі: музика, гумор, культура, люди."
+    >
+    <title>Radio Prywoz — перше українське радіо в Польщі</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap"
+      rel="stylesheet"
+    >
+    <link rel="icon" type="image/png" href="./assets/images/favicon.png">
+    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./styles/pages/home.css">
+  </head>
+  <body class="page">
+    <header class="site-header">
+      <div class="site-header__top">
+        <div class="container site-header__top-inner">
+          <a class="site-header__brand-note" href="./" aria-label="Radio Prywoz">
+            <span class="site-header__signal" aria-hidden="true"></span>
+            <span>Radio Prywoz — голос українців у Польщі</span>
+          </a>
+
+          <nav class="site-header__service-nav" aria-label="Додаткова навігація">
+            <a class="site-header__service-link" href="#about">Про радіо</a>
+            <a class="site-header__service-link" href="#guests">Для гостей</a>
+            <a class="site-header__service-link" href="#ads">Реклама</a>
+            <a class="site-header__service-link" href="#contacts">Контакти</a>
+          </nav>
+        </div>
+      </div>
+
+      <div class="container site-header__main">
+        <a class="logo" href="./" aria-label="На головну Radio Prywoz">
+          <img
+            class="logo__image"
+            src="./assets/images/logo.png"
+            alt=""
+            width="1254"
+            height="1254"
+          >
+          <span class="logo__text">
+            <span class="logo__name">Radio Prywoz</span>
+            <span class="logo__description">Перше українське радіо в Польщі</span>
+          </span>
+        </a>
+
+        <nav class="main-nav" aria-label="Основна навігація">
+          <a class="main-nav__link main-nav__link--active" href="./">Головна</a>
+          <a class="main-nav__link" href="#air">Ефір</a>
+          <a class="main-nav__link" href="#podcasts">Подкасти</a>
+          <a class="main-nav__link" href="#news">Новини</a>
+          <a class="main-nav__link" href="#events">Події</a>
+          <a class="main-nav__link" href="#about">Про нас</a>
+        </nav>
+
+        <div class="site-header__actions">
+          <div class="language-switcher" aria-label="Вибір мови">
+            <a class="language-switcher__item language-switcher__item--active" href="./" aria-current="true">UA</a>
+            <a class="language-switcher__item" href="#pl">PL</a>
+          </div>
+          <a class="button button--primary button--header" href="#live">
+            <span class="button__icon" aria-hidden="true"></span>
+            <span>Слухати live</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="container hero__grid">
+          <div class="hero__content">
+            <p class="hero__eyebrow">
+              <span>Музика. Гумор. Культура. Люди.</span>
+              <span class="hero__wave" aria-hidden="true"></span>
+            </p>
+
+            <h1 class="hero__title" id="hero-title">
+              Перше українське<br>
+              радіо <span>в Польщі</span>
+            </h1>
+
+            <p class="hero__lead">
+              Інтернет-радіо Radio Prywoz — це мікс улюбленої музики,
+              живого спілкування, одеського гумору, культурних подій і новин
+              для українців у Польщі та всьому світі.
+            </p>
+
+            <ul class="hero-tags" aria-label="Напрями Radio Prywoz">
+              <li class="hero-tags__item">
+                <span class="hero-tags__icon" aria-hidden="true">⌁</span>
+                <span>Одеса об'єднує</span>
+              </li>
+              <li class="hero-tags__item">
+                <span class="hero-tags__icon" aria-hidden="true">🎙</span>
+                <span>Подкасти</span>
+              </li>
+              <li class="hero-tags__item">
+                <span class="hero-tags__icon" aria-hidden="true">◉</span>
+                <span>Живий ефір</span>
+              </li>
+              <li class="hero-tags__item">
+                <span class="hero-tags__icon" aria-hidden="true">▶</span>
+                <span>YouTube стріми</span>
+              </li>
+            </ul>
+
+            <div class="live-player" id="live">
+              <audio class="live-player__audio" src="./assets/audio/radio-privoz-demo.mp3" preload="metadata"></audio>
+
+              <div class="live-player__record" aria-hidden="true">
+                <span class="live-player__record-inner"></span>
+              </div>
+
+              <div class="live-player__meta">
+                <span class="live-player__label">Зараз в ефірі</span>
+                <strong class="live-player__track">Любов, братці, любов</strong>
+                <span class="live-player__host">Тарас Чубай</span>
+                <span class="live-player__badge">On air</span>
+              </div>
+
+              <div class="live-player__controls">
+                <button class="live-player__control" type="button" data-action="previous" aria-label="Попередній трек">
+                  <span aria-hidden="true">‹</span>
+                </button>
+                <button class="live-player__play" type="button" aria-label="Відтворити ефір">
+                  <span class="live-player__play-icon" aria-hidden="true"></span>
+                </button>
+                <button class="live-player__control" type="button" data-action="next" aria-label="Наступний трек">
+                  <span aria-hidden="true">›</span>
+                </button>
+              </div>
+
+              <label class="live-player__volume">
+                <span class="visually-hidden">Гучність</span>
+                <span class="live-player__volume-icon" aria-hidden="true">⌕</span>
+                <input class="live-player__volume-range" type="range" min="0" max="1" step="0.01" value="0.7">
+              </label>
+            </div>
+
+            <div class="hero-actions">
+              <a class="button button--primary" href="#live">
+                <span class="button__icon" aria-hidden="true"></span>
+                <span>Слухати live</span>
+              </a>
+              <a class="button button--secondary" href="#schedule">Розклад передач</a>
+              <a class="button button--outline" href="#card">
+                <span class="button__mail" aria-hidden="true"></span>
+                <span>Реєстрація карти</span>
+              </a>
+            </div>
+
+            <p class="hero__signature">Добре там, де є Привоз!</p>
+          </div>
+
+          <div class="hero-visual" aria-label="Одеса, Привоз і українська атмосфера">
+            <div class="hero-visual__drawing" aria-hidden="true"></div>
+            <div class="hero-visual__arch">
+              <span class="hero-visual__letters">Привоз</span>
+              <span class="hero-visual__lamp"></span>
+            </div>
+            <div class="hero-visual__market">
+              <span class="hero-visual__awning"></span>
+              <span class="hero-visual__stall"></span>
+              <span class="hero-visual__crate hero-visual__crate--orange"></span>
+              <span class="hero-visual__crate hero-visual__crate--green"></span>
+              <span class="hero-visual__crate hero-visual__crate--red"></span>
+            </div>
+            <div class="hero-visual__note">Odessa<br>forever</div>
+            <div class="hero-visual__plate" aria-hidden="true"></div>
+            <div class="hero-visual__tea" aria-hidden="true"></div>
+            <div class="hero-visual__board">
+              <span>Одеса</span>
+              <span>Мама</span>
+              <span>Гумор</span>
+              <span>Люди</span>
+              <span>Музика</span>
+              <span>Привоз</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="features" aria-label="Переваги Radio Prywoz">
+        <div class="container">
+          <ul class="feature-list">
+            <li class="feature-list__item">
+              <span class="feature-list__icon" aria-hidden="true">♫</span>
+              <div class="feature-list__text">
+                <h2 class="feature-list__title">Улюблена музика</h2>
+                <p class="feature-list__description">Хіти українською, новинки, ретро та авторські програми.</p>
+              </div>
+            </li>
+            <li class="feature-list__item">
+              <span class="feature-list__icon" aria-hidden="true">🎙</span>
+              <div class="feature-list__text">
+                <h2 class="feature-list__title">Живе спілкування</h2>
+                <p class="feature-list__description">Ведучі, гості, історії слухачів і гарячі теми наживо.</p>
+              </div>
+            </li>
+            <li class="feature-list__item">
+              <span class="feature-list__icon" aria-hidden="true">☺</span>
+              <div class="feature-list__text">
+                <h2 class="feature-list__title">Одеський гумор</h2>
+                <p class="feature-list__description">Бо сміх — це наше все! Гуморески, жарти й анекдоти.</p>
+              </div>
+            </li>
+            <li class="feature-list__item">
+              <span class="feature-list__icon" aria-hidden="true">♙</span>
+              <div class="feature-list__text">
+                <h2 class="feature-list__title">Спільнота</h2>
+                <p class="feature-list__description">Ми разом — у Польщі, в Україні та по всьому світу.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" id="contacts">
+      <div class="container site-footer__grid">
+        <div class="site-footer__brand">
+          <img
+            class="site-footer__logo"
+            src="./assets/images/logo.png"
+            alt="Radio Prywoz FM"
+            width="1254"
+            height="1254"
+          >
+          <p class="site-footer__about">
+            Radio Prywoz — перше українське інтернет-радіо в Польщі. Музика,
+            гумор, культура та люди, що об'єднують.
+          </p>
+          <ul class="socials" aria-label="Соціальні мережі">
+            <li class="socials__item"><a class="socials__link" href="#facebook" aria-label="Facebook">f</a></li>
+            <li class="socials__item"><a class="socials__link" href="#instagram" aria-label="Instagram">◎</a></li>
+            <li class="socials__item"><a class="socials__link" href="#youtube" aria-label="YouTube">▶</a></li>
+            <li class="socials__item"><a class="socials__link" href="#telegram" aria-label="Telegram">✈</a></li>
+            <li class="socials__item"><a class="socials__link" href="#tiktok" aria-label="TikTok">♪</a></li>
+          </ul>
+        </div>
+
+        <nav class="footer-nav" aria-label="Навігація у футері">
+          <h2 class="footer-nav__title">Навігація</h2>
+          <a class="footer-nav__link" href="./">Головна</a>
+          <a class="footer-nav__link" href="#air">Ефір</a>
+          <a class="footer-nav__link" href="#podcasts">Подкасти</a>
+          <a class="footer-nav__link" href="#news">Новини</a>
+          <a class="footer-nav__link" href="#events">Події</a>
+          <a class="footer-nav__link" href="#about">Про нас</a>
+        </nav>
+
+        <nav class="footer-nav" aria-label="Слухачам">
+          <h2 class="footer-nav__title">Слухачам</h2>
+          <a class="footer-nav__link" href="#schedule">Розклад передач</a>
+          <a class="footer-nav__link" href="#hosts">Ведучі</a>
+          <a class="footer-nav__link" href="#how-to-listen">Як нас слухати</a>
+          <a class="footer-nav__link" href="#faq">FAQ</a>
+          <a class="footer-nav__link" href="#contacts">Контакти</a>
+        </nav>
+
+        <div class="footer-contacts">
+          <h2 class="footer-contacts__title">Контакти</h2>
+          <a class="footer-contacts__link" href="mailto:hello@prywoz.fm">hello@prywoz.fm</a>
+          <a class="footer-contacts__link" href="tel:+48799123456">+48 799 123 456</a>
+          <span class="footer-contacts__link">Poland</span>
+          <a class="button button--contact" href="mailto:hello@prywoz.fm">Написати нам</a>
+        </div>
+
+        <aside class="footer-card" aria-label="Анонс ефіру">
+          <strong class="footer-card__label">Щоденний ефір</strong>
+          <span class="footer-card__date">3 вересня!</span>
+          <p class="footer-card__text">Будемо разом щодня на хвилях Radio Prywoz</p>
+        </aside>
+      </div>
+
+      <div class="container site-footer__bottom">
+        <p>© 2025 Radio Prywoz. Усі права захищено.</p>
+        <p>Створено з любов'ю для наших слухачів</p>
+      </div>
+    </footer>
+
+    <script src="./scripts/pages/home.js"></script>
+  </body>
+</html>
