@@ -206,6 +206,7 @@
 }
 
 .live-player {
+  position: relative;
   display: grid;
   width: 100%;
   max-width: 620px;
@@ -213,9 +214,10 @@
   min-width: 0;
   align-items: center;
   gap: 18px;
-  grid-template-columns: 68px minmax(150px, 1fr) auto;
+  grid-template-columns: minmax(150px, 1fr) auto;
   margin-top: 26px;
-  padding: 14px 18px;
+  padding: 14px 18px 14px 104px;
+  overflow: hidden;
   border: 1px solid var(--color-border-strong);
   border-radius: var(--radius-md);
   background: rgba(255, 255, 255, 0.72);
@@ -227,21 +229,38 @@
 }
 
 .live-player__record {
-  position: relative;
-  width: 58px;
-  height: 58px;
+  position: absolute;
+  top: 50%;
+  left: -68px;
+  width: 138px;
+  height: 138px;
   border-radius: 50%;
-  background:
-    radial-gradient(circle, #111 0 18%, transparent 19%),
-    repeating-radial-gradient(circle, #1f1f1f 0 4px, #080808 5px 8px);
-  box-shadow: 0 10px 22px rgba(37, 13, 0, 0.16);
+  box-shadow:
+    0 12px 26px rgba(37, 13, 0, 0.22),
+    0 0 0 1px rgba(255, 255, 255, 0.65) inset;
+  transform: translateY(-50%);
+  transform-origin: center;
+  will-change: transform;
 }
 
-.live-player__record-inner {
+.live-player__record::after {
   position: absolute;
-  inset: 16px;
+  inset: 50%;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #d18c20, #f6d26d);
+  background: #ffffff;
+  box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.28);
+  content: "";
+  transform: translate(-50%, -50%);
+}
+
+.live-player__record-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  mix-blend-mode: multiply;
 }
 
 .live-player__meta {
@@ -320,7 +339,7 @@
 }
 
 .live-player--playing .live-player__record {
-  animation: record-spin 7s linear infinite;
+  animation: record-spin 18s linear infinite;
 }
 
 .live-player__volume {
@@ -812,8 +831,12 @@
 }
 
 @keyframes record-spin {
+  from {
+    transform: translateY(-50%) rotate(0deg);
+  }
+
   to {
-    transform: rotate(360deg);
+    transform: translateY(-50%) rotate(360deg);
   }
 }
 
@@ -939,13 +962,20 @@
   }
 
   .live-player {
-    grid-template-columns: 64px 1fr;
+    grid-template-columns: 1fr;
+    padding-left: 82px;
   }
 
   .live-player__controls {
     grid-column: 1 / -1;
     flex-wrap: wrap;
     justify-content: center;
+  }
+
+  .live-player__record {
+    left: -56px;
+    width: 116px;
+    height: 116px;
   }
 
   .live-player__volume {
