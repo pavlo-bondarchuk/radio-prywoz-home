@@ -322,7 +322,11 @@
 .live-player__play {
   width: 66px;
   height: 66px;
-  border-radius: 50%;
+  min-width: 66px;
+  padding: 0;
+  border-radius: 999px;
+  aspect-ratio: 1 / 1;
+  flex: 0 0 66px;
   background: linear-gradient(145deg, #b50be9, #5b00b5);
   box-shadow: 0 12px 24px rgba(106, 0, 186, 0.25);
 }
@@ -677,7 +681,7 @@
   display: grid;
   align-items: start;
   gap: 52px;
-  grid-template-columns: 230px 120px 146px 210px minmax(210px, 240px);
+  grid-template-columns: minmax(230px, 1fr) 120px 146px 210px minmax(210px, 240px);
 }
 
 .site-footer__brand-row {
@@ -758,6 +762,9 @@
 
 .footer-card {
   position: relative;
+  width: 100%;
+  max-width: 240px;
+  justify-self: end;
   min-height: 176px;
   padding: 24px 26px;
   overflow: hidden;
@@ -860,78 +867,13 @@
 
 @media (max-width: 1180px) {
   .site-header__inner {
-    grid-template-columns: 1fr auto;
-    padding-block: 14px;
+    grid-template-columns: 1fr;
+    padding-block: 18px 24px;
   }
 
-  .site-header__menu-toggle {
-    display: grid;
-    width: 48px;
-    height: 48px;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-sm);
-    place-items: center;
-    color: var(--color-text);
-    background: rgba(255, 255, 255, 0.76);
-    box-shadow: 0 10px 22px rgba(55, 24, 10, 0.08);
-  }
-
-  .site-header__menu-icon {
-    width: 24px;
-    height: 24px;
-  }
-
-  .site-header__menu-icon--close,
-  .site-header--menu-open .site-header__menu-icon--open {
-    display: none;
-  }
-
-  .site-header--menu-open .site-header__menu-icon--close {
-    display: block;
-  }
-
-  .site-header__panel {
-    display: grid;
-    grid-column: 1 / -1;
-    max-height: 0;
-    visibility: hidden;
-    overflow: hidden;
-    opacity: 0;
-    transition:
-      max-height 260ms ease,
-      opacity 180ms ease,
-      visibility 180ms ease;
-  }
-
-  .site-header--menu-open .site-header__panel {
-    max-height: 520px;
-    visibility: visible;
-    opacity: 1;
-  }
-
-  .main-nav {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 6px 18px;
-    justify-content: stretch;
-    padding-top: 18px;
-  }
-
-  .main-nav__link {
-    padding-block: 12px;
-  }
-
+  .main-nav,
   .site-header__actions {
-    display: grid;
-    justify-content: start;
-    justify-items: start;
-    gap: 14px;
-    padding-top: 16px;
-  }
-
-  .language-switcher {
-    width: max-content;
-    justify-self: start;
+    justify-content: flex-start;
   }
 
   .hero__grid {
@@ -986,7 +928,54 @@
   }
 
   .site-header__inner {
+    grid-template-columns: 1fr auto;
     gap: 14px;
+    padding-block: 14px;
+  }
+
+  .site-header__menu-toggle {
+    display: grid;
+    width: 48px;
+    height: 48px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    place-items: center;
+    color: var(--color-text);
+    background: rgba(255, 255, 255, 0.76);
+    box-shadow: 0 10px 22px rgba(55, 24, 10, 0.08);
+  }
+
+  .site-header__menu-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .site-header__menu-icon--close,
+  .site-header--menu-open .site-header__menu-icon--open {
+    display: none;
+  }
+
+  .site-header--menu-open .site-header__menu-icon--close {
+    display: block;
+  }
+
+  .site-header__panel {
+    display: grid;
+    grid-column: 1 / -1;
+    max-height: 0;
+    visibility: hidden;
+    overflow: hidden;
+    opacity: 0;
+    transition:
+      max-height 260ms ease,
+      opacity 180ms ease,
+      visibility 180ms ease;
+  }
+
+  .site-header--menu-open .site-header__panel {
+    max-height: 520px;
+    visibility: visible;
+    opacity: 1;
   }
 
   .logo {
@@ -1018,8 +1007,28 @@
   }
 
   .main-nav {
+    display: grid;
     gap: 2px;
     grid-template-columns: 1fr;
+    justify-content: stretch;
+    padding-top: 18px;
+  }
+
+  .main-nav__link {
+    padding-block: 12px;
+  }
+
+  .site-header__actions {
+    display: grid;
+    justify-content: start;
+    justify-items: start;
+    gap: 14px;
+    padding-top: 16px;
+  }
+
+  .language-switcher {
+    width: max-content;
+    justify-self: start;
   }
 
   .site-header__actions .button--header {
