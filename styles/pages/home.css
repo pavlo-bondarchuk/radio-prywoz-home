@@ -343,23 +343,6 @@
   mix-blend-mode: normal;
 }
 
-.live-player__record--cassette {
-  left: -104px;
-  width: 210px;
-  height: 134px;
-  border-radius: 12px;
-}
-
-.live-player__record--cassette::after {
-  display: none;
-}
-
-.live-player__record--cassette .live-player__record-image {
-  border-radius: 12px;
-  object-fit: contain;
-  mix-blend-mode: normal;
-}
-
 .live-player__meta {
   display: grid;
   justify-items: start;
@@ -464,7 +447,7 @@
   fill: currentColor;
 }
 
-.live-player--playing .live-player__record:not(.live-player__record--cassette) {
+.live-player--playing .live-player__record {
   animation: record-spin 24s linear infinite;
 }
 
@@ -1233,12 +1216,6 @@
     left: -74px;
     width: 150px;
     height: 150px;
-  }
-
-  .live-player__record--cassette {
-    left: -92px;
-    width: 178px;
-    height: 114px;
   }
 
   .hero-actions {

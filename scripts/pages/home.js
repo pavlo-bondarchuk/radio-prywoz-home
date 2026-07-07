@@ -54,14 +54,6 @@ if (player && audio && playButton && volumeButton) {
         src: "./assets/images/home/player-cd.png",
       },
     },
-    {
-      title: "Ой у лузі червона калина",
-      host: "Український ефір",
-      media: {
-        type: "cassette",
-        src: "./assets/images/home/player-cassette.png",
-      },
-    },
   ];
   let activeTrackIndex = 0;
   let switchTimeout;
@@ -89,7 +81,6 @@ if (player && audio && playButton && volumeButton) {
     mediaHolder.classList.remove(
       "live-player__record--vinyl",
       "live-player__record--cd",
-      "live-player__record--cassette",
     );
     mediaHolder.classList.add(`live-player__record--${activeTrack.media.type}`);
   };
