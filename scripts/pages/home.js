@@ -5,7 +5,8 @@ const player = document.querySelector(".live-player");
 const audio = document.querySelector(".live-player__audio");
 const playButton = document.querySelector(".live-player__play");
 const playButtonIcon = document.querySelector(".live-player__play-icon use");
-const volumeRange = document.querySelector(".live-player__volume-range");
+const volumeButton = document.querySelector(".live-player__volume");
+const volumeButtonIcon = document.querySelector(".live-player__volume use");
 const trackTitle = document.querySelector(".live-player__track");
 const trackHost = document.querySelector(".live-player__host");
 const trackControls = document.querySelectorAll(".live-player__control[data-action]");
@@ -34,7 +35,7 @@ if (header && menuToggle) {
   });
 }
 
-if (player && audio && playButton && volumeRange) {
+if (player && audio && playButton && volumeButton) {
   const iconPath = "./assets/icons/lucide-sprite.svg";
   const tracks = [
     {
@@ -65,7 +66,15 @@ if (player && audio && playButton && volumeRange) {
   let activeTrackIndex = 0;
   let switchTimeout;
 
-  audio.volume = Number(volumeRange.value);
+  audio.volume = 0.7;
+
+  const updateVolumeState = () => {
+    const isMuted = audio.muted;
+
+    volumeButton.setAttribute("aria-pressed", String(isMuted));
+    volumeButton.setAttribute("aria-label", isMuted ? "Увімкнути звук" : "Вимкнути звук");
+    volumeButtonIcon?.setAttribute("href", `${iconPath}#${isMuted ? "volume-x" : "volume-2"}`);
+  };
 
   const updateTrack = () => {
     if (!trackTitle || !trackHost || !mediaHolder || !mediaImage) {
@@ -128,9 +137,12 @@ if (player && audio && playButton && volumeRange) {
     playButton.setAttribute("aria-label", "Відтворити ефір");
   });
 
-  volumeRange.addEventListener("input", () => {
-    audio.volume = Number(volumeRange.value);
+  volumeButton.addEventListener("click", () => {
+    audio.muted = !audio.muted;
+    updateVolumeState();
   });
+
+  updateVolumeState();
 
   trackControls.forEach((control) => {
     control.addEventListener("click", () => {
