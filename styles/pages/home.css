@@ -344,9 +344,9 @@
 }
 
 .live-player__record--cassette {
-  left: -62px;
-  width: 150px;
-  height: 182px;
+  left: -104px;
+  width: 210px;
+  height: 134px;
   border-radius: 12px;
 }
 
@@ -1236,9 +1236,9 @@
   }
 
   .live-player__record--cassette {
-    left: -60px;
-    width: 132px;
-    height: 160px;
+    left: -92px;
+    width: 178px;
+    height: 114px;
   }
 
   .hero-actions {
