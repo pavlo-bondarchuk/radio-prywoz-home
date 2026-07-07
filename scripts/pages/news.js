@@ -3,8 +3,6 @@ const menuToggle = document.querySelector(".site-header__menu-toggle");
 const menuLinks = document.querySelectorAll(".main-nav__link, .button--header");
 const filterButtons = document.querySelectorAll("[data-filter]");
 const newsCards = document.querySelectorAll("[data-news-card]");
-const newsList = document.querySelector("[data-news-list]");
-const showMoreButton = document.querySelector("[data-show-more]");
 
 if (header && menuToggle) {
   const setMenuState = (isOpen) => {
@@ -41,10 +39,4 @@ filterButtons.forEach((button) => {
       card.classList.toggle("is-hidden", !isVisible);
     });
   });
-});
-
-showMoreButton?.addEventListener("click", () => {
-  const isExpanded = newsList?.classList.toggle("news-list--expanded");
-
-  showMoreButton.querySelector("span").textContent = isExpanded ? "Згорнути" : "Показати більше";
 });

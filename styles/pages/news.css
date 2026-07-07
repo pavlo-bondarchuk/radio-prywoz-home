@@ -203,14 +203,6 @@
   box-shadow: 0 14px 34px rgba(74, 31, 8, 0.05);
 }
 
-.archive-card--more {
-  display: none;
-}
-
-.news-list--expanded .archive-card--more {
-  display: grid;
-}
-
 .archive-card.is-hidden,
 .news-feature.is-hidden {
   display: none;
@@ -284,11 +276,6 @@
 .pagination__dots {
   color: var(--color-muted);
   font-weight: 800;
-}
-
-.news-archive__more {
-  width: min(100%, 420px);
-  margin: 18px auto 0;
 }
 
 @media (max-width: 1180px) {
