@@ -9,6 +9,8 @@ const volumeRange = document.querySelector(".live-player__volume-range");
 const trackTitle = document.querySelector(".live-player__track");
 const trackHost = document.querySelector(".live-player__host");
 const trackControls = document.querySelectorAll(".live-player__control[data-action]");
+const mediaHolder = document.querySelector(".live-player__record");
+const mediaImage = document.querySelector(".live-player__record-image");
 
 if (header && menuToggle) {
   const setMenuState = (isOpen) => {
@@ -38,14 +40,26 @@ if (player && audio && playButton && volumeRange) {
     {
       title: "Любов, братці, любов",
       host: "Тарас Чубай",
+      media: {
+        type: "vinyl",
+        src: "./assets/images/home/player-vinyl.png",
+      },
     },
     {
       title: "Чорне море сміється",
       host: "Radio Prywoz",
+      media: {
+        type: "cd",
+        src: "./assets/images/home/player-cd.png",
+      },
     },
     {
       title: "Ой у лузі червона калина",
       host: "Український ефір",
+      media: {
+        type: "cassette",
+        src: "./assets/images/home/player-cassette.png",
+      },
     },
   ];
   let activeTrackIndex = 0;
@@ -54,12 +68,21 @@ if (player && audio && playButton && volumeRange) {
   audio.volume = Number(volumeRange.value);
 
   const updateTrack = () => {
-    if (!trackTitle || !trackHost) {
+    if (!trackTitle || !trackHost || !mediaHolder || !mediaImage) {
       return;
     }
 
-    trackTitle.textContent = tracks[activeTrackIndex].title;
-    trackHost.textContent = tracks[activeTrackIndex].host;
+    const activeTrack = tracks[activeTrackIndex];
+
+    trackTitle.textContent = activeTrack.title;
+    trackHost.textContent = activeTrack.host;
+    mediaImage.src = activeTrack.media.src;
+    mediaHolder.classList.remove(
+      "live-player__record--vinyl",
+      "live-player__record--cd",
+      "live-player__record--cassette",
+    );
+    mediaHolder.classList.add(`live-player__record--${activeTrack.media.type}`);
   };
 
   const switchTrack = (direction) => {
