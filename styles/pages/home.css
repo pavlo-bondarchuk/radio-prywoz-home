@@ -515,16 +515,15 @@
 
 .hero-visual {
   position: relative;
-  overflow: hidden;
-  min-height: 540px;
+  display: flex;
+  min-height: 0;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
 }
 
 .hero-visual__image {
-  position: absolute;
-  top: -34px;
-  right: -34px;
-  width: clamp(520px, 50vw, 680px);
-  max-width: none;
+  width: min(100%, 560px);
   height: auto;
   filter: drop-shadow(0 28px 58px rgba(103, 55, 27, 0.12));
   mix-blend-mode: multiply;
@@ -1031,14 +1030,11 @@
   }
 
   .hero-visual {
-    min-height: 650px;
+    min-height: 0;
   }
 
   .hero-visual__image {
-    left: 50%;
-    right: auto;
-    width: min(112vw, 640px);
-    transform: translateX(-50%);
+    width: min(100%, 620px);
   }
 
   .news-grid {
@@ -1223,16 +1219,12 @@
   }
 
   .hero-visual {
-    min-height: 560px;
-    margin-bottom: -40px;
+    min-height: 0;
+    margin-bottom: 0;
   }
 
   .hero-visual__image {
-    left: 50%;
-    right: auto;
-    top: 0;
     width: min(100%, 430px);
-    transform: translateX(-50%);
   }
 
   .news-card {
