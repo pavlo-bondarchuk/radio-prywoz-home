@@ -12,6 +12,7 @@ const trackHost = document.querySelector(".live-player__host");
 const trackControls = document.querySelectorAll(".live-player__control[data-action]");
 const mediaHolder = document.querySelector(".live-player__record");
 const mediaImage = document.querySelector(".live-player__record-image");
+const eventSlider = document.querySelector("[data-event-slider]");
 
 if (header && menuToggle) {
   const setMenuState = (isOpen) => {
@@ -140,4 +141,113 @@ if (player && audio && playButton && volumeButton) {
       switchTrack(control.dataset.action === "next" ? "next" : "previous");
     });
   });
+}
+
+if (eventSlider) {
+  const track = eventSlider.querySelector(".event-slider__track");
+  const controls = eventSlider.querySelectorAll("[data-event-direction]");
+  const originalCards = track ? Array.from(track.children) : [];
+  let eventIndex = 0;
+  let eventStep = 0;
+  let eventPerView = 1;
+  let isSliding = false;
+
+  const getEventPerView = () => {
+    if (window.matchMedia("(max-width: 767px)").matches) {
+      return 1;
+    }
+
+    if (window.matchMedia("(max-width: 1180px)").matches) {
+      return 2;
+    }
+
+    return 4;
+  };
+
+  const setEventPosition = (withTransition = true) => {
+    if (!track) {
+      return;
+    }
+
+    track.style.transition = withTransition ? "" : "none";
+    track.style.transform = `translateX(${-eventIndex * eventStep}px)`;
+  };
+
+  const measureEventStep = () => {
+    if (!track) {
+      return;
+    }
+
+    const firstCard = track.children[eventPerView];
+    const styles = window.getComputedStyle(track);
+    const gap = Number.parseFloat(styles.columnGap || styles.gap) || 0;
+
+    eventStep = firstCard ? firstCard.getBoundingClientRect().width + gap : 0;
+  };
+
+  const buildEventLoop = () => {
+    if (!track || originalCards.length === 0) {
+      return;
+    }
+
+    eventPerView = Math.min(getEventPerView(), originalCards.length);
+    track.replaceChildren();
+
+    const cloneCard = (card) => {
+      const clone = card.cloneNode(true);
+      clone.setAttribute("aria-hidden", "true");
+      return clone;
+    };
+
+    const startClones = originalCards.slice(-eventPerView).map(cloneCard);
+    const endClones = originalCards.slice(0, eventPerView).map(cloneCard);
+
+    [...startClones, ...originalCards, ...endClones].forEach((card) => {
+      track.append(card);
+    });
+
+    eventIndex = eventPerView;
+    measureEventStep();
+    setEventPosition(false);
+  };
+
+  const moveEvents = (direction) => {
+    if (!track || isSliding || eventStep === 0) {
+      return;
+    }
+
+    isSliding = true;
+    eventIndex += direction === "next" ? 1 : -1;
+    setEventPosition(true);
+  };
+
+  track?.addEventListener("transitionend", () => {
+    if (!track) {
+      return;
+    }
+
+    if (eventIndex >= originalCards.length + eventPerView) {
+      eventIndex = eventPerView;
+      setEventPosition(false);
+    }
+
+    if (eventIndex < eventPerView) {
+      eventIndex = originalCards.length + eventPerView - 1;
+      setEventPosition(false);
+    }
+
+    isSliding = false;
+  });
+
+  controls.forEach((control) => {
+    control.addEventListener("click", () => {
+      moveEvents(control.dataset.eventDirection === "prev" ? "prev" : "next");
+    });
+  });
+
+  window.addEventListener("resize", () => {
+    buildEventLoop();
+  });
+
+  buildEventLoop();
 }
