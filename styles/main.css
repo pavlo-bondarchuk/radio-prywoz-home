@@ -44,9 +44,6 @@ body {
   font-family: var(--font-body);
   font-size: 16px;
   line-height: 1.55;
-  background:
-    radial-gradient(circle at 75% 10%, rgba(248, 207, 166, 0.44), transparent 30%),
-    linear-gradient(180deg, #fffaf5 0%, #fff7ef 52%, #fff1e4 100%);
 }
 
 img,
@@ -72,19 +69,6 @@ a {
 .page {
   position: relative;
   overflow-x: hidden;
-}
-
-.page::before {
-  position: fixed;
-  inset: 0;
-  z-index: 30;
-  background:
-    radial-gradient(circle at 35% 28%, rgba(255, 221, 163, 0.2), transparent 30%),
-    rgba(22, 12, 31, 0.34);
-  content: "";
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 420ms ease;
 }
 
 .page--audio-focus::before {

@@ -142,7 +142,6 @@
 .hero {
   position: relative;
   padding-block: 50px 18px;
-  overflow: hidden;
 }
 
 .hero__grid {
