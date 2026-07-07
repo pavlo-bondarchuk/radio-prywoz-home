@@ -5,7 +5,6 @@ const filterButtons = document.querySelectorAll("[data-gallery-filter]");
 const galleryGrid = document.querySelector("[data-gallery-grid]");
 const galleryCards = galleryGrid ? Array.from(galleryGrid.querySelectorAll("[data-gallery-card]")) : [];
 const sortSelect = document.querySelector("[data-gallery-sort]");
-const moreButton = document.querySelector("[data-gallery-more]");
 
 if (header && menuToggle) {
   const setMenuState = (isOpen) => {
@@ -58,9 +57,4 @@ sortSelect?.addEventListener("change", () => {
   });
 
   sortedCards.forEach((card) => galleryGrid?.append(card));
-});
-
-moreButton?.addEventListener("click", () => {
-  moreButton.querySelector("span").textContent = "Усі фото завантажені";
-  moreButton.disabled = true;
 });

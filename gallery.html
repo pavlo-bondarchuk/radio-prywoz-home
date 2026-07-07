@@ -161,10 +161,21 @@
             </article>
           </div>
 
-          <button class="button button--outline gallery-archive__more" type="button" data-gallery-more>
-            <span>Завантажити ще</span>
-            <svg class="icon button__mail" aria-hidden="true"><use href="./assets/icons/lucide-sprite.svg#radio"></use></svg>
-          </button>
+          <nav class="pagination" aria-label="Пагінація галереї">
+            <a class="pagination__button" href="#prev" aria-label="Попередня сторінка">
+              <svg class="icon" aria-hidden="true"><use href="./assets/icons/lucide-sprite.svg#chevron-right"></use></svg>
+            </a>
+            <a class="pagination__button pagination__button--active" href="#page-1" aria-current="page">1</a>
+            <a class="pagination__button" href="#page-2">2</a>
+            <a class="pagination__button" href="#page-3">3</a>
+            <a class="pagination__button" href="#page-4">4</a>
+            <a class="pagination__button" href="#page-5">5</a>
+            <span class="pagination__dots">...</span>
+            <a class="pagination__button" href="#page-12">12</a>
+            <a class="pagination__button" href="#next" aria-label="Наступна сторінка">
+              <svg class="icon" aria-hidden="true"><use href="./assets/icons/lucide-sprite.svg#chevron-right"></use></svg>
+            </a>
+          </nav>
         </div>
       </section>
     </main>
