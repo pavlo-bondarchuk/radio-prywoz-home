@@ -511,11 +511,18 @@
 }
 
 .hero-actions {
-  display: grid;
+  display: flex;
   max-width: 610px;
-  gap: 20px;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
   margin-top: 22px;
+}
+
+.hero-actions .button {
+  width: auto;
+  flex: 0 0 auto;
+  padding-inline: 20px;
 }
 
 .button__inline-icon {
@@ -1082,8 +1089,7 @@
 }
 
 @media (max-width: 767px) {
-  .site-header__inner,
-  .hero-actions {
+  .site-header__inner {
     align-items: stretch;
   }
 
@@ -1236,7 +1242,7 @@
   }
 
   .hero-actions {
-    grid-template-columns: 1fr;
+    align-items: flex-start;
   }
 
   .hero-visual {
