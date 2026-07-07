@@ -61,31 +61,36 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 18px;
 }
 
 .gallery-filter__button {
+  min-width: 96px;
   min-height: 42px;
-  padding: 10px 22px;
-  border: 0;
-  border-radius: 999px;
-  color: var(--color-text);
-  font-size: 14px;
+  padding: 10px 18px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  color: #3b302d;
+  font-size: 13px;
   font-weight: 800;
-  background: transparent;
+  background: rgba(255, 255, 255, 0.52);
   transition:
-    background-color 180ms ease,
+    border-color 180ms ease,
     color 180ms ease,
-    box-shadow 180ms ease;
+    background-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
 }
 
 .gallery-filter__button:hover,
 .gallery-filter__button:focus-visible,
 .gallery-filter__button--active {
-  color: #ffffff;
+  color: var(--color-primary);
+  border-color: var(--color-primary);
   outline: none;
-  background: var(--color-primary);
-  box-shadow: 0 14px 28px rgba(106, 0, 186, 0.18);
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: 0 12px 26px rgba(106, 0, 186, 0.08);
+  transform: translateY(-1px);
 }
 
 .gallery-sort select {
