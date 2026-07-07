@@ -253,13 +253,13 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: clamp(18px, 2.45vw, 40px);
+  gap: clamp(14px, 1.8vw, 28px);
 }
 
 .main-nav__link {
   position: relative;
   padding-block: 18px;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 800;
   transition: color 180ms ease;
 }
