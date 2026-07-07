@@ -158,6 +158,10 @@
   min-width: 0;
 }
 
+.page--audio-focus .hero__content {
+  z-index: auto;
+}
+
 .hero__eyebrow {
   display: flex;
   align-items: center;
@@ -248,13 +252,20 @@
 
 .live-player::after {
   inset: 0;
-  z-index: -1;
+  z-index: 0;
   border-radius: inherit;
   background:
     radial-gradient(circle at 28% 50%, rgba(255, 196, 89, 0.28), transparent 30%),
     linear-gradient(90deg, rgba(255, 255, 255, 0.95), rgba(255, 239, 212, 0.86) 46%, rgba(246, 218, 255, 0.78));
   opacity: 0;
   transition: opacity 320ms ease;
+}
+
+.live-player__record,
+.live-player__meta,
+.live-player__controls {
+  position: relative;
+  z-index: 1;
 }
 
 .page--audio-focus .live-player {
