@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+      name="description"
+      content="Контакти Radio Prywoz: напишіть нам, зателефонуйте в студію або підпишіться на соцмережі українського радіо в Польщі."
+    >
+    <title>Контакти — Radio Prywoz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap"
+      rel="stylesheet"
+    >
+    <link rel="icon" type="image/png" href="./assets/images/favicon.png">
+    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./styles/pages/contacts.css">
+  </head>
+  <body class="page page--contacts">
+    <header class="site-header">
+      <div class="container site-header__inner">
+        <a class="logo" href="./index.html" aria-label="На головну Radio Prywoz">
+          <img class="logo__image" src="./assets/images/logo.png" alt="" width="1254" height="1254">
+          <span class="logo__text">
+            <span class="logo__name">Radio<br>Prywoz</span>
+            <span class="logo__description">Перше українське<br>радіо в Польщі</span>
+          </span>
+        </a>
+
+        <button class="site-header__menu-toggle" type="button" aria-controls="mobile-menu" aria-expanded="false" aria-label="Відкрити меню">
+          <svg class="icon site-header__menu-icon site-header__menu-icon--open" aria-hidden="true"><use href="./assets/icons/lucide-sprite.svg#menu"></use></svg>
+          <svg class="icon site-header__menu-icon site-header__menu-icon--close" aria-hidden="true"><use href="./assets/icons/lucide-sprite.svg#x"></use></svg>
+        </button>
+
+        <div class="site-header__panel" id="mobile-menu">
+          <nav class="main-nav" aria-label="Основна навігація">
+            <a class="main-nav__link" href="./index.html">Головна</a>
+            <a class="main-nav__link" href="./listen.html">Ефір</a>
+            <a class="main-nav__link" href="./index.html#podcasts">Подкасти</a>
+            <a class="main-nav__link" href="./news.html">Новини</a>
+            <a class="main-nav__link" href="./index.html#events">Події</a>
+            <a class="main-nav__link" href="./gallery.html">Фото / Галерея</a>
+            <a class="main-nav__link" href="./about.html">Про нас</a>
+            <a class="main-nav__link main-nav__link--active" href="./contacts.html" aria-current="page">Контакти</a>
+          </nav>
+
+          <div class="site-header__actions">
+            <div class="language-switcher" aria-label="Вибір мови">
+              <a class="language-switcher__item language-switcher__item--active" href="./contacts.html" aria-current="true">UA</a>
+              <a class="language-switcher__item" href="#pl">PL</a>
+            </div>
+            <a class="button button--primary button--header" href="./listen.html#listen-player">
+              <span class="button__icon" aria-hidden="true"><svg class="icon"><use href="./assets/icons/lucide-sprite.svg#play"></use></svg></span>
+              <span>Слухати live</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="contacts-page" aria-labelledby="contacts-title">
+        <div class="container">
+          <nav class="breadcrumbs contacts-breadcrumbs" aria-label="Хлібні крихти">
+            <a href="./index.html">Головна</a>
+            <svg class="icon" aria-hidden="true"><use href="./assets/icons/lucide-sprite.svg#chevron-right"></use></svg>
+            <span>Контакти</span>
+          </nav>
+
+          <div class="contacts-grid">
+            <div class="contacts-info">
+              <h1 class="contacts-title" id="contacts-title">Контакти</h1>
+              <p class="contacts-lead">
+                Ми завжди на зв'язку! Пишіть нам, телефонуйте або залишайте
+                повідомлення — і ми обов'язково відповімо. Radio Prywoz — разом
+                у ефірі та в житті.
+              </p>
+
+              <div class="contacts-list" aria-label="Контактна інформація">
+                <article class="contact-item">
+                  <span class="contact-item__icon"><svg class="icon" aria-hidden="true"><use href="./assets/icons/lucide-sprite.svg#mail"></use></svg></span>
+                  <div>
+                    <h2>Email</h2>
+                    <a href="mailto:hello@prywoz.fm">hello@prywoz.fm</a>
+                  </div>
+                </article>
+                <article class="contact-item">
+                  <span class="contact-item__icon"><svg class="icon" aria-hidden="true"><use href="./assets/icons/lucide-sprite.svg#phone"></use></svg></span>
+                  <div>
+                    <h2>Телефон</h2>
+                    <a href="tel:+48799123456">+48 799 123 456</a>
+                  </div>
+                </article>
+                <article class="contact-item">
+                  <span class="contact-item__icon"><svg class="icon" aria-hidden="true"><use href="./assets/icons/lucide-sprite.svg#map-pin"></use></svg></span>
+                  <div>
+                    <h2>Студія в Польщі</h2>
+                    <p>ul. Przyłądek 1, 54-144 Wrocław, Polska</p>
+                  </div>
+                </article>
+                <article class="contact-item">
+                  <span class="contact-item__icon"><svg class="icon" aria-hidden="true"><use href="./assets/icons/lucide-sprite.svg#clock"></use></svg></span>
+                  <div>
+                    <h2>Години роботи</h2>
+                    <p>Пн – Пт: 09:00 – 18:00<br>Сб – Нд: вихідні</p>
+                  </div>
+                </article>
+              </div>
+
+              <section class="contacts-social" aria-labelledby="social-title">
+                <h2 id="social-title">Ми в соцмережах</h2>
+                <p>Підписуйтесь та будьте в курсі всіх новин, подій і програм!</p>
+                <ul class="contacts-social__list">
+                  <li><a href="#facebook"><span><svg class="icon" aria-hidden="true"><use href="./assets/icons/lucide-sprite.svg#messages-square"></use></svg></span><strong>Facebook</strong></a></li>
+                  <li><a href="#instagram"><span><svg class="icon" aria-hidden="true"><use href="./assets/icons/lucide-sprite.svg#camera"></use></svg></span><strong>Instagram</strong></a></li>
+                  <li><a href="#youtube"><span><svg class="icon" aria-hidden="true"><use href="./assets/icons/lucide-sprite.svg#square-play"></use></svg></span><strong>YouTube</strong></a></li>
+                  <li><a href="#telegram"><span><svg class="icon" aria-hidden="true"><use href="./assets/icons/lucide-sprite.svg#send"></use></svg></span><strong>Telegram</strong></a></li>
+                  <li><a href="#tiktok"><span><svg class="icon" aria-hidden="true"><use href="./assets/icons/lucide-sprite.svg#music-2"></use></svg></span><strong>TikTok</strong></a></li>
+                </ul>
+              </section>
+            </div>
+
+            <section class="contact-form-card" aria-labelledby="form-title">
+              <h2 id="form-title">Напишіть нам</h2>
+              <form class="contact-form" id="contact-form" action="mailto:hello@prywoz.fm" method="post" enctype="text/plain">
+                <div class="contact-form__row">
+                  <label>
+                    <span class="visually-hidden">Ваше ім'я</span>
+                    <input type="text" name="name" placeholder="Ваше ім'я" autocomplete="name" required>
+                  </label>
+                  <label>
+                    <span class="visually-hidden">Email</span>
+                    <input type="email" name="email" placeholder="Email" autocomplete="email" required>
+                  </label>
+                </div>
+                <label>
+                  <span class="visually-hidden">Тема повідомлення</span>
+                  <input type="text" name="subject" placeholder="Тема повідомлення">
+                </label>
+                <label>
+                  <span class="visually-hidden">Ваше повідомлення</span>
+                  <textarea name="message" placeholder="Ваше повідомлення" rows="8" required></textarea>
+                </label>
+                <label class="contact-form__agreement">
+                  <input type="checkbox" name="privacy" required>
+                  <span>Я погоджуюсь на <a href="#privacy">обробку персональних даних</a></span>
+                </label>
+                <button class="button button--primary contact-form__submit" type="submit">
+                  <svg class="icon" aria-hidden="true"><use href="./assets/icons/lucide-sprite.svg#send"></use></svg>
+                  <span>Надіслати повідомлення</span>
+                </button>
+              </form>
+            </section>
+          </div>
+
+          <section class="quick-contact" aria-labelledby="quick-title">
+            <div>
+              <h2 id="quick-title">Швидкий зв'язок</h2>
+              <p>Обирайте зручний спосіб зв'язатися з нами прямо зараз.</p>
+            </div>
+            <a class="quick-contact__item" href="#telegram">
+              <span><svg class="icon" aria-hidden="true"><use href="./assets/icons/lucide-sprite.svg#send"></use></svg></span>
+              <strong>Написати в Telegram</strong>
+              <small>Швидка відповідь у робочий час</small>
+            </a>
+            <a class="quick-contact__item" href="tel:+48799123456">
+              <span><svg class="icon" aria-hidden="true"><use href="./assets/icons/lucide-sprite.svg#phone"></use></svg></span>
+              <strong>Подзвонити в студію</strong>
+              <small>Прямий ефір та технічні питання</small>
+            </a>
+            <a class="quick-contact__item" href="mailto:hello@prywoz.fm?subject=Новина для Radio Prywoz">
+              <span><svg class="icon" aria-hidden="true"><use href="./assets/icons/lucide-sprite.svg#pencil"></use></svg></span>
+              <strong>Запропонувати новину</strong>
+              <small>Є цікава тема? Розкажіть нам!</small>
+            </a>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" id="contacts">
+      <div class="container site-footer__grid">
+        <div class="site-footer__brand">
+          <div class="site-footer__brand-row"><img class="site-footer__logo" src="./assets/images/logo.png" alt="Radio Prywoz FM" width="1254" height="1254"><p class="site-footer__brand-note">Перше українське<br>радіо в Польщі</p></div>
+          <p class="site-footer__about">Музика, гумор, культура та люди, що об'єднують.</p>
+          <ul class="socials" aria-label="Соціальні мережі">
+            <li><a class="socials__link" href="#facebook" aria-label="Facebook"><svg class="icon" aria-hidden="true"><use href="./assets/icons/lucide-sprite.svg#messages-square"></use></svg></a></li>
+            <li><a class="socials__link" href="#instagram" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="./assets/icons/lucide-sprite.svg#camera"></use></svg></a></li>
+            <li><a class="socials__link" href="#youtube" aria-label="YouTube"><svg class="icon" aria-hidden="true"><use href="./assets/icons/lucide-sprite.svg#video"></use></svg></a></li>
+            <li><a class="socials__link" href="#telegram" aria-label="Telegram"><svg class="icon" aria-hidden="true"><use href="./assets/icons/lucide-sprite.svg#send"></use></svg></a></li>
+            <li><a class="socials__link" href="#tiktok" aria-label="TikTok"><svg class="icon" aria-hidden="true"><use href="./assets/icons/lucide-sprite.svg#music-2"></use></svg></a></li>
+          </ul>
+        </div>
+        <nav class="footer-nav" aria-label="Навігація у футері">
+          <h2 class="footer-nav__title">Навігація</h2>
+          <a class="footer-nav__link" href="./index.html">Головна</a>
+          <a class="footer-nav__link" href="./listen.html">Ефір</a>
+          <a class="footer-nav__link" href="./index.html#podcasts">Подкасти</a>
+          <a class="footer-nav__link" href="./news.html">Новини</a>
+          <a class="footer-nav__link" href="./index.html#events">Події</a>
+          <a class="footer-nav__link" href="./gallery.html">Фото / Галерея</a>
+          <a class="footer-nav__link" href="./about.html">Про нас</a>
+          <a class="footer-nav__link" href="./contacts.html">Контакти</a>
+        </nav>
+        <nav class="footer-nav" aria-label="Слухачам"><h2 class="footer-nav__title">Слухачам</h2><a class="footer-nav__link" href="./listen.html#schedule">Розклад передач</a><a class="footer-nav__link" href="./listen.html#podcast-records">Записи ефірів</a><a class="footer-nav__link" href="./listen.html#how-title">Як нас слухати</a><a class="footer-nav__link" href="#faq">FAQ</a><a class="footer-nav__link" href="./contacts.html">Контакти</a></nav>
+        <div class="footer-contacts"><h2 class="footer-contacts__title">Контакти</h2><a class="footer-contacts__link" href="mailto:hello@prywoz.fm"><svg class="icon" aria-hidden="true"><use href="./assets/icons/lucide-sprite.svg#mail"></use></svg><span>hello@prywoz.fm</span></a><a class="footer-contacts__link" href="tel:+48799123456"><svg class="icon" aria-hidden="true"><use href="./assets/icons/lucide-sprite.svg#phone"></use></svg><span>+48 799 123 456</span></a><span class="footer-contacts__link"><svg class="icon" aria-hidden="true"><use href="./assets/icons/lucide-sprite.svg#map-pin"></use></svg><span>Польща</span></span><a class="button button--contact" href="#contact-form"><svg class="icon button__mail" aria-hidden="true"><use href="./assets/icons/lucide-sprite.svg#mail"></use></svg><span>Написати нам</span></a></div>
+        <aside class="footer-card" aria-label="Анонс ефіру"><strong class="footer-card__label">Щоденний ефір</strong><span class="footer-card__date">3 вересня!</span><p class="footer-card__text">Будемо разом щодня на хвилях Radio Prywoz</p><svg class="icon footer-card__tower" aria-hidden="true"><use href="./assets/icons/lucide-sprite.svg#radio-tower"></use></svg></aside>
+      </div>
+      <div class="container site-footer__bottom"><p>© 2026 Radio Prywoz. Усі права захищено.</p><p class="site-footer__made"><span>Створено з любов'ю для наших слухачів</span><svg class="icon" aria-hidden="true"><use href="./assets/icons/lucide-sprite.svg#heart"></use></svg></p></div>
+    </footer>
+
+    <script src="./scripts/pages/contacts.js"></script>
+  </body>
+</html>
