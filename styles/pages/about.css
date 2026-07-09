@@ -8,12 +8,13 @@
   padding-block: 48px 56px;
 }
 
-.breadcrumbs {
-  display: flex;
+.about-page .about-breadcrumbs {
+  display: inline-flex !important;
   align-items: center;
-  flex-wrap: nowrap;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
   gap: 8px;
-  width: max-content;
+  width: auto;
   max-width: 100%;
   color: var(--color-muted);
   font-size: 13px;
@@ -22,7 +23,12 @@
   white-space: nowrap;
 }
 
-.breadcrumbs .icon {
+.about-page .about-breadcrumbs > * {
+  display: inline-flex;
+  flex: 0 0 auto;
+}
+
+.about-page .about-breadcrumbs .icon {
   width: 14px;
   height: 14px;
   color: #b79b88;
