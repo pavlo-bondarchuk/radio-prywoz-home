@@ -84,9 +84,11 @@
 
 .listen-hero__image--main {
   width: min(100%, 560px);
+  height: auto;
   margin-left: auto;
   border-radius: var(--radius-sm);
   mix-blend-mode: multiply;
+  object-fit: contain;
 }
 
 .listen-hero__image--mic {
@@ -94,8 +96,10 @@
   top: 10%;
   left: 4%;
   width: 34%;
+  height: auto;
   max-width: 220px;
   border-radius: var(--radius-sm);
+  object-fit: contain;
   opacity: 0.92;
 }
 
@@ -207,8 +211,8 @@
   left: 58px;
   max-width: none;
   width: 128px;
-  height: 108px;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
   border-radius: var(--radius-sm);
   box-shadow: 0 12px 28px rgba(64, 34, 18, 0.14);
   transform: translateY(-50%);
@@ -729,6 +733,7 @@
 
   .listen-hero__image--main {
     width: 100%;
+    height: auto;
   }
 
   .listen-hero__image--mic {
@@ -778,7 +783,7 @@
   .listen-player__image {
     left: calc(50% + 42px);
     width: min(42vw, 146px);
-    height: min(34vw, 122px);
+    height: auto;
   }
 
   .listen-player__meta {
