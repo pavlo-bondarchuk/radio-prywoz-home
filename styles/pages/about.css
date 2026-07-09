@@ -8,6 +8,26 @@
   padding-block: 48px 56px;
 }
 
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 8px;
+  width: max-content;
+  max-width: 100%;
+  color: var(--color-muted);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.breadcrumbs .icon {
+  width: 14px;
+  height: 14px;
+  color: #b79b88;
+}
+
 .about-hero {
   display: grid;
   align-items: center;
@@ -206,11 +226,11 @@
   justify-content: center;
   gap: 28px;
   width: min(100%, 520px);
-  margin: 28px auto 0;
-  padding: 24px 34px;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  background: rgba(255, 255, 255, 0.56);
+  margin: 34px auto 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
 }
 
 .about-note .icon {
@@ -325,7 +345,6 @@
     align-items: flex-start;
     flex-direction: column;
     gap: 16px;
-    padding: 22px;
   }
 
   .about-note p {
