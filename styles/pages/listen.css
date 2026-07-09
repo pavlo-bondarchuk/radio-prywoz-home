@@ -53,14 +53,17 @@
 }
 
 .listen-actions {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
   gap: 18px;
+  max-width: 690px;
   margin-top: 32px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .listen-actions .button {
-  width: auto;
+  width: 100%;
+  padding-inline: 22px;
+  white-space: nowrap;
 }
 
 .listen-hero__visual {
@@ -723,8 +726,14 @@
     font-size: 17px;
   }
 
+  .listen-actions {
+    max-width: none;
+    grid-template-columns: 1fr;
+  }
+
   .listen-actions .button {
     width: 100%;
+    white-space: normal;
   }
 
   .listen-hero__visual {
