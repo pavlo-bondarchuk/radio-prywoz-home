@@ -40,7 +40,7 @@
   font-family: var(--font-display);
   font-size: clamp(56px, 6.2vw, 88px);
   font-weight: 800;
-  line-height: 0.92;
+  line-height: 1.02;
 }
 
 .listen-hero__lead {
@@ -103,9 +103,12 @@
   position: absolute;
   right: 3%;
   bottom: 1%;
+  aspect-ratio: 1 / 1;
   width: 30%;
+  height: auto;
   max-width: 190px;
-  animation: listen-spin 26s linear infinite;
+  object-fit: contain;
+  animation: listen-hero-spin 26s linear infinite;
 }
 
 .listen-hero__badge {
@@ -186,6 +189,8 @@
   position: absolute;
   top: 50%;
   left: -72px;
+  max-width: none;
+  aspect-ratio: 1 / 1;
   width: 158px;
   height: 158px;
   object-fit: contain;
@@ -193,13 +198,14 @@
 }
 
 .listen-player--playing .listen-player__disc {
-  animation: listen-spin 18s linear infinite;
+  animation: listen-disc-spin 18s linear infinite;
 }
 
 .listen-player__image {
   position: absolute;
   top: 50%;
   left: 58px;
+  max-width: none;
   width: 128px;
   height: 108px;
   object-fit: cover;
@@ -616,7 +622,13 @@
   color: var(--color-primary);
 }
 
-@keyframes listen-spin {
+@keyframes listen-hero-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes listen-disc-spin {
   to {
     transform: translateY(-50%) rotate(360deg);
   }
@@ -636,6 +648,23 @@
   100% {
     opacity: 1;
     transform: translateX(0);
+  }
+}
+
+@keyframes listen-slide-mobile {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  45% {
+    opacity: 0.35;
+    transform: translateY(-18px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -683,6 +712,7 @@
 
   .listen-hero__title {
     font-size: clamp(48px, 16vw, 68px);
+    line-height: 1.06;
   }
 
   .listen-hero__lead {
@@ -708,6 +738,7 @@
 
   .listen-hero__image--record {
     width: 34%;
+    max-width: 150px;
   }
 
   .listen-hero__badge {
@@ -728,21 +759,26 @@
       "volume favorite";
   }
 
+  .listen-player--switching .listen-player__cover {
+    animation-name: listen-slide-mobile;
+  }
+
   .listen-player__cover {
     width: 100%;
-    height: 132px;
+    height: 190px;
     margin-inline: auto;
   }
 
   .listen-player__disc {
-    left: -34px;
-    width: 178px;
-    height: 178px;
+    left: calc(50% - 88px);
+    width: 188px;
+    height: 188px;
   }
 
   .listen-player__image {
-    left: 110px;
-    width: min(42vw, 136px);
+    left: calc(50% + 42px);
+    width: min(42vw, 146px);
+    height: min(34vw, 122px);
   }
 
   .listen-player__meta {
