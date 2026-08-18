@@ -1,18 +1,18 @@
 :root {
-  --color-bg: #fffaf4;
-  --color-bg-soft: #fff3e8;
+  --color-bg: #fff8ec;
+  --color-bg-soft: #fff1dc;
   --color-surface: rgba(255, 252, 247, 0.86);
   --color-surface-strong: #ffffff;
   --color-text: #160c1f;
   --color-muted: #6f5d55;
   --color-border: #ead1bd;
   --color-border-strong: #dcb999;
-  --color-primary: #6a00ba;
-  --color-primary-dark: #3b0a72;
-  --color-primary-soft: #f0ddff;
-  --color-accent: #f25b2a;
-  --color-accent-dark: #b94218;
-  --color-gold: #eda72d;
+  --color-primary: #1463ff;
+  --color-primary-dark: #063fbd;
+  --color-primary-soft: rgba(20, 99, 255, 0.12);
+  --color-accent: #ff4fa3;
+  --color-accent-dark: #d41f77;
+  --color-gold: #ffd233;
   --font-body: "Inter", Arial, sans-serif;
   --font-display: "Playfair Display", Georgia, serif;
   --font-script: "Great Vibes", cursive;
@@ -44,6 +44,10 @@ body {
   font-family: var(--font-body);
   font-size: 16px;
   line-height: 1.55;
+  background:
+    radial-gradient(circle at 12% 12%, rgba(255, 210, 51, 0.18), transparent 34%),
+    radial-gradient(circle at 86% 22%, rgba(24, 185, 95, 0.12), transparent 30%),
+    var(--color-bg);
 }
 
 img,
@@ -134,6 +138,7 @@ a {
 
 .button--primary:hover,
 .button--primary:focus-visible {
+  background: var(--ds-color-primary);
   box-shadow: 0 16px 34px rgba(255, 79, 163, 0.24);
 }
 
@@ -147,6 +152,14 @@ a {
   color: var(--color-primary-dark);
   border-color: var(--color-primary);
   background: rgba(255, 255, 255, 0.52);
+}
+
+.button--ghost {
+  min-height: 46px;
+  padding-inline: 16px;
+  color: var(--color-primary-dark);
+  border-color: var(--color-border);
+  background: rgba(255, 255, 255, 0.58);
 }
 
 .button--contact {
