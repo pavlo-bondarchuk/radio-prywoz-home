@@ -81,7 +81,7 @@
   border-color: var(--color-primary);
   outline: none;
   background: rgba(255, 255, 255, 0.82);
-  box-shadow: 0 12px 26px rgba(106, 0, 186, 0.08);
+  box-shadow: 0 12px 26px rgba(20, 99, 255, 0.08);
   transform: translateY(-1px);
 }
 

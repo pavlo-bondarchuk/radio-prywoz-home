@@ -151,14 +151,14 @@
   place-items: center;
   color: #ffffff;
   background: var(--color-primary);
-  box-shadow: 0 12px 24px rgba(106, 0, 186, 0.18);
+  box-shadow: 0 12px 24px rgba(20, 99, 255, 0.18);
   font-size: 28px;
   font-weight: 900;
   line-height: 1;
 }
 
 .contacts-social__list li:nth-child(2) span {
-  background: linear-gradient(135deg, #7d22ce, #f25b2a);
+  background: var(--ds-color-accent);
 }
 
 .contacts-social__list li:nth-child(3) span {
@@ -233,9 +233,9 @@
 
 .contact-form input:focus,
 .contact-form textarea:focus {
-  border-color: rgba(106, 0, 186, 0.55);
+  border-color: rgba(20, 99, 255, 0.55);
   background: #ffffff;
-  box-shadow: 0 0 0 4px rgba(106, 0, 186, 0.08);
+  box-shadow: 0 0 0 4px rgba(20, 99, 255, 0.08);
 }
 
 .contact-form__agreement {

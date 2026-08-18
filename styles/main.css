@@ -128,13 +128,13 @@ a {
 
 .button--primary {
   color: #ffffff;
-  background: linear-gradient(135deg, #8b12df 0%, #5a00b1 100%);
-  box-shadow: 0 14px 30px rgba(106, 0, 186, 0.24);
+  background: var(--ds-color-accent);
+  box-shadow: 0 14px 30px rgba(255, 79, 163, 0.22);
 }
 
 .button--primary:hover,
 .button--primary:focus-visible {
-  box-shadow: 0 16px 34px rgba(106, 0, 186, 0.32);
+  box-shadow: 0 16px 34px rgba(255, 79, 163, 0.24);
 }
 
 .button--secondary {
@@ -433,7 +433,7 @@ a {
 .footer-card__date {
   display: block;
   margin-top: 2px;
-  color: #7d22ce;
+  color: var(--ds-color-accent);
   font-family: var(--font-script);
   font-size: 36px;
   line-height: 1;

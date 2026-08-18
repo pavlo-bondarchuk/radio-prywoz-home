@@ -38,14 +38,14 @@ select:focus-visible {
 .contact-form__submit {
   border-color: transparent;
   color: var(--ds-color-text-inverse);
-  background: linear-gradient(135deg, var(--ds-color-accent) 0%, var(--ds-color-purple-light) 100%);
+  background: var(--ds-color-accent);
   box-shadow: var(--ds-shadow-glow);
 }
 
 .button--primary:hover,
 .button--header:hover,
 .contact-form__submit:hover {
-  background: linear-gradient(135deg, var(--ds-color-primary) 0%, var(--ds-color-purple-dark) 100%);
+  background: var(--ds-color-primary);
 }
 
 .button--secondary,

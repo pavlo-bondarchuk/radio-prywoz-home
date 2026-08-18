@@ -18,8 +18,8 @@
   --ds-color-accent-green: #18b95f;
   --ds-color-accent-yellow: #ffd233;
   --ds-color-accent-blue: #1463ff;
-  --ds-color-purple-dark: #5b00c9;
-  --ds-color-purple-light: #9b12f4;
+  --ds-color-action-strong: #1463ff;
+  --ds-color-action-warm: #ff4fa3;
   --ds-color-danger: #ff3f35;
   --ds-color-light: #ffffff;
   --ds-color-light-hover: #fff0d7;
@@ -55,7 +55,7 @@
   --ds-shadow-card: 0 14px 36px rgba(82, 49, 24, 0.1);
   --ds-shadow-player: 0 18px 52px rgba(255, 79, 163, 0.16);
   --ds-shadow-modal: 0 18px 52px rgba(82, 49, 24, 0.16);
-  --ds-shadow-glow: 0 16px 36px rgba(155, 18, 244, 0.22);
+  --ds-shadow-glow: 0 16px 36px rgba(255, 79, 163, 0.24);
 
   --ds-motion-duration: 0.3s;
   --ds-motion-duration-slow: 0.4s;
@@ -72,7 +72,7 @@
   --color-border: var(--ds-color-border);
   --color-border-strong: var(--ds-color-border-strong);
   --color-primary: var(--ds-color-primary);
-  --color-primary-dark: var(--ds-color-purple-dark);
+  --color-primary-dark: var(--ds-color-action-strong);
   --color-primary-soft: rgba(255, 79, 163, 0.14);
   --color-accent: var(--ds-color-accent);
   --color-accent-dark: var(--ds-color-primary-hover);

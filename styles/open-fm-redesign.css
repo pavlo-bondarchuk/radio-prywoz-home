@@ -380,7 +380,7 @@ body {
 .listen-player__play,
 .podcast-card__play {
   color: var(--ds-color-text-inverse);
-  background: linear-gradient(135deg, var(--ds-color-accent), var(--ds-color-purple-light));
+  background: var(--ds-color-primary);
   box-shadow: var(--ds-shadow-glow);
 }
 
