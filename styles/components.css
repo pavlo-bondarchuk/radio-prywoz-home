@@ -37,15 +37,15 @@ select:focus-visible {
 .button--header,
 .contact-form__submit {
   border-color: transparent;
-  color: var(--ds-color-text);
-  background: linear-gradient(180deg, var(--ds-color-purple-light) 0%, var(--ds-color-purple-dark) 100%);
+  color: var(--ds-color-text-inverse);
+  background: linear-gradient(135deg, var(--ds-color-accent) 0%, var(--ds-color-purple-light) 100%);
   box-shadow: var(--ds-shadow-glow);
 }
 
 .button--primary:hover,
 .button--header:hover,
 .contact-form__submit:hover {
-  background: var(--ds-color-primary-hover);
+  background: linear-gradient(135deg, var(--ds-color-primary) 0%, var(--ds-color-purple-dark) 100%);
 }
 
 .button--secondary,
@@ -59,7 +59,7 @@ select:focus-visible {
 .gallery-filter {
   color: var(--ds-color-text);
   border-color: var(--ds-color-border-strong);
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--ds-color-surface);
   box-shadow: none;
 }
 
@@ -74,11 +74,11 @@ select:focus-visible {
 .gallery-filter:hover {
   color: var(--ds-color-text);
   border-color: var(--ds-color-primary);
-  background: rgba(0, 87, 158, 0.22);
+  background: rgba(20, 99, 255, 0.1);
 }
 
 .button__icon {
-  color: var(--ds-color-purple-dark);
+  color: var(--ds-color-primary);
   background: var(--ds-color-light);
 }
 
@@ -88,9 +88,9 @@ select:focus-visible {
 .news-filter__button--active,
 .gallery-filter__button--active,
 .gallery-filter--active {
-  color: var(--ds-color-text);
+  color: var(--ds-color-text-inverse);
   border-color: var(--ds-color-accent);
-  background: var(--ds-color-purple-dark);
+  background: var(--ds-color-accent);
 }
 
 input,
@@ -99,7 +99,7 @@ select {
   border-color: var(--ds-color-border);
   border-radius: var(--ds-radius-sm);
   color: var(--ds-color-text);
-  background: rgba(255, 255, 255, 0.07);
+  background: var(--ds-color-surface);
 }
 
 input::placeholder,

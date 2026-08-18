@@ -35,11 +35,12 @@
 
 ## Current Theme
 
-The active visual direction is inspired by Open FM:
+The active visual direction keeps the Open FM-like structure, but returns Radio Prywoz to a lighter, warmer mood:
 
-- dark base `#0f142e`;
+- light ivory/sand base `#fff7ea`;
 - system-ui typography;
 - compact 4px card/button radius;
-- blue and purple interactive accents;
+- open accent plaques: pink `#ff4fa3`, green `#18b95f`, yellow `#ffd233`, blue `#1463ff`;
+- pink/purple primary CTA gradient;
 - subtle hover elevation;
-- high-contrast white text on dark surfaces.
+- high-contrast dark text on light surfaces.

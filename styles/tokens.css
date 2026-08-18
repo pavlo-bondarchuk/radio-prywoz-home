@@ -1,25 +1,28 @@
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 
-  --ds-color-bg: #0f142e;
-  --ds-color-bg-elevated: #151b3a;
-  --ds-color-surface: #182044;
-  --ds-color-surface-strong: #202a56;
-  --ds-color-surface-soft: rgba(255, 255, 255, 0.08);
-  --ds-color-text: #ffffff;
-  --ds-color-text-soft: rgba(255, 255, 255, 0.78);
-  --ds-color-text-muted: rgba(255, 255, 255, 0.6);
-  --ds-color-text-inverse: #181818;
-  --ds-color-border: rgba(255, 255, 255, 0.14);
-  --ds-color-border-strong: rgba(255, 255, 255, 0.26);
-  --ds-color-primary: #00579e;
-  --ds-color-primary-hover: #2c38a8;
-  --ds-color-accent: #bf00ff;
-  --ds-color-purple-dark: #120038;
-  --ds-color-purple-light: #2f1070;
+  --ds-color-bg: #fff7ea;
+  --ds-color-bg-elevated: #fffaf2;
+  --ds-color-surface: #fffdf8;
+  --ds-color-surface-strong: #fff1d9;
+  --ds-color-surface-soft: rgba(255, 255, 255, 0.74);
+  --ds-color-text: #171126;
+  --ds-color-text-soft: rgba(23, 17, 38, 0.78);
+  --ds-color-text-muted: rgba(23, 17, 38, 0.56);
+  --ds-color-text-inverse: #ffffff;
+  --ds-color-border: rgba(122, 82, 45, 0.18);
+  --ds-color-border-strong: rgba(122, 82, 45, 0.32);
+  --ds-color-primary: #1463ff;
+  --ds-color-primary-hover: #004bd6;
+  --ds-color-accent: #ff4fa3;
+  --ds-color-accent-green: #18b95f;
+  --ds-color-accent-yellow: #ffd233;
+  --ds-color-accent-blue: #1463ff;
+  --ds-color-purple-dark: #5b00c9;
+  --ds-color-purple-light: #9b12f4;
   --ds-color-danger: #ff3f35;
   --ds-color-light: #ffffff;
-  --ds-color-light-hover: #eeefff;
+  --ds-color-light-hover: #fff0d7;
 
   --ds-font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
   --ds-font-mono: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace;
@@ -49,10 +52,10 @@
   --ds-radius-lg: 21px;
   --ds-radius-xl: 24px;
 
-  --ds-shadow-card: 0 0 8px rgba(0, 0, 0, 0.5);
-  --ds-shadow-player: 0 -2px 4px rgba(0, 0, 0, 0.5);
-  --ds-shadow-modal: 0 8px 24px rgba(0, 0, 0, 0.4);
-  --ds-shadow-glow: 0 18px 56px rgba(191, 0, 255, 0.28);
+  --ds-shadow-card: 0 14px 36px rgba(82, 49, 24, 0.1);
+  --ds-shadow-player: 0 18px 52px rgba(255, 79, 163, 0.16);
+  --ds-shadow-modal: 0 18px 52px rgba(82, 49, 24, 0.16);
+  --ds-shadow-glow: 0 16px 36px rgba(155, 18, 244, 0.22);
 
   --ds-motion-duration: 0.3s;
   --ds-motion-duration-slow: 0.4s;
@@ -70,7 +73,7 @@
   --color-border-strong: var(--ds-color-border-strong);
   --color-primary: var(--ds-color-primary);
   --color-primary-dark: var(--ds-color-purple-dark);
-  --color-primary-soft: rgba(191, 0, 255, 0.16);
+  --color-primary-soft: rgba(255, 79, 163, 0.14);
   --color-accent: var(--ds-color-accent);
   --color-accent-dark: var(--ds-color-primary-hover);
   --color-gold: var(--ds-color-accent);

@@ -1,8 +1,9 @@
 body {
   color: var(--ds-color-text);
   background:
-    radial-gradient(circle at 12% 0%, rgba(191, 0, 255, 0.16), transparent 34%),
-    radial-gradient(circle at 86% 18%, rgba(0, 87, 158, 0.28), transparent 32%),
+    radial-gradient(circle at 12% 0%, rgba(255, 210, 51, 0.28), transparent 34%),
+    radial-gradient(circle at 88% 16%, rgba(255, 79, 163, 0.16), transparent 30%),
+    linear-gradient(180deg, var(--ds-color-bg-elevated) 0%, var(--ds-color-bg) 46%, #fff0dc 100%),
     var(--ds-color-bg);
   font-family: var(--ds-font-family);
   line-height: var(--ds-line-body);
@@ -21,7 +22,7 @@ body {
 
 .site-header {
   border-bottom: 1px solid var(--ds-color-border);
-  background: rgba(15, 20, 46, 0.9);
+  background: rgba(255, 250, 242, 0.92);
   backdrop-filter: blur(16px);
 }
 
@@ -81,13 +82,13 @@ body {
 }
 
 .main-nav__link::after {
-  background: var(--ds-color-primary);
+  background: var(--ds-color-accent);
 }
 
 .main-nav__link:hover,
 .main-nav__link:focus-visible,
 .main-nav__link--active {
-  color: var(--ds-color-primary);
+  color: var(--ds-color-accent);
 }
 
 .language-switcher {
@@ -131,7 +132,7 @@ body {
 .listen-eyebrow__dots,
 .gallery-eyebrow__dots {
   background:
-    radial-gradient(circle at 4px 4px, var(--ds-color-accent) 2px, transparent 3px) 0 0 / 12px 8px repeat-x;
+    radial-gradient(circle at 4px 4px, var(--ds-color-accent-yellow) 2px, transparent 3px) 0 0 / 12px 8px repeat-x;
 }
 
 .hero__title,
@@ -177,8 +178,8 @@ body {
 .about-hero__visual {
   border: 1px solid var(--ds-color-border);
   border-radius: var(--ds-radius-md);
-  background: var(--ds-color-surface);
-  box-shadow: none;
+  background: linear-gradient(135deg, var(--ds-color-surface), var(--ds-color-surface-strong));
+  box-shadow: var(--ds-shadow-card);
 }
 
 .hero-visual__image,
@@ -247,8 +248,8 @@ body {
   border: 1px solid var(--ds-color-border);
   border-radius: var(--ds-radius-sm);
   color: var(--ds-color-text);
-  background: var(--ds-color-surface);
-  box-shadow: none;
+  background: rgba(255, 253, 248, 0.86);
+  box-shadow: 0 10px 30px rgba(82, 49, 24, 0.08);
 }
 
 .live-player:hover,
@@ -267,7 +268,46 @@ body {
 .gallery-card__label,
 .single-news__category,
 .footer-card__label {
-  color: var(--ds-color-accent);
+  color: var(--ds-color-primary);
+}
+
+.news-card__tag,
+.gallery-card__label,
+.single-news__category,
+.listen-player__status,
+.footer-card__label {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  border-radius: 999px;
+  padding: 4px 10px;
+  color: var(--ds-color-text-inverse);
+  background: var(--ds-color-primary);
+}
+
+.news-card:nth-child(4n + 1) .news-card__tag,
+.gallery-card:nth-child(4n + 1) .gallery-card__label,
+.related-card:nth-child(4n + 1) .related-card__tag {
+  color: var(--ds-color-text);
+  background: var(--ds-color-accent-yellow);
+}
+
+.news-card:nth-child(4n + 2) .news-card__tag,
+.gallery-card:nth-child(4n + 2) .gallery-card__label,
+.related-card:nth-child(4n + 2) .related-card__tag {
+  background: var(--ds-color-accent);
+}
+
+.news-card:nth-child(4n + 3) .news-card__tag,
+.gallery-card:nth-child(4n + 3) .gallery-card__label,
+.related-card:nth-child(4n + 3) .related-card__tag {
+  background: var(--ds-color-accent-green);
+}
+
+.news-card:nth-child(4n + 4) .news-card__tag,
+.gallery-card:nth-child(4n + 4) .gallery-card__label,
+.related-card:nth-child(4n + 4) .related-card__tag {
+  background: var(--ds-color-accent-blue);
 }
 
 .live-player__track,
@@ -332,15 +372,15 @@ body {
 
 .live-player__badge,
 .listen-player__badge {
-  color: var(--ds-color-text);
+  color: var(--ds-color-text-inverse);
   background: var(--ds-color-danger);
 }
 
 .live-player__play,
 .listen-player__play,
 .podcast-card__play {
-  color: var(--ds-color-text);
-  background: linear-gradient(180deg, var(--ds-color-accent), var(--ds-color-purple-dark));
+  color: var(--ds-color-text-inverse);
+  background: linear-gradient(135deg, var(--ds-color-accent), var(--ds-color-purple-light));
   box-shadow: var(--ds-shadow-glow);
 }
 
@@ -352,7 +392,7 @@ body {
 .events-slider__button {
   color: var(--ds-color-text);
   border-color: var(--ds-color-border-strong);
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--ds-color-surface);
 }
 
 .news-section,
@@ -374,7 +414,7 @@ body {
 .section-title::after,
 .about-block__title::after,
 .listen-section__title::after {
-  background: var(--ds-color-primary);
+  background: var(--ds-color-accent);
 }
 
 .text-link {
@@ -394,7 +434,7 @@ body {
 .podcast-card__image,
 .single-news__hero-image,
 .related-card__image {
-  filter: brightness(0.88) saturate(0.98);
+  filter: saturate(1.04) contrast(0.98);
 }
 
 .news-card__meta time,
@@ -413,8 +453,8 @@ body {
 .air-card__icon,
 .feature-list__icon {
   border-color: var(--ds-color-border);
-  color: var(--ds-color-text);
-  background: linear-gradient(180deg, var(--ds-color-purple-light), var(--ds-color-purple-dark));
+  color: var(--ds-color-text-inverse);
+  background: var(--ds-color-primary);
 }
 
 .contact-item a,
@@ -426,13 +466,13 @@ body {
 .contact-form textarea {
   color: var(--ds-color-text);
   border-color: var(--ds-color-border);
-  background: rgba(255, 255, 255, 0.07);
+  background: var(--ds-color-surface);
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
   border-color: var(--ds-color-primary);
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--ds-color-light);
   box-shadow: none;
 }
 
@@ -445,7 +485,7 @@ body {
 
 .site-footer {
   border-top: 1px solid var(--ds-color-border);
-  background: #090d21;
+  background: rgba(255, 244, 225, 0.78);
 }
 
 .site-footer__grid {
@@ -471,7 +511,7 @@ body {
 .footer-card {
   border-color: var(--ds-color-border);
   border-radius: var(--ds-radius-sm);
-  background: linear-gradient(180deg, var(--ds-color-surface-strong), var(--ds-color-surface));
+  background: linear-gradient(135deg, #ffffff, #fff0d6);
 }
 
 .footer-card__date {
@@ -515,14 +555,15 @@ body {
   border-radius: var(--ds-radius-sm);
   color: var(--ds-color-text);
   border: 1px solid var(--ds-color-border-strong);
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--ds-color-surface);
 }
 
 .news-filter__button--active,
 .gallery-filter__button--active,
 .pagination__button--active {
+  color: var(--ds-color-text-inverse);
   border-color: var(--ds-color-accent);
-  background: var(--ds-color-purple-dark);
+  background: var(--ds-color-accent);
 }
 
 .gallery-sort {
@@ -569,7 +610,7 @@ body {
 
   .site-header__panel {
     border-color: var(--ds-color-border);
-    background: var(--ds-color-surface);
+    background: rgba(255, 250, 242, 0.98);
   }
 }
 
