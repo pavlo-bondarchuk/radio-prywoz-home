@@ -17,7 +17,7 @@
     <link rel="icon" type="image/png" href="./assets/images/favicon.png">
     <link rel="stylesheet" href="./styles/tokens.css">
     <link rel="stylesheet" href="./styles/main.css">
-    <link rel="stylesheet" href="./styles/pages/home.css?v=20260818-auto-landing">
+    <link rel="stylesheet" href="./styles/pages/home.css?v=20260818-simplify-translation">
     <link rel="stylesheet" href="./styles/components.css">
     <link rel="stylesheet" href="./styles/open-fm-redesign.css">
   </head>
@@ -34,7 +34,7 @@
           >
           <span class="logo__text">
             <span class="logo__name">Radio<br>Prywoz</span>
-            <span class="logo__description">Перше українське<br>радіо в Польщі</span>
+            <span class="logo__description" data-i18n="footerBrand">Перше українське<br>радіо в Польщі</span>
           </span>
         </a>
 
@@ -59,7 +59,6 @@
             <a class="main-nav__link" href="#live" data-i18n="navListen">Ефір</a>
             <a class="main-nav__link" href="#stations" data-i18n="navStations">Станції</a>
             <a class="main-nav__link" href="#news" data-i18n="navNews">Новини</a>
-            <a class="main-nav__link" href="#events" data-i18n="navEvents">Події</a>
             <a class="main-nav__link" href="#about" data-i18n="navAbout">Про нас</a>
             <a class="main-nav__link" href="#contacts" data-i18n="navContacts">Контакти</a>
           </nav>
@@ -70,12 +69,6 @@
               <button class="language-switcher__item" type="button" data-language="pl">PL</button>
               <button class="language-switcher__item" type="button" data-language="ru">RU</button>
             </div>
-            <a class="button button--ghost button--translate" href="https://translate.google.com/translate?sl=auto&tl=pl&u=https%3A%2F%2Fpavlo-bondarchuk.github.io%2Fradio-prywoz-home%2Findex.html" target="_blank" rel="noopener" data-google-translate>
-              <svg class="icon button__inline-icon" aria-hidden="true">
-                <use href="./assets/icons/lucide-sprite.svg#globe"></use>
-              </svg>
-              <span>Google</span>
-            </a>
             <a class="button button--primary button--header" href="#live">
               <span class="button__icon" aria-hidden="true">
                 <svg class="icon">
@@ -221,111 +214,6 @@
         </div>
       </section>
 
-      <section class="events-section" id="events" aria-labelledby="events-title">
-        <div class="container">
-          <div class="section-head">
-            <h2 class="section-title" id="events-title" data-i18n="eventsTitle">Події Radio Prywoz</h2>
-            <a class="section-head__link" href="#contacts">
-              <span data-i18n="eventsCta">Запропонувати подію</span>
-              <svg class="icon" aria-hidden="true">
-                <use href="./assets/icons/lucide-sprite.svg#arrow-right"></use>
-              </svg>
-            </a>
-          </div>
-
-          <div class="event-slider" data-event-slider>
-            <div class="event-slider__viewport">
-              <div class="event-slider__track">
-                <article class="event-card">
-                  <img class="event-card__image" src="./assets/images/home/event-concert.png" alt="Концертна сцена з глядачами" width="182" height="92">
-                  <time class="event-card__date" datetime="2025-05-10"><span>10</span>трав</time>
-                  <div class="event-card__content">
-                    <span class="event-card__type">Концерт</span>
-                    <h3 class="event-card__title">Концерт до Дня матері у Вроцлаві</h3>
-                  </div>
-                </article>
-
-                <article class="event-card">
-                  <img class="event-card__image" src="./assets/images/home/event-festival.png" alt="Український танцювальний колектив" width="182" height="92">
-                  <time class="event-card__date" datetime="2025-05-18"><span>18</span>трав</time>
-                  <div class="event-card__content">
-                    <span class="event-card__type">Фестиваль</span>
-                    <h3 class="event-card__title">Український фестиваль у Гданську</h3>
-                  </div>
-                </article>
-
-                <article class="event-card">
-                  <img class="event-card__image" src="./assets/images/home/event-market.png" alt="Страви українського ярмарку" width="182" height="92">
-                  <time class="event-card__date" datetime="2025-05-25"><span>25</span>трав</time>
-                  <div class="event-card__content">
-                    <span class="event-card__type">Ярмарок</span>
-                    <h3 class="event-card__title">Odesa Market Day у Познані</h3>
-                  </div>
-                </article>
-
-                <article class="event-card">
-                  <img class="event-card__image" src="./assets/images/home/event-meeting.png" alt="Зустріч слухачів біля моря на заході сонця" width="182" height="92">
-                  <time class="event-card__date" datetime="2025-06-01"><span>1</span>черв</time>
-                  <div class="event-card__content">
-                    <span class="event-card__type">Подорожі</span>
-                    <h3 class="event-card__title">Приморські зустрічі Radio Prywoz</h3>
-                  </div>
-                </article>
-
-                <article class="event-card">
-                  <img class="event-card__image" src="./assets/images/home/news-culture.png" alt="Морський вечір з квітами на узбережжі" width="182" height="92">
-                  <time class="event-card__date" datetime="2025-06-08"><span>8</span>черв</time>
-                  <div class="event-card__content">
-                    <span class="event-card__type">Культура</span>
-                    <h3 class="event-card__title">Вечір української пісні у Варшаві</h3>
-                  </div>
-                </article>
-
-                <article class="event-card">
-                  <img class="event-card__image" src="./assets/images/home/news-stream.png" alt="Мікрофон у студії з написом on air" width="182" height="92">
-                  <time class="event-card__date" datetime="2025-06-15"><span>15</span>черв</time>
-                  <div class="event-card__content">
-                    <span class="event-card__type">Ефір</span>
-                    <h3 class="event-card__title">Відкрита студія Radio Prywoz</h3>
-                  </div>
-                </article>
-
-                <article class="event-card">
-                  <img class="event-card__image" src="./assets/images/home/news-event.png" alt="Українська вишиванка крупним планом" width="182" height="92">
-                  <time class="event-card__date" datetime="2025-06-22"><span>22</span>черв</time>
-                  <div class="event-card__content">
-                    <span class="event-card__type">Події</span>
-                    <h3 class="event-card__title">День вишиванки у Кракові</h3>
-                  </div>
-                </article>
-
-                <article class="event-card">
-                  <img class="event-card__image" src="./assets/images/home/event-market.png" alt="Українські страви на столі" width="182" height="92">
-                  <time class="event-card__date" datetime="2025-06-29"><span>29</span>черв</time>
-                  <div class="event-card__content">
-                    <span class="event-card__type">Гастро</span>
-                    <h3 class="event-card__title">Смак Одеси у Любліні</h3>
-                  </div>
-                </article>
-              </div>
-            </div>
-
-            <div class="event-arrows">
-              <button class="event-arrows__button event-arrows__button--prev" type="button" data-event-direction="prev" aria-label="Попередні події">
-                <svg class="icon" aria-hidden="true">
-                  <use href="./assets/icons/lucide-sprite.svg#chevron-right"></use>
-                </svg>
-              </button>
-              <button class="event-arrows__button" type="button" data-event-direction="next" aria-label="Наступні події">
-                <svg class="icon" aria-hidden="true">
-                  <use href="./assets/icons/lucide-sprite.svg#chevron-right"></use>
-                </svg>
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section class="about-section" id="about" aria-labelledby="about-title">
         <div class="container">
           <div class="about-section__intro">
@@ -343,8 +231,8 @@
                 <use href="./assets/icons/lucide-sprite.svg#radio-receiver"></use>
               </svg>
               <div class="feature-list__text">
-                <h3 class="feature-list__title">Живий ефір 24/7</h3>
-                <p class="feature-list__description">Улюблена музика, авторські програми та цікаві гості щодня.</p>
+                <h3 class="feature-list__title" data-i18n="featureLiveTitle">Живий ефір 24/7</h3>
+                <p class="feature-list__description" data-i18n="featureLiveText">Улюблена музика, авторські програми та цікаві гості щодня.</p>
               </div>
             </li>
             <li class="feature-list__item">
@@ -352,8 +240,8 @@
                 <use href="./assets/icons/lucide-sprite.svg#mic-2"></use>
               </svg>
               <div class="feature-list__text">
-                <h3 class="feature-list__title">Своє. Українське</h3>
-                <p class="feature-list__description">Підтримуємо українську культуру, мову та традиції у Польщі та світі.</p>
+                <h3 class="feature-list__title" data-i18n="featureCultureTitle">Своє. Українське</h3>
+                <p class="feature-list__description" data-i18n="featureCultureText">Підтримуємо українську культуру, мову та традиції у Польщі та світі.</p>
               </div>
             </li>
             <li class="feature-list__item">
@@ -361,8 +249,8 @@
                 <use href="./assets/icons/lucide-sprite.svg#users"></use>
               </svg>
               <div class="feature-list__text">
-                <h3 class="feature-list__title">Для громади</h3>
-                <p class="feature-list__description">Висвітлюємо події, ініціативи та важливі новини для українців.</p>
+                <h3 class="feature-list__title" data-i18n="featureCommunityTitle">Для громади</h3>
+                <p class="feature-list__description" data-i18n="featureCommunityText">Висвітлюємо ініціативи та важливі новини для українців.</p>
               </div>
             </li>
             <li class="feature-list__item">
@@ -370,8 +258,8 @@
                 <use href="./assets/icons/lucide-sprite.svg#headphones"></use>
               </svg>
               <div class="feature-list__text">
-                <h3 class="feature-list__title">Де б ви не були</h3>
-                <p class="feature-list__description">Слухайте нас у додатку, на сайті та в соцмережах — ми поруч!</p>
+                <h3 class="feature-list__title" data-i18n="featureEverywhereTitle">Де б ви не були</h3>
+                <p class="feature-list__description" data-i18n="featureEverywhereText">Слухайте нас на сайті та в соцмережах — ми поруч!</p>
               </div>
             </li>
           </ul>
@@ -382,7 +270,7 @@
         <div class="container contact-strip__grid">
           <div>
             <h2 class="section-title" id="contact-title" data-i18n="navContacts">Контакти</h2>
-            <p class="contact-strip__text">Є новина, подія або пропозиція для ефіру? Напишіть нам, а ми повернемось із відповіддю.</p>
+            <p class="contact-strip__text" data-i18n="contactText">Є новина або пропозиція для ефіру? Напишіть нам, а ми повернемось із відповіддю.</p>
           </div>
           <a class="button button--primary" href="mailto:hello@prywoz.fm">
             <svg class="icon button__inline-icon" aria-hidden="true">
@@ -405,9 +293,9 @@
               width="1254"
               height="1254"
             >
-            <p class="site-footer__brand-note">Перше українське<br>радіо в Польщі</p>
+            <p class="site-footer__brand-note" data-i18n="footerBrand">Перше українське<br>радіо в Польщі</p>
           </div>
-          <p class="site-footer__about">
+          <p class="site-footer__about" data-i18n="footerAbout">
             Музика, гумор, культура та люди, що об'єднують.
           </p>
           <ul class="socials" aria-label="Соціальні мережі">
@@ -449,28 +337,8 @@
           </ul>
         </div>
 
-        <nav class="footer-nav" aria-label="Навігація у футері">
-          <h2 class="footer-nav__title">Навігація</h2>
-          <a class="footer-nav__link" href="#top">Головна</a>
-          <a class="footer-nav__link" href="#live">Ефір</a>
-          <a class="footer-nav__link" href="#stations">Станції</a>
-          <a class="footer-nav__link" href="#news">Новини</a>
-          <a class="footer-nav__link" href="#events" data-i18n="navEvents">Події</a>
-          <a class="footer-nav__link" href="#about">Про нас</a>
-          <a class="footer-nav__link" href="#contacts">Контакти</a>
-        </nav>
-
-        <nav class="footer-nav" aria-label="Слухачам">
-          <h2 class="footer-nav__title">Слухачам</h2>
-          <a class="footer-nav__link" href="#live">Головний плеєр</a>
-          <a class="footer-nav__link" href="#stations">Польські станції</a>
-          <a class="footer-nav__link" href="#news">Офіційні новини</a>
-          <a class="footer-nav__link" href="#news-sources">Whitelist джерел</a>
-          <a class="footer-nav__link" href="#contacts">Контакти</a>
-        </nav>
-
         <div class="footer-contacts">
-          <h2 class="footer-contacts__title">Контакти</h2>
+          <h2 class="footer-contacts__title" data-i18n="navContacts">Контакти</h2>
           <a class="footer-contacts__link" href="mailto:hello@prywoz.fm">
             <svg class="icon" aria-hidden="true">
               <use href="./assets/icons/lucide-sprite.svg#mail"></use>
@@ -487,20 +355,20 @@
             <svg class="icon" aria-hidden="true">
               <use href="./assets/icons/lucide-sprite.svg#map-pin"></use>
             </svg>
-            <span>Польща</span>
+            <span data-i18n="footerCountry">Польща</span>
           </span>
           <a class="button button--contact" href="mailto:hello@prywoz.fm">
             <svg class="icon button__mail" aria-hidden="true">
               <use href="./assets/icons/lucide-sprite.svg#mail"></use>
             </svg>
-            <span>Написати нам</span>
+            <span data-i18n="writeUs">Написати нам</span>
           </a>
         </div>
 
         <aside class="footer-card" aria-label="Анонс ефіру">
-          <strong class="footer-card__label">Щоденний ефір</strong>
-          <span class="footer-card__date">3 вересня!</span>
-          <p class="footer-card__text">Будемо разом щодня на хвилях Radio Prywoz</p>
+          <strong class="footer-card__label" data-i18n="footerCardLabel">Щоденний ефір</strong>
+          <span class="footer-card__date" data-i18n="footerCardDate">3 вересня!</span>
+          <p class="footer-card__text" data-i18n="footerCardText">Будемо разом щодня на хвилях Radio Prywoz</p>
           <svg class="icon footer-card__tower" aria-hidden="true">
             <use href="./assets/icons/lucide-sprite.svg#radio-tower"></use>
           </svg>
@@ -508,9 +376,9 @@
       </div>
 
       <div class="container site-footer__bottom">
-        <p>© 2026 Radio Prywoz. Усі права захищено.</p>
+        <p data-i18n="copyright">© 2026 Radio Prywoz. Усі права захищено.</p>
         <p class="site-footer__made">
-          <span>Створено з любов'ю для наших слухачів</span>
+          <span data-i18n="madeFor">Створено з любов'ю для наших слухачів</span>
           <svg class="icon" aria-hidden="true">
             <use href="./assets/icons/lucide-sprite.svg#heart"></use>
           </svg>
@@ -518,6 +386,6 @@
       </div>
     </footer>
 
-    <script src="./scripts/pages/home.js?v=20260818-auto-landing-2"></script>
+    <script src="./scripts/pages/home.js?v=20260818-simplify-translation"></script>
   </body>
 </html>

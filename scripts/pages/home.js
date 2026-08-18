@@ -3,7 +3,6 @@ const menuToggle = document.querySelector(".site-header__menu-toggle");
 const menuLinks = document.querySelectorAll(".main-nav__link, .button--header");
 const languageButtons = document.querySelectorAll("[data-language]");
 const translatableNodes = document.querySelectorAll("[data-i18n]");
-const googleTranslateLink = document.querySelector("[data-google-translate]");
 const player = document.querySelector(".live-player");
 const audio = document.querySelector(".live-player__audio");
 const playButton = document.querySelector(".live-player__play");
@@ -19,7 +18,6 @@ const mediaHolder = document.querySelector(".live-player__record");
 const mediaImage = document.querySelector(".live-player__record-image");
 const newsList = document.querySelector("[data-news-list]");
 const newsSourcesList = document.querySelector("[data-news-sources]");
-const eventSlider = document.querySelector("[data-event-slider]");
 
 const iconPath = "./assets/icons/lucide-sprite.svg";
 
@@ -29,7 +27,6 @@ const translations = {
     navListen: "Ефір",
     navStations: "Станції",
     navNews: "Новини",
-    navEvents: "Події",
     navAbout: "Про нас",
     navContacts: "Контакти",
     eyebrow: "Музика. Гумор. Культура. Люди.",
@@ -41,17 +38,43 @@ const translations = {
     stationsText: "Список автоматично оновлюється через Radio Browser API. Якщо станція недоступна, плеєр покаже fallback.",
     latestNews: "Останні новини",
     legalSources: "Дозволені джерела",
-    eventsTitle: "Події Radio Prywoz",
-    eventsCta: "Запропонувати подію",
     aboutProject: "Про проєкт",
     aboutText: "Radio Prywoz — україномовний медіапроєкт для людей у Польщі та по всьому світу. Ми поєднуємо музику, корисні новини, культуру і живе слово без важкої CMS.",
+    featureLiveTitle: "Живий ефір 24/7",
+    featureLiveText: "Улюблена музика, авторські програми та цікаві гості щодня.",
+    featureCultureTitle: "Своє. Українське",
+    featureCultureText: "Підтримуємо українську культуру, мову та традиції у Польщі та світі.",
+    featureCommunityTitle: "Для громади",
+    featureCommunityText: "Висвітлюємо ініціативи та важливі новини для українців.",
+    featureEverywhereTitle: "Де б ви не були",
+    featureEverywhereText: "Слухайте нас на сайті та в соцмережах — ми поруч!",
+    contactText: "Є новина або пропозиція для ефіру? Напишіть нам, а ми повернемось із відповіддю.",
+    footerBrand: "Перше українське\nрадіо в Польщі",
+    footerAbout: "Музика, гумор, культура та люди, що об'єднують.",
+    footerCountry: "Польща",
+    writeUs: "Написати нам",
+    footerCardLabel: "Щоденний ефір",
+    footerCardDate: "3 вересня!",
+    footerCardText: "Будемо разом щодня на хвилях Radio Prywoz",
+    copyright: "© 2026 Radio Prywoz. Усі права захищено.",
+    madeFor: "Створено з любов'ю для наших слухачів",
+    catalogCount: "Каталог: {count} станцій",
+    catalogLoading: "Завантаження каталогу...",
+    catalogUpdating: "Оновлюємо каталог Radio Browser...",
+    catalogFallback: "Radio Browser тимчасово недоступний. Працює demo fallback.",
+    localStationMeta: "Власний stream можна підключити через PRYWOZ_STREAM_URL. Зараз працює demo fallback.",
+    externalStationMeta: "{codec}{bitrate} · поточний трек потребує ICY metadata backend",
+    stationError: "Не вдалося підключитися до цієї станції. Спробуйте іншу.",
+    newsSourceLabel: "Джерело",
+    readOriginal: "Читати оригінал",
+    newsFallbackText: "Короткий опис недоступний. Перейдіть до оригіналу на сайті джерела.",
+    sourcePolicyLabel: "короткий опис + посилання на оригінал",
   },
   pl: {
     navHome: "Start",
     navListen: "Radio",
     navStations: "Stacje",
     navNews: "Wiadomości",
-    navEvents: "Wydarzenia",
     navAbout: "O nas",
     navContacts: "Kontakt",
     eyebrow: "Muzyka. Humor. Kultura. Ludzie.",
@@ -63,17 +86,43 @@ const translations = {
     stationsText: "Lista aktualizuje się przez Radio Browser API. Jeśli stacja jest niedostępna, odtwarzacz pokaże fallback.",
     latestNews: "Najnowsze wiadomości",
     legalSources: "Dozwolone źródła",
-    eventsTitle: "Wydarzenia Radio Prywoz",
-    eventsCta: "Zaproponuj wydarzenie",
     aboutProject: "O projekcie",
     aboutText: "Radio Prywoz to ukraińskojęzyczny projekt medialny dla osób w Polsce i na świecie. Łączymy muzykę, przydatne wiadomości, kulturę i żywe słowo bez ciężkiego CMS.",
+    featureLiveTitle: "Radio na żywo 24/7",
+    featureLiveText: "Ulubiona muzyka, autorskie audycje i ciekawi goście każdego dnia.",
+    featureCultureTitle: "Swoje. Ukraińskie",
+    featureCultureText: "Wspieramy ukraińską kulturę, język i tradycje w Polsce i na świecie.",
+    featureCommunityTitle: "Dla społeczności",
+    featureCommunityText: "Pokazujemy inicjatywy i ważne wiadomości dla Ukraińców.",
+    featureEverywhereTitle: "Gdziekolwiek jesteś",
+    featureEverywhereText: "Słuchaj nas na stronie i w mediach społecznościowych — jesteśmy blisko!",
+    contactText: "Masz wiadomość albo pomysł do audycji? Napisz do nas, a wrócimy z odpowiedzią.",
+    footerBrand: "Pierwsze ukraińskie\nradio w Polsce",
+    footerAbout: "Muzyka, humor, kultura i ludzie, którzy łączą.",
+    footerCountry: "Polska",
+    writeUs: "Napisz do nas",
+    footerCardLabel: "Codzienna audycja",
+    footerCardDate: "3 września!",
+    footerCardText: "Bądźmy razem każdego dnia na falach Radio Prywoz",
+    copyright: "© 2026 Radio Prywoz. Wszelkie prawa zastrzeżone.",
+    madeFor: "Stworzone z miłością dla naszych słuchaczy",
+    catalogCount: "Katalog: {count} stacji",
+    catalogLoading: "Ładowanie katalogu...",
+    catalogUpdating: "Aktualizujemy katalog Radio Browser...",
+    catalogFallback: "Radio Browser jest chwilowo niedostępne. Działa demo fallback.",
+    localStationMeta: "Własny stream można podłączyć przez PRYWOZ_STREAM_URL. Teraz działa demo fallback.",
+    externalStationMeta: "{codec}{bitrate} · bieżący utwór wymaga backendu ICY metadata",
+    stationError: "Nie udało się połączyć z tą stacją. Spróbuj innej.",
+    newsSourceLabel: "Źródło",
+    readOriginal: "Czytaj oryginał",
+    newsFallbackText: "Krótki opis jest niedostępny. Przejdź do oryginału na stronie źródła.",
+    sourcePolicyLabel: "krótki opis + link do oryginału",
   },
   ru: {
     navHome: "Главная",
     navListen: "Эфир",
     navStations: "Станции",
     navNews: "Новости",
-    navEvents: "События",
     navAbout: "О нас",
     navContacts: "Контакты",
     eyebrow: "Музыка. Юмор. Культура. Люди.",
@@ -85,10 +134,37 @@ const translations = {
     stationsText: "Список автоматически обновляется через Radio Browser API. Если станция недоступна, плеер покажет fallback.",
     latestNews: "Последние новости",
     legalSources: "Разрешенные источники",
-    eventsTitle: "События Radio Prywoz",
-    eventsCta: "Предложить событие",
     aboutProject: "О проекте",
     aboutText: "Radio Prywoz — украиноязычный медиапроект для людей в Польше и по всему миру. Мы соединяем музыку, полезные новости, культуру и живое слово без тяжелой CMS.",
+    featureLiveTitle: "Живой эфир 24/7",
+    featureLiveText: "Любимая музыка, авторские программы и интересные гости каждый день.",
+    featureCultureTitle: "Своё. Украинское",
+    featureCultureText: "Поддерживаем украинскую культуру, язык и традиции в Польше и мире.",
+    featureCommunityTitle: "Для сообщества",
+    featureCommunityText: "Показываем инициативы и важные новости для украинцев.",
+    featureEverywhereTitle: "Где бы вы ни были",
+    featureEverywhereText: "Слушайте нас на сайте и в соцсетях — мы рядом!",
+    contactText: "Есть новость или предложение для эфира? Напишите нам, и мы ответим.",
+    footerBrand: "Первое украинское\nрадио в Польше",
+    footerAbout: "Музыка, юмор, культура и люди, которые объединяют.",
+    footerCountry: "Польша",
+    writeUs: "Написать нам",
+    footerCardLabel: "Ежедневный эфир",
+    footerCardDate: "3 сентября!",
+    footerCardText: "Будем вместе каждый день на волнах Radio Prywoz",
+    copyright: "© 2026 Radio Prywoz. Все права защищены.",
+    madeFor: "Создано с любовью для наших слушателей",
+    catalogCount: "Каталог: {count} станций",
+    catalogLoading: "Загрузка каталога...",
+    catalogUpdating: "Обновляем каталог Radio Browser...",
+    catalogFallback: "Radio Browser временно недоступен. Работает demo fallback.",
+    localStationMeta: "Собственный stream можно подключить через PRYWOZ_STREAM_URL. Сейчас работает demo fallback.",
+    externalStationMeta: "{codec}{bitrate} · текущий трек требует ICY metadata backend",
+    stationError: "Не удалось подключиться к этой станции. Попробуйте другую.",
+    newsSourceLabel: "Источник",
+    readOriginal: "Читать оригинал",
+    newsFallbackText: "Краткое описание недоступно. Перейдите к оригиналу на сайте источника.",
+    sourcePolicyLabel: "краткое описание + ссылка на оригинал",
   },
 };
 
@@ -146,9 +222,46 @@ const fallbackNews = [
   },
 ];
 
-let activeLanguage = localStorage.getItem("prywoz-language") || "uk";
+const memoryStorage = new Map();
+const cookieGet = (key) => {
+  const prefix = `${encodeURIComponent(key)}=`;
+  const item = document.cookie
+    .split("; ")
+    .find((cookie) => cookie.startsWith(prefix));
+  return item ? decodeURIComponent(item.slice(prefix.length)) : null;
+};
+const cookieSet = (key, value) => {
+  document.cookie = `${encodeURIComponent(key)}=${encodeURIComponent(value)}; path=/; max-age=31536000; SameSite=Lax`;
+};
+const storageGet = (key) => {
+  try {
+    return window.localStorage?.getItem(key) || cookieGet(key) || memoryStorage.get(key) || null;
+  } catch {
+    return cookieGet(key) || memoryStorage.get(key) || null;
+  }
+};
+const storageSet = (key, value) => {
+  memoryStorage.set(key, value);
+  if (key === "prywoz-language" || key === "prywoz-station-index") {
+    cookieSet(key, value);
+  }
+  try {
+    window.localStorage?.setItem(key, value);
+  } catch {
+    // Some embedded browsers can disable persistent storage; in-memory state keeps UI stable.
+  }
+};
+const storageJson = (key) => {
+  try {
+    return JSON.parse(storageGet(key) || "null");
+  } catch {
+    return null;
+  }
+};
+
+let activeLanguage = storageGet("prywoz-language") || "uk";
 let stations = [localStation];
-let activeStationIndex = Number(localStorage.getItem("prywoz-station-index")) || 0;
+let activeStationIndex = Number(storageGet("prywoz-station-index")) || 0;
 let userStartedPlayback = false;
 let switchTimeout;
 
@@ -156,6 +269,13 @@ const normalizeStationName = (value) => value.toLowerCase().replace(/[^a-z0-9ą�
 const stripHtml = (value = "") => value.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
 const rssJsonUrl = (url) => `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`;
 const rawProxyUrl = (url) => `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`;
+const t = (key, replacements = {}) => {
+  const value = translations[activeLanguage]?.[key] || translations.uk[key] || "";
+  return Object.entries(replacements).reduce(
+    (result, [name, replacement]) => result.replaceAll(`{${name}}`, replacement),
+    value,
+  );
+};
 
 const setMenuState = (isOpen) => {
   if (!header || !menuToggle) {
@@ -185,8 +305,11 @@ const renderStationMeta = (station) => {
 
   stationTitle.textContent = station.name;
   stationMeta.textContent = station.isLocal
-    ? "Власний stream можна підключити через PRYWOZ_STREAM_URL. Зараз працює demo fallback."
-    : `${station.codec || "stream"}${station.bitrate ? ` · ${station.bitrate} kbps` : ""} · поточний трек потребує ICY metadata backend`;
+    ? t("localStationMeta")
+    : t("externalStationMeta", {
+      codec: station.codec || "stream",
+      bitrate: station.bitrate ? ` · ${station.bitrate} kbps` : "",
+    });
 };
 
 const renderMediaType = (stationIndex) => {
@@ -240,7 +363,7 @@ const setActiveStation = async (index, shouldPlay = userStartedPlayback) => {
   }
 
   activeStationIndex = (index + stations.length) % stations.length;
-  localStorage.setItem("prywoz-station-index", String(activeStationIndex));
+  storageSet("prywoz-station-index", String(activeStationIndex));
 
   const station = stations[activeStationIndex];
   window.clearTimeout(switchTimeout);
@@ -264,7 +387,7 @@ const setActiveStation = async (index, shouldPlay = userStartedPlayback) => {
     } catch {
       setPlayerState("error");
       if (stationMeta) {
-        stationMeta.textContent = "Не вдалося підключитися до цієї станції. Спробуйте іншу.";
+        stationMeta.textContent = t("stationError");
       }
     }
   }
@@ -283,18 +406,18 @@ const loadStations = async () => {
   }
 
   const cacheKey = "prywoz-radio-browser-stations-v1";
-  const cached = JSON.parse(localStorage.getItem(cacheKey) || "null");
+  const cached = storageJson(cacheKey);
   const cacheMaxAge = 6 * 60 * 60 * 1000;
 
   if (cached && Date.now() - cached.createdAt < cacheMaxAge) {
     stations = [localStation, ...cached.items];
-    stationStatus.textContent = `Каталог: ${stations.length} станцій`;
+    stationStatus.textContent = t("catalogCount", { count: String(stations.length) });
     await setActiveStation(Math.min(activeStationIndex, stations.length - 1), false);
     return;
   }
 
   try {
-    stationStatus.textContent = "Оновлюємо каталог Radio Browser...";
+    stationStatus.textContent = t("catalogUpdating");
     const apiBase = await getRadioBrowserServer();
     const params = new URLSearchParams({
       countrycode: "PL",
@@ -320,12 +443,12 @@ const loadStations = async () => {
       }
     });
 
-    localStorage.setItem(cacheKey, JSON.stringify({ createdAt: Date.now(), items: picked }));
+    storageSet(cacheKey, JSON.stringify({ createdAt: Date.now(), items: picked }));
     stations = [localStation, ...picked];
-    stationStatus.textContent = `Каталог: ${stations.length} станцій`;
+    stationStatus.textContent = t("catalogCount", { count: String(stations.length) });
     await setActiveStation(Math.min(activeStationIndex, stations.length - 1), false);
   } catch {
-    stationStatus.textContent = "Radio Browser тимчасово недоступний. Працює demo fallback.";
+    stationStatus.textContent = t("catalogFallback");
     stations = [localStation];
     await setActiveStation(0, false);
   }
@@ -350,7 +473,7 @@ const renderNewsSources = () => {
   newsSourcesList.replaceChildren();
   newsSources.forEach((source) => {
     const item = document.createElement("li");
-    item.innerHTML = `<a href="${source.policyUrl}" target="_blank" rel="noopener">${source.name}</a> · ${source.domain} · excerpt + original link`;
+    item.innerHTML = `<a href="${source.policyUrl}" target="_blank" rel="noopener">${source.name}</a> · ${source.domain} · ${t("sourcePolicyLabel")}`;
     newsSourcesList.append(item);
   });
 };
@@ -437,11 +560,11 @@ const renderNews = (items) => {
 
     const excerpt = document.createElement("p");
     excerpt.className = "news-card__text";
-    excerpt.textContent = item.excerpt || "Короткий опис недоступний. Перейдіть до оригіналу на сайті джерела.";
+    excerpt.textContent = item.excerpt || t("newsFallbackText");
 
     const source = document.createElement("p");
     source.className = "news-card__source";
-    source.textContent = `Джерело: ${item.source}`;
+    source.textContent = `${t("newsSourceLabel")}: ${item.source}`;
 
     const link = document.createElement("a");
     link.className = "text-link";
@@ -449,7 +572,7 @@ const renderNews = (items) => {
     link.target = "_blank";
     link.rel = "noopener";
     link.innerHTML = `
-      <span>Читати оригінал</span>
+      <span>${t("readOriginal")}</span>
       <svg class="icon" aria-hidden="true">
         <use href="./assets/icons/lucide-sprite.svg#arrow-right"></use>
       </svg>
@@ -464,7 +587,7 @@ const renderNews = (items) => {
 
 const loadNews = async () => {
   const cacheKey = "prywoz-news-feed-v1";
-  const cached = JSON.parse(localStorage.getItem(cacheKey) || "null");
+  const cached = storageJson(cacheKey);
   const cacheMaxAge = 30 * 60 * 1000;
 
   if (cached && Date.now() - cached.createdAt < cacheMaxAge && !cached.items?.some((item) => item.id?.startsWith("fallback-"))) {
@@ -491,7 +614,7 @@ const loadNews = async () => {
       .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
 
     const safeItems = items.length ? items : staticCache;
-    localStorage.setItem(cacheKey, JSON.stringify({ createdAt: Date.now(), items: safeItems }));
+    storageSet(cacheKey, JSON.stringify({ createdAt: Date.now(), items: safeItems }));
     renderNews(safeItems);
   } catch {
     renderNews(staticCache);
@@ -500,7 +623,7 @@ const loadNews = async () => {
 
 const applyLanguage = (language) => {
   activeLanguage = translations[language] ? language : "uk";
-  localStorage.setItem("prywoz-language", activeLanguage);
+  storageSet("prywoz-language", activeLanguage);
   document.documentElement.lang = activeLanguage;
 
   translatableNodes.forEach((node) => {
@@ -516,8 +639,11 @@ const applyLanguage = (language) => {
     button.setAttribute("aria-current", String(isActive));
   });
 
-  if (googleTranslateLink) {
-    googleTranslateLink.href = `https://translate.google.com/translate?sl=auto&tl=${activeLanguage}&u=${encodeURIComponent(window.location.href.split("#")[0])}`;
+  renderStationMeta(stations[activeStationIndex] || localStation);
+  if (stationStatus) {
+    stationStatus.textContent = stations.length > 1
+      ? t("catalogCount", { count: String(stations.length) })
+      : t("catalogLoading");
   }
 };
 
@@ -540,7 +666,7 @@ if (header && menuToggle) {
 languageButtons.forEach((button) => {
   button.addEventListener("click", () => {
     applyLanguage(button.dataset.language);
-    renderNews(JSON.parse(localStorage.getItem("prywoz-news-feed-v1") || "null")?.items || fallbackNews);
+    renderNews(storageJson("prywoz-news-feed-v1")?.items || fallbackNews);
   });
 });
 
@@ -557,7 +683,7 @@ if (player && audio && playButton && volumeButton) {
       } catch {
         setPlayerState("error");
         if (stationMeta) {
-          stationMeta.textContent = "Не вдалося підключитися до станції. Спробуйте іншу.";
+          stationMeta.textContent = t("stationError");
         }
       }
       return;
@@ -611,108 +737,3 @@ if (player && audio && playButton && volumeButton) {
 renderNewsSources();
 applyLanguage(activeLanguage);
 loadNews();
-
-if (eventSlider) {
-  const track = eventSlider.querySelector(".event-slider__track");
-  const controls = eventSlider.querySelectorAll("[data-event-direction]");
-  const originalCards = track ? Array.from(track.children) : [];
-  let eventIndex = 0;
-  let eventStep = 0;
-  let eventPerView = 1;
-  let isSliding = false;
-
-  const getEventPerView = () => {
-    if (window.matchMedia("(max-width: 767px)").matches) {
-      return 1;
-    }
-
-    if (window.matchMedia("(max-width: 1180px)").matches) {
-      return 2;
-    }
-
-    return 4;
-  };
-
-  const setEventPosition = (withTransition = true) => {
-    if (!track) {
-      return;
-    }
-
-    track.style.transition = withTransition ? "" : "none";
-    track.style.transform = `translateX(${-eventIndex * eventStep}px)`;
-  };
-
-  const measureEventStep = () => {
-    if (!track) {
-      return;
-    }
-
-    const firstCard = track.children[eventPerView];
-    const styles = window.getComputedStyle(track);
-    const gap = Number.parseFloat(styles.columnGap || styles.gap) || 0;
-    eventStep = firstCard ? firstCard.getBoundingClientRect().width + gap : 0;
-  };
-
-  const buildEventLoop = () => {
-    if (!track || originalCards.length === 0) {
-      return;
-    }
-
-    eventPerView = Math.min(getEventPerView(), originalCards.length);
-    track.replaceChildren();
-
-    const cloneCard = (card) => {
-      const clone = card.cloneNode(true);
-      clone.setAttribute("aria-hidden", "true");
-      return clone;
-    };
-
-    const startClones = originalCards.slice(-eventPerView).map(cloneCard);
-    const endClones = originalCards.slice(0, eventPerView).map(cloneCard);
-
-    [...startClones, ...originalCards, ...endClones].forEach((card) => {
-      track.append(card);
-    });
-
-    eventIndex = eventPerView;
-    measureEventStep();
-    setEventPosition(false);
-  };
-
-  const moveEvents = (direction) => {
-    if (!track || isSliding || eventStep === 0) {
-      return;
-    }
-
-    isSliding = true;
-    eventIndex += direction === "next" ? 1 : -1;
-    setEventPosition(true);
-  };
-
-  track?.addEventListener("transitionend", () => {
-    if (!track) {
-      return;
-    }
-
-    if (eventIndex >= originalCards.length + eventPerView) {
-      eventIndex = eventPerView;
-      setEventPosition(false);
-    }
-
-    if (eventIndex < eventPerView) {
-      eventIndex = originalCards.length + eventPerView - 1;
-      setEventPosition(false);
-    }
-
-    isSliding = false;
-  });
-
-  controls.forEach((control) => {
-    control.addEventListener("click", () => {
-      moveEvents(control.dataset.eventDirection === "prev" ? "prev" : "next");
-    });
-  });
-
-  window.addEventListener("resize", buildEventLoop);
-  buildEventLoop();
-}

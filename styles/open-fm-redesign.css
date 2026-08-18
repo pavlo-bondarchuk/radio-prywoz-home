@@ -450,11 +450,16 @@ body {
 .about-feature__icon,
 .about-audio-card__icon,
 .about-value__icon,
-.air-card__icon,
-.feature-list__icon {
+.air-card__icon {
   border-color: var(--ds-color-border);
   color: var(--ds-color-text-inverse);
   background: var(--ds-color-primary);
+}
+
+.feature-list__icon {
+  border-color: transparent;
+  color: var(--ds-color-primary);
+  background: transparent;
 }
 
 .contact-item a,

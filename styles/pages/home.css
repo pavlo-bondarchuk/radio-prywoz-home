@@ -51,6 +51,7 @@
   font-size: 13px;
   font-weight: 700;
   line-height: 1.1;
+  white-space: pre-line;
 }
 
 .main-nav {
@@ -134,10 +135,6 @@
 .language-switcher__item--active {
   color: var(--color-text);
   background: #ffffff;
-}
-
-.button--translate {
-  min-width: 0;
 }
 
 .button--header {
@@ -1015,7 +1012,9 @@
 .feature-list__icon {
   width: 32px;
   height: 32px;
+  border: 0;
   color: var(--color-primary);
+  background: transparent;
 }
 
 .feature-list__title {
@@ -1042,7 +1041,7 @@
   display: grid;
   align-items: start;
   gap: 52px;
-  grid-template-columns: minmax(230px, 1fr) 120px 146px 210px minmax(210px, 240px);
+  grid-template-columns: minmax(260px, 1fr) 240px minmax(210px, 240px);
 }
 
 .site-footer__brand-row {
@@ -1061,6 +1060,7 @@
   font-size: 13px;
   font-weight: 600;
   line-height: 1.35;
+  white-space: pre-line;
 }
 
 .site-footer__about {
@@ -1428,10 +1428,6 @@
 
   .site-header__actions .button--header {
     width: 100%;
-  }
-
-  .button--translate {
-    width: auto;
   }
 
   .hero {
