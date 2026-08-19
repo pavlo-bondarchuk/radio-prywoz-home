@@ -35,8 +35,8 @@ const translations = {
     heroLead: "РАДИО ПРИВОЗ ФМ — легкий медіалендинг для українців у Польщі: живе радіо, польські станції, автоматична стрічка відкритих українських новин і простий контакт з редакцією.",
     listenLive: "Слухати live",
     nowOnAir: "Зараз в ефірі",
-    stationsTitle: "Польські станції",
-    stationsText: "Список автоматично оновлюється через Radio Browser API. Якщо станція недоступна, плеєр покаже fallback.",
+    stationsTitle: "Польські та українські станції",
+    stationsText: "Список автоматично оновлюється через Radio Browser API: польські ефіри плюс Одеса, Херсон і Дніпро. Якщо станція недоступна, плеєр покаже fallback.",
     latestNews: "Останні новини",
     legalSources: "Відкриті джерела",
     aboutProject: "Про проєкт",
@@ -84,8 +84,8 @@ const translations = {
     heroLead: "РАДИО ПРИВОЗ ФМ to lekki landing medialny dla Ukraińców w Polsce: radio na żywo, polskie stacje, automatyczna lista otwartych wiadomości z Ukrainy i prosty kontakt z redakcją.",
     listenLive: "Słuchaj live",
     nowOnAir: "Teraz gramy",
-    stationsTitle: "Polskie stacje",
-    stationsText: "Lista aktualizuje się przez Radio Browser API. Jeśli stacja jest niedostępna, odtwarzacz pokaże fallback.",
+    stationsTitle: "Polskie i ukraińskie stacje",
+    stationsText: "Lista aktualizuje się przez Radio Browser API: polskie audycje oraz Odesa, Chersoń i Dnipro. Jeśli stacja jest niedostępna, odtwarzacz pokaże fallback.",
     latestNews: "Najnowsze wiadomości",
     legalSources: "Otwarte źródła",
     aboutProject: "O projekcie",
@@ -133,8 +133,8 @@ const translations = {
     heroLead: "РАДИО ПРИВОЗ ФМ — легкий медиалендинг для украинцев в Польше: живое радио, польские станции, автоматическая лента открытых украинских новостей и простой контакт с редакцией.",
     listenLive: "Слушать live",
     nowOnAir: "Сейчас в эфире",
-    stationsTitle: "Польские станции",
-    stationsText: "Список автоматически обновляется через Radio Browser API. Если станция недоступна, плеер покажет fallback.",
+    stationsTitle: "Польские и украинские станции",
+    stationsText: "Список автоматически обновляется через Radio Browser API: польские эфиры плюс Одесса, Херсон и Днепр. Если станция недоступна, плеер покажет fallback.",
     latestNews: "Последние новости",
     legalSources: "Открытые источники",
     aboutProject: "О проекте",
@@ -171,7 +171,52 @@ const translations = {
   },
 };
 
-const featuredStationNames = ["RMF FM", "Radio Zet", "Radio 357", "ESKA", "RMF MAXX", "VOX FM", "Antyradio", "TOK FM", "Złote Przeboje"];
+const stationSearchGroups = [
+  {
+    preferredNames: ["RMF FM", "Radio Zet", "Radio 357", "ESKA", "RMF MAXX", "VOX FM", "Antyradio", "TOK FM", "Złote Przeboje", "Polskie Radio 24"],
+    maxItems: 8,
+    searches: [
+      {
+        countrycode: "PL",
+        language: "polish",
+        order: "clickcount",
+        reverse: "true",
+        limit: "140",
+      },
+    ],
+  },
+  {
+    preferredNames: ["Перше міське радіо", "Одесса радио", "Minatrix", "Radio Ppeople"],
+    maxItems: 3,
+    searches: [
+      { countrycode: "UA", name: "Одеса", order: "clickcount", reverse: "true", limit: "20" },
+      { countrycode: "UA", name: "Одесса", order: "clickcount", reverse: "true", limit: "20" },
+      { countrycode: "UA", state: "Odesa", order: "clickcount", reverse: "true", limit: "20" },
+      { countrycode: "UA", state: "Odessa", order: "clickcount", reverse: "true", limit: "20" },
+    ],
+  },
+  {
+    preferredNames: ["RockRadio UA", "РокРадіо UA", "Kherson"],
+    maxItems: 2,
+    searches: [
+      { countrycode: "UA", name: "Херсон", order: "clickcount", reverse: "true", limit: "20" },
+      { countrycode: "UA", name: "Kherson", order: "clickcount", reverse: "true", limit: "20" },
+      { countrycode: "UA", state: "Kherson", order: "clickcount", reverse: "true", limit: "20" },
+    ],
+  },
+  {
+    preferredNames: ["Informator FM", "Дніпро", "Днепр", "Dnipro"],
+    maxItems: 2,
+    searches: [
+      { countrycode: "UA", name: "Дніпро", order: "clickcount", reverse: "true", limit: "20" },
+      { countrycode: "UA", name: "Днепр", order: "clickcount", reverse: "true", limit: "20" },
+      { countrycode: "UA", name: "Dnipro", order: "clickcount", reverse: "true", limit: "20" },
+      { countrycode: "UA", name: "Informator FM", order: "clickcount", reverse: "true", limit: "20" },
+      { countrycode: "UA", state: "Dnepr", order: "clickcount", reverse: "true", limit: "20" },
+      { countrycode: "UA", state: "Dnipropetrovsk", order: "clickcount", reverse: "true", limit: "20" },
+    ],
+  },
+];
 
 const localStation = {
   stationuuid: "radio-prywoz",
@@ -325,7 +370,12 @@ let activeStationIndex = Number(storageGet("prywoz-station-index")) || 0;
 let userStartedPlayback = false;
 let switchTimeout;
 
-const normalizeStationName = (value) => value.toLowerCase().replace(/[^a-z0-9ąćęłńóśźż]+/gi, "");
+const normalizeStationName = (value = "") => value.toLocaleLowerCase("uk-UA").replace(/[^\p{L}\p{N}]+/gu, "");
+const isPlayableStation = (station) => {
+  const streamUrl = station.url_resolved || station.url || "";
+  const requiresHttps = window.location.protocol === "https:";
+  return streamUrl && (!requiresHttps || streamUrl.startsWith("https://"));
+};
 const stripHtml = (value = "") => value.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
 const rssJsonUrl = (url) => `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`;
 const rawProxyUrl = (url) => `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`;
@@ -362,6 +412,48 @@ const mixNewsBySource = (items) => {
     const bucket = buckets[cursor % buckets.length];
     if (bucket?.length) {
       mixed.push(bucket.shift());
+    }
+    cursor += 1;
+  }
+
+  return mixed;
+};
+
+const fetchRadioStations = async (apiBase, search) => {
+  const params = new URLSearchParams({
+    hidebroken: "true",
+    ...search,
+  });
+  const response = await fetch(`${apiBase}/json/stations/search?${params.toString()}`);
+  const data = await response.json();
+  return Array.isArray(data) ? data.filter(isPlayableStation) : [];
+};
+
+const pickStationGroup = (results, preferredNames, maxItems) => {
+  const normalizedPreferredNames = preferredNames.map(normalizeStationName);
+  const picked = [];
+  const append = (station) => {
+    if (station && !picked.some((item) => item.stationuuid === station.stationuuid)) {
+      picked.push(station);
+    }
+  };
+
+  normalizedPreferredNames.forEach((preferredName) => {
+    append(results.find((station) => normalizeStationName(station.name).includes(preferredName)));
+  });
+
+  results.forEach(append);
+  return picked.slice(0, maxItems);
+};
+
+const mixStationGroups = (groups) => {
+  const mixed = [];
+  let cursor = 0;
+
+  while (groups.some((group) => group.length)) {
+    const group = groups[cursor % groups.length];
+    if (group?.length) {
+      mixed.push(group.shift());
     }
     cursor += 1;
   }
@@ -497,7 +589,7 @@ const loadStations = async () => {
     return;
   }
 
-  const cacheKey = "prywoz-radio-browser-stations-v1";
+  const cacheKey = "prywoz-radio-browser-stations-v2";
   const cached = storageJson(cacheKey);
   const cacheMaxAge = 6 * 60 * 60 * 1000;
 
@@ -511,29 +603,14 @@ const loadStations = async () => {
   try {
     stationStatus.textContent = t("catalogUpdating");
     const apiBase = await getRadioBrowserServer();
-    const params = new URLSearchParams({
-      countrycode: "PL",
-      language: "polish",
-      hidebroken: "true",
-      order: "clickcount",
-      reverse: "true",
-      limit: "120",
-    });
-    const response = await fetch(`${apiBase}/json/stations/search?${params.toString()}`);
-    const results = await response.json();
-    const picked = [];
-
-    featuredStationNames.forEach((name) => {
-      const requiresHttps = window.location.protocol === "https:";
-      const match = results.find((station) => {
-        const streamUrl = station.url_resolved || station.url || "";
-        return normalizeStationName(station.name).includes(normalizeStationName(name))
-          && (!requiresHttps || streamUrl.startsWith("https://"));
-      });
-      if (match && match.url_resolved && !picked.some((station) => station.stationuuid === match.stationuuid)) {
-        picked.push(match);
-      }
-    });
+    const stationGroups = await Promise.all(stationSearchGroups.map(async (group) => {
+      const results = await Promise.all(group.searches.map((search) => fetchRadioStations(apiBase, search)));
+      const uniqueResults = results
+        .flat()
+        .filter((station, index, all) => all.findIndex((item) => item.stationuuid === station.stationuuid) === index);
+      return pickStationGroup(uniqueResults, group.preferredNames, group.maxItems);
+    }));
+    const picked = mixStationGroups(stationGroups);
 
     storageSet(cacheKey, JSON.stringify({ createdAt: Date.now(), items: picked }));
     stations = [localStation, ...picked];
