@@ -36,11 +36,9 @@ const translations = {
     listenLive: "Слухати live",
     nowOnAir: "Зараз в ефірі",
     stationsTitle: "Польські та українські станції",
-    stationsText: "Список автоматично оновлюється через Radio Browser API: польські ефіри плюс Одеса, Херсон і Дніпро. Якщо станція недоступна, плеєр покаже fallback.",
     latestNews: "Останні новини",
-    legalSources: "Відкриті джерела",
     aboutProject: "Про проєкт",
-    aboutText: "РАДИО ПРИВОЗ ФМ — україномовний медіапроєкт для людей у Польщі та по всьому світу. Ми поєднуємо музику, корисні новини, культуру і живе слово без важкої CMS.",
+    aboutText: "РАДИО ПРИВОЗ ФМ — україномовний медіапроєкт для людей у Польщі та по всьому світу. Ми поєднуємо музику, корисні новини, культуру і живе слово.",
     featureLiveTitle: "Живий ефір 24/7",
     featureLiveText: "Улюблена музика, авторські програми та цікаві гості щодня.",
     featureCultureTitle: "Своє. Українське",
@@ -61,15 +59,14 @@ const translations = {
     madeFor: "Створено з любов'ю для наших слухачів",
     catalogCount: "Каталог: {count} станцій",
     catalogLoading: "Завантаження каталогу...",
-    catalogUpdating: "Оновлюємо каталог Radio Browser...",
-    catalogFallback: "Radio Browser тимчасово недоступний. Працює demo fallback.",
-    localStationMeta: "Власний stream можна підключити через PRYWOZ_STREAM_URL. Зараз працює demo fallback.",
-    externalStationMeta: "{codec}{bitrate} · поточний трек потребує ICY metadata backend",
+    catalogUpdating: "Оновлюємо список станцій...",
+    catalogFallback: "Список станцій тимчасово недоступний.",
+    localStationMeta: "Живий ефір онлайн",
+    externalStationMeta: "Живий ефір онлайн",
     stationError: "Не вдалося підключитися до цієї станції. Спробуйте іншу.",
     newsSourceLabel: "Джерело",
     readOriginal: "Читати оригінал",
     newsFallbackText: "Короткий опис недоступний. Перейдіть до оригіналу на сайті джерела.",
-    sourcePolicyLabel: "короткий опис + посилання на оригінал",
   },
   pl: {
     brandName: "РАДИО ПРИВОЗ ФМ",
@@ -85,11 +82,9 @@ const translations = {
     listenLive: "Słuchaj live",
     nowOnAir: "Teraz gramy",
     stationsTitle: "Polskie i ukraińskie stacje",
-    stationsText: "Lista aktualizuje się przez Radio Browser API: polskie audycje oraz Odesa, Chersoń i Dnipro. Jeśli stacja jest niedostępna, odtwarzacz pokaże fallback.",
     latestNews: "Najnowsze wiadomości",
-    legalSources: "Otwarte źródła",
     aboutProject: "O projekcie",
-    aboutText: "РАДИО ПРИВОЗ ФМ to ukraińskojęzyczny projekt medialny dla osób w Polsce i na świecie. Łączymy muzykę, przydatne wiadomości, kulturę i żywe słowo bez ciężkiego CMS.",
+    aboutText: "РАДИО ПРИВОЗ ФМ to ukraińskojęzyczny projekt medialny dla osób w Polsce i na świecie. Łączymy muzykę, przydatne wiadomości, kulturę i żywe słowo.",
     featureLiveTitle: "Radio na żywo 24/7",
     featureLiveText: "Ulubiona muzyka, autorskie audycje i ciekawi goście każdego dnia.",
     featureCultureTitle: "Swoje. Ukraińskie",
@@ -110,15 +105,14 @@ const translations = {
     madeFor: "Stworzone z miłością dla naszych słuchaczy",
     catalogCount: "Katalog: {count} stacji",
     catalogLoading: "Ładowanie katalogu...",
-    catalogUpdating: "Aktualizujemy katalog Radio Browser...",
-    catalogFallback: "Radio Browser jest chwilowo niedostępne. Działa demo fallback.",
-    localStationMeta: "Własny stream można podłączyć przez PRYWOZ_STREAM_URL. Teraz działa demo fallback.",
-    externalStationMeta: "{codec}{bitrate} · bieżący utwór wymaga backendu ICY metadata",
+    catalogUpdating: "Aktualizujemy listę stacji...",
+    catalogFallback: "Lista stacji jest chwilowo niedostępna.",
+    localStationMeta: "Radio online na żywo",
+    externalStationMeta: "Radio online na żywo",
     stationError: "Nie udało się połączyć z tą stacją. Spróbuj innej.",
     newsSourceLabel: "Źródło",
     readOriginal: "Czytaj oryginał",
     newsFallbackText: "Krótki opis jest niedostępny. Przejdź do oryginału na stronie źródła.",
-    sourcePolicyLabel: "krótki opis + link do oryginału",
   },
   ru: {
     brandName: "РАДИО ПРИВОЗ ФМ",
@@ -134,11 +128,9 @@ const translations = {
     listenLive: "Слушать live",
     nowOnAir: "Сейчас в эфире",
     stationsTitle: "Польские и украинские станции",
-    stationsText: "Список автоматически обновляется через Radio Browser API: польские эфиры плюс Одесса, Херсон и Днепр. Если станция недоступна, плеер покажет fallback.",
     latestNews: "Последние новости",
-    legalSources: "Открытые источники",
     aboutProject: "О проекте",
-    aboutText: "РАДИО ПРИВОЗ ФМ — украиноязычный медиапроект для людей в Польше и по всему миру. Мы соединяем музыку, полезные новости, культуру и живое слово без тяжелой CMS.",
+    aboutText: "РАДИО ПРИВОЗ ФМ — украиноязычный медиапроект для людей в Польше и по всему миру. Мы соединяем музыку, полезные новости, культуру и живое слово.",
     featureLiveTitle: "Живой эфир 24/7",
     featureLiveText: "Любимая музыка, авторские программы и интересные гости каждый день.",
     featureCultureTitle: "Своё. Украинское",
@@ -159,15 +151,14 @@ const translations = {
     madeFor: "Создано с любовью для наших слушателей",
     catalogCount: "Каталог: {count} станций",
     catalogLoading: "Загрузка каталога...",
-    catalogUpdating: "Обновляем каталог Radio Browser...",
-    catalogFallback: "Radio Browser временно недоступен. Работает demo fallback.",
-    localStationMeta: "Собственный stream можно подключить через PRYWOZ_STREAM_URL. Сейчас работает demo fallback.",
-    externalStationMeta: "{codec}{bitrate} · текущий трек требует ICY metadata backend",
+    catalogUpdating: "Обновляем список станций...",
+    catalogFallback: "Список станций временно недоступен.",
+    localStationMeta: "Живой эфир онлайн",
+    externalStationMeta: "Живой эфир онлайн",
     stationError: "Не удалось подключиться к этой станции. Попробуйте другую.",
     newsSourceLabel: "Источник",
     readOriginal: "Читать оригинал",
     newsFallbackText: "Краткое описание недоступно. Перейдите к оригиналу на сайте источника.",
-    sourcePolicyLabel: "краткое описание + ссылка на оригинал",
   },
 };
 
@@ -488,12 +479,7 @@ const renderStationMeta = (station) => {
   }
 
   stationTitle.textContent = station.name;
-  stationMeta.textContent = station.isLocal
-    ? t("localStationMeta")
-    : t("externalStationMeta", {
-      codec: station.codec || "stream",
-      bitrate: station.bitrate ? ` · ${station.bitrate} kbps` : "",
-    });
+  stationMeta.textContent = station.isLocal ? t("localStationMeta") : t("externalStationMeta");
 };
 
 const renderMediaType = (stationIndex) => {
@@ -642,7 +628,7 @@ const renderNewsSources = () => {
   newsSourcesList.replaceChildren();
   newsSources.forEach((source) => {
     const item = document.createElement("li");
-    item.innerHTML = `<a href="${source.policyUrl}" target="_blank" rel="noopener">${source.name}</a> · ${source.domain} · ${t("sourcePolicyLabel")}`;
+    item.innerHTML = `<a href="${source.policyUrl}" target="_blank" rel="noopener">${source.name}</a>`;
     newsSourcesList.append(item);
   });
 };
