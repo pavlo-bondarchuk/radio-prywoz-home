@@ -23,6 +23,7 @@ const iconPath = "./assets/icons/lucide-sprite.svg";
 
 const translations = {
   uk: {
+    brandName: "Радіо\nПривоз ФМ",
     navHome: "Головна",
     navListen: "Ефір",
     navStations: "Станції",
@@ -31,15 +32,15 @@ const translations = {
     navContacts: "Контакти",
     eyebrow: "Музика. Гумор. Культура. Люди.",
     heroTitle: "Перше українське радіо в Польщі",
-    heroLead: "Radio Prywoz — легкий медіалендинг для українців у Польщі: живе радіо, польські станції, автоматична стрічка офіційних новин і простий контакт з редакцією.",
+    heroLead: "Радіо Привоз ФМ — легкий медіалендинг для українців у Польщі: живе радіо, польські станції, автоматична стрічка відкритих українських новин і простий контакт з редакцією.",
     listenLive: "Слухати live",
     nowOnAir: "Зараз в ефірі",
     stationsTitle: "Польські станції",
     stationsText: "Список автоматично оновлюється через Radio Browser API. Якщо станція недоступна, плеєр покаже fallback.",
     latestNews: "Останні новини",
-    legalSources: "Дозволені джерела",
+    legalSources: "Відкриті джерела",
     aboutProject: "Про проєкт",
-    aboutText: "Radio Prywoz — україномовний медіапроєкт для людей у Польщі та по всьому світу. Ми поєднуємо музику, корисні новини, культуру і живе слово без важкої CMS.",
+    aboutText: "Радіо Привоз ФМ — україномовний медіапроєкт для людей у Польщі та по всьому світу. Ми поєднуємо музику, корисні новини, культуру і живе слово без важкої CMS.",
     featureLiveTitle: "Живий ефір 24/7",
     featureLiveText: "Улюблена музика, авторські програми та цікаві гості щодня.",
     featureCultureTitle: "Своє. Українське",
@@ -55,8 +56,8 @@ const translations = {
     writeUs: "Написати нам",
     footerCardLabel: "Щоденний ефір",
     footerCardDate: "3 вересня!",
-    footerCardText: "Будемо разом щодня на хвилях Radio Prywoz",
-    copyright: "© 2026 Radio Prywoz. Усі права захищено.",
+    footerCardText: "Будемо разом щодня на хвилях Радіо Привоз ФМ",
+    copyright: "© 2026 Радіо Привоз ФМ. Усі права захищено.",
     madeFor: "Створено з любов'ю для наших слухачів",
     catalogCount: "Каталог: {count} станцій",
     catalogLoading: "Завантаження каталогу...",
@@ -71,6 +72,7 @@ const translations = {
     sourcePolicyLabel: "короткий опис + посилання на оригінал",
   },
   pl: {
+    brandName: "Радіо\nПривоз ФМ",
     navHome: "Start",
     navListen: "Radio",
     navStations: "Stacje",
@@ -79,15 +81,15 @@ const translations = {
     navContacts: "Kontakt",
     eyebrow: "Muzyka. Humor. Kultura. Ludzie.",
     heroTitle: "Ukraińskie radio w Polsce",
-    heroLead: "Radio Prywoz to lekki landing medialny dla Ukraińców w Polsce: radio na żywo, polskie stacje, automatyczna lista oficjalnych wiadomości i prosty kontakt z redakcją.",
+    heroLead: "Радіо Привоз ФМ to lekki landing medialny dla Ukraińców w Polsce: radio na żywo, polskie stacje, automatyczna lista otwartych wiadomości z Ukrainy i prosty kontakt z redakcją.",
     listenLive: "Słuchaj live",
     nowOnAir: "Teraz gramy",
     stationsTitle: "Polskie stacje",
     stationsText: "Lista aktualizuje się przez Radio Browser API. Jeśli stacja jest niedostępna, odtwarzacz pokaże fallback.",
     latestNews: "Najnowsze wiadomości",
-    legalSources: "Dozwolone źródła",
+    legalSources: "Otwarte źródła",
     aboutProject: "O projekcie",
-    aboutText: "Radio Prywoz to ukraińskojęzyczny projekt medialny dla osób w Polsce i na świecie. Łączymy muzykę, przydatne wiadomości, kulturę i żywe słowo bez ciężkiego CMS.",
+    aboutText: "Радіо Привоз ФМ to ukraińskojęzyczny projekt medialny dla osób w Polsce i na świecie. Łączymy muzykę, przydatne wiadomości, kulturę i żywe słowo bez ciężkiego CMS.",
     featureLiveTitle: "Radio na żywo 24/7",
     featureLiveText: "Ulubiona muzyka, autorskie audycje i ciekawi goście każdego dnia.",
     featureCultureTitle: "Swoje. Ukraińskie",
@@ -103,8 +105,8 @@ const translations = {
     writeUs: "Napisz do nas",
     footerCardLabel: "Codzienna audycja",
     footerCardDate: "3 września!",
-    footerCardText: "Bądźmy razem każdego dnia na falach Radio Prywoz",
-    copyright: "© 2026 Radio Prywoz. Wszelkie prawa zastrzeżone.",
+    footerCardText: "Bądźmy razem każdego dnia na falach Радіо Привоз ФМ",
+    copyright: "© 2026 Радіо Привоз ФМ. Wszelkie prawa zastrzeżone.",
     madeFor: "Stworzone z miłością dla naszych słuchaczy",
     catalogCount: "Katalog: {count} stacji",
     catalogLoading: "Ładowanie katalogu...",
@@ -119,6 +121,7 @@ const translations = {
     sourcePolicyLabel: "krótki opis + link do oryginału",
   },
   ru: {
+    brandName: "Радіо\nПривоз ФМ",
     navHome: "Главная",
     navListen: "Эфир",
     navStations: "Станции",
@@ -127,15 +130,15 @@ const translations = {
     navContacts: "Контакты",
     eyebrow: "Музыка. Юмор. Культура. Люди.",
     heroTitle: "Украинское радио в Польше",
-    heroLead: "Radio Prywoz — легкий медиалендинг для украинцев в Польше: живое радио, польские станции, автоматическая лента официальных новостей и простой контакт с редакцией.",
+    heroLead: "Радіо Привоз ФМ — легкий медиалендинг для украинцев в Польше: живое радио, польские станции, автоматическая лента открытых украинских новостей и простой контакт с редакцией.",
     listenLive: "Слушать live",
     nowOnAir: "Сейчас в эфире",
     stationsTitle: "Польские станции",
     stationsText: "Список автоматически обновляется через Radio Browser API. Если станция недоступна, плеер покажет fallback.",
     latestNews: "Последние новости",
-    legalSources: "Разрешенные источники",
+    legalSources: "Открытые источники",
     aboutProject: "О проекте",
-    aboutText: "Radio Prywoz — украиноязычный медиапроект для людей в Польше и по всему миру. Мы соединяем музыку, полезные новости, культуру и живое слово без тяжелой CMS.",
+    aboutText: "Радіо Привоз ФМ — украиноязычный медиапроект для людей в Польше и по всему миру. Мы соединяем музыку, полезные новости, культуру и живое слово без тяжелой CMS.",
     featureLiveTitle: "Живой эфир 24/7",
     featureLiveText: "Любимая музыка, авторские программы и интересные гости каждый день.",
     featureCultureTitle: "Своё. Украинское",
@@ -151,8 +154,8 @@ const translations = {
     writeUs: "Написать нам",
     footerCardLabel: "Ежедневный эфир",
     footerCardDate: "3 сентября!",
-    footerCardText: "Будем вместе каждый день на волнах Radio Prywoz",
-    copyright: "© 2026 Radio Prywoz. Все права защищены.",
+    footerCardText: "Будем вместе каждый день на волнах Радіо Привоз ФМ",
+    copyright: "© 2026 Радіо Привоз ФМ. Все права защищены.",
     madeFor: "Создано с любовью для наших слушателей",
     catalogCount: "Каталог: {count} станций",
     catalogLoading: "Загрузка каталога...",
@@ -172,7 +175,7 @@ const featuredStationNames = ["RMF FM", "Radio Zet", "Radio 357", "ESKA", "RMF M
 
 const localStation = {
   stationuuid: "radio-prywoz",
-  name: "Radio Prywoz",
+  name: "Радіо Привоз ФМ",
   url_resolved: "./assets/audio/radio-privoz-demo.mp3",
   favicon: "./assets/images/logo.png",
   codec: "MP3",
@@ -184,42 +187,56 @@ const localStation = {
 
 const newsSources = [
   {
-    name: "UOKiK",
-    domain: "uokik.gov.pl",
-    feedUrl: "https://uokik.gov.pl/feed",
-    policyUrl: "https://uokik.gov.pl/rss",
-    category: "Polska",
+    name: "Укрінформ",
+    domain: "ukrinform.ua",
+    feedUrl: "https://www.ukrinform.ua/rss/block-lastnews",
+    policyUrl: "https://www.ukrinform.ua/rss/block-lastnews",
+    category: "Україна",
     reuseAllowed: true,
   },
   {
-    name: "GUS",
-    domain: "stat.gov.pl",
-    feedUrl: "https://stat.gov.pl/rss/pl/5438/8.xml",
-    policyUrl: "https://stat.gov.pl/rss/",
-    category: "Społeczeństwo",
+    name: "Радіо Свобода",
+    domain: "radiosvoboda.org",
+    feedUrl: "https://www.radiosvoboda.org/api/zrqiteuuir",
+    policyUrl: "https://www.radiosvoboda.org/api/zrqiteuuir",
+    category: "Україна",
     reuseAllowed: true,
   },
 ];
 
 const fallbackNews = [
   {
-    id: "fallback-uokik",
-    title: "Офіційні польські новини підключаються через whitelist RSS",
-    excerpt: "MVP показує короткі описи, джерело і посилання на оригінал. Повні тексти не копіюються автоматично.",
-    source: "Radio Prywoz",
-    originalUrl: "https://uokik.gov.pl/rss",
+    id: "fallback-odesa",
+    title: "Одеський напрямок: чекаємо на оновлення RSS",
+    excerpt: "Якщо живий фід тимчасово недоступний, сайт лишає резервну картку і веде читача до відкритого українського джерела.",
+    source: "Укрінформ",
+    originalUrl: "https://www.ukrinform.ua/rss/block-lastnews",
     publishedAt: new Date().toISOString(),
-    category: "Polska",
+    category: "Одеса",
   },
   {
-    id: "fallback-gus",
-    title: "Стрічка готова до державних джерел Польщі",
-    excerpt: "Для старту додані UOKiK та GUS. Інші RSS можна вносити в конфіг після перевірки умов повторного використання.",
-    source: "Radio Prywoz",
-    originalUrl: "https://stat.gov.pl/rss/",
+    id: "fallback-kherson-dnipro",
+    title: "Херсон і Дніпро у фокусі української стрічки",
+    excerpt: "Новинний блок автоматично піднімає матеріали, де згадуються Херсон, Дніпро, Одеса та їхні області.",
+    source: "Радіо Свобода",
+    originalUrl: "https://www.radiosvoboda.org/api/zrqiteuuir",
     publishedAt: new Date().toISOString(),
-    category: "Społeczeństwo",
+    category: "Україна",
   },
+];
+
+const regionalNewsKeywords = [
+  "одес",
+  "odesa",
+  "одеса",
+  "херсон",
+  "kherson",
+  "дніпр",
+  "днепр",
+  "dnipro",
+  "дніпро",
+  "дніпропетров",
+  "dnipropetrov",
 ];
 
 const memoryStorage = new Map();
@@ -269,12 +286,24 @@ const normalizeStationName = (value) => value.toLowerCase().replace(/[^a-z0-9ą�
 const stripHtml = (value = "") => value.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
 const rssJsonUrl = (url) => `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`;
 const rawProxyUrl = (url) => `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`;
+const normalizeNewsText = (value = "") => value.toLocaleLowerCase("uk-UA");
 const t = (key, replacements = {}) => {
   const value = translations[activeLanguage]?.[key] || translations.uk[key] || "";
   return Object.entries(replacements).reduce(
     (result, [name, replacement]) => result.replaceAll(`{${name}}`, replacement),
     value,
   );
+};
+
+const isRegionalNews = (item) => {
+  const text = normalizeNewsText(`${item.title} ${item.excerpt} ${item.category}`);
+  return regionalNewsKeywords.some((keyword) => text.includes(keyword));
+};
+
+const prioritizeRegionalNews = (items) => {
+  const regional = items.filter(isRegionalNews);
+  const general = items.filter((item) => !isRegionalNews(item));
+  return [...regional, ...general];
 };
 
 const setMenuState = (isOpen) => {
@@ -491,7 +520,7 @@ const parseFeed = async (source) => {
         source: source.name,
         originalUrl: item.link || source.feedUrl,
         publishedAt: item.pubDate || new Date().toISOString(),
-        category: source.category,
+        category: detectNewsCategory(`${item.title} ${item.description || item.content}`) || source.category,
       }));
     }
   } catch {
@@ -514,9 +543,23 @@ const parseFeed = async (source) => {
       source: source.name,
       originalUrl,
       publishedAt: entry.querySelector("pubDate, published, updated")?.textContent || new Date().toISOString(),
-      category: source.category,
+      category: detectNewsCategory(`${entry.querySelector("title")?.textContent || ""} ${entry.querySelector("description, summary, content")?.textContent || ""}`) || source.category,
     };
   });
+};
+
+const detectNewsCategory = (value = "") => {
+  const text = normalizeNewsText(value);
+  if (text.includes("одес") || text.includes("odesa")) {
+    return "Одеса";
+  }
+  if (text.includes("херсон") || text.includes("kherson")) {
+    return "Херсон";
+  }
+  if (text.includes("дніпр") || text.includes("днепр") || text.includes("dnipro") || text.includes("dnipropetrov")) {
+    return "Дніпро";
+  }
+  return "";
 };
 
 const formatNewsDate = (dateValue) => {
@@ -549,7 +592,7 @@ const renderNews = (items) => {
 
     const tag = document.createElement("span");
     tag.className = "news-card__tag";
-    tag.textContent = item.category || "Polska";
+    tag.textContent = item.category || "Україна";
 
     const time = document.createElement("time");
     time.textContent = formatNewsDate(item.publishedAt);
@@ -586,7 +629,7 @@ const renderNews = (items) => {
 };
 
 const loadNews = async () => {
-  const cacheKey = "prywoz-news-feed-v1";
+  const cacheKey = "prywoz-news-feed-ua-v1";
   const cached = storageJson(cacheKey);
   const cacheMaxAge = 30 * 60 * 1000;
 
@@ -613,7 +656,7 @@ const loadNews = async () => {
       .filter((item, index, all) => all.findIndex((nextItem) => nextItem.id === item.id) === index)
       .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
 
-    const safeItems = items.length ? items : staticCache;
+    const safeItems = items.length ? prioritizeRegionalNews(items) : staticCache;
     storageSet(cacheKey, JSON.stringify({ createdAt: Date.now(), items: safeItems }));
     renderNews(safeItems);
   } catch {
@@ -645,6 +688,8 @@ const applyLanguage = (language) => {
       ? t("catalogCount", { count: String(stations.length) })
       : t("catalogLoading");
   }
+
+  renderNewsSources();
 };
 
 if (header && menuToggle) {
@@ -666,7 +711,7 @@ if (header && menuToggle) {
 languageButtons.forEach((button) => {
   button.addEventListener("click", () => {
     applyLanguage(button.dataset.language);
-    renderNews(storageJson("prywoz-news-feed-v1")?.items || fallbackNews);
+    renderNews(storageJson("prywoz-news-feed-ua-v1")?.items || fallbackNews);
   });
 });
 

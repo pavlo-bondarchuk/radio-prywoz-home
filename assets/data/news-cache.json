@@ -1,56 +1,38 @@
 [
   {
-    "id": "UOKiK-https://uokik.gov.pl/paczka-oplacona-dostarczona-ale-rachunek-nadal-rosnie-prezes-uokik-wszczal-postepowanie-wobec-furgonetki",
-    "title": "Paczka opłacona, dostarczona, ale rachunek nadal rośnie. Prezes UOKiK wszczął postępowanie wobec Furgonetki",
-    "excerpt": "Nadajesz, płacisz, przesyłka dociera. Jeśli korzystasz z usług Furgonetki - to może nie być koniec historii. Dalszym ciągiem mogą być dodatkowe opłaty naliczone na niejasnych podstawach już po wykonaniu usługi.",
-    "source": "UOKiK",
-    "originalUrl": "https://uokik.gov.pl/paczka-oplacona-dostarczona-ale-rachunek-nadal-rosnie-prezes-uokik-wszczal-postepowanie-wobec-furgonetki",
-    "publishedAt": "2026-08-17 05:37:00",
-    "category": "Polska"
+    "id": "fallback-odesa-ukrinform",
+    "title": "Одеський напрямок: чекаємо на оновлення відкритого RSS",
+    "excerpt": "Резервна картка показується тільки тоді, коли живий фід недоступний у браузері. Основна стрічка підтягує короткі описи з посиланням на оригінал.",
+    "source": "Укрінформ",
+    "originalUrl": "https://www.ukrinform.ua/rss/block-lastnews",
+    "publishedAt": "2026-08-19T12:00:00+03:00",
+    "category": "Одеса"
   },
   {
-    "id": "GUS-https://stat.gov.pl/aktualnosci/konferencja-online-zastosowanie-administracyjnych-zrodel-danych-i-fadn-na-potrzeby-regionalnych-rachunkow-ekonomicznych-rolnictwa,689,1.html",
-    "title": "Konferencja online: Zastosowanie administracyjnych źródeł danych i FADN",
-    "excerpt": "28 sierpnia 2026 r. odbędzie się konferencja online poświęcona wykorzystaniu administracyjnych źródeł danych oraz danych FSDN/FADN na potrzeby regionalnych rachunków ekonomicznych rolnictwa.",
-    "source": "GUS",
-    "originalUrl": "https://stat.gov.pl/aktualnosci/konferencja-online-zastosowanie-administracyjnych-zrodel-danych-i-fadn-na-potrzeby-regionalnych-rachunkow-ekonomicznych-rolnictwa,689,1.html",
-    "publishedAt": "2026-08-17 12:28:00",
-    "category": "Społeczeństwo"
+    "id": "fallback-kherson-radiosvoboda",
+    "title": "Херсон у фокусі української новинної стрічки",
+    "excerpt": "Сайт підсвічує матеріали, де у відкритих українських RSS згадується Херсон або область, і веде читача до сторінки джерела.",
+    "source": "Радіо Свобода",
+    "originalUrl": "https://www.radiosvoboda.org/api/zrqiteuuir",
+    "publishedAt": "2026-08-19T11:30:00+03:00",
+    "category": "Херсон"
   },
   {
-    "id": "UOKiK-https://uokik.gov.pl/burze-wokol-koncertow-poradnik-uokik",
-    "title": "Burze wokół koncertów - poradnik UOKiK",
-    "excerpt": "Skrócony line-up, fatalne nagłośnienie, zdublowany bilet albo odwołany koncert mogą być podstawą do reklamacji. UOKiK przypomina prawa konsumentów podczas letnich wydarzeń.",
-    "source": "UOKiK",
-    "originalUrl": "https://uokik.gov.pl/burze-wokol-koncertow-poradnik-uokik",
-    "publishedAt": "2026-08-13 05:00:00",
-    "category": "Polska"
+    "id": "fallback-dnipro-ukrinform",
+    "title": "Дніпро та область: регіональні згадки підіймаються вище",
+    "excerpt": "Алгоритм сортування спочатку показує матеріали з Одесою, Херсоном і Дніпром, а потім інші українські новини з whitelist.",
+    "source": "Укрінформ",
+    "originalUrl": "https://www.ukrinform.ua/rss/block-lastnews",
+    "publishedAt": "2026-08-19T11:00:00+03:00",
+    "category": "Дніпро"
   },
   {
-    "id": "GUS-https://stat.gov.pl/obszary-tematyczne/inne-opracowania/miasta-wojewodztwa/regiony-polski-2026,6,20.html",
-    "title": "Regiony Polski 2026",
-    "excerpt": "Folder prezentuje charakterystykę zjawisk społeczno-gospodarczych w przekrojach terytorialnych, tempo zmian w ostatnich latach oraz relacje względem średnich krajowych.",
-    "source": "GUS",
-    "originalUrl": "https://stat.gov.pl/obszary-tematyczne/inne-opracowania/miasta-wojewodztwa/regiony-polski-2026,6,20.html",
-    "publishedAt": "2026-08-17 07:30:00",
-    "category": "Społeczeństwo"
-  },
-  {
-    "id": "UOKiK-https://uokik.gov.pl/wakacje-last-minute-wypoczynek-pod-presja",
-    "title": "Wakacje last minute. Wypoczynek pod presją?",
-    "excerpt": "UOKiK radzi, aby spokojnie sprawdzać oferty wyjazdów i noclegów, porównywać ceny oraz upewniać się, że nie doliczono usług, których klient nie wybrał.",
-    "source": "UOKiK",
-    "originalUrl": "https://uokik.gov.pl/wakacje-last-minute-wypoczynek-pod-presja",
-    "publishedAt": "2026-08-12 05:22:00",
-    "category": "Polska"
-  },
-  {
-    "id": "GUS-https://stat.gov.pl/obszary-tematyczne/ceny-handel/handel/produkcja-uslug-w-maju-2026-r-,23,17.html",
-    "title": "Produkcja usług w maju 2026 r.",
-    "excerpt": "Według danych wstępnych w maju 2026 r. produkcja usług była wyższa niż przed rokiem, a w porównaniu z kwietniem również wzrosła.",
-    "source": "GUS",
-    "originalUrl": "https://stat.gov.pl/obszary-tematyczne/ceny-handel/handel/produkcja-uslug-w-maju-2026-r-,23,17.html",
-    "publishedAt": "2026-08-17 07:30:00",
-    "category": "Społeczeństwo"
+    "id": "fallback-ukraine-radiosvoboda",
+    "title": "Українські новини без копіювання повних текстів",
+    "excerpt": "У блоці лишаються короткий опис, назва джерела і пряме посилання на оригінал, щоб контент не дублювався як повний репост.",
+    "source": "Радіо Свобода",
+    "originalUrl": "https://www.radiosvoboda.org/api/zrqiteuuir",
+    "publishedAt": "2026-08-19T10:30:00+03:00",
+    "category": "Україна"
   }
 ]
