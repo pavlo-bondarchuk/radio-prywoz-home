@@ -202,6 +202,22 @@ const newsSources = [
     category: "Україна",
     reuseAllowed: true,
   },
+  {
+    name: "UOKiK",
+    domain: "uokik.gov.pl",
+    feedUrl: "https://uokik.gov.pl/feed",
+    policyUrl: "https://uokik.gov.pl/rss",
+    category: "Польща",
+    reuseAllowed: true,
+  },
+  {
+    name: "GUS",
+    domain: "stat.gov.pl",
+    feedUrl: "https://stat.gov.pl/rss/pl/5438/8.xml",
+    policyUrl: "https://stat.gov.pl/rss/",
+    category: "Польща",
+    reuseAllowed: true,
+  },
 ];
 
 const fallbackNews = [
@@ -215,13 +231,40 @@ const fallbackNews = [
     category: "Одеса",
   },
   {
-    id: "fallback-kherson-dnipro",
-    title: "Херсон і Дніпро у фокусі української стрічки",
-    excerpt: "Новинний блок автоматично піднімає матеріали, де згадуються Херсон, Дніпро, Одеса та їхні області.",
+    id: "fallback-kherson-radiosvoboda",
+    title: "Херсон у фокусі української новинної стрічки",
+    excerpt: "Сайт підсвічує матеріали, де у відкритих українських RSS згадується Херсон або область, і веде читача до сторінки джерела.",
     source: "Радіо Свобода",
     originalUrl: "https://www.radiosvoboda.org/api/zrqiteuuir",
     publishedAt: new Date().toISOString(),
-    category: "Україна",
+    category: "Херсон",
+  },
+  {
+    id: "fallback-dnipro-ukrinform",
+    title: "Дніпро та область: регіональні згадки підіймаються вище",
+    excerpt: "Алгоритм сортування спочатку показує матеріали з Одесою, Херсоном і Дніпром, а потім інші українські та польські новини з whitelist.",
+    source: "Укрінформ",
+    originalUrl: "https://www.ukrinform.ua/rss/block-lastnews",
+    publishedAt: new Date().toISOString(),
+    category: "Дніпро",
+  },
+  {
+    id: "fallback-polish-context-uokik",
+    title: "Польський контекст теж залишається у стрічці",
+    excerpt: "Для українців у Польщі важливі також офіційні польські оновлення. Картки показують короткий опис, джерело і посилання на оригінал.",
+    source: "UOKiK",
+    originalUrl: "https://uokik.gov.pl/rss",
+    publishedAt: new Date().toISOString(),
+    category: "Польща",
+  },
+  {
+    id: "fallback-polish-context-gus",
+    title: "Статистика і суспільні оновлення з польських джерел",
+    excerpt: "Стрічка може поєднувати українські регіональні новини з польськими офіційними RSS, щоб контент був корисним для життя в Польщі.",
+    source: "GUS",
+    originalUrl: "https://stat.gov.pl/rss/",
+    publishedAt: new Date().toISOString(),
+    category: "Польща",
   },
 ];
 
@@ -300,10 +343,30 @@ const isRegionalNews = (item) => {
   return regionalNewsKeywords.some((keyword) => text.includes(keyword));
 };
 
-const prioritizeRegionalNews = (items) => {
-  const regional = items.filter(isRegionalNews);
-  const general = items.filter((item) => !isRegionalNews(item));
-  return [...regional, ...general];
+const mixNewsBySource = (items) => {
+  const buckets = newsSources.map((source) => {
+    return items
+      .filter((item) => item.source === source.name)
+      .sort((a, b) => {
+        const regionalDelta = Number(isRegionalNews(b)) - Number(isRegionalNews(a));
+        if (regionalDelta !== 0) {
+          return regionalDelta;
+        }
+        return new Date(b.publishedAt) - new Date(a.publishedAt);
+      });
+  });
+  const mixed = [];
+  let cursor = 0;
+
+  while (buckets.some((bucket) => bucket.length)) {
+    const bucket = buckets[cursor % buckets.length];
+    if (bucket?.length) {
+      mixed.push(bucket.shift());
+    }
+    cursor += 1;
+  }
+
+  return mixed;
 };
 
 const setMenuState = (isOpen) => {
@@ -629,7 +692,7 @@ const renderNews = (items) => {
 };
 
 const loadNews = async () => {
-  const cacheKey = "prywoz-news-feed-ua-v1";
+  const cacheKey = "prywoz-news-feed-ua-pl-v2";
   const cached = storageJson(cacheKey);
   const cacheMaxAge = 30 * 60 * 1000;
 
@@ -656,7 +719,7 @@ const loadNews = async () => {
       .filter((item, index, all) => all.findIndex((nextItem) => nextItem.id === item.id) === index)
       .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
 
-    const safeItems = items.length ? prioritizeRegionalNews(items) : staticCache;
+    const safeItems = items.length ? mixNewsBySource(items) : staticCache;
     storageSet(cacheKey, JSON.stringify({ createdAt: Date.now(), items: safeItems }));
     renderNews(safeItems);
   } catch {
@@ -711,7 +774,7 @@ if (header && menuToggle) {
 languageButtons.forEach((button) => {
   button.addEventListener("click", () => {
     applyLanguage(button.dataset.language);
-    renderNews(storageJson("prywoz-news-feed-ua-v1")?.items || fallbackNews);
+    renderNews(storageJson("prywoz-news-feed-ua-pl-v2")?.items || fallbackNews);
   });
 });
 
