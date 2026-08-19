@@ -253,7 +253,7 @@ a {
   font-weight: 800;
   line-height: 0.94;
   text-transform: uppercase;
-  white-space: pre-line;
+  white-space: nowrap;
 }
 
 .logo__description {

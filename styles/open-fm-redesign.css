@@ -28,7 +28,7 @@ body {
 
 .site-header__inner {
   min-height: 88px;
-  grid-template-columns: 260px minmax(0, 1fr) auto;
+  grid-template-columns: minmax(320px, max-content) minmax(0, 1fr) auto;
 }
 
 .logo__image {
@@ -65,6 +65,7 @@ body {
 .logo__name {
   font-size: 22px;
   line-height: 1;
+  white-space: nowrap;
 }
 
 .logo__description {

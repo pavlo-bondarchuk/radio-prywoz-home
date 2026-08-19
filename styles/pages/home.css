@@ -44,6 +44,7 @@
   font-weight: 800;
   line-height: 0.94;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .logo__description {
@@ -1387,7 +1388,6 @@
     padding-top: 8px;
   }
 
-  .logo__name,
   .logo__description {
     overflow-wrap: anywhere;
   }
