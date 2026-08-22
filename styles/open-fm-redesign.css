@@ -192,7 +192,6 @@ body {
   opacity: 1;
 }
 
-.hero-actions,
 .listen-actions {
   display: grid;
   width: 100%;
@@ -202,7 +201,6 @@ body {
   gap: var(--ds-space-6);
 }
 
-.hero-actions .button,
 .listen-actions .button {
   width: auto;
   min-width: 0;
@@ -640,13 +638,11 @@ body {
     width: 86px;
   }
 
-  .hero-actions,
   .listen-actions {
     grid-template-columns: 1fr;
     gap: var(--ds-space-4);
   }
 
-  .hero-actions .button,
   .listen-actions .button {
     width: 100%;
     white-space: normal;

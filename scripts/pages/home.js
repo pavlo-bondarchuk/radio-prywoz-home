@@ -11,13 +11,10 @@ const volumeButton = document.querySelector(".live-player__volume");
 const volumeButtonIcon = document.querySelector(".live-player__volume use");
 const stationTitle = document.querySelector(".live-player__track");
 const stationMeta = document.querySelector(".live-player__host");
-const stationStatus = document.querySelector("[data-station-status]");
-const stationList = document.querySelector("[data-station-list]");
 const trackControls = document.querySelectorAll(".live-player__control[data-action]");
 const mediaHolder = document.querySelector(".live-player__record");
 const mediaImage = document.querySelector(".live-player__record-image");
 const newsList = document.querySelector("[data-news-list]");
-const newsSourcesList = document.querySelector("[data-news-sources]");
 const newsFilter = document.querySelector("[data-news-filter]");
 const newsFilterButtons = document.querySelectorAll("[data-news-category]");
 
@@ -28,16 +25,14 @@ const translations = {
     brandName: "РАДИО ПРИВОЗ ФМ",
     navHome: "Головна",
     navListen: "Ефір",
-    navStations: "Станції",
     navNews: "Новини",
     navAbout: "Про нас",
     navContacts: "Контакти",
     eyebrow: "Музика. Гумор. Культура. Люди.",
     heroTitle: "Перше українське радіо в Польщі",
-    heroLead: "РАДИО ПРИВОЗ ФМ — легкий медіалендинг для українців у Польщі: живе радіо, польські станції, автоматична стрічка відкритих українських новин і простий контакт з редакцією.",
+    heroLead: "РАДИО ПРИВОЗ ФМ — україномовний медіапроєкт для людей у Польщі та по всьому світу: живе радіо, корисні новини, культура і простий контакт з редакцією.",
     listenLive: "Слухати live",
     nowOnAir: "Зараз в ефірі",
-    stationsTitle: "Польські та українські станції",
     latestNews: "Останні новини",
     aboutProject: "Про проєкт",
     aboutText: "РАДИО ПРИВОЗ ФМ — україномовний медіапроєкт для людей у Польщі та по всьому світу. Ми поєднуємо музику, корисні новини, культуру і живе слово.",
@@ -59,12 +54,7 @@ const translations = {
     footerCardText: "Будемо разом щодня на хвилях РАДИО ПРИВОЗ ФМ",
     copyright: "© 2026 РАДИО ПРИВОЗ ФМ. Усі права захищено.",
     madeFor: "Створено з любов'ю для наших слухачів",
-    catalogCount: "Каталог: {count} станцій",
-    catalogLoading: "Завантаження каталогу...",
-    catalogUpdating: "Оновлюємо список станцій...",
-    catalogFallback: "Список станцій тимчасово недоступний.",
     localStationMeta: "Живий ефір онлайн",
-    externalStationMeta: "Живий ефір онлайн",
     stationError: "Не вдалося підключитися до цієї станції. Спробуйте іншу.",
     newsSourceLabel: "Джерело",
     readOriginal: "Читати оригінал",
@@ -82,16 +72,14 @@ const translations = {
     brandName: "РАДИО ПРИВОЗ ФМ",
     navHome: "Start",
     navListen: "Radio",
-    navStations: "Stacje",
     navNews: "Wiadomości",
     navAbout: "O nas",
     navContacts: "Kontakt",
     eyebrow: "Muzyka. Humor. Kultura. Ludzie.",
     heroTitle: "Ukraińskie radio w Polsce",
-    heroLead: "РАДИО ПРИВОЗ ФМ to lekki landing medialny dla Ukraińców w Polsce: radio na żywo, polskie stacje, automatyczna lista otwartych wiadomości z Ukrainy i prosty kontakt z redakcją.",
+    heroLead: "РАДИО ПРИВОЗ ФМ to ukraińskojęzyczny projekt medialny dla osób w Polsce i na świecie: radio na żywo, przydatne wiadomości, kultura i prosty kontakt z redakcją.",
     listenLive: "Słuchaj live",
     nowOnAir: "Teraz gramy",
-    stationsTitle: "Polskie i ukraińskie stacje",
     latestNews: "Najnowsze wiadomości",
     aboutProject: "O projekcie",
     aboutText: "РАДИО ПРИВОЗ ФМ to ukraińskojęzyczny projekt medialny dla osób w Polsce i na świecie. Łączymy muzykę, przydatne wiadomości, kulturę i żywe słowo.",
@@ -113,12 +101,7 @@ const translations = {
     footerCardText: "Bądźmy razem każdego dnia na falach РАДИО ПРИВОЗ ФМ",
     copyright: "© 2026 РАДИО ПРИВОЗ ФМ. Wszelkie prawa zastrzeżone.",
     madeFor: "Stworzone z miłością dla naszych słuchaczy",
-    catalogCount: "Katalog: {count} stacji",
-    catalogLoading: "Ładowanie katalogu...",
-    catalogUpdating: "Aktualizujemy listę stacji...",
-    catalogFallback: "Lista stacji jest chwilowo niedostępna.",
     localStationMeta: "Radio online na żywo",
-    externalStationMeta: "Radio online na żywo",
     stationError: "Nie udało się połączyć z tą stacją. Spróbuj innej.",
     newsSourceLabel: "Źródło",
     readOriginal: "Czytaj oryginał",
@@ -136,16 +119,14 @@ const translations = {
     brandName: "РАДИО ПРИВОЗ ФМ",
     navHome: "Главная",
     navListen: "Эфир",
-    navStations: "Станции",
     navNews: "Новости",
     navAbout: "О нас",
     navContacts: "Контакты",
     eyebrow: "Музыка. Юмор. Культура. Люди.",
     heroTitle: "Украинское радио в Польше",
-    heroLead: "РАДИО ПРИВОЗ ФМ — легкий медиалендинг для украинцев в Польше: живое радио, польские станции, автоматическая лента открытых украинских новостей и простой контакт с редакцией.",
+    heroLead: "РАДИО ПРИВОЗ ФМ — украиноязычный медиапроект для людей в Польше и по всему миру: живое радио, полезные новости, культура и простой контакт с редакцией.",
     listenLive: "Слушать live",
     nowOnAir: "Сейчас в эфире",
-    stationsTitle: "Польские и украинские станции",
     latestNews: "Последние новости",
     aboutProject: "О проекте",
     aboutText: "РАДИО ПРИВОЗ ФМ — украиноязычный медиапроект для людей в Польше и по всему миру. Мы соединяем музыку, полезные новости, культуру и живое слово.",
@@ -167,12 +148,7 @@ const translations = {
     footerCardText: "Будем вместе каждый день на волнах РАДИО ПРИВОЗ ФМ",
     copyright: "© 2026 РАДИО ПРИВОЗ ФМ. Все права защищены.",
     madeFor: "Создано с любовью для наших слушателей",
-    catalogCount: "Каталог: {count} станций",
-    catalogLoading: "Загрузка каталога...",
-    catalogUpdating: "Обновляем список станций...",
-    catalogFallback: "Список станций временно недоступен.",
     localStationMeta: "Живой эфир онлайн",
-    externalStationMeta: "Живой эфир онлайн",
     stationError: "Не удалось подключиться к этой станции. Попробуйте другую.",
     newsSourceLabel: "Источник",
     readOriginal: "Читать оригинал",
@@ -187,53 +163,6 @@ const translations = {
     newsCategorySport: "Спорт",
   },
 };
-
-const stationSearchGroups = [
-  {
-    preferredNames: ["RMF FM", "Radio Zet", "Radio 357", "ESKA", "RMF MAXX", "VOX FM", "Antyradio", "TOK FM", "Złote Przeboje", "Polskie Radio 24"],
-    maxItems: 8,
-    searches: [
-      {
-        countrycode: "PL",
-        language: "polish",
-        order: "clickcount",
-        reverse: "true",
-        limit: "140",
-      },
-    ],
-  },
-  {
-    preferredNames: ["Перше міське радіо", "Одесса радио", "Minatrix", "Radio Ppeople"],
-    maxItems: 3,
-    searches: [
-      { countrycode: "UA", name: "Одеса", order: "clickcount", reverse: "true", limit: "20" },
-      { countrycode: "UA", name: "Одесса", order: "clickcount", reverse: "true", limit: "20" },
-      { countrycode: "UA", state: "Odesa", order: "clickcount", reverse: "true", limit: "20" },
-      { countrycode: "UA", state: "Odessa", order: "clickcount", reverse: "true", limit: "20" },
-    ],
-  },
-  {
-    preferredNames: ["RockRadio UA", "РокРадіо UA", "Kherson"],
-    maxItems: 2,
-    searches: [
-      { countrycode: "UA", name: "Херсон", order: "clickcount", reverse: "true", limit: "20" },
-      { countrycode: "UA", name: "Kherson", order: "clickcount", reverse: "true", limit: "20" },
-      { countrycode: "UA", state: "Kherson", order: "clickcount", reverse: "true", limit: "20" },
-    ],
-  },
-  {
-    preferredNames: ["Informator FM", "Дніпро", "Днепр", "Dnipro"],
-    maxItems: 2,
-    searches: [
-      { countrycode: "UA", name: "Дніпро", order: "clickcount", reverse: "true", limit: "20" },
-      { countrycode: "UA", name: "Днепр", order: "clickcount", reverse: "true", limit: "20" },
-      { countrycode: "UA", name: "Dnipro", order: "clickcount", reverse: "true", limit: "20" },
-      { countrycode: "UA", name: "Informator FM", order: "clickcount", reverse: "true", limit: "20" },
-      { countrycode: "UA", state: "Dnepr", order: "clickcount", reverse: "true", limit: "20" },
-      { countrycode: "UA", state: "Dnipropetrovsk", order: "clickcount", reverse: "true", limit: "20" },
-    ],
-  },
-];
 
 const localStation = {
   stationuuid: "radio-prywoz",
@@ -280,7 +209,6 @@ const newsSources = [
     name: "Укрінформ",
     domain: "ukrinform.ua",
     feedUrl: "https://www.ukrinform.ua/rss/block-lastnews",
-    policyUrl: "https://www.ukrinform.ua/rss/block-lastnews",
     category: "society",
     reuseAllowed: true,
   },
@@ -288,7 +216,6 @@ const newsSources = [
     name: "Радіо Свобода",
     domain: "radiosvoboda.org",
     feedUrl: "https://www.radiosvoboda.org/api/zrqiteuuir",
-    policyUrl: "https://www.radiosvoboda.org/api/zrqiteuuir",
     category: "society",
     reuseAllowed: true,
   },
@@ -296,7 +223,6 @@ const newsSources = [
     name: "UOKiK",
     domain: "uokik.gov.pl",
     feedUrl: "https://uokik.gov.pl/feed",
-    policyUrl: "https://uokik.gov.pl/rss",
     category: "society",
     reuseAllowed: true,
   },
@@ -304,7 +230,6 @@ const newsSources = [
     name: "GUS",
     domain: "stat.gov.pl",
     feedUrl: "https://stat.gov.pl/rss/pl/5438/8.xml",
-    policyUrl: "https://stat.gov.pl/rss/",
     category: "society",
     reuseAllowed: true,
   },
@@ -450,10 +375,7 @@ const storageJson = (key) => {
 };
 
 let activeLanguage = storageGet("prywoz-language") || "uk";
-let stations = [localStation];
-let activeStationIndex = 0;
 let userStartedPlayback = false;
-let switchTimeout;
 let broadcastSchedule = defaultBroadcastSchedule;
 let activeBroadcast = null;
 let activePlaylistIndex = 0;
@@ -461,12 +383,6 @@ let currentBroadcastSignature = "";
 let loadedNewsItems = fallbackNews;
 let activeNewsCategory = "all";
 
-const normalizeStationName = (value = "") => value.toLocaleLowerCase("uk-UA").replace(/[^\p{L}\p{N}]+/gu, "");
-const isPlayableStation = (station) => {
-  const streamUrl = station.url_resolved || station.url || "";
-  const requiresHttps = window.location.protocol === "https:";
-  return streamUrl && (!requiresHttps || streamUrl.startsWith("https://"));
-};
 const stripHtml = (value = "") => value.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
 const rssJsonUrl = (url) => `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`;
 const rawProxyUrl = (url) => `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`;
@@ -581,48 +497,6 @@ const ensureNewsCategoryCoverage = (items, reserveItems) => {
   return completeItems;
 };
 
-const fetchRadioStations = async (apiBase, search) => {
-  const params = new URLSearchParams({
-    hidebroken: "true",
-    ...search,
-  });
-  const response = await fetch(`${apiBase}/json/stations/search?${params.toString()}`);
-  const data = await response.json();
-  return Array.isArray(data) ? data.filter(isPlayableStation) : [];
-};
-
-const pickStationGroup = (results, preferredNames, maxItems) => {
-  const normalizedPreferredNames = preferredNames.map(normalizeStationName);
-  const picked = [];
-  const append = (station) => {
-    if (station && !picked.some((item) => item.stationuuid === station.stationuuid)) {
-      picked.push(station);
-    }
-  };
-
-  normalizedPreferredNames.forEach((preferredName) => {
-    append(results.find((station) => normalizeStationName(station.name).includes(preferredName)));
-  });
-
-  results.forEach(append);
-  return picked.slice(0, maxItems);
-};
-
-const mixStationGroups = (groups) => {
-  const mixed = [];
-  let cursor = 0;
-
-  while (groups.some((group) => group.length)) {
-    const group = groups[cursor % groups.length];
-    if (group?.length) {
-      mixed.push(group.shift());
-    }
-    cursor += 1;
-  }
-
-  return mixed;
-};
-
 const setMenuState = (isOpen) => {
   if (!header || !menuToggle) {
     return;
@@ -644,12 +518,12 @@ const setPlayerState = (state) => {
   player.classList.toggle("live-player--error", state === "error");
 };
 
-const renderStationMeta = (station) => {
+const renderStationMeta = () => {
   if (!stationTitle || !stationMeta) {
     return;
   }
 
-  if (station.isLocal && activeBroadcast) {
+  if (activeBroadcast) {
     stationTitle.textContent = activeBroadcast.title;
     stationMeta.textContent = activeBroadcast.mode === "relay"
       ? t("relayBroadcastMeta")
@@ -657,8 +531,8 @@ const renderStationMeta = (station) => {
     return;
   }
 
-  stationTitle.textContent = station.name;
-  stationMeta.textContent = station.isLocal ? t("localStationMeta") : t("externalStationMeta");
+  stationTitle.textContent = localStation.name;
+  stationMeta.textContent = t("localStationMeta");
 };
 
 const loadBroadcastSchedule = async () => {
@@ -677,7 +551,7 @@ const loadBroadcastSchedule = async () => {
 };
 
 const syncScheduledBroadcast = async (shouldPlay = false, force = false) => {
-  if (!audio || activeStationIndex !== 0) {
+  if (!audio) {
     return;
   }
 
@@ -688,8 +562,12 @@ const syncScheduledBroadcast = async (shouldPlay = false, force = false) => {
 
   activeBroadcast = nextBroadcast;
   currentBroadcastSignature = signature;
-  renderStationMeta(localStation);
+  renderStationMeta();
   renderMediaType(nextBroadcast.mode === "relay" ? 0 : activePlaylistIndex);
+  const canSkip = slot.mode === "playlist" && slot.playlist?.length > 1;
+  trackControls.forEach((control) => {
+    control.disabled = !canSkip;
+  });
 
   if (!sourceChanged) {
     return;
@@ -723,129 +601,6 @@ const renderMediaType = (stationIndex) => {
   mediaHolder.classList.add(`live-player__record--${type}`);
 };
 
-const renderStations = () => {
-  if (!stationList) {
-    return;
-  }
-
-  stationList.replaceChildren();
-  stations.forEach((station, index) => {
-    const button = document.createElement("button");
-    button.className = "station-chip";
-    button.type = "button";
-    button.dataset.stationIndex = String(index);
-    button.classList.toggle("station-chip--active", index === activeStationIndex);
-    button.setAttribute("aria-pressed", String(index === activeStationIndex));
-
-    const logo = document.createElement("span");
-    logo.className = "station-chip__logo";
-    if (station.favicon) {
-      const image = document.createElement("img");
-      image.src = station.favicon;
-      image.alt = "";
-      image.loading = "lazy";
-      logo.append(image);
-    } else {
-      logo.textContent = station.name.slice(0, 2).toUpperCase();
-    }
-
-    const text = document.createElement("span");
-    text.className = "station-chip__text";
-    text.textContent = station.name;
-    button.append(logo, text);
-    stationList.append(button);
-  });
-};
-
-const setActiveStation = async (index, shouldPlay = userStartedPlayback) => {
-  if (!audio || stations.length === 0) {
-    return;
-  }
-
-  activeStationIndex = (index + stations.length) % stations.length;
-
-  const station = stations[activeStationIndex];
-  window.clearTimeout(switchTimeout);
-  player?.classList.remove("live-player--switching");
-  void player?.offsetWidth;
-  player?.classList.add("live-player--switching");
-  switchTimeout = window.setTimeout(() => player?.classList.remove("live-player--switching"), 820);
-
-  renderStationMeta(station);
-  renderStations();
-
-  if (station.isLocal) {
-    await syncScheduledBroadcast(shouldPlay, true);
-    return;
-  }
-
-  activeBroadcast = null;
-  currentBroadcastSignature = "";
-  renderMediaType(activeStationIndex);
-
-  audio.pause();
-  audio.src = station.url_resolved || station.url || localStation.url_resolved;
-  audio.load();
-
-  if (shouldPlay) {
-    setPlayerState("loading");
-    try {
-      await audio.play();
-    } catch {
-      setPlayerState("error");
-      if (stationMeta) {
-        stationMeta.textContent = t("stationError");
-      }
-    }
-  }
-};
-
-const getRadioBrowserServer = async () => {
-  const response = await fetch("https://all.api.radio-browser.info/json/servers");
-  const servers = await response.json();
-  const firstServer = servers.find((server) => server.name);
-  return firstServer ? `https://${firstServer.name}` : "https://de1.api.radio-browser.info";
-};
-
-const loadStations = async () => {
-  if (!stationStatus) {
-    return;
-  }
-
-  const cacheKey = "prywoz-radio-browser-stations-v2";
-  const cached = storageJson(cacheKey);
-  const cacheMaxAge = 6 * 60 * 60 * 1000;
-
-  if (cached && Date.now() - cached.createdAt < cacheMaxAge) {
-    stations = [localStation, ...cached.items];
-    stationStatus.textContent = t("catalogCount", { count: String(stations.length) });
-    await setActiveStation(Math.min(activeStationIndex, stations.length - 1), false);
-    return;
-  }
-
-  try {
-    stationStatus.textContent = t("catalogUpdating");
-    const apiBase = await getRadioBrowserServer();
-    const stationGroups = await Promise.all(stationSearchGroups.map(async (group) => {
-      const results = await Promise.all(group.searches.map((search) => fetchRadioStations(apiBase, search)));
-      const uniqueResults = results
-        .flat()
-        .filter((station, index, all) => all.findIndex((item) => item.stationuuid === station.stationuuid) === index);
-      return pickStationGroup(uniqueResults, group.preferredNames, group.maxItems);
-    }));
-    const picked = mixStationGroups(stationGroups);
-
-    storageSet(cacheKey, JSON.stringify({ createdAt: Date.now(), items: picked }));
-    stations = [localStation, ...picked];
-    stationStatus.textContent = t("catalogCount", { count: String(stations.length) });
-    await setActiveStation(Math.min(activeStationIndex, stations.length - 1), false);
-  } catch {
-    stationStatus.textContent = t("catalogFallback");
-    stations = [localStation];
-    await setActiveStation(0, false);
-  }
-};
-
 const updateVolumeState = () => {
   if (!audio || !volumeButton) {
     return;
@@ -855,19 +610,6 @@ const updateVolumeState = () => {
   volumeButton.setAttribute("aria-pressed", String(isMuted));
   volumeButton.setAttribute("aria-label", isMuted ? "Увімкнути звук" : "Вимкнути звук");
   volumeButtonIcon?.setAttribute("href", `${iconPath}#${isMuted ? "volume-x" : "volume-2"}`);
-};
-
-const renderNewsSources = () => {
-  if (!newsSourcesList) {
-    return;
-  }
-
-  newsSourcesList.replaceChildren();
-  newsSources.forEach((source) => {
-    const item = document.createElement("li");
-    item.innerHTML = `<a href="${source.policyUrl}" target="_blank" rel="noopener">${source.name}</a>`;
-    newsSourcesList.append(item);
-  });
 };
 
 const parseFeed = async (source) => {
@@ -1045,14 +787,7 @@ const applyLanguage = (language) => {
     button.setAttribute("aria-current", String(isActive));
   });
 
-  renderStationMeta(stations[activeStationIndex] || localStation);
-  if (stationStatus) {
-    stationStatus.textContent = stations.length > 1
-      ? t("catalogCount", { count: String(stations.length) })
-      : t("catalogLoading");
-  }
-
-  renderNewsSources();
+  renderStationMeta();
   renderNews(loadedNewsItems);
 };
 
@@ -1132,7 +867,7 @@ if (player && audio && playButton && volumeButton) {
   audio.addEventListener("waiting", () => setPlayerState("loading"));
   audio.addEventListener("error", () => setPlayerState("error"));
   audio.addEventListener("ended", () => {
-    if (activeStationIndex === 0 && activeBroadcast?.mode === "playlist") {
+    if (activeBroadcast?.mode === "playlist") {
       activePlaylistIndex += 1;
       syncScheduledBroadcast(true, true);
     }
@@ -1146,36 +881,24 @@ if (player && audio && playButton && volumeButton) {
   trackControls.forEach((control) => {
     control.addEventListener("click", () => {
       const direction = control.dataset.action === "next" ? 1 : -1;
-      const activeSlot = activeStationIndex === 0 ? getActiveBroadcastSlot() : null;
+      const activeSlot = getActiveBroadcastSlot();
       if (activeSlot?.mode === "playlist" && activeSlot.playlist?.length > 1) {
         activePlaylistIndex += direction;
         syncScheduledBroadcast(userStartedPlayback, true);
-        return;
       }
-      setActiveStation(activeStationIndex + direction);
     });
   });
 
-  stationList?.addEventListener("click", (event) => {
-    const button = event.target.closest("[data-station-index]");
-    if (button) {
-      setActiveStation(Number(button.dataset.stationIndex));
-    }
-  });
-
   updateVolumeState();
-  renderStations();
 
   const initializePlayer = async () => {
     await loadBroadcastSchedule();
     await syncScheduledBroadcast(false, true);
-    await loadStations();
   };
 
   initializePlayer();
   window.setInterval(() => syncScheduledBroadcast(userStartedPlayback), 60 * 1000);
 }
 
-renderNewsSources();
 applyLanguage(activeLanguage);
 loadNews();
