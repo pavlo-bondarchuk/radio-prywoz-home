@@ -18,6 +18,8 @@ const mediaHolder = document.querySelector(".live-player__record");
 const mediaImage = document.querySelector(".live-player__record-image");
 const newsList = document.querySelector("[data-news-list]");
 const newsSourcesList = document.querySelector("[data-news-sources]");
+const newsFilter = document.querySelector("[data-news-filter]");
+const newsFilterButtons = document.querySelectorAll("[data-news-category]");
 
 const iconPath = "./assets/icons/lucide-sprite.svg";
 
@@ -67,6 +69,14 @@ const translations = {
     newsSourceLabel: "Джерело",
     readOriginal: "Читати оригінал",
     newsFallbackText: "Короткий опис недоступний. Перейдіть до оригіналу на сайті джерела.",
+    ownBroadcastMeta: "Авторський ефір",
+    relayBroadcastMeta: "Нічна ретрансляція",
+    newsCategoryAll: "Усі",
+    newsCategoryPolitics: "Політика",
+    newsCategorySociety: "Суспільство",
+    newsCategoryCulture: "Культура",
+    newsCategoryEntertainment: "Розваги",
+    newsCategorySport: "Спорт",
   },
   pl: {
     brandName: "РАДИО ПРИВОЗ ФМ",
@@ -113,6 +123,14 @@ const translations = {
     newsSourceLabel: "Źródło",
     readOriginal: "Czytaj oryginał",
     newsFallbackText: "Krótki opis jest niedostępny. Przejdź do oryginału na stronie źródła.",
+    ownBroadcastMeta: "Program autorski",
+    relayBroadcastMeta: "Nocna retransmisja",
+    newsCategoryAll: "Wszystkie",
+    newsCategoryPolitics: "Polityka",
+    newsCategorySociety: "Społeczeństwo",
+    newsCategoryCulture: "Kultura",
+    newsCategoryEntertainment: "Rozrywka",
+    newsCategorySport: "Sport",
   },
   ru: {
     brandName: "РАДИО ПРИВОЗ ФМ",
@@ -159,6 +177,14 @@ const translations = {
     newsSourceLabel: "Источник",
     readOriginal: "Читать оригинал",
     newsFallbackText: "Краткое описание недоступно. Перейдите к оригиналу на сайте источника.",
+    ownBroadcastMeta: "Авторский эфир",
+    relayBroadcastMeta: "Ночная ретрансляция",
+    newsCategoryAll: "Все",
+    newsCategoryPolitics: "Политика",
+    newsCategorySociety: "Общество",
+    newsCategoryCulture: "Культура",
+    newsCategoryEntertainment: "Развлечения",
+    newsCategorySport: "Спорт",
   },
 };
 
@@ -221,13 +247,41 @@ const localStation = {
   isLocal: true,
 };
 
+const defaultBroadcastSchedule = {
+  timezone: "Europe/Warsaw",
+  slots: [
+    {
+      id: "own-broadcast",
+      start: "10:00",
+      end: "20:00",
+      mode: "playlist",
+      playlist: [
+        {
+          id: "radio-prywoz-demo",
+          title: "РАДИО ПРИВОЗ ФМ",
+          artist: "Авторський ефір",
+          src: "./assets/audio/radio-privoz-demo.mp3",
+        },
+      ],
+    },
+    {
+      id: "night-relay",
+      start: "20:00",
+      end: "10:00",
+      mode: "relay",
+      title: "РАДИО ПРИВОЗ ФМ",
+      streamUrl: "https://listen1.myradio24.com/odesradio",
+    },
+  ],
+};
+
 const newsSources = [
   {
     name: "Укрінформ",
     domain: "ukrinform.ua",
     feedUrl: "https://www.ukrinform.ua/rss/block-lastnews",
     policyUrl: "https://www.ukrinform.ua/rss/block-lastnews",
-    category: "Україна",
+    category: "society",
     reuseAllowed: true,
   },
   {
@@ -235,7 +289,7 @@ const newsSources = [
     domain: "radiosvoboda.org",
     feedUrl: "https://www.radiosvoboda.org/api/zrqiteuuir",
     policyUrl: "https://www.radiosvoboda.org/api/zrqiteuuir",
-    category: "Україна",
+    category: "society",
     reuseAllowed: true,
   },
   {
@@ -243,7 +297,7 @@ const newsSources = [
     domain: "uokik.gov.pl",
     feedUrl: "https://uokik.gov.pl/feed",
     policyUrl: "https://uokik.gov.pl/rss",
-    category: "Польща",
+    category: "society",
     reuseAllowed: true,
   },
   {
@@ -251,7 +305,7 @@ const newsSources = [
     domain: "stat.gov.pl",
     feedUrl: "https://stat.gov.pl/rss/pl/5438/8.xml",
     policyUrl: "https://stat.gov.pl/rss/",
-    category: "Польща",
+    category: "society",
     reuseAllowed: true,
   },
 ];
@@ -259,48 +313,57 @@ const newsSources = [
 const fallbackNews = [
   {
     id: "fallback-odesa",
-    title: "Одеський напрямок: чекаємо на оновлення RSS",
-    excerpt: "Якщо живий фід тимчасово недоступний, сайт лишає резервну картку і веде читача до відкритого українського джерела.",
+    title: "Суспільні новини Одеси та півдня України",
+    excerpt: "Останні матеріали про життя громад, міські зміни та важливі події регіону — з переходом до першоджерела.",
     source: "Укрінформ",
     originalUrl: "https://www.ukrinform.ua/rss/block-lastnews",
     publishedAt: new Date().toISOString(),
-    category: "Одеса",
+    category: "society",
   },
   {
     id: "fallback-kherson-radiosvoboda",
-    title: "Херсон у фокусі української новинної стрічки",
-    excerpt: "Сайт підсвічує матеріали, де у відкритих українських RSS згадується Херсон або область, і веде читача до сторінки джерела.",
+    title: "Політика України та рішення, що впливають на регіони",
+    excerpt: "Добірка політичних новин із відкритих українських джерел, включно з подіями на півдні країни.",
     source: "Радіо Свобода",
     originalUrl: "https://www.radiosvoboda.org/api/zrqiteuuir",
     publishedAt: new Date().toISOString(),
-    category: "Херсон",
+    category: "politics",
   },
   {
     id: "fallback-dnipro-ukrinform",
-    title: "Дніпро та область: регіональні згадки підіймаються вище",
-    excerpt: "Алгоритм сортування спочатку показує матеріали з Одесою, Херсоном і Дніпром, а потім інші українські та польські новини з whitelist.",
+    title: "Культурне життя Дніпра та українських громад",
+    excerpt: "Фестивалі, виставки, концерти й культурні ініціативи України та українців у Польщі.",
     source: "Укрінформ",
     originalUrl: "https://www.ukrinform.ua/rss/block-lastnews",
     publishedAt: new Date().toISOString(),
-    category: "Дніпро",
+    category: "culture",
   },
   {
     id: "fallback-polish-context-uokik",
-    title: "Польський контекст теж залишається у стрічці",
-    excerpt: "Для українців у Польщі важливі також офіційні польські оновлення. Картки показують короткий опис, джерело і посилання на оригінал.",
+    title: "Корисні суспільні новини для українців у Польщі",
+    excerpt: "Офіційні польські оновлення про права споживачів, послуги та повсякденне життя.",
     source: "UOKiK",
     originalUrl: "https://uokik.gov.pl/rss",
     publishedAt: new Date().toISOString(),
-    category: "Польща",
+    category: "society",
   },
   {
     id: "fallback-polish-context-gus",
-    title: "Статистика і суспільні оновлення з польських джерел",
-    excerpt: "Стрічка може поєднувати українські регіональні новини з польськими офіційними RSS, щоб контент був корисним для життя в Польщі.",
+    title: "Спортивні новини отримали окрему рубрику",
+    excerpt: "Матеріали про матчі, турніри та українських спортсменів автоматично збираються у вкладці «Спорт».",
     source: "GUS",
     originalUrl: "https://stat.gov.pl/rss/",
     publishedAt: new Date().toISOString(),
-    category: "Польща",
+    category: "sport",
+  },
+  {
+    id: "fallback-entertainment",
+    title: "Розваги, подорожі та легкі історії для слухачів",
+    excerpt: "Шоу, гумор, цікаві маршрути й інші легкі матеріали автоматично потрапляють до рубрики «Розваги».",
+    source: "Радіо Свобода",
+    originalUrl: "https://www.radiosvoboda.org/api/zrqiteuuir",
+    publishedAt: new Date().toISOString(),
+    category: "entertainment",
   },
 ];
 
@@ -317,6 +380,37 @@ const regionalNewsKeywords = [
   "дніпропетров",
   "dnipropetrov",
 ];
+
+const newsCategoryKeys = ["politics", "society", "culture", "entertainment", "sport"];
+const newsCategoryTranslationKeys = {
+  politics: "newsCategoryPolitics",
+  society: "newsCategorySociety",
+  culture: "newsCategoryCulture",
+  entertainment: "newsCategoryEntertainment",
+  sport: "newsCategorySport",
+};
+const newsCategoryKeywords = {
+  politics: [
+    "політик", "политик", "вибор", "выбор", "уряд", "правительств", "парламент", "депутат", "президент",
+    "minister", "sejm", "senat", "wybor", "rząd", "polityk",
+  ],
+  sport: [
+    "спорт", "футбол", "баскетбол", "теніс", "теннис", "олімп", "олимп", "матч", "чемпіон", "чемпион",
+    "sport", "piłk", "mecz", "liga", "turniej",
+  ],
+  culture: [
+    "культур", "мистец", "искусств", "театр", "кіно", "кино", "літератур", "литератур", "музей", "вистав",
+    "концерт", "фестиваль", "kultur", "teatr", "film", "muze", "wystaw",
+  ],
+  entertainment: [
+    "розваг", "развлеч", "шоу", "гумор", "юмор", "зірк", "звезд", "серіал", "сериал", "рецепт", "подорож",
+    "rozrywk", "gwiazd", "serial", "przepis", "podróż",
+  ],
+  society: [
+    "суспіль", "общество", "громад", "соціаль", "социал", "освіт", "образован", "здоров", "місто", "город",
+    "społecz", "edukac", "zdrow", "miasto", "mieszkań",
+  ],
+};
 
 const memoryStorage = new Map();
 const cookieGet = (key) => {
@@ -338,7 +432,7 @@ const storageGet = (key) => {
 };
 const storageSet = (key, value) => {
   memoryStorage.set(key, value);
-  if (key === "prywoz-language" || key === "prywoz-station-index") {
+  if (key === "prywoz-language") {
     cookieSet(key, value);
   }
   try {
@@ -357,9 +451,15 @@ const storageJson = (key) => {
 
 let activeLanguage = storageGet("prywoz-language") || "uk";
 let stations = [localStation];
-let activeStationIndex = Number(storageGet("prywoz-station-index")) || 0;
+let activeStationIndex = 0;
 let userStartedPlayback = false;
 let switchTimeout;
+let broadcastSchedule = defaultBroadcastSchedule;
+let activeBroadcast = null;
+let activePlaylistIndex = 0;
+let currentBroadcastSignature = "";
+let loadedNewsItems = fallbackNews;
+let activeNewsCategory = "all";
 
 const normalizeStationName = (value = "") => value.toLocaleLowerCase("uk-UA").replace(/[^\p{L}\p{N}]+/gu, "");
 const isPlayableStation = (station) => {
@@ -377,6 +477,64 @@ const t = (key, replacements = {}) => {
     (result, [name, replacement]) => result.replaceAll(`{${name}}`, replacement),
     value,
   );
+};
+
+const parseClockMinutes = (value = "00:00") => {
+  const [hours, minutes] = value.split(":").map(Number);
+  return (hours * 60) + minutes;
+};
+
+const getTimezoneMinutes = (timezone) => {
+  const parts = new Intl.DateTimeFormat("en-GB", {
+    timeZone: timezone,
+    hour: "2-digit",
+    minute: "2-digit",
+    hourCycle: "h23",
+  }).formatToParts(new Date());
+  const hours = Number(parts.find((part) => part.type === "hour")?.value || 0);
+  const minutes = Number(parts.find((part) => part.type === "minute")?.value || 0);
+  return (hours * 60) + minutes;
+};
+
+const isMinuteInSlot = (minute, slot) => {
+  const start = parseClockMinutes(slot.start);
+  const end = parseClockMinutes(slot.end);
+  return start < end
+    ? minute >= start && minute < end
+    : minute >= start || minute < end;
+};
+
+const getActiveBroadcastSlot = () => {
+  const timezone = broadcastSchedule.timezone || "Europe/Warsaw";
+  const minute = getTimezoneMinutes(timezone);
+  return broadcastSchedule.slots?.find((slot) => isMinuteInSlot(minute, slot)) || defaultBroadcastSchedule.slots[0];
+};
+
+const getBroadcastItem = (slot = getActiveBroadcastSlot()) => {
+  if (slot.mode === "relay") {
+    return {
+      id: slot.id,
+      title: slot.title || localStation.name,
+      artist: t("relayBroadcastMeta"),
+      src: slot.streamUrl,
+      mode: "relay",
+    };
+  }
+
+  const playlist = slot.playlist?.length ? slot.playlist : defaultBroadcastSchedule.slots[0].playlist;
+  activePlaylistIndex = (activePlaylistIndex + playlist.length) % playlist.length;
+  const item = playlist[activePlaylistIndex];
+  return {
+    ...item,
+    title: item.title || localStation.name,
+    artist: item.artist || t("ownBroadcastMeta"),
+    mode: "playlist",
+  };
+};
+
+const getNewsCategoryLabel = (category) => {
+  const key = newsCategoryTranslationKeys[category] || "newsCategorySociety";
+  return t(key);
 };
 
 const isRegionalNews = (item) => {
@@ -408,6 +566,19 @@ const mixNewsBySource = (items) => {
   }
 
   return mixed;
+};
+
+const ensureNewsCategoryCoverage = (items, reserveItems) => {
+  const completeItems = [...items];
+  newsCategoryKeys.forEach((category) => {
+    if (!completeItems.some((item) => item.category === category)) {
+      const reserveItem = reserveItems.find((item) => item.category === category);
+      if (reserveItem) {
+        completeItems.push(reserveItem);
+      }
+    }
+  });
+  return completeItems;
 };
 
 const fetchRadioStations = async (apiBase, search) => {
@@ -478,8 +649,67 @@ const renderStationMeta = (station) => {
     return;
   }
 
+  if (station.isLocal && activeBroadcast) {
+    stationTitle.textContent = activeBroadcast.title;
+    stationMeta.textContent = activeBroadcast.mode === "relay"
+      ? t("relayBroadcastMeta")
+      : (activeBroadcast.artist || t("ownBroadcastMeta"));
+    return;
+  }
+
   stationTitle.textContent = station.name;
   stationMeta.textContent = station.isLocal ? t("localStationMeta") : t("externalStationMeta");
+};
+
+const loadBroadcastSchedule = async () => {
+  try {
+    const response = await fetch("./assets/data/broadcast-schedule.json", { cache: "no-store" });
+    if (!response.ok) {
+      throw new Error("Broadcast schedule unavailable");
+    }
+    const schedule = await response.json();
+    if (schedule?.slots?.length) {
+      broadcastSchedule = schedule;
+    }
+  } catch {
+    broadcastSchedule = defaultBroadcastSchedule;
+  }
+};
+
+const syncScheduledBroadcast = async (shouldPlay = false, force = false) => {
+  if (!audio || activeStationIndex !== 0) {
+    return;
+  }
+
+  const slot = getActiveBroadcastSlot();
+  const nextBroadcast = getBroadcastItem(slot);
+  const signature = `${slot.id}:${nextBroadcast.id || nextBroadcast.src}`;
+  const sourceChanged = force || signature !== currentBroadcastSignature;
+
+  activeBroadcast = nextBroadcast;
+  currentBroadcastSignature = signature;
+  renderStationMeta(localStation);
+  renderMediaType(nextBroadcast.mode === "relay" ? 0 : activePlaylistIndex);
+
+  if (!sourceChanged) {
+    return;
+  }
+
+  audio.pause();
+  audio.src = nextBroadcast.src || localStation.url_resolved;
+  audio.load();
+
+  if (shouldPlay) {
+    setPlayerState("loading");
+    try {
+      await audio.play();
+    } catch {
+      setPlayerState("error");
+      if (stationMeta) {
+        stationMeta.textContent = t("stationError");
+      }
+    }
+  }
 };
 
 const renderMediaType = (stationIndex) => {
@@ -533,7 +763,6 @@ const setActiveStation = async (index, shouldPlay = userStartedPlayback) => {
   }
 
   activeStationIndex = (index + stations.length) % stations.length;
-  storageSet("prywoz-station-index", String(activeStationIndex));
 
   const station = stations[activeStationIndex];
   window.clearTimeout(switchTimeout);
@@ -543,8 +772,16 @@ const setActiveStation = async (index, shouldPlay = userStartedPlayback) => {
   switchTimeout = window.setTimeout(() => player?.classList.remove("live-player--switching"), 820);
 
   renderStationMeta(station);
-  renderMediaType(activeStationIndex);
   renderStations();
+
+  if (station.isLocal) {
+    await syncScheduledBroadcast(shouldPlay, true);
+    return;
+  }
+
+  activeBroadcast = null;
+  currentBroadcastSignature = "";
+  renderMediaType(activeStationIndex);
 
   audio.pause();
   audio.src = station.url_resolved || station.url || localStation.url_resolved;
@@ -676,16 +913,9 @@ const parseFeed = async (source) => {
 
 const detectNewsCategory = (value = "") => {
   const text = normalizeNewsText(value);
-  if (text.includes("одес") || text.includes("odesa")) {
-    return "Одеса";
-  }
-  if (text.includes("херсон") || text.includes("kherson")) {
-    return "Херсон";
-  }
-  if (text.includes("дніпр") || text.includes("днепр") || text.includes("dnipro") || text.includes("dnipropetrov")) {
-    return "Дніпро";
-  }
-  return "";
+  return newsCategoryKeys.find((category) => {
+    return newsCategoryKeywords[category].some((keyword) => text.includes(keyword));
+  }) || "society";
 };
 
 const formatNewsDate = (dateValue) => {
@@ -705,8 +935,13 @@ const renderNews = (items) => {
     return;
   }
 
+  loadedNewsItems = items;
+  const visibleItems = activeNewsCategory === "all"
+    ? items
+    : items.filter((item) => item.category === activeNewsCategory);
+
   newsList.replaceChildren();
-  items.slice(0, 8).forEach((item) => {
+  visibleItems.slice(0, 8).forEach((item) => {
     const article = document.createElement("article");
     article.className = "news-card news-card--text";
 
@@ -718,7 +953,7 @@ const renderNews = (items) => {
 
     const tag = document.createElement("span");
     tag.className = "news-card__tag";
-    tag.textContent = item.category || "Україна";
+    tag.textContent = getNewsCategoryLabel(item.category);
 
     const time = document.createElement("time");
     time.textContent = formatNewsDate(item.publishedAt);
@@ -755,11 +990,11 @@ const renderNews = (items) => {
 };
 
 const loadNews = async () => {
-  const cacheKey = "prywoz-news-feed-ua-pl-v2";
+  const cacheKey = "prywoz-news-feed-ua-pl-v4";
   const cached = storageJson(cacheKey);
   const cacheMaxAge = 30 * 60 * 1000;
 
-  if (cached && Date.now() - cached.createdAt < cacheMaxAge && !cached.items?.some((item) => item.id?.startsWith("fallback-"))) {
+  if (cached && Date.now() - cached.createdAt < cacheMaxAge) {
     renderNews(cached.items);
     return;
   }
@@ -782,7 +1017,9 @@ const loadNews = async () => {
       .filter((item, index, all) => all.findIndex((nextItem) => nextItem.id === item.id) === index)
       .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
 
-    const safeItems = items.length ? mixNewsBySource(items) : staticCache;
+    const safeItems = items.length
+      ? mixNewsBySource(ensureNewsCategoryCoverage(items, staticCache))
+      : staticCache;
     storageSet(cacheKey, JSON.stringify({ createdAt: Date.now(), items: safeItems }));
     renderNews(safeItems);
   } catch {
@@ -816,6 +1053,7 @@ const applyLanguage = (language) => {
   }
 
   renderNewsSources();
+  renderNews(loadedNewsItems);
 };
 
 if (header && menuToggle) {
@@ -837,8 +1075,22 @@ if (header && menuToggle) {
 languageButtons.forEach((button) => {
   button.addEventListener("click", () => {
     applyLanguage(button.dataset.language);
-    renderNews(storageJson("prywoz-news-feed-ua-pl-v2")?.items || fallbackNews);
   });
+});
+
+newsFilter?.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-news-category]");
+  if (!button) {
+    return;
+  }
+
+  activeNewsCategory = button.dataset.newsCategory || "all";
+  newsFilterButtons.forEach((item) => {
+    const isActive = item === button;
+    item.classList.toggle("news-filter__button--active", isActive);
+    item.setAttribute("aria-pressed", String(isActive));
+  });
+  renderNews(loadedNewsItems);
 });
 
 if (player && audio && playButton && volumeButton) {
@@ -879,6 +1131,12 @@ if (player && audio && playButton && volumeButton) {
 
   audio.addEventListener("waiting", () => setPlayerState("loading"));
   audio.addEventListener("error", () => setPlayerState("error"));
+  audio.addEventListener("ended", () => {
+    if (activeStationIndex === 0 && activeBroadcast?.mode === "playlist") {
+      activePlaylistIndex += 1;
+      syncScheduledBroadcast(true, true);
+    }
+  });
 
   volumeButton.addEventListener("click", () => {
     audio.muted = !audio.muted;
@@ -887,7 +1145,14 @@ if (player && audio && playButton && volumeButton) {
 
   trackControls.forEach((control) => {
     control.addEventListener("click", () => {
-      setActiveStation(activeStationIndex + (control.dataset.action === "next" ? 1 : -1));
+      const direction = control.dataset.action === "next" ? 1 : -1;
+      const activeSlot = activeStationIndex === 0 ? getActiveBroadcastSlot() : null;
+      if (activeSlot?.mode === "playlist" && activeSlot.playlist?.length > 1) {
+        activePlaylistIndex += direction;
+        syncScheduledBroadcast(userStartedPlayback, true);
+        return;
+      }
+      setActiveStation(activeStationIndex + direction);
     });
   });
 
@@ -899,10 +1164,16 @@ if (player && audio && playButton && volumeButton) {
   });
 
   updateVolumeState();
-  renderStationMeta(localStation);
-  renderMediaType(0);
   renderStations();
-  loadStations();
+
+  const initializePlayer = async () => {
+    await loadBroadcastSchedule();
+    await syncScheduledBroadcast(false, true);
+    await loadStations();
+  };
+
+  initializePlayer();
+  window.setInterval(() => syncScheduledBroadcast(userStartedPlayback), 60 * 1000);
 }
 
 renderNewsSources();
