@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="./styles/tokens.css">
     <link rel="stylesheet" href="./styles/main.css">
     <link rel="stylesheet" href="./styles/pages/home.css?v=20260822-scheduled-radio">
+    <link rel="stylesheet" href="./styles/pages/questionnaire.css?v=20260824-card">
     <link rel="stylesheet" href="./styles/components.css">
     <link rel="stylesheet" href="./styles/open-fm-redesign.css">
   </head>
@@ -59,6 +60,7 @@
             <a class="main-nav__link" href="#live" data-i18n="navListen">Ефір</a>
             <a class="main-nav__link" href="#news" data-i18n="navNews">Новини</a>
             <a class="main-nav__link" href="#about" data-i18n="navAbout">Про нас</a>
+            <a class="main-nav__link" href="#card" data-i18n="navCard">Картка</a>
             <a class="main-nav__link" href="#contacts" data-i18n="navContacts">Контакти</a>
           </nav>
 
@@ -231,6 +233,69 @@
         </div>
       </section>
 
+      <section class="card-section" id="card" aria-labelledby="card-title">
+        <div class="container">
+          <div class="card-section__intro">
+            <div>
+              <p class="card-section__eyebrow" data-i18n="cardEyebrow">Картка клієнта</p>
+              <h2 class="section-title" id="card-title" data-i18n="cardTitle">Зареєструйте картку Привоз</h2>
+              <p class="card-section__lead" data-i18n="cardLead">Заповніть анкету для активації картки та зворотного зв'язку.</p>
+            </div>
+            <div class="card-section__details">
+              <p><strong data-i18n="cardAddressLabel">Знижки діють за адресою:</strong> <span data-i18n="cardAddress">93-120 Łódź, ul. Przybyszewskiego 176/178.</span></p>
+              <p data-i18n="cardActivation">Картка активується протягом 48 годин після перевірки анкети.</p>
+              <p data-i18n="cardValidity">Термін дії картки — 1 рік із моменту реєстрації.</p>
+            </div>
+          </div>
+
+          <div class="card-section__actions">
+            <button class="button button--secondary rules-button" type="button" aria-haspopup="dialog" aria-controls="rules-modal">
+              <svg class="icon button__inline-icon" aria-hidden="true"><use href="./assets/icons/lucide-sprite.svg#file-text"></use></svg>
+              <span data-i18n="rulesButton">Правила</span>
+            </button>
+            <button class="button button--primary registration-button" type="button" aria-expanded="false" aria-controls="anketa">
+              <svg class="icon button__inline-icon" aria-hidden="true"><use href="./assets/icons/lucide-sprite.svg#credit-card"></use></svg>
+              <span data-i18n="registerCardButton">Зареєструвати картку</span>
+            </button>
+          </div>
+
+          <section class="questionnaire" id="anketa" hidden aria-labelledby="questionnaire-title">
+            <header class="questionnaire__header">
+              <p class="card-section__eyebrow" data-i18n="questionnaireEyebrow">Активація картки</p>
+              <h2 class="questionnaire__title" id="questionnaire-title" data-i18n="questionnaireTitle">Анкета</h2>
+              <p class="questionnaire__subtitle" data-i18n="questionnaireSubtitle">Заповніть дані для активації картки та зворотного зв'язку.</p>
+            </header>
+
+            <form class="questionnaire__form" id="questionnaire-form" data-endpoint="https://prywoz.fm/submit.php" novalidate>
+              <div class="form-grid">
+                <label class="form-field"><span class="form-field__label">1. Имя</span><input type="text" name="firstName" placeholder="Введите имя" autocomplete="given-name" minlength="2" maxlength="60" required><span class="form-field__error"></span></label>
+                <label class="form-field"><span class="form-field__label">2. Фамилия</span><input type="text" name="lastName" placeholder="Введите фамилию" autocomplete="family-name" minlength="2" maxlength="60" required><span class="form-field__error"></span></label>
+                <label class="form-field form-field--wide"><span class="form-field__label">3. Email</span><input type="email" name="email" placeholder="example@mail.com" autocomplete="email" maxlength="120" required><span class="form-field__error"></span></label>
+                <label class="form-field"><span class="form-field__label">4. Дата рождения</span><input type="date" name="birthDate" autocomplete="bday" required><span class="form-field__error"></span></label>
+                <label class="form-field"><span class="form-field__label">5. Семья</span><select name="familySize" required><option value="">Выберите вариант</option><option value="1–2 человека">1–2 человека</option><option value="3–4 человека">3–4 человека</option><option value="5 и более">5 и более</option></select><span class="form-field__error"></span></label>
+                <label class="form-field"><span class="form-field__label">6. Откуда приехали в Польшу</span><select name="originCountry" required><option value="">Выберите страну</option><option value="Украина">Украина</option><option value="Беларусь">Беларусь</option><option value="Молдова">Молдова</option><option value="Грузия">Грузия</option><option value="Я из Польши">Я из Польши</option><option value="Армения">Армения</option><option value="Казахстан">Казахстан</option><option value="Другая страна">Другая страна</option></select><span class="form-field__error"></span></label>
+                <label class="form-field"><span class="form-field__label">7. Область</span><select name="voivodeship" required><option value="">Сначала выберите страну</option></select><span class="form-field__error"></span></label>
+                <fieldset class="form-field form-field--locality"><legend class="form-field__label">8. Город / село</legend><div class="segmented-control"><label><input type="radio" name="localityType" value="Город" checked><span>Город</span></label><label><input type="radio" name="localityType" value="Село"><span>Село</span></label></div><input type="text" name="locality" placeholder="Введите город или село" autocomplete="address-level2" minlength="2" maxlength="100" required><span class="form-field__error"></span></fieldset>
+                <label class="form-field"><span class="form-field__label">9. Где проживаете</span><select name="residenceType" required><option value="">Выберите вариант</option><option value="ЛОДЗЬ — БАЛУТЫ">ЛОДЗЬ — БАЛУТЫ</option><option value="ЛОДЗЬ — ВИДЗЕВ">ЛОДЗЬ — ВИДЗЕВ</option><option value="ЛОДЗЬ — ГУРНА">ЛОДЗЬ — ГУРНА</option><option value="ЛОДЗЬ — ГУРНЯК">ЛОДЗЬ — ГУРНЯК</option><option value="ЛОДЗЬ — ОЛЕХОВ">ЛОДЗЬ — ОЛЕХОВ</option><option value="ЛОДЗЬ — РЕТКИНЯ">ЛОДЗЬ — РЕТКИНЯ</option><option value="ЛОДЗЬ — РУДА">ЛОДЗЬ — РУДА</option><option value="ЛОДЗЬ — СТАРЫЕ БАЛУТЫ">ЛОДЗЬ — СТАРЫЕ БАЛУТЫ</option><option value="ЛОДЗЬ — ФАБРИЧНА">ЛОДЗЬ — ФАБРИЧНА</option><option value="ЛОДЗЬ — ЦЕНТР">ЛОДЗЬ — ЦЕНТР</option><option value="ЛОДЗЬ — ЮЛЯНОВ">ЛОДЗЬ — ЮЛЯНОВ</option><option value="АЛЕКСАНДРОВ">АЛЕКСАНДРОВ</option><option value="АНДРЕСПОЛЬ">АНДРЕСПОЛЬ</option><option value="ЖГОВ">ЖГОВ</option><option value="ЗГЕЖ">ЗГЕЖ</option><option value="КОНСТАНТИНОВ ЛУДСКИЙ">КОНСТАНТИНОВ ЛУДСКИЙ</option><option value="ПАБЬЯНИЦЕ">ПАБЬЯНИЦЕ</option><option value="ПЕТРКУВ ТРЫБУНАЛЬСКИЙ">ПЕТРКУВ ТРЫБУНАЛЬСКИЙ</option><option value="СТРЫКУВ">СТРЫКУВ</option><option value="ТУШИН">ТУШИН</option><option value="ДРУГОЕ">ДРУГОЕ</option></select><span class="form-field__error"></span></label>
+                <label class="form-field"><span class="form-field__label">10. Где работаете</span><select name="employment" required><option value="">Выберите вариант</option><option value="БЬЮТИ СФЕРА">БЬЮТИ СФЕРА</option><option value="ВОДИТЕЛЬ ГРУЗОВИКА">ВОДИТЕЛЬ ГРУЗОВИКА</option><option value="СТРОЙКА">СТРОЙКА</option><option value="ГАСТРОНОМИЯ">ГАСТРОНОМИЯ</option><option value="ВРАЧ">ВРАЧ</option><option value="КУРЬЕР">КУРЬЕР</option><option value="МЕЖДУНАРОДНАЯ КОРПОРАЦИЯ">МЕЖДУНАРОДНАЯ КОРПОРАЦИЯ</option><option value="ПРОИЗВОДСТВО">ПРОИЗВОДСТВО</option><option value="СВОЙ БИЗНЕС">СВОЙ БИЗНЕС</option><option value="СКЛАДЫ">СКЛАДЫ</option><option value="СТО">СТО</option><option value="УЧИТЕЛЬ">УЧИТЕЛЬ</option><option value="УЧЕНИК / СТУДЕНТ">УЧЕНИК / СТУДЕНТ</option><option value="ТАКСИ">ТАКСИ</option><option value="IT">IT</option><option value="ДРУГОЕ">ДРУГОЕ</option></select><span class="form-field__error"></span></label>
+                <label class="form-field"><span class="form-field__label">11. Номер телефона</span><input type="tel" name="phone" placeholder="+48123456789" autocomplete="tel" inputmode="tel" pattern="^\+?[0-9\s()\-]{9,20}$" title="Введите корректный номер телефона" required><span class="form-field__error"></span></label>
+                <label class="form-field"><span class="form-field__label">12. Номер карты</span><input type="text" name="cardNumber" placeholder="Введите номер карты" inputmode="numeric" pattern="^[0-9]{6,24}$" minlength="6" maxlength="24" title="Введите от 6 до 24 цифр без пробелов" required><span class="form-field__hint">номер, указанный на карте</span><span class="form-field__error"></span></label>
+                <fieldset class="form-field form-field--card-type"><legend class="form-field__label">13. Тип карты</legend><div class="card-type-options"><label class="card-type-option"><input type="radio" name="cardType" value="Карта клиента" required><span>Карта клиента</span></label><label class="card-type-option"><input type="radio" name="cardType" value="Карта Premium"><span>Карта Premium</span></label><label class="card-type-option"><input type="radio" name="cardType" value="Карта Premium+"><span>Карта Premium+</span></label><label class="card-type-option"><input type="radio" name="cardType" value="Карта VIP"><span>Карта VIP</span></label></div><span class="form-field__error"></span></fieldset>
+              </div>
+              <div class="consent-list"><label class="consent"><input type="checkbox" name="personalDataConsent" required><span><strong>*</strong> Согласие на обработку персональных данных</span></label><label class="consent"><input type="checkbox" name="notificationsConsent" required><span><strong>*</strong> Согласие на получение уведомлений от компании PRYWOZ LODZ Sp. z o.o.</span></label></div>
+              <button class="button button--primary questionnaire__submit" type="submit"><svg class="icon button__inline-icon" aria-hidden="true"><use href="./assets/icons/lucide-sprite.svg#send"></use></svg><span>Отправить анкету</span></button>
+              <p class="questionnaire__status" role="status" aria-live="polite"></p>
+              <p class="questionnaire__note">После отправки мы свяжемся с вами. Карта будет активна в течение 48 часов.</p>
+            </form>
+          </section>
+
+          <section class="success-card" id="success-card" hidden aria-live="polite">
+            <svg class="icon success-card__icon" aria-hidden="true"><use href="./assets/icons/lucide-sprite.svg#circle-check"></use></svg>
+            <div><h2 class="success-card__title">Спасибо!</h2><p>Анкета успешно отправлена. В течение 48 часов карта будет активна.</p></div>
+          </section>
+        </div>
+      </section>
+
       <section class="contact-strip" aria-labelledby="contact-title">
         <div class="container contact-strip__grid">
           <div>
@@ -351,6 +416,25 @@
       </div>
     </footer>
 
+    <div class="rules-modal" id="rules-modal" hidden>
+      <div class="rules-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="rules-modal-title">
+        <header class="rules-modal__header">
+          <h2 class="rules-modal__title" id="rules-modal-title" data-i18n="rulesTitle">Правила картки</h2>
+          <button class="rules-modal__close" type="button" aria-label="Закрити правила"><svg class="icon" aria-hidden="true"><use href="./assets/icons/lucide-sprite.svg#x"></use></svg></button>
+        </header>
+        <div class="rules-modal__toolbar" aria-label="Керування масштабом">
+          <button type="button" data-rules-action="zoom-out" aria-label="Зменшити"><svg class="icon" aria-hidden="true"><use href="./assets/icons/lucide-sprite.svg#zoom-out"></use></svg></button>
+          <button class="rules-modal__zoom-value" type="button" data-rules-action="reset">100%</button>
+          <button type="button" data-rules-action="zoom-in" aria-label="Збільшити"><svg class="icon" aria-hidden="true"><use href="./assets/icons/lucide-sprite.svg#zoom-in"></use></svg></button>
+          <a class="rules-modal__download" href="./assets/images/card-rules.webp" download="radio-prywoz-card-rules.webp"><svg class="icon" aria-hidden="true"><use href="./assets/icons/lucide-sprite.svg#download"></use></svg><span data-i18n="saveRules">Зберегти правила</span></a>
+        </div>
+        <div class="rules-modal__viewport">
+          <img class="rules-modal__poster" src="./assets/images/card-rules.webp" alt="Правила використання картки Привоз" width="4961" height="7016">
+        </div>
+      </div>
+    </div>
+
     <script src="./scripts/pages/home.js?v=20260822-scheduled-radio"></script>
+    <script src="./scripts/pages/questionnaire.js?v=20260824-card"></script>
   </body>
 </html>
