@@ -2,26 +2,12 @@
   "timezone": "Europe/Warsaw",
   "slots": [
     {
-      "id": "own-broadcast",
-      "start": "10:00",
-      "end": "20:00",
-      "mode": "playlist",
-      "playlist": [
-        {
-          "id": "radio-prywoz-demo",
-          "title": "РАДИО ПРИВОЗ ФМ",
-          "artist": "Авторський ефір",
-          "src": "./assets/audio/radio-privoz-demo.mp3"
-        }
-      ]
-    },
-    {
-      "id": "night-relay",
-      "start": "20:00",
-      "end": "10:00",
-      "mode": "relay",
+      "id": "radio-prywoz-live",
+      "start": "00:00",
+      "end": "00:00",
+      "mode": "stream",
       "title": "РАДИО ПРИВОЗ ФМ",
-      "streamUrl": "https://listen1.myradio24.com/odesradio"
+      "streamUrl": "https://listen1.myradio24.com/73556"
     }
   ]
 }

@@ -212,7 +212,7 @@ const translations = {
 const localStation = {
   stationuuid: "radio-prywoz",
   name: "РАДИО ПРИВОЗ ФМ",
-  url_resolved: "./assets/audio/radio-privoz-demo.mp3",
+  url_resolved: "https://listen1.myradio24.com/73556",
   favicon: "./assets/images/logo.png",
   codec: "MP3",
   bitrate: 128,
@@ -225,26 +225,12 @@ const defaultBroadcastSchedule = {
   timezone: "Europe/Warsaw",
   slots: [
     {
-      id: "own-broadcast",
-      start: "10:00",
-      end: "20:00",
-      mode: "playlist",
-      playlist: [
-        {
-          id: "radio-prywoz-demo",
-          title: "РАДИО ПРИВОЗ ФМ",
-          artist: "Авторський ефір",
-          src: "./assets/audio/radio-privoz-demo.mp3",
-        },
-      ],
-    },
-    {
-      id: "night-relay",
-      start: "20:00",
-      end: "10:00",
-      mode: "relay",
+      id: "radio-prywoz-live",
+      start: "00:00",
+      end: "00:00",
+      mode: "stream",
       title: "РАДИО ПРИВОЗ ФМ",
-      streamUrl: "https://listen1.myradio24.com/odesradio",
+      streamUrl: "https://listen1.myradio24.com/73556",
     },
   ],
 };
@@ -472,13 +458,13 @@ const getActiveBroadcastSlot = () => {
 };
 
 const getBroadcastItem = (slot = getActiveBroadcastSlot()) => {
-  if (slot.mode === "relay") {
+  if (slot.mode === "stream" || slot.mode === "relay") {
     return {
       id: slot.id,
       title: slot.title || localStation.name,
-      artist: t("relayBroadcastMeta"),
+      artist: slot.mode === "relay" ? t("relayBroadcastMeta") : t("localStationMeta"),
       src: slot.streamUrl,
-      mode: "relay",
+      mode: slot.mode,
     };
   }
 
@@ -570,9 +556,7 @@ const renderStationMeta = () => {
 
   if (activeBroadcast) {
     stationTitle.textContent = activeBroadcast.title;
-    stationMeta.textContent = activeBroadcast.mode === "relay"
-      ? t("relayBroadcastMeta")
-      : (activeBroadcast.artist || t("ownBroadcastMeta"));
+    stationMeta.textContent = activeBroadcast.artist || t("localStationMeta");
     return;
   }
 
@@ -608,7 +592,7 @@ const syncScheduledBroadcast = async (shouldPlay = false, force = false) => {
   activeBroadcast = nextBroadcast;
   currentBroadcastSignature = signature;
   renderStationMeta();
-  renderMediaType(nextBroadcast.mode === "relay" ? 0 : activePlaylistIndex);
+  renderMediaType(nextBroadcast.mode === "playlist" ? activePlaylistIndex : 0);
   const canSkip = slot.mode === "playlist" && slot.playlist?.length > 1;
   trackControls.forEach((control) => {
     control.disabled = !canSkip;
