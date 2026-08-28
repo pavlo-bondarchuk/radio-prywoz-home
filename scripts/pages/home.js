@@ -9,9 +9,12 @@ const playButton = document.querySelector(".live-player__play");
 const playButtonIcon = document.querySelector(".live-player__play-icon use");
 const volumeButton = document.querySelector(".live-player__volume");
 const volumeButtonIcon = document.querySelector(".live-player__volume use");
+const volumePanel = document.querySelector(".live-player__volume-panel");
+const volumeRange = document.querySelector(".live-player__volume-range");
+const volumeValue = document.querySelector(".live-player__volume-value");
 const stationTitle = document.querySelector(".live-player__track");
 const stationMeta = document.querySelector(".live-player__host");
-const trackControls = document.querySelectorAll(".live-player__control[data-action]");
+const stationBadge = document.querySelector(".live-player__badge");
 const mediaHolder = document.querySelector(".live-player__record");
 const mediaImage = document.querySelector(".live-player__record-image");
 const newsList = document.querySelector("[data-news-list]");
@@ -56,6 +59,11 @@ const translations = {
     copyright: "© 2026 РАДИО ПРИВОЗ ФМ. Усі права захищено.",
     madeFor: "Створено з любов'ю для наших слухачів",
     localStationMeta: "Живий ефір онлайн",
+    dayBroadcastMeta: "Денний ефір · 10:00–20:00",
+    nightBroadcastMeta: "Нічний ефір · 20:00–10:00",
+    volumeSettings: "Налаштувати гучність",
+    volumeLevel: "Гучність",
+    stationOffline: "Не в ефірі",
     stationError: "Не вдалося підключитися до цієї станції. Спробуйте іншу.",
     newsSourceLabel: "Джерело",
     readOriginal: "Читати оригінал",
@@ -118,6 +126,11 @@ const translations = {
     copyright: "© 2026 РАДИО ПРИВОЗ ФМ. Wszelkie prawa zastrzeżone.",
     madeFor: "Stworzone z miłością dla naszych słuchaczy",
     localStationMeta: "Radio online na żywo",
+    dayBroadcastMeta: "Program dzienny · 10:00–20:00",
+    nightBroadcastMeta: "Program nocny · 20:00–10:00",
+    volumeSettings: "Ustaw głośność",
+    volumeLevel: "Głośność",
+    stationOffline: "Offline",
     stationError: "Nie udało się połączyć z tą stacją. Spróbuj innej.",
     newsSourceLabel: "Źródło",
     readOriginal: "Czytaj oryginał",
@@ -180,6 +193,11 @@ const translations = {
     copyright: "© 2026 РАДИО ПРИВОЗ ФМ. Все права защищены.",
     madeFor: "Создано с любовью для наших слушателей",
     localStationMeta: "Живой эфир онлайн",
+    dayBroadcastMeta: "Дневной эфир · 10:00–20:00",
+    nightBroadcastMeta: "Ночной эфир · 20:00–10:00",
+    volumeSettings: "Настроить громкость",
+    volumeLevel: "Громкость",
+    stationOffline: "Не в эфире",
     stationError: "Не удалось подключиться к этой станции. Попробуйте другую.",
     newsSourceLabel: "Источник",
     readOriginal: "Читать оригинал",
@@ -225,11 +243,23 @@ const defaultBroadcastSchedule = {
   timezone: "Europe/Warsaw",
   slots: [
     {
-      id: "radio-prywoz-live",
-      start: "00:00",
-      end: "00:00",
+      id: "radio-prywoz-day",
+      start: "10:00",
+      end: "20:00",
       mode: "stream",
       title: "РАДИО ПРИВОЗ ФМ",
+      labelKey: "dayBroadcastMeta",
+      playlistMarker: "DAY",
+      streamUrl: "https://listen1.myradio24.com/73556",
+    },
+    {
+      id: "radio-prywoz-night",
+      start: "20:00",
+      end: "10:00",
+      mode: "stream",
+      title: "РАДИО ПРИВОЗ ФМ",
+      labelKey: "nightBroadcastMeta",
+      playlistMarker: "NIGHT",
       streamUrl: "https://listen1.myradio24.com/73556",
     },
   ],
@@ -409,6 +439,7 @@ let activeLanguage = storageGet("prywoz-language") || "uk";
 let userStartedPlayback = false;
 let broadcastSchedule = defaultBroadcastSchedule;
 let activeBroadcast = null;
+let nowPlayingStatus = null;
 let activePlaylistIndex = 0;
 let currentBroadcastSignature = "";
 let loadedNewsItems = fallbackNews;
@@ -462,7 +493,7 @@ const getBroadcastItem = (slot = getActiveBroadcastSlot()) => {
     return {
       id: slot.id,
       title: slot.title || localStation.name,
-      artist: slot.mode === "relay" ? t("relayBroadcastMeta") : t("localStationMeta"),
+      artist: t(slot.labelKey || (slot.mode === "relay" ? "relayBroadcastMeta" : "localStationMeta")),
       src: slot.streamUrl,
       mode: slot.mode,
     };
@@ -554,14 +585,37 @@ const renderStationMeta = () => {
     return;
   }
 
-  if (activeBroadcast) {
-    stationTitle.textContent = activeBroadcast.title;
-    stationMeta.textContent = activeBroadcast.artist || t("localStationMeta");
-    return;
-  }
+  const slot = getActiveBroadcastSlot();
+  const playlistName = String(nowPlayingStatus?.playlist || "").toUpperCase();
+  const playlistSlot = broadcastSchedule.slots?.find((item) => {
+    return item.playlistMarker && playlistName.includes(String(item.playlistMarker).toUpperCase());
+  });
+  const displaySlot = playlistSlot || slot;
+  const liveSong = nowPlayingStatus?.song || [nowPlayingStatus?.artist, nowPlayingStatus?.songtitle].filter(Boolean).join(" — ");
 
-  stationTitle.textContent = localStation.name;
-  stationMeta.textContent = t("localStationMeta");
+  stationTitle.textContent = liveSong && liveSong !== "-"
+    ? liveSong
+    : (activeBroadcast?.title || localStation.name);
+  stationMeta.textContent = t(displaySlot?.labelKey || "localStationMeta");
+
+  if (stationBadge) {
+    const isOnline = nowPlayingStatus?.online !== 0;
+    stationBadge.textContent = isOnline ? "On air" : t("stationOffline");
+    player?.classList.toggle("live-player--offline", !isOnline);
+  }
+};
+
+const loadNowPlaying = async () => {
+  try {
+    const response = await fetch("https://myradio24.com/users/73556/status.json", { cache: "no-store" });
+    if (!response.ok) {
+      throw new Error("Now playing unavailable");
+    }
+    nowPlayingStatus = await response.json();
+    renderStationMeta();
+  } catch {
+    // The scheduled label and station name remain available if metadata is temporarily unavailable.
+  }
 };
 
 const loadBroadcastSchedule = async () => {
@@ -586,17 +640,15 @@ const syncScheduledBroadcast = async (shouldPlay = false, force = false) => {
 
   const slot = getActiveBroadcastSlot();
   const nextBroadcast = getBroadcastItem(slot);
-  const signature = `${slot.id}:${nextBroadcast.id || nextBroadcast.src}`;
+  const signature = nextBroadcast.mode === "playlist"
+    ? `${slot.id}:${nextBroadcast.id || nextBroadcast.src}`
+    : `${nextBroadcast.mode}:${nextBroadcast.src}`;
   const sourceChanged = force || signature !== currentBroadcastSignature;
 
   activeBroadcast = nextBroadcast;
   currentBroadcastSignature = signature;
   renderStationMeta();
   renderMediaType(nextBroadcast.mode === "playlist" ? activePlaylistIndex : 0);
-  const canSkip = slot.mode === "playlist" && slot.playlist?.length > 1;
-  trackControls.forEach((control) => {
-    control.disabled = !canSkip;
-  });
 
   if (!sourceChanged) {
     return;
@@ -631,14 +683,19 @@ const renderMediaType = (stationIndex) => {
 };
 
 const updateVolumeState = () => {
-  if (!audio || !volumeButton) {
+  if (!audio || !volumeButton || !volumeRange) {
     return;
   }
 
-  const isMuted = audio.muted;
-  volumeButton.setAttribute("aria-pressed", String(isMuted));
-  volumeButton.setAttribute("aria-label", isMuted ? "Увімкнути звук" : "Вимкнути звук");
-  volumeButtonIcon?.setAttribute("href", `${iconPath}#${isMuted ? "volume-x" : "volume-2"}`);
+  const level = audio.muted ? 0 : Math.round(audio.volume * 100);
+  volumeRange.value = String(level);
+  volumeRange.setAttribute("aria-label", t("volumeLevel"));
+  volumeButton.setAttribute("aria-label", t("volumeSettings"));
+  volumeButtonIcon?.setAttribute("href", `${iconPath}#${level === 0 ? "volume-x" : "volume-2"}`);
+  if (volumeValue) {
+    volumeValue.value = `${level}%`;
+    volumeValue.textContent = `${level}%`;
+  }
 };
 
 const parseFeed = async (source) => {
@@ -817,6 +874,7 @@ const applyLanguage = (language) => {
   });
 
   renderStationMeta();
+  updateVolumeState();
   renderNews(loadedNewsItems);
   document.dispatchEvent(new CustomEvent("prywoz:languagechange", { detail: { language: activeLanguage } }));
 };
@@ -859,7 +917,8 @@ newsFilter?.addEventListener("click", (event) => {
 });
 
 if (player && audio && playButton && volumeButton) {
-  audio.volume = 0.7;
+  const storedVolume = Number(storageGet("prywoz-volume"));
+  audio.volume = Number.isFinite(storedVolume) && storedVolume >= 0 && storedVolume <= 1 ? storedVolume : 0.7;
 
   playButton.addEventListener("click", async () => {
     userStartedPlayback = true;
@@ -903,20 +962,39 @@ if (player && audio && playButton && volumeButton) {
     }
   });
 
-  volumeButton.addEventListener("click", () => {
-    audio.muted = !audio.muted;
+  volumeButton.addEventListener("click", (event) => {
+    event.stopPropagation();
+    const willOpen = volumePanel?.hidden ?? false;
+    if (volumePanel) {
+      volumePanel.hidden = !willOpen;
+    }
+    volumeButton.setAttribute("aria-expanded", String(willOpen));
+    if (willOpen) {
+      volumeRange?.focus();
+    }
+  });
+
+  volumeRange?.addEventListener("input", () => {
+    const level = Number(volumeRange.value) / 100;
+    audio.volume = level;
+    audio.muted = level === 0;
+    storageSet("prywoz-volume", String(level));
     updateVolumeState();
   });
 
-  trackControls.forEach((control) => {
-    control.addEventListener("click", () => {
-      const direction = control.dataset.action === "next" ? 1 : -1;
-      const activeSlot = getActiveBroadcastSlot();
-      if (activeSlot?.mode === "playlist" && activeSlot.playlist?.length > 1) {
-        activePlaylistIndex += direction;
-        syncScheduledBroadcast(userStartedPlayback, true);
-      }
-    });
+  volumePanel?.addEventListener("click", (event) => event.stopPropagation());
+  document.addEventListener("click", () => {
+    if (volumePanel && !volumePanel.hidden) {
+      volumePanel.hidden = true;
+      volumeButton.setAttribute("aria-expanded", "false");
+    }
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && volumePanel && !volumePanel.hidden) {
+      volumePanel.hidden = true;
+      volumeButton.setAttribute("aria-expanded", "false");
+      volumeButton.focus();
+    }
   });
 
   updateVolumeState();
@@ -924,10 +1002,12 @@ if (player && audio && playButton && volumeButton) {
   const initializePlayer = async () => {
     await loadBroadcastSchedule();
     await syncScheduledBroadcast(false, true);
+    await loadNowPlaying();
   };
 
   initializePlayer();
   window.setInterval(() => syncScheduledBroadcast(userStartedPlayback), 60 * 1000);
+  window.setInterval(loadNowPlaying, 15 * 1000);
 }
 
 applyLanguage(activeLanguage);

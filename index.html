@@ -17,7 +17,7 @@
     <link rel="icon" type="image/png" href="./assets/images/favicon.png">
     <link rel="stylesheet" href="./styles/tokens.css">
     <link rel="stylesheet" href="./styles/main.css">
-    <link rel="stylesheet" href="./styles/pages/home.css?v=20260822-scheduled-radio">
+    <link rel="stylesheet" href="./styles/pages/home.css?v=20260828-live-meta">
     <link rel="stylesheet" href="./styles/pages/questionnaire.css?v=20260824-card">
     <link rel="stylesheet" href="./styles/components.css">
     <link rel="stylesheet" href="./styles/open-fm-redesign.css">
@@ -114,34 +114,44 @@
                 >
               </div>
 
-              <div class="live-player__meta">
+              <div class="live-player__meta" aria-live="polite">
                 <span class="live-player__label" data-i18n="nowOnAir">Зараз в ефірі</span>
                 <strong class="live-player__track">РАДИО ПРИВОЗ ФМ</strong>
-                <span class="live-player__host">Живий ефір онлайн</span>
+                <span class="live-player__host">Денний ефір · 10:00–20:00</span>
                 <span class="live-player__badge">On air</span>
               </div>
 
               <div class="live-player__controls">
-                <button class="live-player__control" type="button" data-action="previous" aria-label="Попередній трек">
-                  <svg class="icon" aria-hidden="true">
-                    <use href="./assets/icons/lucide-sprite.svg#skip-back"></use>
-                  </svg>
-                </button>
                 <button class="live-player__play" type="button" aria-label="Відтворити ефір">
                   <svg class="icon live-player__play-icon" aria-hidden="true">
                     <use href="./assets/icons/lucide-sprite.svg#play"></use>
                   </svg>
                 </button>
-                <button class="live-player__control" type="button" data-action="next" aria-label="Наступний трек">
-                  <svg class="icon" aria-hidden="true">
-                    <use href="./assets/icons/lucide-sprite.svg#skip-forward"></use>
-                  </svg>
-                </button>
-                <button class="live-player__volume" type="button" aria-label="Вимкнути звук" aria-pressed="false">
-                  <svg class="icon live-player__volume-icon" aria-hidden="true">
-                    <use href="./assets/icons/lucide-sprite.svg#volume-2"></use>
-                  </svg>
-                </button>
+                <div class="live-player__volume-control">
+                  <button
+                    class="live-player__volume"
+                    type="button"
+                    aria-label="Налаштувати гучність"
+                    aria-controls="live-volume-panel"
+                    aria-expanded="false"
+                  >
+                    <svg class="icon live-player__volume-icon" aria-hidden="true">
+                      <use href="./assets/icons/lucide-sprite.svg#volume-2"></use>
+                    </svg>
+                  </button>
+                  <div class="live-player__volume-panel" id="live-volume-panel" hidden>
+                    <input
+                      class="live-player__volume-range"
+                      type="range"
+                      min="0"
+                      max="100"
+                      step="1"
+                      value="70"
+                      aria-label="Гучність"
+                    >
+                    <output class="live-player__volume-value">70%</output>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -434,7 +444,7 @@
       </div>
     </div>
 
-    <script src="./scripts/pages/home.js?v=20260825-myradio24"></script>
+    <script src="./scripts/pages/home.js?v=20260828-live-meta"></script>
     <script src="./scripts/pages/questionnaire.js?v=20260824-card"></script>
   </body>
 </html>

@@ -383,7 +383,6 @@ body {
   box-shadow: var(--ds-shadow-glow);
 }
 
-.live-player__control,
 .live-player__volume,
 .listen-player__control,
 .listen-player__volume,
