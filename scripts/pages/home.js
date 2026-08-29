@@ -917,8 +917,14 @@ newsFilter?.addEventListener("click", (event) => {
 });
 
 if (player && audio && playButton && volumeButton) {
-  const storedVolume = Number(storageGet("prywoz-volume"));
-  audio.volume = Number.isFinite(storedVolume) && storedVolume >= 0 && storedVolume <= 1 ? storedVolume : 0.7;
+  const storedVolumeValue = storageGet("prywoz-volume");
+  const storedVolume = storedVolumeValue === null ? null : Number(storedVolumeValue);
+  audio.volume = storedVolume !== null
+    && Number.isFinite(storedVolume)
+    && storedVolume >= 0
+    && storedVolume <= 1
+    ? storedVolume
+    : 1;
 
   playButton.addEventListener("click", async () => {
     userStartedPlayback = true;
