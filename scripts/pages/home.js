@@ -586,17 +586,12 @@ const renderStationMeta = () => {
   }
 
   const slot = getActiveBroadcastSlot();
-  const playlistName = String(nowPlayingStatus?.playlist || "").toUpperCase();
-  const playlistSlot = broadcastSchedule.slots?.find((item) => {
-    return item.playlistMarker && playlistName.includes(String(item.playlistMarker).toUpperCase());
-  });
-  const displaySlot = playlistSlot || slot;
   const liveSong = nowPlayingStatus?.song || [nowPlayingStatus?.artist, nowPlayingStatus?.songtitle].filter(Boolean).join(" — ");
 
   stationTitle.textContent = liveSong && liveSong !== "-"
     ? liveSong
     : (activeBroadcast?.title || localStation.name);
-  stationMeta.textContent = t(displaySlot?.labelKey || "localStationMeta");
+  stationMeta.textContent = t(slot?.labelKey || "localStationMeta");
 
   if (stationBadge) {
     const isOnline = nowPlayingStatus?.online !== 0;
