@@ -1,10 +1,10 @@
 {
-  "timezone": "Europe/Warsaw",
+  "timezone": "Europe/Kyiv",
   "slots": [
     {
       "id": "radio-prywoz-day",
-      "start": "10:00",
-      "end": "20:00",
+      "start": "11:00",
+      "end": "21:00",
       "mode": "stream",
       "title": "РАДИО ПРИВОЗ ФМ",
       "labelKey": "dayBroadcastMeta",
@@ -13,8 +13,8 @@
     },
     {
       "id": "radio-prywoz-night",
-      "start": "20:00",
-      "end": "10:00",
+      "start": "21:00",
+      "end": "11:00",
       "mode": "stream",
       "title": "РАДИО ПРИВОЗ ФМ",
       "labelKey": "nightBroadcastMeta",
