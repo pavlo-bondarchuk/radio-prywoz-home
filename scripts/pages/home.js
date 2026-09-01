@@ -59,8 +59,8 @@ const translations = {
     copyright: "© 2026 РАДИО ПРИВОЗ ФМ. Усі права захищено.",
     madeFor: "Створено з любов'ю для наших слухачів",
     localStationMeta: "Живий ефір онлайн",
-    dayBroadcastMeta: "Денний ефір · 11:00–21:00",
-    nightBroadcastMeta: "Нічний ефір · 21:00–11:00",
+    dayBroadcastMeta: "Денний ефір · 10:00–20:00",
+    nightBroadcastMeta: "Нічний ефір · 20:00–10:00",
     volumeSettings: "Налаштувати гучність",
     volumeLevel: "Гучність",
     stationOffline: "Не в ефірі",
@@ -126,8 +126,8 @@ const translations = {
     copyright: "© 2026 РАДИО ПРИВОЗ ФМ. Wszelkie prawa zastrzeżone.",
     madeFor: "Stworzone z miłością dla naszych słuchaczy",
     localStationMeta: "Radio online na żywo",
-    dayBroadcastMeta: "Program dzienny · 11:00–21:00",
-    nightBroadcastMeta: "Program nocny · 21:00–11:00",
+    dayBroadcastMeta: "Program dzienny · 10:00–20:00",
+    nightBroadcastMeta: "Program nocny · 20:00–10:00",
     volumeSettings: "Ustaw głośność",
     volumeLevel: "Głośność",
     stationOffline: "Offline",
@@ -193,8 +193,8 @@ const translations = {
     copyright: "© 2026 РАДИО ПРИВОЗ ФМ. Все права защищены.",
     madeFor: "Создано с любовью для наших слушателей",
     localStationMeta: "Живой эфир онлайн",
-    dayBroadcastMeta: "Дневной эфир · 11:00–21:00",
-    nightBroadcastMeta: "Ночной эфир · 21:00–11:00",
+    dayBroadcastMeta: "Дневной эфир · 10:00–20:00",
+    nightBroadcastMeta: "Ночной эфир · 20:00–10:00",
     volumeSettings: "Настроить громкость",
     volumeLevel: "Громкость",
     stationOffline: "Не в эфире",
@@ -240,12 +240,12 @@ const localStation = {
 };
 
 const defaultBroadcastSchedule = {
-  timezone: "Europe/Kyiv",
+  timezone: "Europe/Warsaw",
   slots: [
     {
       id: "radio-prywoz-day",
-      start: "11:00",
-      end: "21:00",
+      start: "10:00",
+      end: "20:00",
       mode: "stream",
       title: "РАДИО ПРИВОЗ ФМ",
       labelKey: "dayBroadcastMeta",
@@ -254,8 +254,8 @@ const defaultBroadcastSchedule = {
     },
     {
       id: "radio-prywoz-night",
-      start: "21:00",
-      end: "11:00",
+      start: "20:00",
+      end: "10:00",
       mode: "stream",
       title: "РАДИО ПРИВОЗ ФМ",
       labelKey: "nightBroadcastMeta",
@@ -483,7 +483,7 @@ const isMinuteInSlot = (minute, slot) => {
 };
 
 const getActiveBroadcastSlot = () => {
-  const timezone = broadcastSchedule.timezone || "Europe/Kyiv";
+  const timezone = broadcastSchedule.timezone || "Europe/Warsaw";
   const minute = getTimezoneMinutes(timezone);
   return broadcastSchedule.slots?.find((slot) => isMinuteInSlot(minute, slot)) || defaultBroadcastSchedule.slots[0];
 };
