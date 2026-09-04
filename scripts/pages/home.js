@@ -24,6 +24,7 @@ const newsFilterButtons = document.querySelectorAll("[data-news-category]");
 const newsLoader = document.querySelector("[data-news-loader]");
 const newsLoaderText = document.querySelector("[data-news-loader-text]");
 const newsSentinel = document.querySelector("[data-news-sentinel]");
+const newsExpandButton = document.querySelector("[data-news-expand]");
 const portalSearch = document.querySelector("[data-portal-search]");
 const portalSearchInput = document.querySelector("[data-portal-search-input]");
 const serviceLists = document.querySelectorAll("[data-service-list]");
@@ -470,8 +471,10 @@ let currentBroadcastSignature = "";
 let loadedNewsItems = fallbackNews;
 let activeNewsCategory = "all";
 let activeNewsQuery = "";
-let renderedNewsCount = 7;
+let renderedNewsCount = 4;
+let newsExpanded = false;
 
+const newsPreviewCount = 4;
 const newsBatchSize = 7;
 const cityData = {
   lodz: { name: "Лодзь", latitude: 51.7592, longitude: 19.456 },
@@ -904,7 +907,7 @@ const renderNews = (items, reset = true) => {
 
   loadedNewsItems = items.map((item) => ({ ...item, region: getNewsRegion(item) }));
   if (reset) {
-    renderedNewsCount = newsBatchSize;
+    renderedNewsCount = newsExpanded ? newsBatchSize + 1 : newsPreviewCount;
   }
 
   const filteredItems = getFilteredNews();
@@ -913,8 +916,10 @@ const renderNews = (items, reset = true) => {
   renderFeaturedNews(featuredItem);
   newsList.replaceChildren(...rows.map(createNewsRow));
 
-  const hasMore = renderedNewsCount < filteredItems.length;
-  newsLoader?.classList.toggle("portal-news-loader--complete", !hasMore);
+  const hasMore = newsExpanded && renderedNewsCount < filteredItems.length;
+  newsExpandButton?.classList.toggle("portal-news-expand--hidden", newsExpanded || filteredItems.length <= newsPreviewCount);
+  newsLoader?.classList.toggle("portal-news-loader--hidden", !newsExpanded);
+  newsLoader?.classList.toggle("portal-news-loader--complete", newsExpanded && !hasMore);
   if (newsLoaderText) {
     newsLoaderText.textContent = hasMore
       ? "Прокрутіть нижче, щоб завантажити більше"
@@ -932,7 +937,7 @@ const loadMoreNews = () => {
 };
 
 const loadVisibleNewsBatches = () => {
-  if (!newsSentinel) {
+  if (!newsSentinel || !newsExpanded) {
     return;
   }
 
@@ -1120,6 +1125,15 @@ newsFilter?.addEventListener("click", (event) => {
     item.setAttribute("aria-pressed", String(isActive));
   });
   renderNews(loadedNewsItems);
+});
+
+newsExpandButton?.addEventListener("click", () => {
+  newsExpanded = true;
+  newsExpandButton.setAttribute("aria-expanded", "true");
+  renderedNewsCount = newsBatchSize + 1;
+  document.querySelector(".portal-news")?.classList.add("portal-news--expanded");
+  renderNews(loadedNewsItems, false);
+  loadVisibleNewsBatches();
 });
 
 portalSearch?.addEventListener("submit", (event) => {

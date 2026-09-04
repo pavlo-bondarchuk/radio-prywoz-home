@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="./styles/pages/questionnaire.css?v=20260824-card">
     <link rel="stylesheet" href="./styles/components.css">
     <link rel="stylesheet" href="./styles/open-fm-redesign.css">
-    <link rel="stylesheet" href="./styles/pages/portal.css?v=20260904-portal">
+    <link rel="stylesheet" href="./styles/pages/portal.css?v=20260904-compact-news">
   </head>
   <body class="page">
     <header class="site-header">
@@ -210,6 +210,10 @@
             </article>
 
             <div class="portal-news-list" data-news-list aria-live="polite"></div>
+            <button class="portal-news-expand" type="button" data-news-expand aria-expanded="false">
+              <span>Більше новин</span>
+              <span aria-hidden="true">→</span>
+            </button>
             <div class="portal-news-loader" data-news-loader>
               <span class="portal-news-loader__spinner" aria-hidden="true"></span>
               <span data-news-loader-text>Прокрутіть нижче, щоб завантажити більше</span>
@@ -537,7 +541,7 @@
       </div>
     </div>
 
-    <script src="./scripts/pages/home.js?v=20260904-portal"></script>
+    <script src="./scripts/pages/home.js?v=20260904-compact-news"></script>
     <script src="./scripts/pages/questionnaire.js?v=20260824-card"></script>
   </body>
 </html>
