@@ -21,23 +21,48 @@
     <link rel="stylesheet" href="./styles/pages/questionnaire.css?v=20260824-card">
     <link rel="stylesheet" href="./styles/components.css">
     <link rel="stylesheet" href="./styles/open-fm-redesign.css">
+    <link rel="stylesheet" href="./styles/pages/portal.css?v=20260904-portal">
   </head>
   <body class="page">
     <header class="site-header">
-      <div class="container site-header__inner">
+      <div class="container site-header__inner portal-header">
         <a class="logo" href="./" aria-label="На головну РАДИО ПРИВОЗ ФМ">
-          <img
-            class="logo__image"
-            src="./assets/images/logo.png"
-            alt=""
-            width="1254"
-            height="1254"
-          >
+          <span class="logo__mark" aria-hidden="true">
+            <svg class="icon"><use href="./assets/icons/lucide-sprite.svg#radio-tower"></use></svg>
+          </span>
           <span class="logo__text">
             <span class="logo__name" data-i18n="brandName">РАДИО ПРИВОЗ ФМ</span>
             <span class="logo__description" data-i18n="footerBrand">Перше українське<br>радіо в Польщі</span>
           </span>
         </a>
+
+        <form class="portal-search" role="search" data-portal-search>
+          <svg class="icon" aria-hidden="true"><use href="./assets/icons/lucide-sprite.svg#search"></use></svg>
+          <input type="search" name="query" placeholder="Новини, послуги, компанії" aria-label="Пошук на сайті" autocomplete="off" data-portal-search-input>
+        </form>
+
+        <label class="portal-city">
+          <span class="visually-hidden">Місто</span>
+          <svg class="icon" aria-hidden="true"><use href="./assets/icons/lucide-sprite.svg#map-pin"></use></svg>
+          <select data-city-select aria-label="Оберіть місто">
+            <option value="lodz">Лодзь</option>
+            <option value="warsaw">Варшава</option>
+            <option value="wroclaw">Вроцлав</option>
+            <option value="krakow">Краків</option>
+            <option value="gdansk">Гданськ</option>
+          </select>
+        </label>
+
+        <div class="language-switcher" aria-label="Вибір мови">
+          <button class="language-switcher__item language-switcher__item--active" type="button" data-language="uk" aria-current="true">UA</button>
+          <button class="language-switcher__item" type="button" data-language="pl">PL</button>
+          <button class="language-switcher__item" type="button" data-language="ru">RU</button>
+        </div>
+
+        <button class="portal-mini-player" type="button" data-mini-player aria-label="Увімкнути ефір">
+          <span class="portal-mini-player__icon"><svg class="icon" aria-hidden="true"><use href="./assets/icons/lucide-sprite.svg#play"></use></svg></span>
+          <span>Слухати ефір</span>
+        </button>
 
         <button
           class="site-header__menu-toggle"
@@ -54,53 +79,27 @@
           </svg>
         </button>
 
-        <div class="site-header__panel" id="mobile-menu">
+      </div>
+
+      <div class="site-header__panel" id="mobile-menu">
+        <div class="container portal-nav-row">
           <nav class="main-nav" aria-label="Основна навігація">
             <a class="main-nav__link main-nav__link--active" href="#top" data-i18n="navHome">Головна</a>
             <a class="main-nav__link" href="#live" data-i18n="navListen">Ефір</a>
             <a class="main-nav__link" href="#news" data-i18n="navNews">Новини</a>
-            <a class="main-nav__link" href="#about" data-i18n="navAbout">Про нас</a>
+            <a class="main-nav__link" href="#lodz-services">Послуги в Лодзі</a>
+            <a class="main-nav__link" href="#business">Бізнес</a>
+            <a class="main-nav__link" href="#programs">Програми</a>
             <a class="main-nav__link" href="#card" data-i18n="navCard">Картка</a>
-            <a class="main-nav__link" href="#contacts" data-i18n="navContacts">Контакти</a>
           </nav>
-
-          <div class="site-header__actions">
-            <div class="language-switcher" aria-label="Вибір мови">
-              <button class="language-switcher__item language-switcher__item--active" type="button" data-language="uk" aria-current="true">UA</button>
-              <button class="language-switcher__item" type="button" data-language="pl">PL</button>
-              <button class="language-switcher__item" type="button" data-language="ru">RU</button>
-            </div>
-            <a class="button button--primary button--header" href="#live">
-              <span class="button__icon" aria-hidden="true">
-                <svg class="icon">
-                  <use href="./assets/icons/lucide-sprite.svg#play"></use>
-                </svg>
-              </span>
-              <span data-i18n="listenLive">Слухати live</span>
-            </a>
-          </div>
         </div>
       </div>
     </header>
 
     <main>
-      <section class="hero" id="top" aria-labelledby="hero-title">
-        <div class="container hero__grid">
-          <div class="hero__content">
-            <p class="hero__eyebrow">
-              <span data-i18n="eyebrow">Музика. Гумор. Культура. Люди.</span>
-              <span class="hero__wave" aria-hidden="true"></span>
-            </p>
-
-            <h1 class="hero__title" id="hero-title">
-              <span data-i18n="heroTitle">Перше українське радіо в Польщі</span>
-            </h1>
-
-            <p class="hero__lead" data-i18n="heroLead">
-              РАДИО ПРИВОЗ ФМ — це мікс улюбленої музики, живого спілкування,
-              одеського гумору, культурних подій і новин для українців у Польщі та всьому світі.
-            </p>
-
+      <section class="portal-live" id="top" aria-labelledby="hero-title">
+        <div class="container">
+          <h1 class="visually-hidden" id="hero-title">РАДИО ПРИВОЗ ФМ — український портал і радіо в Польщі</h1>
             <div class="live-player" id="live">
               <audio class="live-player__audio" src="https://listen1.myradio24.com/73556" preload="none"></audio>
 
@@ -154,40 +153,134 @@
                 </div>
               </div>
             </div>
-
-          </div>
-
         </div>
       </section>
 
-      <section class="news-section" id="news" aria-labelledby="news-title">
-        <div class="container">
-          <div class="section-head">
-            <h2 class="section-title" id="news-title" data-i18n="latestNews">Останні новини</h2>
-          </div>
+      <section class="portal-utilities" aria-label="Щоденна інформація">
+        <div class="container portal-utilities__grid">
+          <article class="portal-utility portal-utility--weather">
+            <span class="portal-utility__icon"><svg class="icon" aria-hidden="true"><use href="./assets/icons/lucide-sprite.svg#globe"></use></svg></span>
+            <div><strong data-weather-title>Лодзь · +18°</strong><span data-weather-meta>Мінлива хмарність</span></div>
+          </article>
+          <article class="portal-utility portal-utility--currency">
+            <span class="portal-utility__icon"><svg class="icon" aria-hidden="true"><use href="./assets/icons/lucide-sprite.svg#credit-card"></use></svg></span>
+            <div><strong data-currency-title>UAH 0,091 PLN</strong><span>Курс NBP</span></div>
+          </article>
+          <article class="portal-utility portal-utility--air">
+            <span class="portal-utility__icon"><svg class="icon" aria-hidden="true"><use href="./assets/icons/lucide-sprite.svg#radio-tower"></use></svg></span>
+            <div><strong data-air-title>Якість повітря</strong><span data-air-meta>Оновлюємо дані</span></div>
+          </article>
+          <a class="portal-utility portal-utility--warning" href="https://meteo.imgw.pl/" target="_blank" rel="noopener">
+            <span class="portal-utility__icon"><svg class="icon" aria-hidden="true"><use href="./assets/icons/lucide-sprite.svg#clock"></use></svg></span>
+            <div><strong>Попередження</strong><span>Перевірити на IMGW</span></div>
+          </a>
+        </div>
+      </section>
 
-          <div class="news-filter" role="group" aria-label="Категорії новин" data-news-filter>
-            <button class="news-filter__button news-filter__button--active" type="button" data-news-category="all" data-i18n="newsCategoryAll">Усі</button>
-            <button class="news-filter__button" type="button" data-news-category="politics" data-i18n="newsCategoryPolitics">Політика</button>
-            <button class="news-filter__button" type="button" data-news-category="society" data-i18n="newsCategorySociety">Суспільство</button>
-            <button class="news-filter__button" type="button" data-news-category="culture" data-i18n="newsCategoryCulture">Культура</button>
-            <button class="news-filter__button" type="button" data-news-category="entertainment" data-i18n="newsCategoryEntertainment">Розваги</button>
-            <button class="news-filter__button" type="button" data-news-category="sport" data-i18n="newsCategorySport">Спорт</button>
-          </div>
-
-          <div class="news-grid news-grid--auto" data-news-list aria-live="polite">
-            <article class="news-card news-card--text">
-              <div class="news-card__content">
-                <div class="news-card__meta">
-                  <span class="news-card__tag">Україна</span>
-                  <time datetime="2026-08-18">18 серпня 2026</time>
-                </div>
-                <h3 class="news-card__title">Автоматична стрічка завантажується</h3>
-                <p class="news-card__text">Показуємо відкриті українські RSS-джерела з посиланням на оригінал та фокусом на Одесу, Херсон і Дніпро.</p>
+      <section class="portal-content" id="news" aria-labelledby="news-title">
+        <div class="container portal-content__grid">
+          <div class="portal-news">
+            <div class="portal-section-head">
+              <div>
+                <p class="portal-kicker">Інформаційна стрічка</p>
+                <h2 id="news-title">Головні новини</h2>
               </div>
+              <span class="portal-section-head__live"><span></span> Оновлюється автоматично</span>
+            </div>
+
+            <div class="news-filter" role="group" aria-label="Категорії новин" data-news-filter>
+              <button class="news-filter__button news-filter__button--active" type="button" data-news-category="all" data-i18n="newsCategoryAll">Усі</button>
+              <button class="news-filter__button" type="button" data-news-category="poland">Польща</button>
+              <button class="news-filter__button" type="button" data-news-category="ukraine">Україна</button>
+              <button class="news-filter__button" type="button" data-news-category="lodz">Лодзь</button>
+              <button class="news-filter__button" type="button" data-news-category="politics" data-i18n="newsCategoryPolitics">Політика</button>
+              <button class="news-filter__button" type="button" data-news-category="society" data-i18n="newsCategorySociety">Суспільство</button>
+              <button class="news-filter__button" type="button" data-news-category="culture" data-i18n="newsCategoryCulture">Культура</button>
+              <button class="news-filter__button" type="button" data-news-category="entertainment" data-i18n="newsCategoryEntertainment">Розваги</button>
+              <button class="news-filter__button" type="button" data-news-category="sport" data-i18n="newsCategorySport">Спорт</button>
+            </div>
+
+            <article class="portal-featured-news" data-news-feature aria-live="polite">
+              <div class="portal-featured-news__copy">
+                <span class="news-card__tag">Україна</span>
+                <h3>Завантажуємо головні новини</h3>
+                <p>Актуальні матеріали з українських та польських джерел з короткими відривками й посиланнями на оригінал.</p>
+              </div>
+              <div class="portal-featured-news__visual" aria-hidden="true"><svg class="icon"><use href="./assets/icons/lucide-sprite.svg#newspaper"></use></svg></div>
             </article>
+
+            <div class="portal-news-list" data-news-list aria-live="polite"></div>
+            <div class="portal-news-loader" data-news-loader>
+              <span class="portal-news-loader__spinner" aria-hidden="true"></span>
+              <span data-news-loader-text>Прокрутіть нижче, щоб завантажити більше</span>
+            </div>
+            <div class="portal-news-sentinel" data-news-sentinel aria-hidden="true"></div>
           </div>
 
+          <aside class="portal-sidebar" aria-label="Корисна інформація">
+            <section class="portal-side-block" id="lodz-services">
+              <div class="portal-side-head"><h2>Послуги в Лодзі</h2><a href="https://uml.lodz.pl/" target="_blank" rel="noopener">Місто →</a></div>
+              <div class="portal-service-grid" data-service-list>
+                <a href="https://uml.lodz.pl/" target="_blank" rel="noopener"><svg class="icon"><use href="./assets/icons/lucide-sprite.svg#file-text"></use></svg><span>Міські послуги</span></a>
+                <a href="https://mpk.lodz.pl/rozklady/linie.jsp" target="_blank" rel="noopener"><svg class="icon"><use href="./assets/icons/lucide-sprite.svg#car"></use></svg><span>Розклад MPK</span></a>
+                <a href="https://www.migawka.lodz.pl/" target="_blank" rel="noopener"><svg class="icon"><use href="./assets/icons/lucide-sprite.svg#credit-card"></use></svg><span>Картка MIGAWKA</span></a>
+                <a href="https://lodz.pl/" target="_blank" rel="noopener"><svg class="icon"><use href="./assets/icons/lucide-sprite.svg#calendar-days"></use></svg><span>Події міста</span></a>
+                <a href="https://www.nfz.gov.pl/dla-pacjenta/dla-pacjenta-z-ukrainy/" target="_blank" rel="noopener"><svg class="icon"><use href="./assets/icons/lucide-sprite.svg#heart"></use></svg><span>Медицина NFZ</span></a>
+                <a href="https://pracawpolsce.gov.pl/index.html" target="_blank" rel="noopener"><svg class="icon"><use href="./assets/icons/lucide-sprite.svg#users"></use></svg><span>Робота в Польщі</span></a>
+              </div>
+            </section>
+
+            <section class="portal-side-block">
+              <div class="portal-side-head"><h2>Афіша</h2><a href="https://lodz.pl/artykuly/kalendarz-imprez/" target="_blank" rel="noopener">Усі →</a></div>
+              <div class="portal-events">
+                <a href="https://lodz.pl/artykuly/kalendarz-imprez/" target="_blank" rel="noopener"><time>Сьогодні · Лодзь</time><strong>Події, концерти та міські зустрічі</strong></a>
+                <a href="https://uml.lodz.pl/kalendarz-wydarzen/" target="_blank" rel="noopener"><time>Цього тижня</time><strong>Календар подій міста</strong></a>
+                <a href="https://lodz.travel/" target="_blank" rel="noopener"><time>На вихідні</time><strong>Куди піти та що побачити</strong></a>
+              </div>
+            </section>
+
+            <section class="portal-side-block">
+              <div class="portal-side-head"><h2>Популярні сервіси</h2></div>
+              <div class="portal-quick-links" data-service-list>
+                <a href="https://info.mobywatel.gov.pl/" target="_blank" rel="noopener">mObywatel</a>
+                <a href="https://inpost.pl/" target="_blank" rel="noopener">InPost</a>
+                <a href="https://www.olx.pl/lodz/" target="_blank" rel="noopener">OLX Łódź</a>
+                <a href="https://jakdojade.pl/lodz/trasa/" target="_blank" rel="noopener">Jakdojade</a>
+                <a href="https://www.gov.pl/web/udsc/jezyk-ukrainski-ua" target="_blank" rel="noopener">Документи UA</a>
+                <a href="https://www.gov.pl/web/nieodplatna-pomoc/porady-prawne-z-zakresu-prawa-cudzoziemcow-oraz-porady-prawne-w-jezykach-obcych" target="_blank" rel="noopener">Правова допомога</a>
+              </div>
+            </section>
+          </aside>
+        </div>
+      </section>
+
+      <section class="portal-directory" id="business" aria-labelledby="business-title">
+        <div class="container">
+          <div class="portal-section-head portal-section-head--compact">
+            <div><p class="portal-kicker">Перевірені контакти</p><h2 id="business-title">Український бізнес у Польщі</h2></div>
+            <a class="portal-section-link" href="mailto:hello@prywoz.fm?subject=%D0%94%D0%BE%D0%B4%D0%B0%D1%82%D0%B8%20%D0%BA%D0%BE%D0%BC%D0%BF%D0%B0%D0%BD%D1%96%D1%8E">Додати компанію →</a>
+          </div>
+          <div class="portal-business-grid" data-service-list>
+            <a class="portal-business portal-business--pink" href="https://www.google.com/maps/search/%D1%83%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D1%81%D1%8C%D0%BA%D0%B0+%D1%81%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%BE%D0%BB%D0%BE%D0%B3%D1%96%D1%8F+%D0%9B%D0%BE%D0%B4%D0%B7%D1%8C" target="_blank" rel="noopener"><strong>Стоматологія</strong><span>Фахівці у Лодзі</span><small>Переглянути →</small></a>
+            <a class="portal-business portal-business--green" href="https://www.google.com/maps/search/%D1%83%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D1%81%D1%8C%D0%BA%D0%B8%D0%B9+%D0%B1%D1%83%D1%85%D0%B3%D0%B0%D0%BB%D1%82%D0%B5%D1%80+%D0%9B%D0%BE%D0%B4%D0%B7%D1%8C" target="_blank" rel="noopener"><strong>Бухгалтерія</strong><span>Допомога ФОП і компаніям</span><small>Переглянути →</small></a>
+            <a class="portal-business portal-business--yellow" href="https://www.olx.pl/nieruchomosci/lodz/" target="_blank" rel="noopener"><strong>Нерухомість</strong><span>Оренда та купівля житла</span><small>Переглянути →</small></a>
+            <a class="portal-business portal-business--blue" href="https://www.google.com/maps/search/%D1%83%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D1%81%D1%8C%D0%BA%D0%B8%D0%B9+%D0%BA%D0%BE%D1%81%D0%BC%D0%B5%D1%82%D0%BE%D0%BB%D0%BE%D0%B3+%D0%9B%D0%BE%D0%B4%D0%B7%D1%8C" target="_blank" rel="noopener"><strong>Краса</strong><span>Майстри поруч із вами</span><small>Переглянути →</small></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="portal-programs" id="programs" aria-labelledby="programs-title">
+        <div class="container">
+          <div class="portal-section-head portal-section-head--compact">
+            <div><p class="portal-kicker">Власні матеріали</p><h2 id="programs-title">Матеріали PRYWOZ і програми радіо</h2></div>
+            <a class="portal-section-link" href="#live">До ефіру →</a>
+          </div>
+          <div class="portal-program-grid">
+            <article><span class="portal-program-icon"><svg class="icon"><use href="./assets/icons/lucide-sprite.svg#radio"></use></svg></span><div><strong>Українська хвиля</strong><p>Щоденна програма про життя громади</p></div></article>
+            <article><span class="portal-program-icon"><svg class="icon"><use href="./assets/icons/lucide-sprite.svg#mic-2"></use></svg></span><div><strong>Інтерв’ю громади</strong><p>Люди, ідеї та український бізнес</p></div></article>
+            <article><span class="portal-program-icon"><svg class="icon"><use href="./assets/icons/lucide-sprite.svg#file-text"></use></svg></span><div><strong>Корисно знати</strong><p>Пояснення правил і сервісів Польщі</p></div></article>
+            <article><span class="portal-program-icon"><svg class="icon"><use href="./assets/icons/lucide-sprite.svg#clock"></use></svg></span><div><strong>Розклад ефіру</strong><p>Денні програми та нічний ефір</p></div></article>
+          </div>
         </div>
       </section>
 
@@ -444,7 +537,7 @@
       </div>
     </div>
 
-    <script src="./scripts/pages/home.js?v=20260901-polish-schedule"></script>
+    <script src="./scripts/pages/home.js?v=20260904-portal"></script>
     <script src="./scripts/pages/questionnaire.js?v=20260824-card"></script>
   </body>
 </html>

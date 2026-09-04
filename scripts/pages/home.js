@@ -18,8 +18,23 @@ const stationBadge = document.querySelector(".live-player__badge");
 const mediaHolder = document.querySelector(".live-player__record");
 const mediaImage = document.querySelector(".live-player__record-image");
 const newsList = document.querySelector("[data-news-list]");
+const newsFeature = document.querySelector("[data-news-feature]");
 const newsFilter = document.querySelector("[data-news-filter]");
 const newsFilterButtons = document.querySelectorAll("[data-news-category]");
+const newsLoader = document.querySelector("[data-news-loader]");
+const newsLoaderText = document.querySelector("[data-news-loader-text]");
+const newsSentinel = document.querySelector("[data-news-sentinel]");
+const portalSearch = document.querySelector("[data-portal-search]");
+const portalSearchInput = document.querySelector("[data-portal-search-input]");
+const serviceLists = document.querySelectorAll("[data-service-list]");
+const citySelect = document.querySelector("[data-city-select]");
+const weatherTitle = document.querySelector("[data-weather-title]");
+const weatherMeta = document.querySelector("[data-weather-meta]");
+const currencyTitle = document.querySelector("[data-currency-title]");
+const airTitle = document.querySelector("[data-air-title]");
+const airMeta = document.querySelector("[data-air-meta]");
+const miniPlayerButton = document.querySelector("[data-mini-player]");
+const miniPlayerIcon = miniPlayerButton?.querySelector("use");
 
 const iconPath = "./assets/icons/lucide-sprite.svg";
 
@@ -271,6 +286,7 @@ const newsSources = [
     domain: "ukrinform.ua",
     feedUrl: "https://www.ukrinform.ua/rss/block-lastnews",
     category: "society",
+    region: "ukraine",
     reuseAllowed: true,
   },
   {
@@ -278,6 +294,7 @@ const newsSources = [
     domain: "radiosvoboda.org",
     feedUrl: "https://www.radiosvoboda.org/api/zrqiteuuir",
     category: "society",
+    region: "ukraine",
     reuseAllowed: true,
   },
   {
@@ -285,6 +302,7 @@ const newsSources = [
     domain: "uokik.gov.pl",
     feedUrl: "https://uokik.gov.pl/feed",
     category: "society",
+    region: "poland",
     reuseAllowed: true,
   },
   {
@@ -292,6 +310,7 @@ const newsSources = [
     domain: "stat.gov.pl",
     feedUrl: "https://stat.gov.pl/rss/pl/5438/8.xml",
     category: "society",
+    region: "poland",
     reuseAllowed: true,
   },
 ];
@@ -305,6 +324,7 @@ const fallbackNews = [
     originalUrl: "https://www.ukrinform.ua/rss/block-lastnews",
     publishedAt: new Date().toISOString(),
     category: "society",
+    region: "ukraine",
   },
   {
     id: "fallback-kherson-radiosvoboda",
@@ -314,6 +334,7 @@ const fallbackNews = [
     originalUrl: "https://www.radiosvoboda.org/api/zrqiteuuir",
     publishedAt: new Date().toISOString(),
     category: "politics",
+    region: "ukraine",
   },
   {
     id: "fallback-dnipro-ukrinform",
@@ -323,6 +344,7 @@ const fallbackNews = [
     originalUrl: "https://www.ukrinform.ua/rss/block-lastnews",
     publishedAt: new Date().toISOString(),
     category: "culture",
+    region: "ukraine",
   },
   {
     id: "fallback-polish-context-uokik",
@@ -332,6 +354,7 @@ const fallbackNews = [
     originalUrl: "https://uokik.gov.pl/rss",
     publishedAt: new Date().toISOString(),
     category: "society",
+    region: "poland",
   },
   {
     id: "fallback-polish-context-gus",
@@ -341,6 +364,7 @@ const fallbackNews = [
     originalUrl: "https://stat.gov.pl/rss/",
     publishedAt: new Date().toISOString(),
     category: "sport",
+    region: "poland",
   },
   {
     id: "fallback-entertainment",
@@ -350,6 +374,7 @@ const fallbackNews = [
     originalUrl: "https://www.radiosvoboda.org/api/zrqiteuuir",
     publishedAt: new Date().toISOString(),
     category: "entertainment",
+    region: "ukraine",
   },
 ];
 
@@ -444,6 +469,17 @@ let activePlaylistIndex = 0;
 let currentBroadcastSignature = "";
 let loadedNewsItems = fallbackNews;
 let activeNewsCategory = "all";
+let activeNewsQuery = "";
+let renderedNewsCount = 7;
+
+const newsBatchSize = 7;
+const cityData = {
+  lodz: { name: "Лодзь", latitude: 51.7592, longitude: 19.456 },
+  warsaw: { name: "Варшава", latitude: 52.2297, longitude: 21.0122 },
+  wroclaw: { name: "Вроцлав", latitude: 51.1079, longitude: 17.0385 },
+  krakow: { name: "Краків", latitude: 50.0647, longitude: 19.945 },
+  gdansk: { name: "Гданськ", latitude: 54.352, longitude: 18.6466 },
+};
 
 const stripHtml = (value = "") => value.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
 const rssJsonUrl = (url) => `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`;
@@ -513,6 +549,25 @@ const getBroadcastItem = (slot = getActiveBroadcastSlot()) => {
 const getNewsCategoryLabel = (category) => {
   const key = newsCategoryTranslationKeys[category] || "newsCategorySociety";
   return t(key);
+};
+
+const getNewsRegion = (item) => {
+  const text = normalizeNewsText(`${item.title} ${item.excerpt} ${item.source}`);
+  if (/лодз|łódź|lodz/.test(text)) {
+    return "lodz";
+  }
+  if (item.region) {
+    return item.region;
+  }
+  return ["UOKiK", "GUS"].includes(item.source) ? "poland" : "ukraine";
+};
+
+const getNewsRegionLabel = (item) => {
+  const region = getNewsRegion(item);
+  if (region === "lodz") {
+    return "Лодзь";
+  }
+  return region === "poland" ? "Польща" : "Україна";
 };
 
 const isRegionalNews = (item) => {
@@ -699,7 +754,7 @@ const parseFeed = async (source) => {
     const data = await response.json();
 
     if (data.status === "ok" && Array.isArray(data.items)) {
-      return data.items.slice(0, 6).map((item) => ({
+      return data.items.slice(0, 12).map((item) => ({
         id: `${source.name}-${item.guid || item.link}`,
         title: stripHtml(item.title) || source.name,
         excerpt: stripHtml(item.description || item.content).slice(0, 220),
@@ -707,6 +762,7 @@ const parseFeed = async (source) => {
         originalUrl: item.link || source.feedUrl,
         publishedAt: item.pubDate || new Date().toISOString(),
         category: detectNewsCategory(`${item.title} ${item.description || item.content}`) || source.category,
+        region: source.region,
       }));
     }
   } catch {
@@ -716,7 +772,7 @@ const parseFeed = async (source) => {
   const response = await fetch(rawProxyUrl(source.feedUrl));
   const xmlText = await response.text();
   const xml = new DOMParser().parseFromString(xmlText, "text/xml");
-  const entries = Array.from(xml.querySelectorAll("item, entry")).slice(0, 6);
+  const entries = Array.from(xml.querySelectorAll("item, entry")).slice(0, 12);
 
   return entries.map((entry) => {
     const linkNode = entry.querySelector("link");
@@ -730,6 +786,7 @@ const parseFeed = async (source) => {
       originalUrl,
       publishedAt: entry.querySelector("pubDate, published, updated")?.textContent || new Date().toISOString(),
       category: detectNewsCategory(`${entry.querySelector("title")?.textContent || ""} ${entry.querySelector("description, summary, content")?.textContent || ""}`) || source.category,
+      region: source.region,
     };
   });
 };
@@ -753,67 +810,141 @@ const formatNewsDate = (dateValue) => {
   }
 };
 
-const renderNews = (items) => {
+const getFilteredNews = () => {
+  return loadedNewsItems.filter((item) => {
+    const matchesCategory = activeNewsCategory === "all"
+      || (["poland", "ukraine", "lodz"].includes(activeNewsCategory)
+        ? getNewsRegion(item) === activeNewsCategory
+        : item.category === activeNewsCategory);
+    const searchableText = normalizeNewsText(`${item.title} ${item.excerpt} ${item.source} ${getNewsRegionLabel(item)}`);
+    return matchesCategory && (!activeNewsQuery || searchableText.includes(activeNewsQuery));
+  });
+};
+
+const createNewsSourceLink = (item, className) => {
+  const link = document.createElement("a");
+  link.className = className;
+  link.href = item.originalUrl;
+  link.target = "_blank";
+  link.rel = "noopener";
+  link.textContent = item.source;
+  return link;
+};
+
+const renderFeaturedNews = (item) => {
+  if (!newsFeature) {
+    return;
+  }
+
+  newsFeature.replaceChildren();
+  if (!item) {
+    const empty = document.createElement("div");
+    empty.className = "portal-featured-news__copy";
+    const title = document.createElement("h3");
+    title.textContent = "За вашим запитом новин не знайдено";
+    const text = document.createElement("p");
+    text.textContent = "Спробуйте іншу категорію або коротший пошуковий запит.";
+    empty.append(title, text);
+    newsFeature.append(empty);
+    return;
+  }
+
+  const copy = document.createElement("div");
+  copy.className = "portal-featured-news__copy";
+  const tag = document.createElement("span");
+  tag.className = "news-card__tag";
+  tag.textContent = `${getNewsRegionLabel(item)} · ${getNewsCategoryLabel(item.category)}`;
+  const title = document.createElement("h3");
+  title.textContent = item.title;
+  const excerpt = document.createElement("p");
+  excerpt.textContent = item.excerpt || t("newsFallbackText");
+  const link = document.createElement("a");
+  link.className = "text-link";
+  link.href = item.originalUrl;
+  link.target = "_blank";
+  link.rel = "noopener";
+  link.textContent = `${t("readOriginal")} →`;
+  copy.append(tag, title, excerpt, link);
+
+  const visual = document.createElement("div");
+  visual.className = "portal-featured-news__visual";
+  visual.setAttribute("aria-hidden", "true");
+  visual.innerHTML = `<svg class="icon"><use href="${iconPath}#newspaper"></use></svg>`;
+  newsFeature.append(copy, visual);
+};
+
+const createNewsRow = (item) => {
+  const article = document.createElement("article");
+  article.className = "portal-news-row";
+  const time = document.createElement("time");
+  time.dateTime = item.publishedAt;
+  time.textContent = formatNewsDate(item.publishedAt);
+
+  const body = document.createElement("div");
+  body.className = "portal-news-row__body";
+  const title = document.createElement("h3");
+  const titleLink = document.createElement("a");
+  titleLink.href = item.originalUrl;
+  titleLink.target = "_blank";
+  titleLink.rel = "noopener";
+  titleLink.textContent = item.title;
+  title.append(titleLink);
+  const excerpt = document.createElement("p");
+  excerpt.textContent = item.excerpt || t("newsFallbackText");
+  body.append(title, excerpt);
+
+  article.append(time, body, createNewsSourceLink(item, "portal-news-row__source"));
+  return article;
+};
+
+const renderNews = (items, reset = true) => {
   if (!newsList) {
     return;
   }
 
-  loadedNewsItems = items;
-  const visibleItems = activeNewsCategory === "all"
-    ? items
-    : items.filter((item) => item.category === activeNewsCategory);
+  loadedNewsItems = items.map((item) => ({ ...item, region: getNewsRegion(item) }));
+  if (reset) {
+    renderedNewsCount = newsBatchSize;
+  }
 
-  newsList.replaceChildren();
-  visibleItems.slice(0, 8).forEach((item) => {
-    const article = document.createElement("article");
-    article.className = "news-card news-card--text";
+  const filteredItems = getFilteredNews();
+  const featuredItem = filteredItems[0];
+  const rows = filteredItems.slice(1, renderedNewsCount);
+  renderFeaturedNews(featuredItem);
+  newsList.replaceChildren(...rows.map(createNewsRow));
 
-    const content = document.createElement("div");
-    content.className = "news-card__content";
+  const hasMore = renderedNewsCount < filteredItems.length;
+  newsLoader?.classList.toggle("portal-news-loader--complete", !hasMore);
+  if (newsLoaderText) {
+    newsLoaderText.textContent = hasMore
+      ? "Прокрутіть нижче, щоб завантажити більше"
+      : (filteredItems.length ? `Показано ${filteredItems.length} матеріалів` : "Нічого не знайдено");
+  }
+};
 
-    const meta = document.createElement("div");
-    meta.className = "news-card__meta";
+const loadMoreNews = () => {
+  const filteredItems = getFilteredNews();
+  if (renderedNewsCount >= filteredItems.length) {
+    return;
+  }
+  renderedNewsCount += newsBatchSize;
+  renderNews(loadedNewsItems, false);
+};
 
-    const tag = document.createElement("span");
-    tag.className = "news-card__tag";
-    tag.textContent = getNewsCategoryLabel(item.category);
+const loadVisibleNewsBatches = () => {
+  if (!newsSentinel) {
+    return;
+  }
 
-    const time = document.createElement("time");
-    time.textContent = formatNewsDate(item.publishedAt);
-
-    const title = document.createElement("h3");
-    title.className = "news-card__title";
-    title.textContent = item.title;
-
-    const excerpt = document.createElement("p");
-    excerpt.className = "news-card__text";
-    excerpt.textContent = item.excerpt || t("newsFallbackText");
-
-    const source = document.createElement("p");
-    source.className = "news-card__source";
-    source.textContent = `${t("newsSourceLabel")}: ${item.source}`;
-
-    const link = document.createElement("a");
-    link.className = "text-link";
-    link.href = item.originalUrl;
-    link.target = "_blank";
-    link.rel = "noopener";
-    link.innerHTML = `
-      <span>${t("readOriginal")}</span>
-      <svg class="icon" aria-hidden="true">
-        <use href="./assets/icons/lucide-sprite.svg#arrow-right"></use>
-      </svg>
-    `;
-
-    meta.append(tag, time);
-    content.append(meta, title, excerpt, source, link);
-    article.append(content);
-    newsList.append(article);
-  });
+  let sentinelTop = newsSentinel.getBoundingClientRect().top;
+  while (sentinelTop < window.innerHeight + 600 && renderedNewsCount < getFilteredNews().length) {
+    loadMoreNews();
+    sentinelTop = newsSentinel.getBoundingClientRect().top;
+  }
 };
 
 const loadNews = async () => {
-  const cacheKey = "prywoz-news-feed-ua-pl-v4";
+  const cacheKey = "prywoz-news-feed-ua-pl-v5";
   const cached = storageJson(cacheKey);
   const cacheMaxAge = 30 * 60 * 1000;
 
@@ -847,6 +978,86 @@ const loadNews = async () => {
     renderNews(safeItems);
   } catch {
     renderNews(staticCache);
+  }
+};
+
+const getWeatherLabel = (code) => {
+  if (code === 0) return "Ясно";
+  if (code <= 3) return "Мінлива хмарність";
+  if (code <= 48) return "Туман";
+  if (code <= 67) return "Дощ";
+  if (code <= 77) return "Сніг";
+  if (code <= 82) return "Зливи";
+  return "Гроза";
+};
+
+const getAirLabel = (index) => {
+  if (!Number.isFinite(index)) return "Дані тимчасово недоступні";
+  if (index <= 20) return "Якість дуже добра";
+  if (index <= 40) return "Якість добра";
+  if (index <= 60) return "Якість помірна";
+  if (index <= 80) return "Якість погана";
+  return "Якість дуже погана";
+};
+
+const loadPortalWidgets = async (cityKey = "lodz") => {
+  const city = cityData[cityKey] || cityData.lodz;
+  storageSet("prywoz-city", cityKey);
+
+  const weatherUrl = new URL("https://api.open-meteo.com/v1/forecast");
+  weatherUrl.search = new URLSearchParams({
+    latitude: String(city.latitude),
+    longitude: String(city.longitude),
+    current: "temperature_2m,weather_code",
+    timezone: "Europe/Warsaw",
+  });
+
+  const airUrl = new URL("https://air-quality-api.open-meteo.com/v1/air-quality");
+  airUrl.search = new URLSearchParams({
+    latitude: String(city.latitude),
+    longitude: String(city.longitude),
+    current: "european_aqi,pm2_5",
+    timezone: "Europe/Warsaw",
+  });
+
+  const [weatherResult, airResult] = await Promise.allSettled([
+    fetch(weatherUrl, { cache: "no-store" }).then((response) => response.ok ? response.json() : Promise.reject()),
+    fetch(airUrl, { cache: "no-store" }).then((response) => response.ok ? response.json() : Promise.reject()),
+  ]);
+
+  if (weatherResult.status === "fulfilled") {
+    const temperature = Math.round(weatherResult.value.current?.temperature_2m);
+    if (weatherTitle && Number.isFinite(temperature)) {
+      weatherTitle.textContent = `${city.name} · ${temperature > 0 ? "+" : ""}${temperature}°`;
+    }
+    if (weatherMeta) {
+      weatherMeta.textContent = getWeatherLabel(weatherResult.value.current?.weather_code);
+    }
+  }
+
+  if (airResult.status === "fulfilled") {
+    const airIndex = Number(airResult.value.current?.european_aqi);
+    const particulate = Number(airResult.value.current?.pm2_5);
+    if (airTitle) {
+      airTitle.textContent = getAirLabel(airIndex);
+    }
+    if (airMeta && Number.isFinite(particulate)) {
+      airMeta.textContent = `PM2.5 · ${Math.round(particulate)} µg/m³`;
+    }
+  }
+};
+
+const loadCurrencyWidget = async () => {
+  try {
+    const response = await fetch("https://api.nbp.pl/api/exchangerates/rates/a/uah/?format=json", { cache: "no-store" });
+    if (!response.ok) throw new Error("Currency unavailable");
+    const data = await response.json();
+    const rate = Number(data.rates?.[0]?.mid);
+    if (currencyTitle && Number.isFinite(rate)) {
+      currencyTitle.textContent = `UAH ${rate.toLocaleString("uk-UA", { minimumFractionDigits: 4, maximumFractionDigits: 4 })} PLN`;
+    }
+  } catch {
+    // The last known reference value remains visible when NBP is temporarily unavailable.
   }
 };
 
@@ -911,6 +1122,42 @@ newsFilter?.addEventListener("click", (event) => {
   renderNews(loadedNewsItems);
 });
 
+portalSearch?.addEventListener("submit", (event) => {
+  event.preventDefault();
+  document.querySelector("#news")?.scrollIntoView({ behavior: "smooth", block: "start" });
+});
+
+portalSearchInput?.addEventListener("input", () => {
+  activeNewsQuery = normalizeNewsText(portalSearchInput.value.trim());
+  renderNews(loadedNewsItems);
+
+  serviceLists.forEach((list) => {
+    Array.from(list.children).forEach((item) => {
+      const matches = !activeNewsQuery || normalizeNewsText(item.textContent).includes(activeNewsQuery);
+      item.dataset.searchHidden = String(!matches);
+    });
+  });
+});
+
+if (newsSentinel && "IntersectionObserver" in window) {
+  const newsObserver = new IntersectionObserver((entries) => {
+    if (entries.some((entry) => entry.isIntersecting)) {
+      loadVisibleNewsBatches();
+    }
+  }, { rootMargin: "500px 0px" });
+  newsObserver.observe(newsSentinel);
+}
+
+window.addEventListener("scroll", loadVisibleNewsBatches, { passive: true });
+
+citySelect?.addEventListener("change", () => {
+  loadPortalWidgets(citySelect.value);
+});
+
+miniPlayerButton?.addEventListener("click", () => {
+  playButton?.click();
+});
+
 if (player && audio && playButton && volumeButton) {
   const storedVolumeValue = storageGet("prywoz-volume");
   const storedVolume = storedVolumeValue === null ? null : Number(storedVolumeValue);
@@ -944,14 +1191,18 @@ if (player && audio && playButton && volumeButton) {
     document.body.classList.add("page--audio-focus");
     setPlayerState("playing");
     playButtonIcon?.setAttribute("href", `${iconPath}#pause`);
+    miniPlayerIcon?.setAttribute("href", `${iconPath}#pause`);
     playButton.setAttribute("aria-label", "Поставити ефір на паузу");
+    miniPlayerButton?.setAttribute("aria-label", "Поставити ефір на паузу");
   });
 
   audio.addEventListener("pause", () => {
     document.body.classList.remove("page--audio-focus");
     setPlayerState("paused");
     playButtonIcon?.setAttribute("href", `${iconPath}#play`);
+    miniPlayerIcon?.setAttribute("href", `${iconPath}#play`);
     playButton.setAttribute("aria-label", "Відтворити ефір");
+    miniPlayerButton?.setAttribute("aria-label", "Увімкнути ефір");
   });
 
   audio.addEventListener("waiting", () => setPlayerState("loading"));
@@ -1012,4 +1263,10 @@ if (player && audio && playButton && volumeButton) {
 }
 
 applyLanguage(activeLanguage);
+const savedCity = storageGet("prywoz-city") || "lodz";
+if (citySelect && cityData[savedCity]) {
+  citySelect.value = savedCity;
+}
+loadPortalWidgets(savedCity);
+loadCurrencyWidget();
 loadNews();
