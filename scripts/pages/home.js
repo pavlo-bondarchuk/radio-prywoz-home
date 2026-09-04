@@ -1277,7 +1277,7 @@ if (player && audio && playButton && volumeButton) {
 }
 
 applyLanguage(activeLanguage);
-const savedCity = storageGet("prywoz-city") || "lodz";
+const savedCity = citySelect ? (storageGet("prywoz-city") || "lodz") : "lodz";
 if (citySelect && cityData[savedCity]) {
   citySelect.value = savedCity;
 }

@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="./styles/pages/questionnaire.css?v=20260824-card">
     <link rel="stylesheet" href="./styles/components.css">
     <link rel="stylesheet" href="./styles/open-fm-redesign.css">
-    <link rel="stylesheet" href="./styles/pages/portal.css?v=20260904-compact-news">
+    <link rel="stylesheet" href="./styles/pages/portal.css?v=20260904-clean-header">
   </head>
   <body class="page">
     <header class="site-header">
@@ -41,28 +41,11 @@
           <input type="search" name="query" placeholder="Новини, послуги, компанії" aria-label="Пошук на сайті" autocomplete="off" data-portal-search-input>
         </form>
 
-        <label class="portal-city">
-          <span class="visually-hidden">Місто</span>
-          <svg class="icon" aria-hidden="true"><use href="./assets/icons/lucide-sprite.svg#map-pin"></use></svg>
-          <select data-city-select aria-label="Оберіть місто">
-            <option value="lodz">Лодзь</option>
-            <option value="warsaw">Варшава</option>
-            <option value="wroclaw">Вроцлав</option>
-            <option value="krakow">Краків</option>
-            <option value="gdansk">Гданськ</option>
-          </select>
-        </label>
-
         <div class="language-switcher" aria-label="Вибір мови">
           <button class="language-switcher__item language-switcher__item--active" type="button" data-language="uk" aria-current="true">UA</button>
           <button class="language-switcher__item" type="button" data-language="pl">PL</button>
           <button class="language-switcher__item" type="button" data-language="ru">RU</button>
         </div>
-
-        <button class="portal-mini-player" type="button" data-mini-player aria-label="Увімкнути ефір">
-          <span class="portal-mini-player__icon"><svg class="icon" aria-hidden="true"><use href="./assets/icons/lucide-sprite.svg#play"></use></svg></span>
-          <span>Слухати ефір</span>
-        </button>
 
         <button
           class="site-header__menu-toggle"
@@ -540,7 +523,7 @@
       </div>
     </div>
 
-    <script src="./scripts/pages/home.js?v=20260904-compact-news"></script>
+    <script src="./scripts/pages/home.js?v=20260904-clean-header"></script>
     <script src="./scripts/pages/questionnaire.js?v=20260824-card"></script>
   </body>
 </html>

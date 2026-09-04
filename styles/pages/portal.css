@@ -5,7 +5,7 @@
 .portal-header {
   display: grid;
   min-height: 82px;
-  grid-template-columns: minmax(220px, 0.8fr) minmax(260px, 1.45fr) 150px auto 174px;
+  grid-template-columns: minmax(220px, 0.8fr) minmax(260px, 1.7fr) auto;
   gap: 14px;
 }
 
@@ -627,21 +627,7 @@
 
 @media (max-width: 1120px) {
   .portal-header {
-    grid-template-columns: minmax(210px, 0.8fr) minmax(220px, 1.3fr) 138px auto 52px;
-  }
-
-  .portal-mini-player {
-    width: 52px;
-    padding: 0;
-  }
-
-  .portal-mini-player > span:last-child {
-    display: none;
-  }
-
-  .portal-mini-player__icon {
-    background: transparent;
-    color: #ffffff;
+    grid-template-columns: minmax(210px, 0.8fr) minmax(220px, 1.3fr) auto;
   }
 
   .portal-content__grid {
@@ -666,10 +652,6 @@
     width: 46px;
     height: 46px;
     place-items: center;
-  }
-
-  .portal-header .portal-mini-player {
-    display: none;
   }
 
   .site-header__panel {
