@@ -4,7 +4,7 @@
 
 .portal-header {
   display: grid;
-  min-height: 82px;
+  min-height: 96px;
   grid-template-columns: minmax(220px, 1fr) max-content 46px auto;
   gap: 14px;
 }
@@ -23,6 +23,16 @@
 .logo__mark .icon {
   width: 24px;
   height: 24px;
+}
+
+.logo__main {
+  width: 94px;
+  height: 86px;
+  object-fit: contain;
+}
+
+.logo:has(.logo__main) {
+  width: max-content;
 }
 
 .logo__name {
@@ -951,6 +961,11 @@ html[data-theme="dark"] .portal-local-time__icon {
     width: 40px;
     height: 40px;
     flex-basis: 40px;
+  }
+
+  .logo__main {
+    width: 72px;
+    height: 66px;
   }
 
   .logo__name {
