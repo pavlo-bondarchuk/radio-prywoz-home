@@ -33,7 +33,8 @@
     <link rel="stylesheet" href="./styles/pages/questionnaire.css?v=20260824-card">
     <link rel="stylesheet" href="./styles/components.css">
     <link rel="stylesheet" href="./styles/open-fm-redesign.css">
-    <link rel="stylesheet" href="./styles/pages/portal.css?v=20260905-logo-fix">
+    <link rel="stylesheet" href="./styles/pages/portal.css?v=20260905-radio">
+    <link rel="stylesheet" href="./styles/pages/inner.css?v=20260905-radio">
   </head>
   <body class="page">
     <header class="site-header">
@@ -49,6 +50,12 @@
             <span data-local-date>Локальний час</span>
           </div>
         </div>
+
+        <button class="header-radio" type="button" data-radio-toggle data-state="idle" aria-label="Увімкнути ефір" aria-pressed="false">
+          <span class="header-radio__dot" aria-hidden="true"></span>
+          <span class="header-radio__copy"><strong data-radio-status>Радіо вимкнено</strong><span data-radio-track>РАДИО ПРИВОЗ ФМ</span></span>
+          <svg class="icon" aria-hidden="true"><use href="./assets/icons/lucide-sprite.svg#play"></use></svg>
+        </button>
 
         <button class="theme-toggle" type="button" data-theme-toggle aria-label="Увімкнути темну тему" aria-pressed="false">
           <svg class="icon theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true"><use href="./assets/icons/lucide-sprite.svg#sun"></use></svg>
@@ -95,13 +102,13 @@
       </div>
     </header>
 
+    <audio data-persistent-radio preload="none"></audio>
+
     <main>
       <section class="portal-live" id="top" aria-labelledby="hero-title">
         <div class="container">
           <h1 class="visually-hidden" id="hero-title">РАДИО ПРИВОЗ ФМ — український портал і радіо в Польщі</h1>
             <div class="live-player" id="live">
-              <audio class="live-player__audio" src="https://listen1.myradio24.com/73556" preload="none"></audio>
-
               <div class="live-player__record live-player__record--vinyl" aria-hidden="true">
                 <img
                   class="live-player__record-image"
@@ -539,7 +546,9 @@
       </div>
     </div>
 
-    <script src="./scripts/pages/home.js?v=20260905-logo-fix"></script>
+    <script src="./scripts/radio-persistence.js?v=20260905"></script>
+    <script src="./scripts/pages/home.js?v=20260905-radio"></script>
+    <script src="./scripts/pages/inner.js?v=20260905-radio"></script>
     <script src="./scripts/pages/questionnaire.js?v=20260824-card"></script>
   </body>
 </html>
