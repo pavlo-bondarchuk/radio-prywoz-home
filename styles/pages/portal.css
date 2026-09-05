@@ -27,7 +27,10 @@
 
 .logo__main {
   width: 94px;
+  min-width: 94px;
+  max-width: 94px;
   height: 86px;
+  flex: 0 0 94px;
   object-fit: contain;
 }
 
@@ -965,7 +968,10 @@ html[data-theme="dark"] .portal-local-time__icon {
 
   .logo__main {
     width: 72px;
+    min-width: 72px;
+    max-width: 72px;
     height: 66px;
+    flex-basis: 72px;
   }
 
   .logo__name {
