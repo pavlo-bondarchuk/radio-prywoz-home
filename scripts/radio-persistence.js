@@ -7,6 +7,9 @@
   }));
   audio.dataset.persistentRadio = "";
 
+  const storedVolume = Number(localStorage.getItem("prywoz-volume"));
+  audio.volume = Number.isFinite(storedVolume) && storedVolume >= 0 && storedVolume <= 1 ? storedVolume : 1;
+
   const getControl = () => document.querySelector("[data-radio-toggle]");
   const getIcon = () => getControl()?.querySelector("use");
   const stateCopy = {
@@ -29,7 +32,40 @@
       button?.setAttribute("aria-pressed", String(state === "live"));
       button?.setAttribute("aria-label", state === "live" ? "Вимкнути звук ефіру" : "Увімкнути ефір");
       button?.querySelector("use")?.setAttribute("href", `./assets/icons/lucide-sprite.svg#${copy.icon}`);
+      const range = player.querySelector(".live-player__volume-range");
+      const level = audio.muted ? 0 : Math.round(audio.volume * 100);
+      if (range) range.value = String(level);
+      const value = player.querySelector(".live-player__volume-value");
+      if (value) value.textContent = `${level}%`;
+      player.querySelector(".live-player__volume use")?.setAttribute("href", `./assets/icons/lucide-sprite.svg#${level === 0 ? "volume-x" : "volume-2"}`);
     });
+  };
+
+  const syncTheme = () => {
+    const isDark = document.documentElement.dataset.theme === "dark";
+    document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
+      button.setAttribute("aria-pressed", String(isDark));
+      button.setAttribute("aria-label", isDark ? "Увімкнути світлу тему" : "Увімкнути темну тему");
+      button.title = isDark ? "Увімкнути світлу тему" : "Увімкнути темну тему";
+    });
+  };
+
+  const toggleTheme = () => {
+    const theme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+    document.documentElement.dataset.theme = theme;
+    document.documentElement.style.colorScheme = theme;
+    localStorage.setItem("prywoz-theme", theme);
+    syncTheme();
+  };
+
+  const syncSchedule = () => {
+    const hour = Number(new Intl.DateTimeFormat("en-GB", {
+      timeZone: "Europe/Warsaw",
+      hour: "2-digit",
+      hour12: false,
+    }).format(new Date()));
+    const label = hour >= 10 && hour < 20 ? "Денний ефір · 10:00–20:00" : "Нічний ефір · 20:00–10:00";
+    document.querySelectorAll(".live-player__host").forEach((node) => { node.textContent = label; });
   };
 
   const setState = (state, label) => {
@@ -53,7 +89,6 @@
       audio.load();
     }
     audio.muted = false;
-    audio.volume = 1;
     setState("loading", "Підключення…");
     try {
       await audio.play();
@@ -77,9 +112,41 @@
   window.PrywozRadio = { audio, mute, start, toggle };
 
   document.addEventListener("click", (event) => {
-    const button = event.target.closest("[data-radio-toggle]");
-    if (!button) return;
-    toggle();
+    if (event.target.closest("[data-theme-toggle]")) {
+      toggleTheme();
+      return;
+    }
+
+    if (event.target.closest("[data-radio-toggle], .live-player__play, [data-inner-play]")) {
+      toggle();
+      return;
+    }
+
+    const volumeButton = event.target.closest(".live-player__volume");
+    if (volumeButton) {
+      const panel = volumeButton.closest(".live-player__volume-control")?.querySelector(".live-player__volume-panel");
+      if (!panel) return;
+      panel.hidden = !panel.hidden;
+      volumeButton.setAttribute("aria-expanded", String(!panel.hidden));
+      if (!panel.hidden) panel.querySelector("input")?.focus();
+      return;
+    }
+
+    if (event.target.closest(".live-player__volume-panel")) return;
+
+    document.querySelectorAll(".live-player__volume-panel:not([hidden])").forEach((panel) => {
+      panel.hidden = true;
+      panel.closest(".live-player__volume-control")?.querySelector(".live-player__volume")?.setAttribute("aria-expanded", "false");
+    });
+  });
+
+  document.addEventListener("input", (event) => {
+    const range = event.target.closest(".live-player__volume-range");
+    if (!range) return;
+    audio.volume = Number(range.value) / 100;
+    audio.muted = audio.volume === 0;
+    localStorage.setItem("prywoz-volume", String(audio.volume));
+    setState(audio.muted ? "muted" : (audio.paused ? "idle" : "live"));
   });
 
   audio.addEventListener("playing", () => setState(audio.muted ? "muted" : "live", audio.muted ? "Без звуку" : "Ефір наживо"));
@@ -92,7 +159,7 @@
       if (!response.ok) return;
       const data = await response.json();
       const song = data.song || [data.artist, data.songtitle].filter(Boolean).join(" — ");
-      document.querySelectorAll("[data-radio-track]").forEach((node) => { node.textContent = song && song !== "-" ? song : "РАДИО ПРИВОЗ ФМ"; });
+      document.querySelectorAll("[data-radio-track], .live-player__track").forEach((node) => { node.textContent = song && song !== "-" ? song : "РАДИО ПРИВОЗ ФМ"; });
     } catch { /* Keep the station name while metadata is unavailable. */ }
   };
 
@@ -122,7 +189,10 @@
       if (target.hash) requestAnimationFrame(() => document.querySelector(target.hash)?.scrollIntoView());
       else scrollTo({ top: 0, behavior: "instant" });
       document.dispatchEvent(new CustomEvent("prywoz:navigation", { detail: { url: target.href } }));
+      syncTheme();
+      syncSchedule();
       setState(audio.paused ? "idle" : (audio.muted ? "muted" : "live"));
+      updateMetadata();
     } catch {
       location.href = target.href;
     }
@@ -141,9 +211,12 @@
 
   const mount = () => {
     updateNavigation(location.href);
+    syncTheme();
+    syncSchedule();
     setState(audio.paused ? "idle" : (audio.muted ? "muted" : "live"), audio.paused ? "Радіо вимкнено" : (audio.muted ? "Без звуку" : "Ефір наживо"));
     updateMetadata();
   };
   if (document.readyState === "loading") addEventListener("DOMContentLoaded", mount, { once: true }); else mount();
   setInterval(updateMetadata, 15000);
+  setInterval(syncSchedule, 60000);
 })();

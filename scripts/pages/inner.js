@@ -35,36 +35,11 @@ const applyLanguage = (language) => {
   document.querySelectorAll("[data-language]").forEach((button) => { const active=button.dataset.language===lang; button.classList.toggle("language-switcher__item--active",active); button.setAttribute("aria-current",String(active)); });
 };
 
-document.querySelector("[data-theme-toggle]")?.addEventListener("click", () => {
-  const theme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
-  document.documentElement.dataset.theme = theme;
-  document.documentElement.style.colorScheme = theme;
-  localStorage.setItem("prywoz-theme", theme);
-});
 document.querySelectorAll("[data-language]").forEach((button)=>button.addEventListener("click",()=>applyLanguage(button.dataset.language)));
 const header=document.querySelector(".site-header"); const menu=document.querySelector(".site-header__menu-toggle");
 menu?.addEventListener("click",()=>{const open=header.classList.toggle("site-header--menu-open");menu.setAttribute("aria-expanded",String(open));});
 document.querySelectorAll(".main-nav__link").forEach((link)=>link.addEventListener("click",()=>header?.classList.remove("site-header--menu-open")));
 renderTime(); setInterval(renderTime,30000); applyLanguage(savedLanguage);
-
-const audio=document.querySelector("[data-persistent-radio]");
-document.addEventListener("click",(event)=>{if(!event.target.closest("[data-inner-play]"))return;window.PrywozRadio?.toggle();});
-
-const updateOnAir = async () => {
-  const title = document.querySelector(".live-player__track");
-  const meta = document.querySelector(".live-player__host");
-  if (!title || !meta) return;
-  const hour = Number(new Intl.DateTimeFormat("en-GB", { timeZone:"Europe/Warsaw", hour:"2-digit", hour12:false }).format(new Date()));
-  meta.textContent = hour >= 10 && hour < 20 ? "Денний ефір · 10:00–20:00" : "Нічний ефір · 20:00–10:00";
-  try {
-    const response = await fetch("https://myradio24.com/users/73556/status.json", { cache:"no-store" });
-    if (!response.ok) return;
-    const status = await response.json();
-    const current = status.song || [status.artist, status.songtitle].filter(Boolean).join(" — ");
-    if (current && current !== "-") title.textContent = current;
-  } catch { /* The station name remains visible while metadata is unavailable. */ }
-};
-updateOnAir(); setInterval(updateOnAir,15000);
 
 const initNews=()=>{const newsRoot=document.querySelector("[data-inner-news]");if(!newsRoot||newsRoot.dataset.ready)return;newsRoot.dataset.ready="true";let items=[],shown=9,filter="all";const country=x=>/uokik|gus|gov\.pl|\.pl\//i.test(`${x.source} ${x.originalUrl}`)?"poland":"ukraine";const draw=()=>{const filtered=filter==="all"?items:items.filter(x=>x.category===filter||country(x)===filter);newsRoot.innerHTML=filtered.slice(0,shown).map(x=>`<article><div><h2>${x.title}</h2><p>${x.excerpt||""}</p><small>${x.source||""}</small></div><a href="${x.originalUrl||x.url}" target="_blank" rel="noopener">Джерело →</a></article>`).join("")||"<p>У цій категорії поки немає матеріалів.</p>";const more=document.querySelector("[data-news-more]");if(more)more.hidden=shown>=filtered.length;};fetch("./assets/data/news-cache.json").then(r=>{if(!r.ok)throw new Error();return r.json();}).then(data=>{items=Array.isArray(data)?data:(data.items||[]);draw();}).catch(()=>{newsRoot.innerHTML="<p>Не вдалося завантажити стрічку. Спробуйте оновити сторінку.</p>";});document.querySelectorAll("[data-news-filter]").forEach(btn=>btn.addEventListener("click",()=>{filter=btn.dataset.newsFilter;shown=9;document.querySelectorAll("[data-news-filter]").forEach(b=>b.setAttribute("aria-pressed",String(b===btn)));draw();}));document.querySelector("[data-news-more]")?.addEventListener("click",()=>{shown+=9;draw();});};
 initNews();document.addEventListener("prywoz:navigation",initNews);

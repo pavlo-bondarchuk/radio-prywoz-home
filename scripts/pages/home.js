@@ -1158,10 +1158,6 @@ languageButtons.forEach((button) => {
   });
 });
 
-themeToggle?.addEventListener("click", () => {
-  setTheme(document.documentElement.dataset.theme === "dark" ? "light" : "dark");
-});
-
 const systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
 systemTheme.addEventListener?.("change", (event) => {
   if (!storageGet("prywoz-theme")) setTheme(event.matches ? "dark" : "light", false);
@@ -1205,100 +1201,6 @@ window.addEventListener("scroll", loadVisibleNewsBatches, { passive: true });
 citySelect?.addEventListener("change", () => {
   loadPortalWidgets(citySelect.value);
 });
-
-miniPlayerButton?.addEventListener("click", () => {
-  playButton?.click();
-});
-
-if (player && audio && playButton && volumeButton) {
-  const storedVolumeValue = storageGet("prywoz-volume");
-  const storedVolume = storedVolumeValue === null ? null : Number(storedVolumeValue);
-  audio.volume = storedVolume !== null
-    && Number.isFinite(storedVolume)
-    && storedVolume >= 0
-    && storedVolume <= 1
-    ? storedVolume
-    : 1;
-
-  playButton.addEventListener("click", () => {
-    userStartedPlayback = true;
-    window.PrywozRadio?.toggle();
-  });
-
-  audio.addEventListener("play", () => {
-    document.body.classList.add("page--audio-focus");
-    setPlayerState("playing");
-    playButtonIcon?.setAttribute("href", `${iconPath}#pause`);
-    miniPlayerIcon?.setAttribute("href", `${iconPath}#pause`);
-    playButton.setAttribute("aria-label", "Поставити ефір на паузу");
-    miniPlayerButton?.setAttribute("aria-label", "Поставити ефір на паузу");
-  });
-
-  audio.addEventListener("pause", () => {
-    document.body.classList.remove("page--audio-focus");
-    setPlayerState("paused");
-    playButtonIcon?.setAttribute("href", `${iconPath}#play`);
-    miniPlayerIcon?.setAttribute("href", `${iconPath}#play`);
-    playButton.setAttribute("aria-label", "Відтворити ефір");
-    miniPlayerButton?.setAttribute("aria-label", "Увімкнути ефір");
-  });
-
-  audio.addEventListener("waiting", () => setPlayerState("loading"));
-  audio.addEventListener("error", () => setPlayerState("error"));
-  audio.addEventListener("ended", () => {
-    if (activeBroadcast?.mode === "playlist") {
-      activePlaylistIndex += 1;
-      syncScheduledBroadcast(true, true);
-    }
-  });
-
-  volumeButton.addEventListener("click", (event) => {
-    event.stopPropagation();
-    const willOpen = volumePanel?.hidden ?? false;
-    if (volumePanel) {
-      volumePanel.hidden = !willOpen;
-    }
-    volumeButton.setAttribute("aria-expanded", String(willOpen));
-    if (willOpen) {
-      volumeRange?.focus();
-    }
-  });
-
-  volumeRange?.addEventListener("input", () => {
-    const level = Number(volumeRange.value) / 100;
-    audio.volume = level;
-    audio.muted = level === 0;
-    storageSet("prywoz-volume", String(level));
-    updateVolumeState();
-  });
-
-  volumePanel?.addEventListener("click", (event) => event.stopPropagation());
-  document.addEventListener("click", () => {
-    if (volumePanel && !volumePanel.hidden) {
-      volumePanel.hidden = true;
-      volumeButton.setAttribute("aria-expanded", "false");
-    }
-  });
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && volumePanel && !volumePanel.hidden) {
-      volumePanel.hidden = true;
-      volumeButton.setAttribute("aria-expanded", "false");
-      volumeButton.focus();
-    }
-  });
-
-  updateVolumeState();
-
-  const initializePlayer = async () => {
-    await loadBroadcastSchedule();
-    await syncScheduledBroadcast(false, true);
-    await loadNowPlaying();
-  };
-
-  initializePlayer();
-  window.setInterval(() => syncScheduledBroadcast(userStartedPlayback), 60 * 1000);
-  window.setInterval(loadNowPlaying, 15 * 1000);
-}
 
 applyLanguage(activeLanguage);
 window.setInterval(renderLocalTime, 30 * 1000);
