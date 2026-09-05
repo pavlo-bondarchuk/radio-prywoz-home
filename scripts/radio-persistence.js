@@ -9,15 +9,42 @@
 
   const getControl = () => document.querySelector("[data-radio-toggle]");
   const getIcon = () => getControl()?.querySelector("use");
+  const stateCopy = {
+    idle: { badge: "Paused", icon: "play", label: "Радіо вимкнено" },
+    muted: { badge: "Paused", icon: "play", label: "Без звуку" },
+    loading: { badge: "Connecting", icon: "loader-circle", label: "Підключення…" },
+    live: { badge: "On air", icon: "pause", label: "Ефір наживо" },
+    error: { badge: "Offline", icon: "play", label: "Помилка ефіру" },
+  };
+
+  const syncPlayer = (state) => {
+    const copy = stateCopy[state] || stateCopy.idle;
+    document.querySelectorAll(".live-player").forEach((player) => {
+      player.dataset.radioState = state;
+      player.classList.toggle("live-player--playing", state === "live");
+      player.classList.toggle("live-player--loading", state === "loading");
+      player.classList.toggle("live-player--error", state === "error");
+      player.querySelector(".live-player__badge")?.replaceChildren(copy.badge);
+      const button = player.querySelector(".live-player__play");
+      button?.setAttribute("aria-pressed", String(state === "live"));
+      button?.setAttribute("aria-label", state === "live" ? "Вимкнути звук ефіру" : "Увімкнути ефір");
+      button?.querySelector("use")?.setAttribute("href", `./assets/icons/lucide-sprite.svg#${copy.icon}`);
+    });
+  };
+
   const setState = (state, label) => {
+    const copy = stateCopy[state] || stateCopy.idle;
     const control = getControl();
-    if (!control) return;
-    control.dataset.state = state;
-    control.setAttribute("aria-pressed", String(state === "live"));
-    control.setAttribute("aria-label", state === "live" ? "Вимкнути звук ефіру" : "Увімкнути ефір");
-    const status = control.querySelector("[data-radio-status]");
-    if (status) status.textContent = label;
-    getIcon()?.setAttribute("href", `./assets/icons/lucide-sprite.svg#${state === "live" ? "volume-2" : "play"}`);
+    if (control) {
+      control.dataset.state = state;
+      control.setAttribute("aria-pressed", String(state === "live"));
+      control.setAttribute("aria-label", state === "live" ? "Вимкнути звук ефіру" : "Увімкнути ефір");
+      const status = control.querySelector("[data-radio-status]");
+      if (status) status.textContent = label || copy.label;
+      getIcon()?.setAttribute("href", `./assets/icons/lucide-sprite.svg#${state === "live" ? "volume-2" : "play"}`);
+    }
+    syncPlayer(state);
+    document.dispatchEvent(new CustomEvent("prywoz:radio-state", { detail: { state } }));
   };
 
   const start = async () => {
@@ -43,10 +70,16 @@
     setState("muted", "Без звуку");
   };
 
+  const toggle = () => {
+    if (!audio.paused && !audio.muted) mute(); else start();
+  };
+
+  window.PrywozRadio = { audio, mute, start, toggle };
+
   document.addEventListener("click", (event) => {
     const button = event.target.closest("[data-radio-toggle]");
     if (!button) return;
-    if (!audio.paused && !audio.muted) mute(); else start();
+    toggle();
   });
 
   audio.addEventListener("playing", () => setState(audio.muted ? "muted" : "live", audio.muted ? "Без звуку" : "Ефір наживо"));
@@ -89,6 +122,7 @@
       if (target.hash) requestAnimationFrame(() => document.querySelector(target.hash)?.scrollIntoView());
       else scrollTo({ top: 0, behavior: "instant" });
       document.dispatchEvent(new CustomEvent("prywoz:navigation", { detail: { url: target.href } }));
+      setState(audio.paused ? "idle" : (audio.muted ? "muted" : "live"));
     } catch {
       location.href = target.href;
     }

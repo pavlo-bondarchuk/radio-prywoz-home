@@ -48,7 +48,7 @@ document.querySelectorAll(".main-nav__link").forEach((link)=>link.addEventListen
 renderTime(); setInterval(renderTime,30000); applyLanguage(savedLanguage);
 
 const audio=document.querySelector("[data-persistent-radio]");
-document.addEventListener("click",async(event)=>{const play=event.target.closest("[data-inner-play]");if(!play||!audio)return;if(audio.paused){try{if(!audio.src){audio.src="https://listen1.myradio24.com/73556";audio.load();}await audio.play();play.setAttribute("aria-pressed","true");play.querySelector("use")?.setAttribute("href",`${iconPath}#pause`);}catch{play.dataset.error="true";}}else{audio.muted=!audio.muted;play.setAttribute("aria-pressed",String(!audio.muted));play.querySelector("use")?.setAttribute("href",`${iconPath}#${audio.muted?"play":"pause"}`);}});
+document.addEventListener("click",(event)=>{if(!event.target.closest("[data-inner-play]"))return;window.PrywozRadio?.toggle();});
 
 const updateOnAir = async () => {
   const title = document.querySelector(".live-player__track");

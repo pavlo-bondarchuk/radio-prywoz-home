@@ -674,11 +674,8 @@ const renderStationMeta = () => {
     : (activeBroadcast?.title || localStation.name);
   stationMeta.textContent = t(slot?.labelKey || "localStationMeta");
 
-  if (stationBadge) {
-    const isOnline = nowPlayingStatus?.online !== 0;
-    stationBadge.textContent = isOnline ? "On air" : t("stationOffline");
-    player?.classList.toggle("live-player--offline", !isOnline);
-  }
+  const isOnline = nowPlayingStatus?.online !== 0;
+  player?.classList.toggle("live-player--offline", !isOnline);
 };
 
 const loadNowPlaying = async () => {
@@ -1223,23 +1220,9 @@ if (player && audio && playButton && volumeButton) {
     ? storedVolume
     : 1;
 
-  playButton.addEventListener("click", async () => {
+  playButton.addEventListener("click", () => {
     userStartedPlayback = true;
-
-    if (audio.paused) {
-      setPlayerState("loading");
-      try {
-        await audio.play();
-      } catch {
-        setPlayerState("error");
-        if (stationMeta) {
-          stationMeta.textContent = t("stationError");
-        }
-      }
-      return;
-    }
-
-    audio.pause();
+    window.PrywozRadio?.toggle();
   });
 
   audio.addEventListener("play", () => {
