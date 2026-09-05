@@ -35,7 +35,7 @@
   font-weight: 500;
 }
 
-.portal-search,
+.portal-local-time,
 .portal-city {
   display: flex;
   min-width: 0;
@@ -48,14 +48,16 @@
   background: var(--ds-color-surface);
 }
 
-.portal-search .icon,
 .portal-city .icon {
   width: 18px;
   height: 18px;
   color: var(--ds-color-text-muted);
 }
 
-.portal-search input,
+.portal-local-time__icon .icon {
+  color: inherit;
+}
+
 .portal-city select {
   width: 100%;
   min-width: 0;
@@ -63,6 +65,36 @@
   border: 0;
   outline: 0;
   background: transparent;
+}
+
+.portal-local-time__icon {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  border-radius: 50%;
+  place-items: center;
+  color: var(--ds-color-primary);
+  background: rgba(20, 99, 255, 0.08);
+}
+
+.portal-local-time > div {
+  display: grid;
+  min-width: 0;
+  gap: 1px;
+}
+
+.portal-local-time strong {
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+.portal-local-time > div > span {
+  overflow: hidden;
+  color: var(--ds-color-text-muted);
+  font-size: 11px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .portal-city select {
@@ -704,7 +736,7 @@
     display: none;
   }
 
-  .portal-search {
+  .portal-local-time {
     grid-column: 1 / -1;
     grid-row: 2;
   }

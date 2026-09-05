@@ -25,9 +25,6 @@ const newsLoader = document.querySelector("[data-news-loader]");
 const newsLoaderText = document.querySelector("[data-news-loader-text]");
 const newsSentinel = document.querySelector("[data-news-sentinel]");
 const newsExpandButton = document.querySelector("[data-news-expand]");
-const portalSearch = document.querySelector("[data-portal-search]");
-const portalSearchInput = document.querySelector("[data-portal-search-input]");
-const serviceLists = document.querySelectorAll("[data-service-list]");
 const citySelect = document.querySelector("[data-city-select]");
 const weatherTitle = document.querySelector("[data-weather-title]");
 const weatherMeta = document.querySelector("[data-weather-meta]");
@@ -36,6 +33,9 @@ const airTitle = document.querySelector("[data-air-title]");
 const airMeta = document.querySelector("[data-air-meta]");
 const miniPlayerButton = document.querySelector("[data-mini-player]");
 const miniPlayerIcon = miniPlayerButton?.querySelector("use");
+const localTime = document.querySelector("[data-local-time]");
+const localTimeCity = document.querySelector("[data-local-time-city]");
+const localDate = document.querySelector("[data-local-date]");
 
 const iconPath = "./assets/icons/lucide-sprite.svg";
 
@@ -470,7 +470,6 @@ let activePlaylistIndex = 0;
 let currentBroadcastSignature = "";
 let loadedNewsItems = fallbackNews;
 let activeNewsCategory = "all";
-let activeNewsQuery = "";
 let renderedNewsCount = 4;
 let newsExpanded = false;
 
@@ -819,9 +818,33 @@ const getFilteredNews = () => {
       || (["poland", "ukraine", "lodz"].includes(activeNewsCategory)
         ? getNewsRegion(item) === activeNewsCategory
         : item.category === activeNewsCategory);
-    const searchableText = normalizeNewsText(`${item.title} ${item.excerpt} ${item.source} ${getNewsRegionLabel(item)}`);
-    return matchesCategory && (!activeNewsQuery || searchableText.includes(activeNewsQuery));
+    return matchesCategory;
   });
+};
+
+const renderLocalTime = () => {
+  const locale = activeLanguage === "pl" ? "pl-PL" : activeLanguage === "ru" ? "ru-RU" : "uk-UA";
+  const now = new Date();
+  if (localTime) {
+    localTime.dateTime = now.toISOString();
+    localTime.textContent = new Intl.DateTimeFormat(locale, {
+      timeZone: "Europe/Warsaw",
+      hour: "2-digit",
+      minute: "2-digit",
+      hourCycle: "h23",
+    }).format(now);
+  }
+  if (localTimeCity) {
+    localTimeCity.textContent = activeLanguage === "pl" ? "Łódź" : activeLanguage === "ru" ? "Лодзь" : "Лодзь";
+  }
+  if (localDate) {
+    localDate.textContent = new Intl.DateTimeFormat(locale, {
+      timeZone: "Europe/Warsaw",
+      weekday: "long",
+      day: "numeric",
+      month: "long",
+    }).format(now);
+  }
 };
 
 const createNewsSourceLink = (item, className) => {
@@ -1087,6 +1110,7 @@ const applyLanguage = (language) => {
   renderStationMeta();
   updateVolumeState();
   renderNews(loadedNewsItems);
+  renderLocalTime();
   document.dispatchEvent(new CustomEvent("prywoz:languagechange", { detail: { language: activeLanguage } }));
 };
 
@@ -1134,23 +1158,6 @@ newsExpandButton?.addEventListener("click", () => {
   document.querySelector(".portal-news")?.classList.add("portal-news--expanded");
   renderNews(loadedNewsItems, false);
   loadVisibleNewsBatches();
-});
-
-portalSearch?.addEventListener("submit", (event) => {
-  event.preventDefault();
-  document.querySelector("#news")?.scrollIntoView({ behavior: "smooth", block: "start" });
-});
-
-portalSearchInput?.addEventListener("input", () => {
-  activeNewsQuery = normalizeNewsText(portalSearchInput.value.trim());
-  renderNews(loadedNewsItems);
-
-  serviceLists.forEach((list) => {
-    Array.from(list.children).forEach((item) => {
-      const matches = !activeNewsQuery || normalizeNewsText(item.textContent).includes(activeNewsQuery);
-      item.dataset.searchHidden = String(!matches);
-    });
-  });
 });
 
 if (newsSentinel && "IntersectionObserver" in window) {
@@ -1277,6 +1284,7 @@ if (player && audio && playButton && volumeButton) {
 }
 
 applyLanguage(activeLanguage);
+window.setInterval(renderLocalTime, 30 * 1000);
 const savedCity = citySelect ? (storageGet("prywoz-city") || "lodz") : "lodz";
 if (citySelect && cityData[savedCity]) {
   citySelect.value = savedCity;

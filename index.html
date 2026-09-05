@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="./styles/pages/questionnaire.css?v=20260824-card">
     <link rel="stylesheet" href="./styles/components.css">
     <link rel="stylesheet" href="./styles/open-fm-redesign.css">
-    <link rel="stylesheet" href="./styles/pages/portal.css?v=20260904-clean-header">
+    <link rel="stylesheet" href="./styles/pages/portal.css?v=20260905-lodz-time">
   </head>
   <body class="page">
     <header class="site-header">
@@ -36,10 +36,13 @@
           </span>
         </a>
 
-        <form class="portal-search" role="search" data-portal-search>
-          <svg class="icon" aria-hidden="true"><use href="./assets/icons/lucide-sprite.svg#search"></use></svg>
-          <input type="search" name="query" placeholder="Новини, послуги, компанії" aria-label="Пошук на сайті" autocomplete="off" data-portal-search-input>
-        </form>
+        <div class="portal-local-time" aria-live="off" aria-label="Локальний час у Лодзі">
+          <span class="portal-local-time__icon" aria-hidden="true"><svg class="icon"><use href="./assets/icons/lucide-sprite.svg#clock"></use></svg></span>
+          <div>
+            <strong><span data-local-time-city>Лодзь</span> · <time data-local-time>--:--</time></strong>
+            <span data-local-date>Локальний час</span>
+          </div>
+        </div>
 
         <div class="language-switcher" aria-label="Вибір мови">
           <button class="language-switcher__item language-switcher__item--active" type="button" data-language="uk" aria-current="true">UA</button>
@@ -523,7 +526,7 @@
       </div>
     </div>
 
-    <script src="./scripts/pages/home.js?v=20260904-clean-header"></script>
+    <script src="./scripts/pages/home.js?v=20260905-lodz-time"></script>
     <script src="./scripts/pages/questionnaire.js?v=20260824-card"></script>
   </body>
 </html>
