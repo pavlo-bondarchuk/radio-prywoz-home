@@ -3,6 +3,18 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+      (() => {
+        let theme = "light";
+        try {
+          theme = localStorage.getItem("prywoz-theme") || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        } catch {
+          theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.style.colorScheme = theme;
+      })();
+    </script>
     <meta
       name="description"
       content="РАДИО ПРИВОЗ ФМ — українське інтернет-радіо в Польщі: музика, гумор, культура, люди."
@@ -21,7 +33,7 @@
     <link rel="stylesheet" href="./styles/pages/questionnaire.css?v=20260824-card">
     <link rel="stylesheet" href="./styles/components.css">
     <link rel="stylesheet" href="./styles/open-fm-redesign.css">
-    <link rel="stylesheet" href="./styles/pages/portal.css?v=20260905-lodz-time">
+    <link rel="stylesheet" href="./styles/pages/portal.css?v=20260905-theme">
   </head>
   <body class="page">
     <header class="site-header">
@@ -43,6 +55,11 @@
             <span data-local-date>Локальний час</span>
           </div>
         </div>
+
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Увімкнути темну тему" aria-pressed="false">
+          <svg class="icon theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true"><use href="./assets/icons/lucide-sprite.svg#sun"></use></svg>
+          <svg class="icon theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true"><use href="./assets/icons/lucide-sprite.svg#moon"></use></svg>
+        </button>
 
         <div class="language-switcher" aria-label="Вибір мови">
           <button class="language-switcher__item language-switcher__item--active" type="button" data-language="uk" aria-current="true">UA</button>
@@ -526,7 +543,7 @@
       </div>
     </div>
 
-    <script src="./scripts/pages/home.js?v=20260905-lodz-time"></script>
+    <script src="./scripts/pages/home.js?v=20260905-theme"></script>
     <script src="./scripts/pages/questionnaire.js?v=20260824-card"></script>
   </body>
 </html>

@@ -36,8 +36,32 @@ const miniPlayerIcon = miniPlayerButton?.querySelector("use");
 const localTime = document.querySelector("[data-local-time]");
 const localTimeCity = document.querySelector("[data-local-time-city]");
 const localDate = document.querySelector("[data-local-date]");
+const themeToggle = document.querySelector("[data-theme-toggle]");
 
 const iconPath = "./assets/icons/lucide-sprite.svg";
+
+const themeLabels = {
+  uk: { dark: "Увімкнути темну тему", light: "Увімкнути світлу тему" },
+  pl: { dark: "Włącz ciemny motyw", light: "Włącz jasny motyw" },
+  ru: { dark: "Включить тёмную тему", light: "Включить светлую тему" },
+};
+
+const updateThemeToggle = () => {
+  if (!themeToggle) return;
+  const isDark = document.documentElement.dataset.theme === "dark";
+  const label = themeLabels[activeLanguage]?.[isDark ? "light" : "dark"] || themeLabels.uk.dark;
+  themeToggle.setAttribute("aria-pressed", String(isDark));
+  themeToggle.setAttribute("aria-label", label);
+  themeToggle.title = label;
+};
+
+const setTheme = (theme, persist = true) => {
+  const nextTheme = theme === "dark" ? "dark" : "light";
+  document.documentElement.dataset.theme = nextTheme;
+  document.documentElement.style.colorScheme = nextTheme;
+  if (persist) storageSet("prywoz-theme", nextTheme);
+  updateThemeToggle();
+};
 
 const translations = {
   uk: {
@@ -1111,6 +1135,7 @@ const applyLanguage = (language) => {
   updateVolumeState();
   renderNews(loadedNewsItems);
   renderLocalTime();
+  updateThemeToggle();
   document.dispatchEvent(new CustomEvent("prywoz:languagechange", { detail: { language: activeLanguage } }));
 };
 
@@ -1134,6 +1159,15 @@ languageButtons.forEach((button) => {
   button.addEventListener("click", () => {
     applyLanguage(button.dataset.language);
   });
+});
+
+themeToggle?.addEventListener("click", () => {
+  setTheme(document.documentElement.dataset.theme === "dark" ? "light" : "dark");
+});
+
+const systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
+systemTheme.addEventListener?.("change", (event) => {
+  if (!storageGet("prywoz-theme")) setTheme(event.matches ? "dark" : "light", false);
 });
 
 newsFilter?.addEventListener("click", (event) => {
