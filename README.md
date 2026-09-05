@@ -5,9 +5,12 @@
 ## Структура
 
 - `index.html` — головна сторінка.
+- `listen.html`, `news.html`, `services.html`, `business.html`, `programs.html`, `about.html`, `contacts.html` — внутрішні сторінки порталу.
+- `privacy.html` — політика приватності.
 - `styles/main.css` — змінні, базові стилі, контейнер, сітки, утиліти.
 - `styles/pages/home.css` — стилі блоків головної сторінки.
 - `scripts/pages/home.js` — скрипти головної сторінки.
+- `scripts/pages/inner.js` — спільна навігація, тема, локальний час і логіка внутрішніх сторінок.
 - `assets/data/broadcast-schedule.json` — налаштування потоку ефіру.
 - `assets/` — локальні зображення та аудіо.
 
