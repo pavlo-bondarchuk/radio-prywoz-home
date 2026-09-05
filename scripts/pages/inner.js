@@ -6,7 +6,7 @@ const savedLanguage = localStorage.getItem("prywoz-language") || "uk";
 const shell = document.querySelector("[data-site-header]");
 if (shell) {
   shell.innerHTML = `<div class="container site-header__inner portal-header">
-    <a class="logo" href="./index.html" aria-label="На головну РАДИО ПРИВОЗ ФМ"><img class="logo__main" src="./assets/images/radio-pryvoz-fm-logo.png" alt="РАДИО ПРИВОЗ ФМ" width="1312" height="1199"></a>
+    <a class="logo" href="./index.html" aria-label="На головну РАДИО ПРИВОЗ ФМ"><img class="logo__main" src="./assets/images/radio-pryvoz-fm-logo.png" alt="РАДИО ПРИВОЗ ФМ" width="1312" height="1199"><span class="logo__tagline" data-uk="Перше українське радіо в Польщі" data-pl="Pierwsze ukraińskie radio w Polsce" data-ru="Первое украинское радио в Польше">Перше українське радіо в Польщі</span></a>
     <div class="portal-local-time"><span class="portal-local-time__icon"><svg class="icon"><use href="${iconPath}#clock"></use></svg></span><div><strong>Лодзь · <time data-local-time>--:--</time></strong><span data-local-date>Локальний час</span></div></div>
     <button class="header-radio" type="button" data-radio-toggle data-state="idle" aria-label="Увімкнути ефір" aria-pressed="false"><span class="header-radio__dot"></span><span class="header-radio__copy"><strong data-radio-status>Радіо вимкнено</strong><span data-radio-track>РАДИО ПРИВОЗ ФМ</span></span><svg class="icon"><use href="${iconPath}#play"></use></svg></button>
     <button class="theme-toggle" type="button" data-theme-toggle aria-label="Змінити тему"><svg class="icon theme-toggle__icon theme-toggle__icon--sun"><use href="${iconPath}#sun"></use></svg><svg class="icon theme-toggle__icon theme-toggle__icon--moon"><use href="${iconPath}#moon"></use></svg></button>

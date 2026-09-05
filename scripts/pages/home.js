@@ -66,6 +66,7 @@ const setTheme = (theme, persist = true) => {
 const translations = {
   uk: {
     brandName: "РАДИО ПРИВОЗ ФМ",
+    brandTagline: "Перше українське\nрадіо в Польщі",
     navHome: "Головна",
     navListen: "Ефір",
     navNews: "Новини",
@@ -133,6 +134,7 @@ const translations = {
   },
   pl: {
     brandName: "РАДИО ПРИВОЗ ФМ",
+    brandTagline: "Pierwsze ukraińskie\nradio w Polsce",
     navHome: "Start",
     navListen: "Radio",
     navNews: "Wiadomości",
@@ -200,6 +202,7 @@ const translations = {
   },
   ru: {
     brandName: "РАДИО ПРИВОЗ ФМ",
+    brandTagline: "Первое украинское\nрадио в Польше",
     navHome: "Главная",
     navListen: "Эфир",
     navNews: "Новости",
