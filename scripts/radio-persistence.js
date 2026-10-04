@@ -12,12 +12,14 @@
 
   const getControl = () => document.querySelector("[data-radio-toggle]");
   const getIcon = () => getControl()?.querySelector("use");
+  const languageIndex = () => ({ uk: 0, pl: 1, ru: 2 })[localStorage.getItem("prywoz-language")] ?? 0;
+  const localized = (values) => values[languageIndex()] || values[0];
   const stateCopy = {
-    idle: { badge: "Paused", icon: "play", label: "Радіо вимкнено" },
-    muted: { badge: "Paused", icon: "play", label: "Без звуку" },
-    loading: { badge: "Connecting", icon: "loader-circle", label: "Підключення…" },
-    live: { badge: "On air", icon: "pause", label: "Ефір наживо" },
-    error: { badge: "Offline", icon: "play", label: "Помилка ефіру" },
+    idle: { badge: ["Пауза", "Pauza", "Пауза"], icon: "play", label: ["Радіо вимкнено", "Radio wyłączone", "Радио выключено"] },
+    muted: { badge: ["Без звуку", "Wyciszone", "Без звука"], icon: "play", label: ["Без звуку", "Wyciszone", "Без звука"] },
+    loading: { badge: ["Підключення", "Łączenie", "Подключение"], icon: "loader-circle", label: ["Підключення…", "Łączenie…", "Подключение…"] },
+    live: { badge: ["В ефірі", "Na antenie", "В эфире"], icon: "pause", label: ["Ефір наживо", "Radio na żywo", "Эфир в прямом эфире"] },
+    error: { badge: ["Не в ефірі", "Offline", "Не в эфире"], icon: "play", label: ["Помилка ефіру", "Błąd transmisji", "Ошибка эфира"] },
   };
 
   const syncPlayer = (state) => {
@@ -27,10 +29,10 @@
       player.classList.toggle("live-player--playing", state === "live");
       player.classList.toggle("live-player--loading", state === "loading");
       player.classList.toggle("live-player--error", state === "error");
-      player.querySelector(".live-player__badge")?.replaceChildren(copy.badge);
+      player.querySelector(".live-player__badge")?.replaceChildren(localized(copy.badge));
       const button = player.querySelector(".live-player__play");
       button?.setAttribute("aria-pressed", String(state === "live"));
-      button?.setAttribute("aria-label", state === "live" ? "Вимкнути звук ефіру" : "Увімкнути ефір");
+      button?.setAttribute("aria-label", localized(state === "live" ? ["Вимкнути звук ефіру", "Wycisz radio", "Выключить звук эфира"] : ["Увімкнути ефір", "Włącz radio", "Включить эфир"]));
       button?.querySelector("use")?.setAttribute("href", `./assets/icons/lucide-sprite.svg#${copy.icon}`);
       const range = player.querySelector(".live-player__volume-range");
       const level = audio.muted ? 0 : Math.round(audio.volume * 100);
@@ -64,19 +66,21 @@
       hour: "2-digit",
       hour12: false,
     }).format(new Date()));
-    const label = hour >= 10 && hour < 20 ? "Денний ефір · 10:00–20:00" : "Нічний ефір · 20:00–10:00";
+    const label = localized(hour >= 10 && hour < 20
+      ? ["Денний ефір · 10:00–20:00", "Program dzienny · 10:00–20:00", "Дневной эфир · 10:00–20:00"]
+      : ["Нічний ефір · 20:00–10:00", "Program nocny · 20:00–10:00", "Ночной эфир · 20:00–10:00"]);
     document.querySelectorAll(".live-player__host").forEach((node) => { node.textContent = label; });
   };
 
-  const setState = (state, label) => {
+  const setState = (state) => {
     const copy = stateCopy[state] || stateCopy.idle;
     const control = getControl();
     if (control) {
       control.dataset.state = state;
       control.setAttribute("aria-pressed", String(state === "live"));
-      control.setAttribute("aria-label", state === "live" ? "Вимкнути звук ефіру" : "Увімкнути ефір");
+      control.setAttribute("aria-label", localized(state === "live" ? ["Вимкнути звук ефіру", "Wycisz radio", "Выключить звук эфира"] : ["Увімкнути ефір", "Włącz radio", "Включить эфир"]));
       const status = control.querySelector("[data-radio-status]");
-      if (status) status.textContent = label || copy.label;
+      if (status) status.textContent = localized(copy.label);
       getIcon()?.setAttribute("href", `./assets/icons/lucide-sprite.svg#${state === "live" ? "volume-2" : "play"}`);
     }
     syncPlayer(state);
@@ -208,6 +212,10 @@
     navigate(target.href);
   });
   addEventListener("popstate", () => navigate(location.href, false));
+  document.addEventListener("prywoz:language-change", () => {
+    syncSchedule();
+    setState(audio.paused ? "idle" : (audio.muted ? "muted" : "live"));
+  });
 
   const mount = () => {
     updateNavigation(location.href);
