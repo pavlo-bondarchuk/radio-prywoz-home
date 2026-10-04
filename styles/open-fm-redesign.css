@@ -105,7 +105,8 @@ body {
   border-left-color: var(--ds-color-border);
 }
 
-.language-switcher__item--active {
+.language-switcher__item--active,
+.language-switcher__item[aria-current="true"] {
   color: var(--ds-color-text);
   background: var(--ds-color-surface-strong);
 }

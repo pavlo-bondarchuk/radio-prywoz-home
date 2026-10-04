@@ -316,19 +316,24 @@ a {
 }
 
 .language-switcher__item {
+  appearance: none;
   display: grid;
   min-width: 46px;
   min-height: 46px;
+  border: 0;
   place-items: center;
   color: var(--color-muted);
   font-weight: 700;
+  background: transparent;
+  cursor: pointer;
 }
 
 .language-switcher__item+.language-switcher__item {
   border-left: 1px solid #e4d7cc;
 }
 
-.language-switcher__item--active {
+.language-switcher__item--active,
+.language-switcher__item[aria-current="true"] {
   color: var(--color-text);
   background: #ffffff;
 }
