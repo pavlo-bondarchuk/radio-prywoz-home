@@ -447,7 +447,7 @@
     document
       .querySelectorAll("main *, [data-cookie-consent] *")
       .forEach((n) => {
-        if (n.dataset.i18n || n.children.length) return;
+        if (n.closest("[data-no-auto-i18n]") || n.dataset.i18n || n.children.length) return;
         const k = reverse.get(normalizeText(n.textContent));
         if (k) n.dataset.i18n = k;
       });

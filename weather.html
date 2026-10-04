@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Погода в Лодзі — прогноз, якість повітря та історія | PRYWOZ</title>
+  <meta name="description" content="Погода в Лодзі сьогодні та на 14 днів: температура, опади, вітер, якість повітря, попередження IMGW та історія погоди.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://prywoz.fm/weather.html">
+  <meta property="og:title" content="Погода в Лодзі | PRYWOZ"><meta property="og:description" content="Прогноз на 14 днів, якість повітря, попередження та історія погоди."><meta property="og:type" content="website"><meta property="og:url" content="https://prywoz.fm/weather.html">
+  <meta name="twitter:card" content="summary"><meta name="twitter:title" content="Погода в Лодзі | PRYWOZ"><meta name="twitter:description" content="Актуальна погода та офіційні попередження для Лодзі.">
+  <script>try{const t=localStorage.getItem('prywoz-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.dataset.theme=t;document.documentElement.style.colorScheme=t}catch{}</script>
+  <link rel="icon" href="./assets/images/favicon-pryvoz.png"><link rel="stylesheet" href="./styles/tokens.css"><link rel="stylesheet" href="./styles/main.css"><link rel="stylesheet" href="./styles/components.css"><link rel="stylesheet" href="./styles/open-fm-redesign.css"><link rel="stylesheet" href="./styles/pages/portal.css"><link rel="stylesheet" href="./styles/pages/inner.css"><link rel="stylesheet" href="./styles/pages/weather.css?v=20261004-1">
+</head>
+<body class="page weather-page" data-page="weather">
+  <header class="site-header" data-site-header></header>
+  <main class="weather-main" data-no-auto-i18n>
+    <div class="container">
+      <nav class="weather-breadcrumbs" aria-label="Навігаційний шлях"><a href="./index.html">Головна</a><span aria-hidden="true">/</span><span>Погода в Лодзі</span></nav>
+      <header class="weather-heading"><div><p class="inner-kicker">Актуальні дані</p><h1>Погода в Лодзі</h1><p>Прогноз, історія, якість повітря та офіційні попередження.</p></div><span class="weather-updated" data-weather-updated>Оновлюємо дані…</span></header>
+      <div class="weather-notice" data-weather-notice hidden></div>
+      <section class="weather-hero weather-card" id="today" aria-labelledby="weather-now-title" data-weather-current><div class="weather-skeleton">Завантажуємо актуальну погоду…</div></section>
+      <section class="weather-metrics" aria-label="Основні показники" data-weather-metrics></section>
+      <nav class="weather-tabs" aria-label="Розділи погоди"><a href="#today">Сьогодні</a><a href="#forecast">14 днів</a><a href="#history">Історія</a><a href="#air">Повітря</a></nav>
+      <section class="weather-section" aria-labelledby="hourly-title"><div class="weather-section__head"><h2 id="hourly-title">Сьогодні по годинах</h2></div><div class="weather-hourly" data-weather-hourly><div class="weather-skeleton">Завантажуємо погодинний прогноз…</div></div></section>
+      <div class="weather-split" id="forecast">
+        <section class="weather-section" aria-labelledby="forecast-title"><div class="weather-section__head"><h2 id="forecast-title">Прогноз на 14 днів</h2></div><div class="weather-daily weather-card" data-weather-daily><div class="weather-skeleton">Завантажуємо прогноз…</div></div></section>
+        <section class="weather-section weather-card weather-chart-card" aria-labelledby="chart-title"><div class="weather-section__head"><h2 id="chart-title">Температура сьогодні</h2></div><div data-weather-chart><div class="weather-skeleton">Будуємо графік…</div></div></section>
+      </div>
+      <div class="weather-three">
+        <section class="weather-card weather-panel" id="air" aria-labelledby="air-title"><h2 id="air-title">Якість повітря у Лодзі</h2><div data-weather-air><div class="weather-skeleton">Перевіряємо GIOŚ…</div></div></section>
+        <section class="weather-card weather-panel" aria-labelledby="warnings-title"><h2 id="warnings-title">Попередження IMGW</h2><div data-weather-warnings><div class="weather-skeleton">Перевіряємо попередження…</div></div></section>
+        <section class="weather-card weather-panel" aria-labelledby="sun-title"><h2 id="sun-title">Сонце</h2><div data-weather-sun><div class="weather-skeleton">Завантажуємо дані…</div></div></section>
+      </div>
+      <section class="weather-section weather-card weather-history" id="history" aria-labelledby="history-title"><div class="weather-section__head"><div><h2 id="history-title">Історія погоди</h2><p>Архівні погодні дані за останні дні</p></div><div class="weather-range" role="group" aria-label="Період історії"><button data-history-range="7">7 днів</button><button class="is-active" data-history-range="14">14 днів</button><button data-history-range="30">30 днів</button></div></div><div data-weather-history><div class="weather-skeleton">Завантажуємо історію…</div></div></section>
+      <section class="weather-card weather-sources" aria-labelledby="sources-title"><h2 id="sources-title">Джерела даних</h2><div><a href="https://open-meteo.com/" target="_blank" rel="noopener">Прогноз та історія: Open‑Meteo</a><a href="https://powietrze.gios.gov.pl/" target="_blank" rel="noopener">Якість повітря: GIOŚ</a><a href="https://meteo.imgw.pl/" target="_blank" rel="noopener">Попередження: IMGW‑PIB</a></div><p>PRYWOZ агрегує відкриті та офіційні дані та не є первинним метеорологічним джерелом.</p></section>
+    </div>
+  </main>
+  <script src="./scripts/radio-persistence.js"></script><script src="./scripts/pages/inner.js"></script><script type="module" src="./scripts/weather/weather-page.js?v=20261004-2"></script>
+</body></html>

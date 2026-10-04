@@ -3,4 +3,7 @@ node_modules/
 dist/
 *.log
 *.php
+!api/
+!api/weather.php
 submissions/
+test-artifacts/
