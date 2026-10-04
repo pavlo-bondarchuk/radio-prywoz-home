@@ -102,7 +102,7 @@
         </header>
         <section class="inner-player">
           <div class="live-player">
-            <div class="live-player__record live-player__record--vinyl">
+            <div class="live-player__record live-player__record--vinyl" aria-hidden="true">
               <img
                 class="live-player__record-image"
                 src="./assets/images/home/player-vinyl.png"
@@ -120,13 +120,39 @@
             <div class="live-player__controls">
               <button
                 class="live-player__play"
+                type="button"
                 data-inner-play
                 aria-label="Відтворити"
               >
-                <svg class="icon">
+                <svg class="icon live-player__play-icon" aria-hidden="true">
                   <use href="./assets/icons/lucide-sprite.svg#play"></use>
                 </svg>
               </button>
+              <div class="live-player__volume-control">
+                <button
+                  class="live-player__volume"
+                  type="button"
+                  aria-label="Налаштувати гучність"
+                  aria-controls="listen-volume-panel"
+                  aria-expanded="false"
+                >
+                  <svg class="icon live-player__volume-icon" aria-hidden="true">
+                    <use href="./assets/icons/lucide-sprite.svg#volume-2"></use>
+                  </svg>
+                </button>
+                <div class="live-player__volume-panel" id="listen-volume-panel" hidden>
+                  <input
+                    class="live-player__volume-range"
+                    type="range"
+                    min="0"
+                    max="100"
+                    step="1"
+                    value="100"
+                    aria-label="Гучність"
+                  />
+                  <output class="live-player__volume-value">100%</output>
+                </div>
+              </div>
             </div>
           </div>
         </section>
