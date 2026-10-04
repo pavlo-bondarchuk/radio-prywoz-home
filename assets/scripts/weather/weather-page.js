@@ -1,6 +1,6 @@
 import{fetchForecast,fetchHistory,fetchWarnings,fetchAir}from"./weather-api.js?v=20261004-2";
-import{renderForecast,renderHistory,renderWarnings,renderAir,error}from"./weather-render.js?v=20261004-tabs-i18n";
-import{applyWeatherTranslations,t}from"./weather-i18n.js?v=20261004-tabs-i18n";
+import{renderForecast,renderHistory,renderWarnings,renderAir,error}from"./weather-render.js?v=20261004-units-footer";
+import{applyWeatherTranslations,t}from"./weather-i18n.js?v=20261004-units-footer";
 
 let forecastData=null,historyData=null,warningsData=null,airData=null,historyDays=14;
 const notice=document.querySelector("[data-weather-notice]");

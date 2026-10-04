@@ -1,4 +1,4 @@
-import{locale,t}from"./weather-i18n.js";
+import{locale,t}from"./weather-i18n.js?v=20261004-units-footer";
 export const WEATHER_LOCATION={city:"Łódź",latitude:51.7592,longitude:19.456,timezone:"Europe/Warsaw"};
 export const n=(v,f=null)=>Number.isFinite(Number(v))?Number(v):f;
 export const temp=(v)=>v==null?"—":`${v>0?"+":""}${Math.round(v)}°`;

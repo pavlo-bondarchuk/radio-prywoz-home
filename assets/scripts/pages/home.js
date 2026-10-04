@@ -184,7 +184,7 @@ const translations = {
     footerCardLabel: "Radio 24/7",
     footerCardDate: "Słuchaj na żywo",
     footerCardText: "Program dzienny 10:00–20:00 · nocny 20:00–10:00",
-    copyright: "© 2026 РАДИО ПРИВОЗ ФМ. Wszelkie prawa zastrzeżone.",
+    copyright: "© 2026 RADIO PRYWOZ FM. Wszelkie prawa zastrzeżone.",
     madeFor: "Stworzone z miłością dla naszych słuchaczy",
     localStationMeta: "Radio online na żywo",
     dayBroadcastMeta: "Program dzienny · 10:00–20:00",

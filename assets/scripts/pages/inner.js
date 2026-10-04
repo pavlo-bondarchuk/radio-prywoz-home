@@ -7,6 +7,9 @@
     : "uk";
 
   const C = {
+    siteVersion: ["Версія 2.0", "Wersja 2.0", "Версия 2.0"],
+    designCredit: ["Створено", "Wykonanie", "Сделано"],
+    designAria: ["bonddesign — відкривається в новій вкладці", "bonddesign — otwiera się w nowej karcie", "bonddesign — открывается в новой вкладке"],
     home: ["Головна", "Strona główna", "Главная"],
     listen: ["Ефір", "Radio", "Эфир"],
     news: ["Новини", "Wiadomości", "Новости"],
@@ -54,7 +57,7 @@
     ],
     copyright: [
       "© 2026 РАДИО ПРИВОЗ ФМ. Усі права захищено.",
-      "© 2026 РАДИО ПРИВОЗ ФМ. Wszelkie prawa zastrzeżone.",
+      "© 2026 RADIO PRYWOZ FM. Wszelkie prawa zastrzeżone.",
       "© 2026 РАДИО ПРИВОЗ ФМ. Все права защищены.",
     ],
     onAirNow: ["Зараз в ефірі", "Teraz na antenie", "Сейчас в эфире"],
@@ -443,6 +446,8 @@
       `<footer class="site-footer" id="contacts"><div class="container site-footer__grid"><div class="site-footer__brand"><div class="site-footer__brand-row"><img class="site-footer__logo" src="./assets/images/radio-pryvoz-fm-logo.png" alt="РАДИО ПРИВОЗ ФМ" width="1254" height="1254"><p class="site-footer__brand-note" data-i18n="firstRadio"></p></div><p class="site-footer__about" data-i18n="footerAbout"></p></div><div class="footer-contacts"><h2 class="footer-contacts__title" data-i18n="contacts"></h2><a class="footer-contacts__link" href="mailto:hello@prywoz.fm"><svg class="icon"><use href="${iconPath}#mail"></use></svg><span>hello@prywoz.fm</span></a><a class="footer-contacts__link" href="tel:+48799123456"><svg class="icon"><use href="${iconPath}#phone"></use></svg><span>+48 799 123 456</span></a><span class="footer-contacts__link"><svg class="icon"><use href="${iconPath}#map-pin"></use></svg><span data-i18n="footerCountry"></span></span><a class="button button--contact" href="mailto:hello@prywoz.fm"><svg class="icon button__mail"><use href="${iconPath}#mail"></use></svg><span data-i18n="writeUs"></span></a></div><aside class="footer-card"><strong class="footer-card__label" data-i18n="footerCardLabel"></strong><span class="footer-card__date" data-i18n="footerCardDate"></span><p class="footer-card__text" data-i18n="footerCardText"></p><svg class="icon footer-card__tower"><use href="${iconPath}#radio-tower"></use></svg></aside></div><div class="container site-footer__bottom"><p data-i18n="copyright"></p><p class="site-footer__made"><span data-i18n="madeFor"></span><svg class="icon"><use href="${iconPath}#heart"></use></svg></p></div></footer>`,
     );
 
+  document.querySelector('.site-footer__bottom')?.insertAdjacentHTML('beforeend', '<p class="site-footer__credits"><span data-i18n="siteVersion"></span> · <span data-i18n="designCredit"></span> <a href="https://bonddesign.top" target="_blank" rel="noopener noreferrer" data-design-credit>bonddesign</a></p>');
+
   const annotate = () =>
     document
       .querySelectorAll("main *, [data-cookie-consent] *")
@@ -482,6 +487,7 @@
     language = languages.includes(lang) ? lang : "uk";
     localStorage.setItem("prywoz-language", language);
     document.documentElement.lang = language;
+    document.querySelector('[data-design-credit]')?.setAttribute('aria-label', t('designAria'));
     annotate();
     document
       .querySelectorAll("[data-i18n]")
