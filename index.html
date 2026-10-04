@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="./styles/pages/questionnaire.css?v=20260824-card">
     <link rel="stylesheet" href="./styles/components.css">
     <link rel="stylesheet" href="./styles/open-fm-redesign.css">
-    <link rel="stylesheet" href="./styles/pages/portal.css?v=20260905-tagline">
+    <link rel="stylesheet" href="./styles/pages/portal.css?v=20260906-ads">
     <link rel="stylesheet" href="./styles/pages/inner.css?v=20260905-radio">
   </head>
   <body class="page">
@@ -225,6 +225,15 @@
               <span data-news-loader-text>Прокрутіть нижче, щоб завантажити більше</span>
             </div>
             <div class="portal-news-sentinel" data-news-sentinel aria-hidden="true"></div>
+            <aside class="promo-slot promo-slot--news" aria-label="Реклама у новинах">
+              <span class="promo-slot__label" data-i18n="adDemoLabel">Рекламне місце</span>
+              <div class="promo-slot__copy">
+                <strong data-i18n="adNewsTitle">Ваш бренд у новинній стрічці</strong>
+                <p data-i18n="adNewsText">Помітне розміщення поруч з актуальними матеріалами.</p>
+              </div>
+              <span class="promo-slot__price" data-i18n="adPriceFrom15">від 15 € / рік</span>
+              <a class="promo-slot__action" href="mailto:hello@prywoz.fm?subject=Реклама%20у%20новинах" data-i18n="adBook">Забронювати</a>
+            </aside>
           </div>
 
           <aside class="portal-sidebar" aria-label="Корисна інформація">
@@ -260,6 +269,16 @@
                 <a href="https://www.gov.pl/web/nieodplatna-pomoc/porady-prawne-z-zakresu-prawa-cudzoziemcow-oraz-porady-prawne-w-jezykach-obcych" target="_blank" rel="noopener">Правова допомога</a>
               </div>
             </section>
+
+            <section class="promo-card" aria-label="Додати сервіс до каталогу">
+              <span class="promo-slot__label" data-i18n="adForBusiness">Для бізнесу</span>
+              <h2 data-i18n="adServicesTitle">Додайте свій сервіс</h2>
+              <p data-i18n="adServicesText">Компанія, контакти й пряме посилання у каталозі для українців.</p>
+              <div class="promo-card__footer">
+                <strong data-i18n="adPriceFrom10">від 10 € / рік</strong>
+                <a href="mailto:hello@prywoz.fm?subject=Додати%20сервіс%20до%20каталогу" data-i18n="adRegister">Зареєструватися</a>
+              </div>
+            </section>
           </aside>
         </div>
       </section>
@@ -276,6 +295,12 @@
             <a class="portal-business portal-business--yellow" href="https://www.olx.pl/nieruchomosci/lodz/" target="_blank" rel="noopener"><strong>Нерухомість</strong><span>Оренда та купівля житла</span><small>Переглянути →</small></a>
             <a class="portal-business portal-business--blue" href="https://www.google.com/maps/search/%D1%83%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D1%81%D1%8C%D0%BA%D0%B8%D0%B9+%D0%BA%D0%BE%D1%81%D0%BC%D0%B5%D1%82%D0%BE%D0%BB%D0%BE%D0%B3+%D0%9B%D0%BE%D0%B4%D0%B7%D1%8C" target="_blank" rel="noopener"><strong>Краса</strong><span>Майстри поруч із вами</span><small>Переглянути →</small></a>
           </div>
+          <aside class="promo-slot promo-slot--business" aria-label="Розміщення бізнесу">
+            <span class="promo-slot__label" data-i18n="adPopularLabel">Станьте помітнішими</span>
+            <div class="promo-slot__copy"><strong data-i18n="adBusinessTitle">Покажіть свій бізнес українській громаді</strong><p data-i18n="adBusinessText">Картка компанії, контакти, посилання та пріоритет у каталозі.</p></div>
+            <span class="promo-slot__price" data-i18n="adPrice15">15 € / рік</span>
+            <a class="promo-slot__action" href="mailto:hello@prywoz.fm?subject=Розміщення%20бізнесу" data-i18n="adAddCompany">Додати компанію</a>
+          </aside>
         </div>
       </section>
 
@@ -291,6 +316,12 @@
             <article><span class="portal-program-icon"><svg class="icon"><use href="./assets/icons/lucide-sprite.svg#file-text"></use></svg></span><div><strong>Корисно знати</strong><p>Пояснення правил і сервісів Польщі</p></div></article>
             <article><span class="portal-program-icon"><svg class="icon"><use href="./assets/icons/lucide-sprite.svg#clock"></use></svg></span><div><strong>Розклад ефіру</strong><p>Денні програми та нічний ефір</p></div></article>
           </div>
+          <aside class="promo-slot promo-slot--program" aria-label="Партнерство з програмою">
+            <span class="promo-slot__label" data-i18n="adPartnerLabel">Партнер програми</span>
+            <div class="promo-slot__copy"><strong data-i18n="adProgramTitle">Підтримайте ефір і розкажіть про себе</strong><p data-i18n="adProgramText">Ваш бренд у тематичному розділі та партнерських матеріалах PRYWOZ.</p></div>
+            <span class="promo-slot__price" data-i18n="adPrice15">15 € / рік</span>
+            <a class="promo-slot__action" href="mailto:hello@prywoz.fm?subject=Партнерство%20з%20програмою" data-i18n="adBecomePartner">Стати партнером</a>
+          </aside>
         </div>
       </section>
 
@@ -548,8 +579,8 @@
     </div>
 
     <script src="./scripts/radio-persistence.js?v=20260905-controller"></script>
-    <script src="./scripts/pages/home.js?v=20260905-tagline"></script>
-    <script src="./scripts/pages/inner.js?v=20260905-tagline"></script>
+    <script src="./scripts/pages/home.js?v=20260906-ads"></script>
+    <script src="./scripts/pages/inner.js?v=20260906-ads"></script>
     <script src="./scripts/pages/questionnaire.js?v=20260824-card"></script>
   </body>
 </html>
