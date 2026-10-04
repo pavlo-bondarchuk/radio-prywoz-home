@@ -175,43 +175,9 @@
     });
   };
 
-  const navigate = async (url, push = true) => {
-    const target = new URL(url, location.href);
-    try {
-      const response = await fetch(target.href);
-      if (!response.ok) throw new Error("Page unavailable");
-      const doc = new DOMParser().parseFromString(await response.text(), "text/html");
-      const nextMain = doc.querySelector("main");
-      const currentMain = document.querySelector("main");
-      if (!nextMain || !currentMain) throw new Error("Page structure unavailable");
-      currentMain.replaceWith(nextMain);
-      document.title = doc.title;
-      document.body.dataset.page = doc.body.dataset.page || "";
-      if (push) history.pushState({ portal: true }, "", target.href);
-      updateNavigation(target.href);
-      document.querySelector(".site-header")?.classList.remove("site-header--menu-open");
-      if (target.hash) requestAnimationFrame(() => document.querySelector(target.hash)?.scrollIntoView());
-      else scrollTo({ top: 0, behavior: "instant" });
-      document.dispatchEvent(new CustomEvent("prywoz:navigation", { detail: { url: target.href } }));
-      syncTheme();
-      syncSchedule();
-      setState(audio.paused ? "idle" : (audio.muted ? "muted" : "live"));
-      updateMetadata();
-    } catch {
-      location.href = target.href;
-    }
-  };
-
-  document.addEventListener("click", (event) => {
-    const link = event.target.closest("a[href]");
-    if (!link || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || link.target || link.hasAttribute("download")) return;
-    const target = new URL(link.href, location.href);
-    if (target.origin !== location.origin || !/\.(?:html)?$|\/$/.test(target.pathname)) return;
-    if (target.pathname === location.pathname && target.hash) return;
-    event.preventDefault();
-    navigate(target.href);
-  });
-  addEventListener("popstate", () => navigate(location.href, false));
+  // This is a static multi-page site: every page owns its stylesheets and
+  // initialization scripts. Let the browser perform document navigation so
+  // that page-specific CSS and JavaScript are always loaded together.
   document.addEventListener("prywoz:language-change", () => {
     syncSchedule();
     setState(audio.paused ? "idle" : (audio.muted ? "muted" : "live"));
