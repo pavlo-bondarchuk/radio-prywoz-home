@@ -1,4 +1,4 @@
-import { getNewsLanguage, newsLocale, newsText } from "./news-i18n.js?v=20261005-news5";
+import { getNewsLanguage, newsLocale, newsText } from "./news-i18n.js?v=20261005-news6";
 
 export const safeNewsUrl = (value, { allowFeed = false } = {}) => {
   if (!value) return "";

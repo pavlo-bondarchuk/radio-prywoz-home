@@ -1,6 +1,6 @@
-import { getNews } from "./news-api.js?v=20261005-news5";
-import { getNewsLanguage, newsText } from "./news-i18n.js?v=20261005-news5";
-import { externalNewsLink, filterNews, newsDate, newsTimestamp, normalizeNewsItems, rankTodayNews } from "./news-utils.js?v=20261005-news5";
+import { getNews } from "./news-api.js?v=20261005-news6";
+import { getNewsLanguage, newsText } from "./news-i18n.js?v=20261005-news6";
+import { externalNewsLink, filterNews, newsDate, newsTimestamp, normalizeNewsItems, rankTodayNews } from "./news-utils.js?v=20261005-news6";
 
 const byId = (id) => document.getElementById(id);
 const node = (tag, className, text) => {
