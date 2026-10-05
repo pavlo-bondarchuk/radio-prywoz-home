@@ -65,6 +65,17 @@ const addMeta = (item, language, compact = false) => {
   return meta;
 };
 
+const imagePlaceholder = (className) => {
+  const placeholder = node("span", className + " news-image-placeholder");
+  placeholder.setAttribute("aria-hidden", "true");
+  const icon = node("svg", "icon news-image-placeholder__icon");
+  icon.setAttribute("viewBox", "0 0 24 24");
+  icon.append(node("use"));
+  icon.firstChild.setAttribute("href", "./assets/icons/lucide-sprite.svg#newspaper");
+  placeholder.append(icon);
+  return placeholder;
+};
+
 const addImage = (item, className) => {
   if (!item.image) return null;
   const image = node("img", className);
@@ -74,6 +85,16 @@ const addImage = (item, className) => {
   image.decoding = "async";
   image.width = 640;
   image.height = 360;
+  image.addEventListener("error", () => {
+    if (image.isConnected) {
+      const parent = image.parentElement;
+      image.replaceWith(imagePlaceholder(className));
+      if (parent?.classList.contains("portal-featured-news__visual")) {
+        parent.classList.add("portal-featured-news__visual--placeholder");
+        parent.parentElement?.classList.add("portal-featured-news--no-image");
+      }
+    }
+  }, { once: true });
   return image;
 };
 
@@ -109,6 +130,7 @@ const renderFeatured = (container, item, language, errorText = "") => {
     return;
   }
   container.classList.add("portal-featured-news--loaded");
+  container.classList.toggle("portal-featured-news--no-image", !item.image);
   const copy = node("div", "portal-featured-news__copy");
   copy.append(addMeta(item, language));
   const title = node("h3", "");
@@ -122,8 +144,8 @@ const renderFeatured = (container, item, language, errorText = "") => {
   const image = addImage(item, "portal-featured-news__image");
   if (image) visual.append(image);
   else {
-    visual.setAttribute("aria-hidden", "true");
-    visual.innerHTML = '<svg class="icon"><use href="./assets/icons/lucide-sprite.svg#newspaper"></use></svg>';
+    visual.classList.add("portal-featured-news__visual--placeholder");
+    visual.append(imagePlaceholder("portal-featured-news__image"));
   }
   container.append(visual);
 };
