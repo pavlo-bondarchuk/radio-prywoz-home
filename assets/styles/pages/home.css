@@ -916,7 +916,7 @@ html[data-theme="dark"] .live-player[data-radio-state="muted"] {
 .contact-strip__text {
   max-width: 680px;
   margin: 10px 0 0;
-  color: #2c2234;
+  color: var(--ds-color-text-soft);
   font-weight: 600;
 }
 
@@ -930,7 +930,7 @@ html[data-theme="dark"] .live-player[data-radio-state="muted"] {
 
 .about-section__intro p {
   margin: 0;
-  color: #2c2234;
+  color: var(--ds-color-text-soft);
   font-size: 17px;
   font-weight: 500;
   line-height: 1.48;
