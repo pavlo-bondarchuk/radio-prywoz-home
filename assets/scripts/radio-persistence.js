@@ -182,6 +182,7 @@
   // initialization scripts. Let the browser perform document navigation so
   // that page-specific CSS and JavaScript are always loaded together.
   document.addEventListener("prywoz:language-change", () => {
+    syncTheme();
     syncSchedule();
     setState(audio.paused ? "idle" : (audio.muted ? "muted" : "live"));
   });
