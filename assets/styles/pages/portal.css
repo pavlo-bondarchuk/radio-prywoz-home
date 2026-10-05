@@ -1182,6 +1182,11 @@ html[data-theme="dark"] .portal-local-time__icon {
   .portal-header .language-switcher {
     box-sizing: border-box;
     height: 40px;
+  }
+
+  .portal-header .theme-toggle,
+  .portal-header .language-switcher,
+  .portal-header .site-header__menu-toggle {
     align-self: center;
   }
 
@@ -1240,5 +1245,12 @@ html[data-theme="dark"] .portal-local-time__icon {
   .portal-business-grid,
   .portal-program-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 360px) {
+  .portal-header,
+  .portal-header--currency {
+    grid-template-columns: minmax(0, 1fr) 40px 104px 40px;
   }
 }
