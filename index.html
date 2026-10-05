@@ -28,12 +28,12 @@
     >
     <link rel="icon" type="image/png" sizes="512x512" href="./assets/images/favicon-pryvoz.png?v=20260905">
     <link rel="stylesheet" href="./assets/styles/tokens.css">
-    <link rel="stylesheet" href="./assets/styles/main.css">
+    <link rel="stylesheet" href="./assets/styles/main.css?v=20261005-nav3">
     <link rel="stylesheet" href="./assets/styles/pages/home.css?v=20260905-state">
     <link rel="stylesheet" href="./assets/styles/pages/questionnaire.css?v=20261004-font">
     <link rel="stylesheet" href="./assets/styles/components.css">
     <link rel="stylesheet" href="./assets/styles/open-fm-redesign.css">
-    <link rel="stylesheet" href="./assets/styles/pages/portal.css?v=20261005-calculators">
+    <link rel="stylesheet" href="./assets/styles/pages/portal.css?v=20261005-nav3">
     <link rel="stylesheet" href="./assets/styles/pages/news.css?v=20261005-news7">
     <link rel="stylesheet" href="./assets/styles/pages/inner.css?v=20260905-radio">
     <link rel="stylesheet" href="./assets/styles/cookie-consent.css?v=20260907-volume-theme">
@@ -94,9 +94,17 @@
             <a class="main-nav__link main-nav__link--active" href="./index.html#top" data-i18n="navHome">Головна</a>
             <a class="main-nav__link" href="./listen.html" data-i18n="navListen">Ефір</a>
             <a class="main-nav__link" href="./news.html" data-i18n="navNews">Новини</a>
-            <a class="main-nav__link" href="./services.html">Послуги в Лодзі</a>
-            <a class="main-nav__link" href="./business.html">Бізнес</a>
-            <a class="main-nav__link" href="./programs.html">Програми</a>
+            <a class="main-nav__link" href="./services.html" data-i18n="navServicesLodz">Послуги в Лодзі</a>
+            <div class="main-nav__group">
+              <button class="main-nav__link main-nav__disclosure" type="button" aria-expanded="false" aria-controls="useful-menu" data-i18n="navUseful">Корисне</button>
+              <ul class="main-nav__submenu" id="useful-menu" hidden>
+                <li><a class="main-nav__submenu-link" href="./salary-calculator.html" data-i18n="navSalaryCalculator">Калькулятор зарплати</a></li>
+                <li><a class="main-nav__submenu-link" href="./work-calendar.html" data-i18n="navWorkCalendar">Робочий календар</a></li>
+                <li><a class="main-nav__submenu-link" href="./rent-calculator.html" data-i18n="navRentCalculator">Калькулятор оренди</a></li>
+              </ul>
+            </div>
+            <a class="main-nav__link" href="./business.html" data-i18n="navBusiness">Бізнес</a>
+            <a class="main-nav__link" href="./programs.html" data-i18n="navPrograms">Програми</a>
             <a class="main-nav__link" href="./about.html" data-i18n="navAbout">Про нас</a>
             <a class="main-nav__link" href="./contacts.html" data-i18n="navContacts">Контакти</a>
             <a class="main-nav__link" href="./index.html#card" data-i18n="navCard">Картка</a>
@@ -564,8 +572,8 @@
     </div>
 
     <script src="./assets/scripts/radio-persistence.js?v=20261004-navigation-fix"></script>
-    <script src="./assets/scripts/pages/home.js?v=20261005-news7"></script>
-    <script src="./assets/scripts/pages/inner.js?v=20261005-news7"></script>
+    <script src="./assets/scripts/pages/home.js?v=20261005-nav3"></script>
+    <script src="./assets/scripts/pages/inner.js?v=20261005-nav3"></script>
     <script type="module" src="./assets/scripts/news/news-render.js?v=20261005-news7"></script>
     <script src="./assets/scripts/pages/questionnaire.js?v=20260824-card"></script>
     <script src="./assets/scripts/cookie-consent.js?v=20260907"></script>

@@ -15,6 +15,14 @@
     listen: ["Ефір", "Radio", "Эфир"],
     news: ["Новини", "Wiadomości", "Новости"],
     services: ["Послуги в Лодзі", "Usługi w Łodzi", "Услуги в Лодзи"],
+    usefulMenu: ["Корисне", "Przydatne", "Полезное"],
+    salaryCalculator: ["Калькулятор зарплати", "Kalkulator wynagrodzenia", "Калькулятор зарплаты"],
+    workCalendar: ["Робочий календар", "Kalendarz pracy", "Рабочий календарь"],
+    rentCalculator: ["Калькулятор оренди", "Kalkulator kosztów najmu", "Калькулятор аренды"],
+    openMenu: ["Відкрити меню", "Otwórz menu", "Открыть меню"],
+    closeMenu: ["Закрити меню", "Zamknij menu", "Закрыть меню"],
+    languageChoice: ["Вибір мови", "Wybór języka", "Выбор языка"],
+    mainNavigation: ["Основна навігація", "Nawigacja główna", "Основная навигация"],
     business: ["Бізнес", "Biznes", "Бизнес"],
     programs: ["Програми", "Programy", "Программы"],
     about: ["Про нас", "O nas", "О нас"],
@@ -440,7 +448,7 @@
   const page = () => document.body.dataset.page || "";
   const shell = document.querySelector("[data-site-header]");
   if (shell)
-    shell.innerHTML = `<div class="container site-header__inner portal-header portal-header--currency"><a class="logo" href="./index.html" aria-label="РАДИО ПРИВОЗ ФМ"><img class="logo__main" src="./assets/images/radio-pryvoz-fm-logo.png" alt="РАДИО ПРИВОЗ ФМ" width="1312" height="1199"><span class="logo__tagline" data-i18n="firstRadio"></span></a><div class="portal-local-time"><span class="portal-local-time__icon"><svg class="icon"><use href="${iconPath}#clock"></use></svg></span><div><strong>Лодзь · <time data-local-time>--:--</time></strong><span data-local-date></span></div></div><a class="header-currency" href="./currency.html" aria-label="Курси валют" data-i18n-aria="currency"><strong data-header-currency>—</strong><span data-i18n="currency"></span></a><button class="header-radio" type="button" data-radio-toggle data-state="idle" aria-pressed="false"><span class="header-radio__dot"></span><span class="header-radio__copy"><strong data-radio-status data-i18n="radioOff"></strong><span data-radio-track>РАДИО ПРИВОЗ ФМ</span></span><svg class="icon"><use href="${iconPath}#play"></use></svg></button><button class="theme-toggle" type="button" data-theme-toggle><svg class="icon theme-toggle__icon--sun"><use href="${iconPath}#sun"></use></svg><svg class="icon theme-toggle__icon--moon"><use href="${iconPath}#moon"></use></svg></button><div class="language-switcher" aria-label="Language"><button class="language-switcher__item" data-language="uk">UA</button><button class="language-switcher__item" data-language="pl">PL</button><button class="language-switcher__item" data-language="ru">RU</button></div><button class="site-header__menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu"><svg class="icon site-header__menu-icon--open"><use href="${iconPath}#menu"></use></svg><svg class="icon site-header__menu-icon--close"><use href="${iconPath}#x"></use></svg></button></div><div class="site-header__panel" id="mobile-menu"><div class="container portal-nav-row"><nav class="main-nav">${["home", "listen", "news", "services", "business", "programs", "about", "contacts", "card"].map((k) => `<a class="main-nav__link ${page() === k ? "main-nav__link--active" : ""}" href="${k === "home" ? "./index.html" : k === "card" ? "./index.html#card" : `./${k}.html`}" data-i18n="${k}"></a>`).join("")}</nav></div></div>`;
+    shell.innerHTML = `<div class="container site-header__inner portal-header portal-header--currency"><a class="logo" href="./index.html" aria-label="РАДИО ПРИВОЗ ФМ"><img class="logo__main" src="./assets/images/radio-pryvoz-fm-logo.png" alt="РАДИО ПРИВОЗ ФМ" width="1312" height="1199"><span class="logo__tagline" data-i18n="firstRadio"></span></a><div class="portal-local-time"><span class="portal-local-time__icon"><svg class="icon"><use href="${iconPath}#clock"></use></svg></span><div><strong>Лодзь · <time data-local-time>--:--</time></strong><span data-local-date></span></div></div><a class="header-currency" href="./currency.html" aria-label="Курси валют" data-i18n-aria="currency"><strong data-header-currency>—</strong><span data-i18n="currency"></span></a><button class="header-radio" type="button" data-radio-toggle data-state="idle" aria-pressed="false"><span class="header-radio__dot"></span><span class="header-radio__copy"><strong data-radio-status data-i18n="radioOff"></strong><span data-radio-track>РАДИО ПРИВОЗ ФМ</span></span><svg class="icon"><use href="${iconPath}#play"></use></svg></button><button class="theme-toggle" type="button" data-theme-toggle aria-label="Увімкнути тему" aria-pressed="false"><svg class="icon theme-toggle__icon--sun"><use href="${iconPath}#sun"></use></svg><svg class="icon theme-toggle__icon--moon"><use href="${iconPath}#moon"></use></svg></button><div class="language-switcher" role="group" aria-label="Вибір мови"><button class="language-switcher__item" type="button" data-language="uk">UA</button><button class="language-switcher__item" type="button" data-language="pl">PL</button><button class="language-switcher__item" type="button" data-language="ru">RU</button></div><button class="site-header__menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Відкрити меню"><svg class="icon site-header__menu-icon--open"><use href="${iconPath}#menu"></use></svg><svg class="icon site-header__menu-icon--close"><use href="${iconPath}#x"></use></svg></button></div><div class="site-header__panel" id="mobile-menu"><div class="container portal-nav-row"><nav class="main-nav" aria-label="Основна навігація">${["home", "listen", "news", "services"].map((k) => `<a class="main-nav__link ${page() === k ? "main-nav__link--active" : ""}" href="./${k === "home" ? "index" : k}.html" data-i18n="${k}"></a>`).join("")}<div class="main-nav__group"><button class="main-nav__link main-nav__disclosure" type="button" aria-expanded="false" aria-controls="useful-menu" data-i18n="usefulMenu"></button><ul class="main-nav__submenu" id="useful-menu" hidden><li><a class="main-nav__submenu-link" href="./salary-calculator.html" data-i18n="salaryCalculator"></a></li><li><a class="main-nav__submenu-link" href="./work-calendar.html" data-i18n="workCalendar"></a></li><li><a class="main-nav__submenu-link" href="./rent-calculator.html" data-i18n="rentCalculator"></a></li></ul></div>${["business", "programs", "about", "contacts", "card"].map((k) => `<a class="main-nav__link ${page() === k ? "main-nav__link--active" : ""}" href="${k === "card" ? "./index.html#card" : `./${k}.html`}" data-i18n="${k}"></a>`).join("")}</nav></div></div>`;
     import("../currency/currency-header.js?v=20261005-currency3").then(({ loadHeaderCurrency }) => loadHeaderCurrency()).catch(() => {});
   if (!document.querySelector(".site-footer"))
     document.body.insertAdjacentHTML(
@@ -490,6 +498,10 @@
     localStorage.setItem("prywoz-language", language);
     document.documentElement.lang = language;
     document.querySelector('[data-design-credit]')?.setAttribute('aria-label', t('designAria'));
+    document.querySelector('.portal-header .language-switcher')?.setAttribute('aria-label', t('languageChoice'));
+    document.querySelector('.portal-header .main-nav')?.setAttribute('aria-label', t('mainNavigation'));
+    const menuToggle = document.querySelector('[data-site-header] .site-header__menu-toggle');
+    if (menuToggle) menuToggle.setAttribute('aria-label', t(menuToggle.getAttribute('aria-expanded') === 'true' ? 'closeMenu' : 'openMenu'));
     annotate();
     document
       .querySelectorAll("[data-i18n]")
@@ -606,18 +618,49 @@
     renderProgram();
   };
 
+  const setMenuOpen = (header, isOpen) => {
+    const menu = header?.querySelector(".site-header__menu-toggle");
+    if (!header || !menu) return;
+    header.classList.toggle("site-header--menu-open", isOpen);
+    menu.setAttribute("aria-expanded", String(isOpen));
+    menu.setAttribute("aria-label", t(isOpen ? "closeMenu" : "openMenu"));
+  };
+  const setUsefulOpen = (button, isOpen, returnFocus = false) => {
+    const submenu = document.getElementById(button?.getAttribute("aria-controls"));
+    if (!button || !submenu) return;
+    button.setAttribute("aria-expanded", String(isOpen));
+    submenu.hidden = !isOpen;
+    if (returnFocus) button.focus();
+  };
+
   document.addEventListener("click", (e) => {
     const lang = e.target.closest("[data-language]");
     if (lang) applyLanguage(lang.dataset.language);
+    const disclosure = e.target.closest(".main-nav__disclosure");
+    if (disclosure && disclosure.closest("[data-site-header]")) {
+      setUsefulOpen(disclosure, disclosure.getAttribute("aria-expanded") !== "true");
+    }
     if (e.target.closest("[data-program-more]")) {
       expanded = !expanded;
       renderProgram();
     }
     const menu = e.target.closest(".site-header__menu-toggle");
-    if (menu) {
-      const h = document.querySelector(".site-header"),
-        open = h.classList.toggle("site-header--menu-open");
-      menu.setAttribute("aria-expanded", String(open));
+    if (menu && menu.closest("[data-site-header]")) {
+      const h = menu.closest("[data-site-header]");
+      setMenuOpen(h, menu.getAttribute("aria-expanded") !== "true");
+    }
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key !== "Escape") return;
+    const openUseful = document.querySelector('.main-nav__disclosure[aria-expanded="true"]');
+    if (openUseful) {
+      setUsefulOpen(openUseful, false, true);
+      return;
+    }
+    const generatedHeader = document.querySelector('[data-site-header].site-header--menu-open');
+    if (generatedHeader) {
+      setMenuOpen(generatedHeader, false);
+      generatedHeader.querySelector(".site-header__menu-toggle")?.focus();
     }
   });
   const init = () => {

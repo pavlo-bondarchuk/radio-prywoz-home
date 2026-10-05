@@ -1,6 +1,6 @@
 const header = document.querySelector(".site-header");
 const menuToggle = document.querySelector(".site-header__menu-toggle");
-const menuLinks = document.querySelectorAll(".main-nav__link, .button--header");
+const menuLinks = document.querySelectorAll("a.main-nav__link, .main-nav__submenu-link, .button--header");
 const languageButtons = document.querySelectorAll("[data-language]");
 const translatableNodes = document.querySelectorAll("[data-i18n]");
 const player = document.querySelector(".live-player");
@@ -62,6 +62,15 @@ const translations = {
     navHome: "Головна",
     navListen: "Ефір",
     navNews: "Новини",
+    navServicesLodz: "Послуги в Лодзі",
+    navBusiness: "Бізнес",
+    navPrograms: "Програми",
+    navUseful: "Корисне",
+    navSalaryCalculator: "Калькулятор зарплати",
+    navWorkCalendar: "Робочий календар",
+    navRentCalculator: "Калькулятор оренди",
+    openMenu: "Відкрити меню",
+    closeMenu: "Закрити меню",
     navAbout: "Про нас",
     navCard: "Картка",
     navContacts: "Контакти",
@@ -140,6 +149,15 @@ const translations = {
     navHome: "Start",
     navListen: "Radio",
     navNews: "Wiadomości",
+    navServicesLodz: "Usługi w Łodzi",
+    navBusiness: "Biznes",
+    navPrograms: "Programy",
+    navUseful: "Przydatne",
+    navSalaryCalculator: "Kalkulator wynagrodzenia",
+    navWorkCalendar: "Kalendarz pracy",
+    navRentCalculator: "Kalkulator kosztów najmu",
+    openMenu: "Otwórz menu",
+    closeMenu: "Zamknij menu",
     navAbout: "O nas",
     navCard: "Karta",
     navContacts: "Kontakt",
@@ -218,6 +236,15 @@ const translations = {
     navHome: "Главная",
     navListen: "Эфир",
     navNews: "Новости",
+    navServicesLodz: "Услуги в Лодзи",
+    navBusiness: "Бизнес",
+    navPrograms: "Программы",
+    navUseful: "Полезное",
+    navSalaryCalculator: "Калькулятор зарплаты",
+    navWorkCalendar: "Рабочий календарь",
+    navRentCalculator: "Калькулятор аренды",
+    openMenu: "Открыть меню",
+    closeMenu: "Закрыть меню",
     navAbout: "О нас",
     navCard: "Карта",
     navContacts: "Контакты",
@@ -450,7 +477,16 @@ const setMenuState = (isOpen) => {
 
   header.classList.toggle("site-header--menu-open", isOpen);
   menuToggle.setAttribute("aria-expanded", String(isOpen));
-  menuToggle.setAttribute("aria-label", isOpen ? "Закрити меню" : "Відкрити меню");
+  menuToggle.setAttribute("aria-label", translations[activeLanguage]?.[isOpen ? "closeMenu" : "openMenu"] || "Відкрити меню");
+};
+
+const setUsefulMenuState = (button, isOpen, returnFocus = false) => {
+  if (!button) return;
+  const submenu = document.getElementById(button.getAttribute("aria-controls"));
+  if (!submenu) return;
+  button.setAttribute("aria-expanded", String(isOpen));
+  submenu.hidden = !isOpen;
+  if (returnFocus) button.focus();
 };
 
 const setPlayerState = (state) => {
@@ -691,6 +727,10 @@ const applyLanguage = (language) => {
     button.classList.toggle("language-switcher__item--active", isActive);
     button.setAttribute("aria-current", String(isActive));
   });
+  if (menuToggle) {
+    const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+    menuToggle.setAttribute("aria-label", translations[activeLanguage]?.[isOpen ? "closeMenu" : "openMenu"] || "Відкрити меню");
+  }
 
   renderStationMeta();
   updateVolumeState();
@@ -710,10 +750,23 @@ if (header && menuToggle) {
 
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
-      setMenuState(false);
+      const openUseful = document.querySelector('.main-nav__disclosure[aria-expanded="true"]');
+      if (openUseful) {
+        setUsefulMenuState(openUseful, false, true);
+        return;
+      }
+      if (header?.classList.contains("site-header--menu-open")) {
+        setMenuState(false);
+        menuToggle?.focus();
+      }
     }
   });
 }
+
+document.addEventListener("click", (event) => {
+  const button = event.target.closest(".main-nav__disclosure");
+  if (button) setUsefulMenuState(button, button.getAttribute("aria-expanded") !== "true");
+});
 
 languageButtons.forEach((button) => {
   button.addEventListener("click", () => {
