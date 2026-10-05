@@ -300,9 +300,9 @@ a {
   outline: none;
 }
 
-.main-nav__link:hover::after,
-.main-nav__link:focus-visible::after,
-.main-nav__link--active::after {
+.main-nav__link:hover:not(.main-nav__disclosure)::after,
+.main-nav__link:focus-visible:not(.main-nav__disclosure)::after,
+.main-nav__link--active:not(.main-nav__disclosure)::after {
   opacity: 1;
   transform: scaleX(1);
 }
