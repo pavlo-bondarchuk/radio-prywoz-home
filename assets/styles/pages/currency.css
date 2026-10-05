@@ -3,3 +3,14 @@
 @keyframes currency-shimmer{to{background-position:-200% 0}}@media(max-width:1000px){.currency-converter-card{grid-template-columns:1fr 1fr;gap:22px}.currency-popular-grid{grid-template-columns:1fr 1fr}.currency-popular-grid>*:last-child{grid-column:1/-1}}@media(max-width:760px){.currency-main{padding-top:20px}.currency-heading{display:block}.currency-update-wrap{justify-items:start;margin-top:12px;text-align:left}.currency-loading{grid-template-columns:1fr}.currency-card{padding:16px}.currency-converter-card{grid-template-columns:1fr;gap:16px}.currency-converter-inputs,.currency-live-rates{grid-column:1;grid-row:auto}.currency-loading{min-height:600px}.currency-section-head h2,.currency-popular>h2{font-size:21px}.currency-row{grid-template-columns:32px minmax(68px,.8fr) minmax(110px,1.4fr);gap:8px;padding:8px}.currency-row label span{font-size:11px}.currency-row input{font-size:19px}.currency-quick{align-items:flex-start;flex-direction:column}.currency-quick>div{width:100%}.currency-quick button{flex:1}.currency-section-head{align-items:flex-start}.currency-periods{justify-content:space-between;gap:4px}.currency-periods button{flex:1;min-width:0;padding-inline:5px}.currency-chart-wrap{min-height:230px}.currency-stats{grid-template-columns:1fr 1fr}.currency-popular-grid{grid-template-columns:1fr}.currency-popular-grid>*:last-child{grid-column:auto}.currency-popular .currency-card{padding:16px}}@media(max-width:360px){.currency-row{grid-template-columns:28px minmax(58px,.7fr) minmax(96px,1.3fr);gap:6px}.currency-row input{font-size:17px}.currency-row label span{max-width:100px}.currency-periods button{font-size:12px}}@media(prefers-reduced-motion:reduce){.currency-skeleton{animation:none}}
 
 html[data-theme="dark"] .currency-stats .is-positive dd{color:#3bd48a}html[data-theme="dark"] .currency-stats .is-negative dd{color:#ff6978}
+
+/* Reserve the currency shell's loaded header footprint while its shared markup is injected. */
+body.currency-page header[data-site-header]:empty{min-height:146px}
+@media(max-width:1180px){body.currency-page header[data-site-header]:empty{min-height:178px}}
+@media(max-width:900px){body.currency-page header[data-site-header]:empty{min-height:111px}}
+@media(max-width:680px){body.currency-page header[data-site-header]:empty{min-height:171px}}
+@media(max-width:480px){body.currency-page header[data-site-header]:empty{min-height:149px}}
+
+/* Keep the loading region below the initial viewport so the disclaimer does not jump into view. */
+.currency-loading{min-height:max(510px,calc(100vh - 300px))}
+@media(max-width:760px){.currency-loading{min-height:max(600px,calc(100vh - 300px))}}

@@ -3,6 +3,15 @@ import { convertAmount, formatLocalDate } from "./currency-format.js?v=20261005-
 
 const labels = { uk: ["Останнє оновлення", "Курси НБУ · bank.gov.ua", "Курси валют", "дані з кешу"], pl: ["Ostatnia aktualizacja", "Kurs NBU · bank.gov.ua", "Kursy walut", "dane z pamięci podręcznej"], ru: ["Последнее обновление", "Курсы НБУ · bank.gov.ua", "Курсы валют", "данные из кеша"] };
 let latest = null;
+let unavailable = false;
+function renderUnavailable() {
+  const localeKey = localStorage.getItem("prywoz-language"), words = labels[localeKey] || labels.uk;
+  document.querySelectorAll("[data-header-currency], [data-currency-title]").forEach(node => {
+    node.textContent = "—";
+    const link = node.closest("a");
+    if (link) link.setAttribute("aria-label", words[2]);
+  });
+}
 function render(data) {
   const localeKey = localStorage.getItem("prywoz-language"), locale = ({ uk: "uk-UA", pl: "pl-PL", ru: "ru-RU" })[localeKey] || "uk-UA", words = labels[localeKey] || labels.uk;
   const rate = convertAmount(1, "UAH", "PLN", data.units);
@@ -13,8 +22,8 @@ function render(data) {
 export async function loadHeaderCurrency() {
   if (!document.querySelector("[data-header-currency], [data-currency-title]")) return;
   try {
-    latest = await fetchRates(); render(latest);
-  } catch { document.querySelectorAll("[data-header-currency], [data-currency-title]").forEach(node => { node.textContent = "—"; }); }
+    latest = await fetchRates(); unavailable = false; render(latest);
+  } catch { unavailable = true; renderUnavailable(); }
 }
 document.addEventListener("prywoz:currency-rates", event => { latest = event.detail?.rates || latest; if (latest) render(latest); });
-document.addEventListener("prywoz:language-change", () => { if (latest) render(latest); });
+document.addEventListener("prywoz:language-change", () => { if (latest) render(latest); else if (unavailable) renderUnavailable(); });
