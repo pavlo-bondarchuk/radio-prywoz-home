@@ -15,21 +15,6 @@
   min-width: 0;
 }
 
-.utility-breadcrumbs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 0 0 22px;
-  color: var(--color-muted, var(--ds-color-text-muted));
-  font-size: 14px;
-}
-
-.utility-breadcrumbs a {
-  color: var(--color-primary, var(--ds-color-primary));
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
 .utility-heading {
   margin: 0 0 24px;
 }
@@ -123,8 +108,7 @@
 .utility-select:focus-visible,
 .utility-button:focus-visible,
 .utility-tabs button:focus-visible,
-.utility-related a:focus-visible,
-.utility-breadcrumbs a:focus-visible {
+.utility-related a:focus-visible {
   outline: 3px solid var(--color-primary, var(--ds-color-primary));
   outline-offset: 3px;
 }
@@ -293,7 +277,6 @@ form[data-rent-form] > fieldset > .utility-field { min-width: 0; }
 
 @media (max-width: 400px) {
   .utility-page { width: calc(100% - 24px); }
-  .utility-breadcrumbs { gap: 6px; font-size: 13px; }
   .utility-card { padding: 15px; }
   .utility-breakdown > div { gap: 10px; }
 }

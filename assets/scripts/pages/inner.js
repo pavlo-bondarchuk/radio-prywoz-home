@@ -11,6 +11,7 @@
     designCredit: ["Створено", "Wykonanie", "Сделано"],
     designAria: ["bonddesign — відкривається в новій вкладці", "bonddesign — otwiera się w nowej karcie", "bonddesign — открывается в новой вкладке"],
     home: ["Головна", "Strona główna", "Главная"],
+    breadcrumbsAria: ["Навігаційний шлях", "Okruszki nawigacyjne", "Навигационная цепочка"],
     currency: ["Курси валют", "Kursy walut", "Курсы валют"],
     listen: ["Ефір", "Radio", "Эфир"],
     news: ["Новини", "Wiadomości", "Новости"],
@@ -42,6 +43,7 @@
       "Polityka prywatności",
       "Политика конфиденциальности",
     ],
+    newsSources: ["Джерела новин", "Źródła wiadomości", "Источники новостей"],
     footerAbout: [
       "Українське радіо та корисний портал у Польщі.",
       "Ukraińskie radio i przydatny portal w Polsce.",
@@ -501,6 +503,9 @@
     document.querySelector('[data-design-credit]')?.setAttribute('aria-label', t('designAria'));
     document.querySelector('.portal-header .language-switcher')?.setAttribute('aria-label', t('languageChoice'));
     document.querySelector('.site-header .main-nav')?.setAttribute('aria-label', t('mainNavigation'));
+    document.querySelectorAll("[data-i18n-aria]").forEach((n) => {
+      if (C[n.dataset.i18nAria]) n.setAttribute("aria-label", t(n.dataset.i18nAria));
+    });
     const menuToggle = document.querySelector('[data-site-header] .site-header__menu-toggle');
     if (menuToggle) menuToggle.setAttribute('aria-label', t(menuToggle.getAttribute('aria-expanded') === 'true' ? 'closeMenu' : 'openMenu'));
     annotate();
