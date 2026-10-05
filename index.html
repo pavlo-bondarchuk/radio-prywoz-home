@@ -36,6 +36,7 @@
     <link rel="stylesheet" href="./assets/styles/pages/portal.css?v=20261005-currency3">
     <link rel="stylesheet" href="./assets/styles/pages/news.css?v=20261005-news7">
     <link rel="stylesheet" href="./assets/styles/pages/inner.css?v=20260905-radio">
+    <link rel="stylesheet" href="./assets/styles/cookie-consent.css?v=20260907-volume-theme">
   </head>
   <body class="page">
     <header class="site-header">
@@ -521,6 +522,17 @@
       </div>
     </footer>
 
+    <section class="cookie-consent" data-cookie-consent hidden aria-label="Налаштування аналітичних cookie">
+      <div class="cookie-consent__copy">
+        <strong>Аналітичні cookie</strong>
+        <p>Допоможіть нам зрозуміти, як відвідувачі користуються сайтом. Рекламні cookie не використовуються.</p>
+      </div>
+      <div class="cookie-consent__actions">
+        <button type="button" data-consent-choice="declined">Відхилити</button>
+        <button type="button" data-consent-choice="accepted">Прийняти</button>
+      </div>
+    </section>
+
     <div class="rules-modal" id="rules-modal" hidden>
       <div class="rules-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="rules-modal-title">
         <header class="rules-modal__header">
@@ -544,5 +556,7 @@
     <script src="./assets/scripts/pages/inner.js?v=20261005-news7"></script>
     <script type="module" src="./assets/scripts/news/news-render.js?v=20261005-news7"></script>
     <script src="./assets/scripts/pages/questionnaire.js?v=20260824-card"></script>
+    <script src="./assets/scripts/cookie-consent.js?v=20260907"></script>
+    <script src="./assets/scripts/analytics-events.js?v=20260907"></script>
   </body>
 </html>

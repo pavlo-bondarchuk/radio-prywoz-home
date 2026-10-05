@@ -1,6 +1,22 @@
 <!doctype html>
 <html lang="uk">
 <head>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    (function () {
+      var c = null;
+      try { c = localStorage.getItem("prywoz-analytics-consent"); } catch (e) {}
+      gtag("consent", "default", { analytics_storage: c === "accepted" ? "granted" : "denied", ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied", wait_for_update: 500 });
+    })();
+  </script>
+  <script>
+    (function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+      var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != "dataLayer" ? "&l=" + l : "";
+      j.async = true; j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, "script", "dataLayer", "GTM-ML3C4NWZ");
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Погода в Лодзі — прогноз, якість повітря та історія | PRYWOZ</title>
@@ -10,9 +26,10 @@
   <meta property="og:title" content="Погода в Лодзі | PRYWOZ"><meta property="og:description" content="Прогноз на 14 днів, якість повітря, попередження та історія погоди."><meta property="og:type" content="website"><meta property="og:url" content="https://prywoz.fm/weather.html">
   <meta name="twitter:card" content="summary"><meta name="twitter:title" content="Погода в Лодзі | PRYWOZ"><meta name="twitter:description" content="Актуальна погода та офіційні попередження для Лодзі.">
   <script>try{const t=localStorage.getItem('prywoz-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.dataset.theme=t;document.documentElement.style.colorScheme=t}catch{}</script>
-  <link rel="icon" href="./assets/images/favicon-pryvoz.png"><link rel="stylesheet" href="./assets/styles/tokens.css"><link rel="stylesheet" href="./assets/styles/main.css"><link rel="stylesheet" href="./assets/styles/components.css"><link rel="stylesheet" href="./assets/styles/open-fm-redesign.css"><link rel="stylesheet" href="./assets/styles/pages/portal.css?v=20261005-currency3"><link rel="stylesheet" href="./assets/styles/pages/inner.css"><link rel="stylesheet" href="./assets/styles/pages/weather.css?v=20261004-polish">
+  <link rel="icon" href="./assets/images/favicon-pryvoz.png"><link rel="stylesheet" href="./assets/styles/tokens.css"><link rel="stylesheet" href="./assets/styles/main.css"><link rel="stylesheet" href="./assets/styles/components.css"><link rel="stylesheet" href="./assets/styles/open-fm-redesign.css"><link rel="stylesheet" href="./assets/styles/pages/portal.css?v=20261005-currency3"><link rel="stylesheet" href="./assets/styles/pages/inner.css"><link rel="stylesheet" href="./assets/styles/pages/weather.css?v=20261004-polish"><link rel="stylesheet" href="./assets/styles/cookie-consent.css?v=20260907-volume-theme">
 </head>
 <body class="page weather-page" data-page="weather">
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-ML3C4NWZ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <header class="site-header" data-site-header></header>
   <main class="weather-main" data-no-auto-i18n>
     <div class="container">
@@ -29,5 +46,9 @@
       <section class="weather-card weather-sources" aria-labelledby="sources-title"><h2 id="sources-title" data-weather-i18n="sourcesTitle">Джерела даних</h2><div><a href="https://open-meteo.com/" target="_blank" rel="noopener" data-weather-i18n="sourceForecast">Прогноз та історія: Open‑Meteo</a><a href="https://powietrze.gios.gov.pl/" target="_blank" rel="noopener" data-weather-i18n="sourceAir">Якість повітря: GIOŚ</a><a href="https://meteo.imgw.pl/" target="_blank" rel="noopener" data-weather-i18n="sourceWarnings">Попередження: IMGW‑PIB</a></div><p data-weather-i18n="sourceNote">PRYWOZ агрегує відкриті та офіційні дані та не є первинним метеорологічним джерелом.</p></section>
     </div>
   </main>
-  <script src="./assets/scripts/radio-persistence.js?v=20261004-navigation-fix"></script><script src="./assets/scripts/pages/inner.js?v=20261005-currency3"></script><script type="module" src="./assets/scripts/weather/weather-page.js?v=20261004-polish"></script>
+  <section class="cookie-consent" data-cookie-consent hidden aria-label="Налаштування аналітичних cookie">
+    <div class="cookie-consent__copy"><strong>Аналітичні cookie</strong><p>Допоможіть нам зрозуміти, як відвідувачі користуються сайтом. Рекламні cookie не використовуються.</p></div>
+    <div class="cookie-consent__actions"><button type="button" data-consent-choice="declined">Відхилити</button><button type="button" data-consent-choice="accepted">Прийняти</button></div>
+  </section>
+  <script src="./assets/scripts/radio-persistence.js?v=20261004-navigation-fix"></script><script src="./assets/scripts/pages/inner.js?v=20261005-currency3"></script><script type="module" src="./assets/scripts/weather/weather-page.js?v=20261004-polish"></script><script src="./assets/scripts/cookie-consent.js?v=20260907"></script><script src="./assets/scripts/analytics-events.js?v=20260907"></script>
 </body></html>
