@@ -45,10 +45,13 @@
 
   const syncTheme = () => {
     const isDark = document.documentElement.dataset.theme === "dark";
+    const label = localized(isDark
+      ? ["Увімкнути світлу тему", "Włącz jasny motyw", "Включить светлую тему"]
+      : ["Увімкнути темну тему", "Włącz ciemny motyw", "Включить тёмную тему"]);
     document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
       button.setAttribute("aria-pressed", String(isDark));
-      button.setAttribute("aria-label", isDark ? "Увімкнути світлу тему" : "Увімкнути темну тему");
-      button.title = isDark ? "Увімкнути світлу тему" : "Увімкнути темну тему";
+      button.setAttribute("aria-label", label);
+      button.title = label;
     });
   };
 

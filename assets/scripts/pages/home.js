@@ -67,6 +67,7 @@ const translations = {
     navPrograms: "Програми",
     navUseful: "Корисне",
     navSalaryCalculator: "Калькулятор зарплати",
+    navPit: "Річний PIT у Польщі",
     navWorkCalendar: "Робочий календар",
     navRentCalculator: "Калькулятор оренди",
     openMenu: "Відкрити меню",
@@ -154,6 +155,7 @@ const translations = {
     navPrograms: "Programy",
     navUseful: "Przydatne",
     navSalaryCalculator: "Kalkulator wynagrodzenia",
+    navPit: "Roczne rozliczenie PIT",
     navWorkCalendar: "Kalendarz pracy",
     navRentCalculator: "Kalkulator kosztów najmu",
     openMenu: "Otwórz menu",
@@ -241,6 +243,7 @@ const translations = {
     navPrograms: "Программы",
     navUseful: "Полезное",
     navSalaryCalculator: "Калькулятор зарплаты",
+    navPit: "Годовой PIT в Польше",
     navWorkCalendar: "Рабочий календарь",
     navRentCalculator: "Калькулятор аренды",
     openMenu: "Открыть меню",
@@ -735,8 +738,81 @@ const applyLanguage = (language) => {
   renderStationMeta();
   updateVolumeState();
   renderLocalTime();
+  updatePitUtility();
   updateThemeToggle();
   document.dispatchEvent(new CustomEvent("prywoz:languagechange", { detail: { language: activeLanguage } }));
+};
+
+const PIT_SEASONS = {
+  2026: { start: "2026-02-15", deadline: "2026-04-30", confirmed: true },
+  2027: { start: "2027-02-15", deadline: "2027-04-30", confirmed: false },
+};
+
+const pitUtilityCopy = {
+  uk: {
+    title: "Річний PIT у Польщі",
+    summary: "PIT-11 · Перевірити →",
+    before: (year, expected) => `Старт 15.02.${year}${expected ? " · очікувано" : ""}`,
+    active: (days, expected) => `Дедлайн 30.04 · ${days} дн.${expected ? " · очікувано" : ""}`,
+    after: "Сезон PIT завершено",
+  },
+  pl: {
+    title: "Roczne rozliczenie PIT",
+    summary: "PIT-11 · Sprawdź →",
+    before: (year, expected) => `Start 15.02.${year}${expected ? " · orientacyjnie" : ""}`,
+    active: (days, expected) => `Termin 30.04 · ${days} dni${expected ? " · orientacyjnie" : ""}`,
+    after: "Sezon PIT zakończony",
+  },
+  ru: {
+    title: "Годовой PIT в Польше",
+    summary: "PIT-11 · Проверить →",
+    before: (year, expected) => `Старт 15.02.${year}${expected ? " · ожидаемо" : ""}`,
+    active: (days, expected) => `Срок 30.04 · ${days} дн.${expected ? " · ожидаемо" : ""}`,
+    after: "Сезон PIT завершён",
+  },
+};
+
+const warsawDateString = () => {
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Europe/Warsaw",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).formatToParts(new Date());
+  const part = (type) => parts.find((item) => item.type === type)?.value || "";
+  return `${part("year")}-${part("month")}-${part("day")}`;
+};
+
+const dayDifference = (from, to) => Math.max(0, Math.ceil((Date.parse(`${to}T00:00:00Z`) - Date.parse(`${from}T00:00:00Z`)) / 86400000));
+
+const updatePitUtility = () => {
+  const title = document.querySelector("[data-pit-title]");
+  const summary = document.querySelector("[data-pit-summary]");
+  const status = document.querySelector("[data-pit-status]");
+  if (!title || !status) return;
+
+  const copy = pitUtilityCopy[activeLanguage] || pitUtilityCopy.uk;
+  title.textContent = copy.title;
+  if (summary) summary.textContent = copy.summary;
+
+  const today = warsawDateString();
+  const currentYear = Number(today.slice(0, 4));
+  const currentSeason = PIT_SEASONS[currentYear] || {
+    start: `${currentYear}-02-15`,
+    deadline: `${currentYear}-04-30`,
+    confirmed: false,
+  };
+  let message;
+  if (today < currentSeason.start) {
+    message = copy.before(currentYear, !currentSeason.confirmed);
+  } else if (today <= currentSeason.deadline) {
+    message = copy.active(dayDifference(today, currentSeason.deadline), !currentSeason.confirmed);
+  } else {
+    message = copy.after;
+  }
+  status.textContent = message;
+  status.dataset.pitState = today < currentSeason.start ? "upcoming" : today <= currentSeason.deadline ? "active" : "ended";
+  status.setAttribute("aria-label", message);
 };
 
 if (header && menuToggle) {
@@ -785,6 +861,7 @@ citySelect?.addEventListener("change", () => {
 
 applyLanguage(activeLanguage);
 window.setInterval(renderLocalTime, 30 * 1000);
+window.setInterval(updatePitUtility, 60 * 1000);
 const savedCity = citySelect ? (storageGet("prywoz-city") || "lodz") : "lodz";
 if (citySelect && cityData[savedCity]) {
   citySelect.value = savedCity;
