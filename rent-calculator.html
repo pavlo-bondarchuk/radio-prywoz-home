@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    (function () {
+      var c = null;
+      try { c = localStorage.getItem("prywoz-analytics-consent"); } catch (e) {}
+      gtag("consent", "default", { analytics_storage: c === "accepted" ? "granted" : "denied", ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied", wait_for_update: 500 });
+    })();
+  </script>
+  <script>
+    (function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+      var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != "dataLayer" ? "&l=" + l : "";
+      j.async = true; j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, "script", "dataLayer", "GTM-ML3C4NWZ");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Калькулятор оренди житла в Польщі | PRYWOZ</title>
+  <meta name="description" content="Оцініть повну щомісячну вартість оренди житла в Польщі, суму для заселення та бюджет на перший рік.">
+  <link rel="canonical" href="https://prywoz.fm/rent-calculator.html">
+  <meta property="og:title" content="Калькулятор оренди житла | PRYWOZ">
+  <meta property="og:description" content="Розрахуйте щомісячні витрати, суму для заселення та бюджет оренди на рік.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://prywoz.fm/rent-calculator.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Калькулятор оренди житла | PRYWOZ">
+  <meta name="twitter:description" content="Оцініть повну вартість оренди житла в Польщі.">
+  <script>try{const t=localStorage.getItem('prywoz-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.dataset.theme=t;document.documentElement.style.colorScheme=t}catch{}</script>
+  <link rel="icon" href="./assets/images/favicon-pryvoz.png">
+  <link rel="stylesheet" href="./assets/styles/tokens.css">
+  <link rel="stylesheet" href="./assets/styles/main.css">
+  <link rel="stylesheet" href="./assets/styles/components.css">
+  <link rel="stylesheet" href="./assets/styles/open-fm-redesign.css">
+  <link rel="stylesheet" href="./assets/styles/pages/portal.css?v=20261005-currency3">
+  <link rel="stylesheet" href="./assets/styles/pages/inner.css">
+  <link rel="stylesheet" href="./assets/styles/pages/calculators.css">
+  <link rel="stylesheet" href="./assets/styles/cookie-consent.css?v=20260907-volume-theme">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Калькулятор оренди житла PRYWOZ","applicationCategory":"FinanceApplication","operatingSystem":"Any","url":"https://prywoz.fm/rent-calculator.html","description":"Розрахунок бюджету оренди житла на основі введених користувачем сум."}</script>
+</head>
+<body class="page" data-page="rent-calculator">
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-ML3C4NWZ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <header class="site-header" data-site-header></header>
+  <main class="utility-page" data-no-auto-i18n>
+    <nav class="utility-breadcrumbs" aria-label="Навігаційний шлях"><a href="./index.html" data-calculator-i18n="home">Головна</a><span aria-hidden="true">/</span><span data-calculator-i18n="pageTitle">Калькулятор оренди житла</span></nav>
+    <header class="utility-heading"><p class="utility-eyebrow" data-calculator-i18n="eyebrow">Планування бюджету</p><h1 data-calculator-i18n="pageTitle">Калькулятор оренди житла</h1><p data-calculator-i18n="intro">Оцініть щомісячні витрати, суму для заселення та бюджет на перший рік у Польщі.</p></header>
+    <div class="utility-grid">
+      <form class="utility-card" data-rent-form novalidate>
+        <fieldset><legend data-calculator-i18n="monthlyHeading">Щомісячні витрати</legend>
+          <label class="utility-field"><span data-calculator-i18n="rent">Оренда житла</span><input class="utility-input" name="rent" inputmode="decimal" autocomplete="off" value="2500" aria-describedby="rent-help"><small id="rent-help" data-calculator-i18n="rentHelp">Сума odstępnego / найму за місяць</small></label>
+          <label class="utility-field"><span data-calculator-i18n="admin">Адміністративний czynsz</span><input class="utility-input" name="admin" inputmode="decimal" autocomplete="off" value="0"></label>
+          <label class="utility-field"><span data-calculator-i18n="electricity">Електроенергія</span><input class="utility-input" name="electricity" inputmode="decimal" autocomplete="off" value="0"></label>
+          <label class="utility-field"><span data-calculator-i18n="gas">Газ</span><input class="utility-input" name="gas" inputmode="decimal" autocomplete="off" value="0"></label>
+          <label class="utility-field"><span data-calculator-i18n="water">Вода</span><input class="utility-input" name="water" inputmode="decimal" autocomplete="off" value="0"></label>
+          <label class="utility-field"><span data-calculator-i18n="heating">Опалення</span><input class="utility-input" name="heating" inputmode="decimal" autocomplete="off" value="0"></label>
+          <label class="utility-field"><span data-calculator-i18n="internet">Інтернет</span><input class="utility-input" name="internet" inputmode="decimal" autocomplete="off" value="0"></label>
+          <label class="utility-field"><span data-calculator-i18n="parking">Паркінг</span><input class="utility-input" name="parking" inputmode="decimal" autocomplete="off" value="0"></label>
+          <label class="utility-field"><span data-calculator-i18n="otherMonthly">Інші щомісячні</span><input class="utility-input" name="otherMonthly" inputmode="decimal" autocomplete="off" value="0"></label>
+        </fieldset>
+        <fieldset><legend data-calculator-i18n="moveHeading">Витрати для заселення</legend>
+          <label class="utility-field"><span data-calculator-i18n="deposit">Застава (kaucja)</span><input class="utility-input" name="deposit" inputmode="decimal" autocomplete="off" value="0"><small data-calculator-i18n="depositHelp">Може бути повернута після завершення оренди згідно з договором.</small></label>
+          <div class="utility-field"><label for="agency-mode" data-calculator-i18n="agency">Комісія агентства</label><div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(120px,.65fr);gap:8px"><select class="utility-select" id="agency-mode" name="agencyMode"><option value="fixed" data-calculator-i18n="fixed">Фіксована сума</option><option value="percent" data-calculator-i18n="percent">Відсоток оренди</option></select><label class="visually-hidden" for="agency-amount" data-calculator-i18n="agencyAmount">Сума або відсоток комісії</label><input class="utility-input" id="agency-amount" name="agency" inputmode="decimal" autocomplete="off" value="0"></div><small data-calculator-i18n="agencyHelp">Відсоток розраховується від щомісячної оренди житла.</small></div>
+          <label class="utility-field"><span data-calculator-i18n="moving">Переїзд</span><input class="utility-input" name="moving" inputmode="decimal" autocomplete="off" value="0"></label>
+          <label class="utility-field"><span data-calculator-i18n="equipment">Обладнання та покупки на старт</span><input class="utility-input" name="equipment" inputmode="decimal" autocomplete="off" value="0"></label>
+          <label class="utility-field"><span data-calculator-i18n="otherOneTime">Інші разові витрати</span><input class="utility-input" name="otherOneTime" inputmode="decimal" autocomplete="off" value="0"></label>
+        </fieldset>
+        <fieldset><legend data-calculator-i18n="householdHeading">Домогосподарство</legend>
+          <label class="utility-field"><span data-calculator-i18n="people">Кількість людей</span><input class="utility-input" name="people" type="number" min="1" max="100" step="1" value="1" required></label>
+          <label class="utility-field"><span data-calculator-i18n="income">Дохід домогосподарства netto (необов’язково)</span><input class="utility-input" name="income" inputmode="decimal" autocomplete="off" value=""><small data-calculator-i18n="incomeHelp">Значення залишається у вашому браузері та не надсилається на сервер.</small></label>
+        </fieldset>
+        <p class="utility-alert" data-rent-error role="alert" hidden></p>
+      </form>
+      <section class="utility-card" aria-labelledby="rent-results-title">
+        <h2 id="rent-results-title" data-calculator-i18n="results">Ваш бюджет оренди</h2>
+        <div class="utility-result" aria-live="polite" aria-atomic="true"><span class="utility-result__label" data-calculator-i18n="monthlyTotal">Щомісяця</span><strong class="utility-result__value" data-result="monthly">—</strong><small data-result="perPerson"></small></div>
+        <dl class="utility-stat-grid" style="margin-block:12px"><div><dt data-calculator-i18n="moveIn">Для заселення</dt><dd data-result="moveIn">—</dd></div><div><dt data-calculator-i18n="annual">За рік (без застави)</dt><dd data-result="annual">—</dd></div><div><dt data-calculator-i18n="firstYearCash">Гроші протягом першого року*</dt><dd data-result="firstYearCash">—</dd></div><div><dt data-calculator-i18n="perPersonLabel">На одну людину / місяць</dt><dd data-result="perPersonStat">—</dd></div></dl>
+        <p data-result="incomeShare" aria-live="polite"></p>
+        <h3 data-calculator-i18n="breakdown">Щомісячна деталізація</h3>
+        <dl class="utility-breakdown" data-result="breakdown"></dl>
+        <p class="utility-field__help" data-calculator-i18n="firstYearNote">* Річна сума включає разові неповоротні витрати та заставу як кошти, які потрібно мати; застава не вважається витратою.</p>
+        <button class="utility-button utility-button--secondary" type="button" data-share><span data-calculator-i18n="share">Скопіювати посилання на розрахунок</span></button><span data-share-status role="status" aria-live="polite"></span>
+      </section>
+    </div>
+    <aside class="utility-source" style="margin-top:18px"><p data-calculator-i18n="disclaimer">Калькулятор допомагає оцінити бюджет оренди. Фактичні платежі залежать від договору, тарифів і правил власника житла.</p><p data-calculator-i18n="privacy">Усі розрахунки виконуються у браузері. Введені суми не надсилаються на сервер і не передаються в аналітику.</p></aside>
+    <nav class="utility-related" aria-label="Корисні сервіси" style="margin-top:18px"><a href="./salary-calculator.html" data-calculator-i18n="salaryLink">Калькулятор зарплати</a><a href="./work-calendar.html" data-calculator-i18n="calendarLink">Робочий календар</a><a href="./currency.html" data-calculator-i18n="currencyLink">Курси валют</a><a href="./weather.html" data-calculator-i18n="weatherLink">Погода</a></nav>
+  </main>
+  <section class="cookie-consent" data-cookie-consent hidden aria-label="Налаштування аналітичних cookie"><div class="cookie-consent__copy"><strong>Аналітичні cookie</strong><p>Допоможіть нам зрозуміти, як відвідувачі користуються сайтом. Рекламні cookie не використовуються.</p></div><div class="cookie-consent__actions"><button type="button" data-consent-choice="declined">Відхилити</button><button type="button" data-consent-choice="accepted">Прийняти</button></div></section>
+  <script src="./assets/scripts/radio-persistence.js?v=20261004-navigation-fix"></script><script src="./assets/scripts/pages/inner.js?v=20261005-currency3"></script><script type="module" src="./assets/scripts/calculators/rent-calculator.js"></script><script src="./assets/scripts/cookie-consent.js?v=20260907"></script><script src="./assets/scripts/analytics-events.js?v=20260907"></script>
+</body>
+</html>
