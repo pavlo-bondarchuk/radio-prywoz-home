@@ -328,7 +328,7 @@ a {
   display: none;
 }
 
-.main-nav__disclosure::after {
+.main-nav__link.main-nav__disclosure::after {
   position: static;
   width: 7px;
   height: 7px;
