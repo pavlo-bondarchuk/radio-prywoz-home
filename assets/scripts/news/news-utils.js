@@ -67,14 +67,14 @@ export const newsTimestamp = (value, language = getNewsLanguage()) => {
 
 export const matchesNewsFilter = (item, filter) => {
   if (filter === "all") return true;
-  if (["lodz", "poland", "ukraine", "world"].includes(filter)) return item.region === filter;
+  if (["poland", "ukraine", "world"].includes(filter)) return item.region === filter;
   return item.category === filter;
 };
 
 export const filterNews = (items, filter) => items.filter((item) => matchesNewsFilter(item, filter));
 
 export const rankTodayNews = (items) => [...items].sort((a, b) => {
-  const priority = (item) => item.region === "lodz" ? 0 : item.category === "documents" ? 1 : ({ poland: 2, ukraine: 3, world: 4 }[item.region] ?? 5);
+  const priority = (item) => item.category === "documents" ? 0 : ({ poland: 1, ukraine: 2, world: 3 }[item.region] ?? 4);
   const difference = priority(a) - priority(b);
   return difference || (new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0));
 });

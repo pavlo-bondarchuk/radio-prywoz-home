@@ -45,10 +45,14 @@ assert.doesNotThrow(() => normalizeNewsItems([null, undefined, 4, article({ publ
 const docsUkraine = article({ id: "doc", region: "ukraine", category: "documents", publishedAt: "2026-10-01T10:00:00Z" });
 const polandNews = article({ id: "poland", region: "poland", category: "society", publishedAt: "2026-10-05T11:00:00Z" });
 const lodzNews = article({ id: "lodz", region: "lodz", category: "culture", publishedAt: "2026-10-04T10:00:00Z" });
-assert.deepEqual(rankTodayNews([polandNews, docsUkraine, lodzNews]).map((item) => item.id), ["lodz", "doc", "poland"]);
-const categories = ["all", "lodz", "poland", "ukraine", "world", "documents", "society", "culture", "sport"];
-assert.deepEqual(categories.map((key) => newsText(key, "uk")), ["Усі", "Лодзь", "Польща", "Україна", "Світ", "Документи", "Суспільство", "Культура", "Спорт"]);
+assert.deepEqual(rankTodayNews([polandNews, docsUkraine, lodzNews]).map((item) => item.id), ["doc", "poland", "lodz"]);
+const categories = ["all", "poland", "ukraine", "world", "documents", "society", "culture", "sport"];
+assert.deepEqual(categories.map((key) => newsText(key, "uk")), ["Усі", "Польща", "Україна", "Світ", "Документи", "Суспільство", "Культура", "Спорт"]);
 assert.deepEqual(filterNews([docsUkraine, polandNews, lodzNews], "documents"), [docsUkraine]);
+for (const language of ["uk", "pl", "ru"]) {
+  assert.equal(newsText("lodz", language), "lodz", "Łódź is no longer a news topic");
+  assert.doesNotMatch(newsText("todayLead", language) + newsText("pageLead", language), /Лодз|Łódź|Lodzi/i);
+}
 
 const savedLanguage = Object.getOwnPropertyDescriptor(globalThis, "localStorage");
 const savedDocument = Object.getOwnPropertyDescriptor(globalThis, "document");

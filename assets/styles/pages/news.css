@@ -88,6 +88,7 @@
 .portal-featured-news__copy .news-item__meta { justify-content: flex-start; }
 .portal-featured-news__copy .news-item__actions { width: 100%; justify-content: flex-start; gap: 14px; }
 .portal-featured-news__image { width: 100%; height: 100%; min-height: 250px; object-fit: cover; }
+.portal-news .portal-news-row { grid-template-columns: minmax(0, 1fr); }
 .portal-news-row { grid-template-columns: 64px minmax(0, 1fr); }
 .portal-news-row__body > .news-item__meta { justify-content: flex-start; margin-bottom: 5px; }
 .portal-news-row__body h3 { margin: 0; }

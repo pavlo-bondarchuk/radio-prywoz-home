@@ -1,9 +1,9 @@
 const messages = {
   uk: {
-    all: "Усі", lodz: "Лодзь", poland: "Польща", ukraine: "Україна", world: "Світ",
+    all: "Усі", poland: "Польща", ukraine: "Україна", world: "Світ",
     documents: "Документи", society: "Суспільство", culture: "Культура", sport: "Спорт",
     politics: "Політика", economy: "Економіка", technology: "Технології", health: "Здоров’я", other: "Інше", official: "Офіційні джерела",
-    homeTitle: "Головне сьогодні", aggregated: "Агрегована стрічка", todayLead: "Важливі матеріали з Польщі, України та Лодзі — за регіоном і свіжістю.", pageTitle: "Останні новини", pageLead: "Новини Польщі, України, світу та Лодзі з посиланнями на першоджерела.",
+    homeTitle: "Головне сьогодні", aggregated: "Агрегована стрічка", todayLead: "Важливі матеріали з Польщі та України — за регіоном і свіжістю.", pageTitle: "Останні новини", pageLead: "Новини Польщі, України та світу з посиланнями на першоджерела.",
     filters: "Фільтри новин", archiveLabel: "Стрічка новин",
     filters: "Фільтри новин", archiveLabel: "Стрічка новин",
     sources: "Джерела", sourcesTitle: "Джерела новин", sourcesLead: "PRYWOZ агрегує заголовки та короткі описи з відкритих RSS/API і завжди веде до оригінального матеріалу.",
@@ -20,10 +20,10 @@ const messages = {
     retrying: "Оновлюємо стрічку…", allSourcesFailed: "Джерела тимчасово не відповідають. Показано останні збережені матеріали.",
   },
   pl: {
-    all: "Wszystkie", lodz: "Łódź", poland: "Polska", ukraine: "Ukraina", world: "Świat",
+    all: "Wszystkie", poland: "Polska", ukraine: "Ukraina", world: "Świat",
     documents: "Dokumenty", society: "Społeczeństwo", culture: "Kultura", sport: "Sport",
     politics: "Polityka", economy: "Gospodarka", technology: "Technologie", health: "Zdrowie", other: "Inne", official: "Źródła oficjalne",
-    homeTitle: "Najważniejsze dziś", aggregated: "Zebrane źródła RSS", todayLead: "Ważne materiały z Polski, Ukrainy i Łodzi uporządkowane według regionu i aktualności.", pageTitle: "Najnowsze wiadomości", pageLead: "Wiadomości z Polski, Ukrainy, świata i Łodzi z linkami do źródeł.",
+    homeTitle: "Najważniejsze dziś", aggregated: "Zebrane źródła RSS", todayLead: "Ważne materiały z Polski i Ukrainy uporządkowane według regionu i aktualności.", pageTitle: "Najnowsze wiadomości", pageLead: "Wiadomości z Polski, Ukrainy i świata z linkami do źródeł.",
     filters: "Filtry wiadomości", archiveLabel: "Lista wiadomości",
     filters: "Filtry wiadomości", archiveLabel: "Lista wiadomości",
     sources: "Źródła", sourcesTitle: "Źródła wiadomości", sourcesLead: "PRYWOZ agreguje nagłówki i krótkie opisy z otwartych RSS/API i zawsze prowadzi do oryginalnego materiału.",
@@ -40,10 +40,10 @@ const messages = {
     retrying: "Odświeżamy wiadomości…", allSourcesFailed: "Źródła chwilowo nie odpowiadają. Wyświetlamy ostatnio zapisane materiały.",
   },
   ru: {
-    all: "Все", lodz: "Лодзь", poland: "Польша", ukraine: "Украина", world: "Мир",
+    all: "Все", poland: "Польша", ukraine: "Украина", world: "Мир",
     documents: "Документы", society: "Общество", culture: "Культура", sport: "Спорт",
     politics: "Политика", economy: "Экономика", technology: "Технологии", health: "Здоровье", other: "Другое", official: "Официальные источники",
-    homeTitle: "Главное сегодня", aggregated: "Агрегированная лента", todayLead: "Важные материалы из Польши, Украины и Лодзи с учётом региона и свежести.", pageTitle: "Последние новости", pageLead: "Новости Польши, Украины, мира и Лодзи со ссылками на первоисточники.",
+    homeTitle: "Главное сегодня", aggregated: "Агрегированная лента", todayLead: "Важные материалы из Польши и Украины с учётом региона и свежести.", pageTitle: "Последние новости", pageLead: "Новости Польши, Украины и мира со ссылками на первоисточники.",
     filters: "Фильтры новостей", archiveLabel: "Лента новостей",
     filters: "Фильтры новостей", archiveLabel: "Лента новостей",
     sources: "Источники", sourcesTitle: "Источники новостей", sourcesLead: "PRYWOZ собирает заголовки и короткие описания из открытых RSS/API и всегда ведёт к оригинальному материалу.",
