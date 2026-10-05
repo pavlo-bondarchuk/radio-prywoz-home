@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script>
+      try {
+        const theme = localStorage.getItem("prywoz-theme") || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.style.colorScheme = theme;
+      } catch {}
+    </script>
+    <title>Джерела новин — PRYWOZ</title>
+    <meta name="description" content="Відкриті RSS-джерела новин PRYWOZ: Польща, Україна та офіційні установи. Статус і час останнього успішного оновлення кожного джерела.">
+    <link rel="canonical" href="https://prywoz.fm/news-sources.html">
+    <meta property="og:title" content="Джерела новин — PRYWOZ">
+    <meta property="og:description" content="Перелік джерел новин, їхні регіони та статус оновлення.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://prywoz.fm/news-sources.html">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Джерела новин — PRYWOZ">
+    <meta name="twitter:description" content="Відкриті RSS-джерела новин із посиланнями на першоджерела.">
+    <link rel="icon" type="image/png" sizes="512x512" href="./assets/images/favicon-pryvoz.png?v=20260905">
+    <link rel="stylesheet" href="./assets/styles/tokens.css">
+    <link rel="stylesheet" href="./assets/styles/main.css">
+    <link rel="stylesheet" href="./assets/styles/components.css">
+    <link rel="stylesheet" href="./assets/styles/open-fm-redesign.css">
+    <link rel="stylesheet" href="./assets/styles/pages/portal.css?v=20261005-currency3">
+    <link rel="stylesheet" href="./assets/styles/pages/inner.css?v=20261004-unified-footer">
+    <link rel="stylesheet" href="./assets/styles/pages/news.css?v=20261005-news5">
+    <link rel="stylesheet" href="./assets/styles/cookie-consent.css?v=20260907-volume-theme">
+  </head>
+  <body class="page" data-page="news">
+    <header class="site-header" data-site-header></header>
+    <main class="inner-main news-sources-page" data-news-sources-page>
+      <div class="container">
+        <header class="inner-hero">
+          <p class="inner-kicker">Інформаційна стрічка</p>
+          <h1 class="inner-title" data-news-copy="sourcesTitle">Джерела новин</h1>
+          <p class="inner-lead" data-news-copy="sourcesLead">PRYWOZ агрегує заголовки та короткі описи з відкритих RSS/API і завжди веде до оригінального матеріалу.</p>
+        </header>
+        <p class="news-health" id="news-health" role="status" aria-live="polite">Завантажуємо список джерел…</p>
+        <div class="news-sources-listing" id="news-sources" aria-live="polite" aria-busy="true">
+          <p class="news-state" role="status">Завантажуємо список джерел…</p>
+        </div>
+        <a class="news-back-link" href="./news.html">← <span data-news-copy="pageTitle">Останні новини</span></a>
+      </div>
+    </main>
+    <script src="./assets/scripts/radio-persistence.js?v=20261004-navigation-fix"></script>
+    <script src="./assets/scripts/pages/inner.js?v=20261005-news5"></script>
+    <script type="module" src="./assets/scripts/news/news-render.js?v=20261005-news5"></script>
+    <section class="cookie-consent" data-cookie-consent hidden aria-label="Налаштування аналітичних cookie">
+      <div class="cookie-consent__copy">
+        <strong>Аналітичні cookie</strong>
+        <p>Допоможіть нам зрозуміти, як відвідувачі користуються сайтом. Рекламні cookie не використовуються.</p>
+      </div>
+      <div class="cookie-consent__actions">
+        <button type="button" data-consent-choice="declined">Відхилити</button>
+        <button type="button" data-consent-choice="accepted">Прийняти</button>
+      </div>
+    </section>
+    <script src="./assets/scripts/cookie-consent.js?v=20260907"></script>
+    <script src="./assets/scripts/analytics-events.js?v=20260907"></script>
+  </body>
+</html>

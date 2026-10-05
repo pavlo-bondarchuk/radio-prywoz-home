@@ -8,5 +8,7 @@ dist/
 !api/
 !api/weather.php
 !tests/weather-cache.php
+!api/news.php
+!tests/news-backend.php
 submissions/
 test-artifacts/

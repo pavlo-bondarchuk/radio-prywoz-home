@@ -33,7 +33,8 @@
     <link rel="stylesheet" href="./assets/styles/pages/questionnaire.css?v=20261004-font">
     <link rel="stylesheet" href="./assets/styles/components.css">
     <link rel="stylesheet" href="./assets/styles/open-fm-redesign.css">
-    <link rel="stylesheet" href="./assets/styles/pages/portal.css?v=20260906-ads">
+    <link rel="stylesheet" href="./assets/styles/pages/portal.css?v=20261005-currency3">
+    <link rel="stylesheet" href="./assets/styles/pages/news.css?v=20261005-news5">
     <link rel="stylesheet" href="./assets/styles/pages/inner.css?v=20260905-radio">
   </head>
   <body class="page">
@@ -184,47 +185,45 @@
         </div>
       </section>
 
-      <section class="portal-content" id="news" aria-labelledby="news-title">
+      <section class="portal-content" id="news" aria-labelledby="news-title" data-news-home>
         <div class="container portal-content__grid">
           <div class="portal-news">
             <div class="portal-section-head">
               <div>
-                <p class="portal-kicker">Інформаційна стрічка</p>
-                <h2 id="news-title">Головні новини</h2>
+                <p class="portal-kicker" data-news-copy="aggregated">Агрегована стрічка</p>
+                <h2 id="news-title" data-news-copy="homeTitle">Головне сьогодні</h2>
               </div>
-              <span class="portal-section-head__live"><span></span> Оновлюється автоматично</span>
+              <div class="portal-news__head-actions">
+                <span class="news-health" id="news-health" role="status" aria-live="polite">Завантажуємо новини…</span>
+                <a class="portal-section-link" href="./news-sources.html" data-news-copy="sources">Джерела</a>
+              </div>
             </div>
 
-            <div class="news-filter" role="group" aria-label="Категорії новин" data-news-filter>
-              <button class="news-filter__button news-filter__button--active" type="button" data-news-category="all" data-i18n="newsCategoryAll">Усі</button>
-              <button class="news-filter__button" type="button" data-news-category="poland">Польща</button>
-              <button class="news-filter__button" type="button" data-news-category="ukraine">Україна</button>
-              <button class="news-filter__button" type="button" data-news-category="politics" data-i18n="newsCategoryPolitics">Політика</button>
-              <button class="news-filter__button" type="button" data-news-category="society" data-i18n="newsCategorySociety">Суспільство</button>
-              <button class="news-filter__button" type="button" data-news-category="culture" data-i18n="newsCategoryCulture">Культура</button>
-              <button class="news-filter__button" type="button" data-news-category="entertainment" data-i18n="newsCategoryEntertainment">Розваги</button>
-              <button class="news-filter__button" type="button" data-news-category="sport" data-i18n="newsCategorySport">Спорт</button>
+            <div class="news-filter" role="group" aria-label="Фільтри новин" data-news-filters>
+              <button class="news-filter__button news-filter__button--active" type="button" data-news-filter-button="all" aria-pressed="true">Усі</button>
+              <button class="news-filter__button" type="button" data-news-filter-button="lodz" aria-pressed="false">Лодзь</button>
+              <button class="news-filter__button" type="button" data-news-filter-button="poland" aria-pressed="false">Польща</button>
+              <button class="news-filter__button" type="button" data-news-filter-button="ukraine" aria-pressed="false">Україна</button>
+              <button class="news-filter__button" type="button" data-news-filter-button="world" aria-pressed="false">Світ</button>
+              <button class="news-filter__button" type="button" data-news-filter-button="documents" aria-pressed="false">Документи</button>
+              <button class="news-filter__button" type="button" data-news-filter-button="society" aria-pressed="false">Суспільство</button>
+              <button class="news-filter__button" type="button" data-news-filter-button="culture" aria-pressed="false">Культура</button>
+              <button class="news-filter__button" type="button" data-news-filter-button="sport" aria-pressed="false">Спорт</button>
             </div>
 
-            <article class="portal-featured-news" data-news-feature aria-live="polite">
+            <article class="portal-featured-news" id="news-feature" aria-live="polite" aria-busy="true">
               <div class="portal-featured-news__copy">
-                <span class="news-card__tag">Україна</span>
                 <h3>Завантажуємо головні новини</h3>
-                <p>Актуальні матеріали з українських та польських джерел з короткими відривками й посиланнями на оригінал.</p>
+                <p>Новини з посиланнями на оригінальні матеріали.</p>
               </div>
               <div class="portal-featured-news__visual" aria-hidden="true"><svg class="icon"><use href="./assets/icons/lucide-sprite.svg#newspaper"></use></svg></div>
             </article>
 
-            <div class="portal-news-list" data-news-list aria-live="polite"></div>
-            <button class="portal-news-expand" type="button" data-news-expand aria-expanded="false">
-              <span>Більше новин</span>
+            <div class="portal-news-list" id="news-list" aria-live="polite"></div>
+            <button class="portal-news-expand" id="news-more" type="button" hidden>
+              <span data-news-copy="loadMore">Завантажити більше</span>
               <span aria-hidden="true">→</span>
             </button>
-            <div class="portal-news-loader" data-news-loader>
-              <span class="portal-news-loader__spinner" aria-hidden="true"></span>
-              <span data-news-loader-text>Прокрутіть нижче, щоб завантажити більше</span>
-            </div>
-            <div class="portal-news-sentinel" data-news-sentinel aria-hidden="true"></div>
             <aside class="promo-slot promo-slot--news" aria-label="Реклама у новинах">
               <span class="promo-slot__label" data-i18n="adDemoLabel">Рекламне місце</span>
               <div class="promo-slot__copy">
@@ -542,8 +541,9 @@
     </div>
 
     <script src="./assets/scripts/radio-persistence.js?v=20261004-navigation-fix"></script>
-    <script src="./assets/scripts/pages/home.js?v=20261004-units-footer"></script>
-    <script src="./assets/scripts/pages/inner.js?v=20261004-units-footer"></script>
+    <script src="./assets/scripts/pages/home.js?v=20261005-news5"></script>
+    <script src="./assets/scripts/pages/inner.js?v=20261005-news5"></script>
+    <script type="module" src="./assets/scripts/news/news-render.js?v=20261005-news5"></script>
     <script src="./assets/scripts/pages/questionnaire.js?v=20260824-card"></script>
   </body>
 </html>

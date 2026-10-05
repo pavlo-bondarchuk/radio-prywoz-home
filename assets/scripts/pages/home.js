@@ -17,14 +17,6 @@ const stationMeta = document.querySelector(".live-player__host");
 const stationBadge = document.querySelector(".live-player__badge");
 const mediaHolder = document.querySelector(".live-player__record");
 const mediaImage = document.querySelector(".live-player__record-image");
-const newsList = document.querySelector("[data-news-list]");
-const newsFeature = document.querySelector("[data-news-feature]");
-const newsFilter = document.querySelector("[data-news-filter]");
-const newsFilterButtons = document.querySelectorAll("[data-news-category]");
-const newsLoader = document.querySelector("[data-news-loader]");
-const newsLoaderText = document.querySelector("[data-news-loader-text]");
-const newsSentinel = document.querySelector("[data-news-sentinel]");
-const newsExpandButton = document.querySelector("[data-news-expand]");
 const citySelect = document.querySelector("[data-city-select]");
 const weatherTitle = document.querySelector("[data-weather-title]");
 const weatherMeta = document.querySelector("[data-weather-meta]");
@@ -106,17 +98,8 @@ const translations = {
     volumeLevel: "Гучність",
     stationOffline: "Не в ефірі",
     stationError: "Не вдалося підключитися до цієї станції. Спробуйте іншу.",
-    newsSourceLabel: "Джерело",
-    readOriginal: "Читати оригінал",
-    newsFallbackText: "Короткий опис недоступний. Перейдіть до оригіналу на сайті джерела.",
     ownBroadcastMeta: "Авторський ефір",
     relayBroadcastMeta: "Нічна ретрансляція",
-    newsCategoryAll: "Усі",
-    newsCategoryPolitics: "Політика",
-    newsCategorySociety: "Суспільство",
-    newsCategoryCulture: "Культура",
-    newsCategoryEntertainment: "Розваги",
-    newsCategorySport: "Спорт",
     cardEyebrow: "Картка клієнта",
     cardTitle: "Зареєструйте картку Привоз",
     cardLead: "Заповніть анкету для активації картки та зворотного зв'язку.",
@@ -193,17 +176,8 @@ const translations = {
     volumeLevel: "Głośność",
     stationOffline: "Offline",
     stationError: "Nie udało się połączyć z tą stacją. Spróbuj innej.",
-    newsSourceLabel: "Źródło",
-    readOriginal: "Czytaj oryginał",
-    newsFallbackText: "Krótki opis jest niedostępny. Przejdź do oryginału na stronie źródła.",
     ownBroadcastMeta: "Program autorski",
     relayBroadcastMeta: "Nocna retransmisja",
-    newsCategoryAll: "Wszystkie",
-    newsCategoryPolitics: "Polityka",
-    newsCategorySociety: "Społeczeństwo",
-    newsCategoryCulture: "Kultura",
-    newsCategoryEntertainment: "Rozrywka",
-    newsCategorySport: "Sport",
     cardEyebrow: "Karta klienta",
     cardTitle: "Zarejestruj kartę Prywoz",
     cardLead: "Wypełnij formularz, aby aktywować kartę i umożliwić kontakt zwrotny.",
@@ -280,17 +254,8 @@ const translations = {
     volumeLevel: "Громкость",
     stationOffline: "Не в эфире",
     stationError: "Не удалось подключиться к этой станции. Попробуйте другую.",
-    newsSourceLabel: "Источник",
-    readOriginal: "Читать оригинал",
-    newsFallbackText: "Краткое описание недоступно. Перейдите к оригиналу на сайте источника.",
     ownBroadcastMeta: "Авторский эфир",
     relayBroadcastMeta: "Ночная ретрансляция",
-    newsCategoryAll: "Все",
-    newsCategoryPolitics: "Политика",
-    newsCategorySociety: "Общество",
-    newsCategoryCulture: "Культура",
-    newsCategoryEntertainment: "Развлечения",
-    newsCategorySport: "Спорт",
     cardEyebrow: "Карта клиента",
     cardTitle: "Зарегистрируйте карту Привоз",
     cardLead: "Заполните анкету для активации карты и обратной связи.",
@@ -365,149 +330,6 @@ const defaultBroadcastSchedule = {
   ],
 };
 
-const newsSources = [
-  {
-    name: "Укрінформ",
-    domain: "ukrinform.ua",
-    feedUrl: "https://www.ukrinform.ua/rss/block-lastnews",
-    category: "society",
-    region: "ukraine",
-    reuseAllowed: true,
-  },
-  {
-    name: "Радіо Свобода",
-    domain: "radiosvoboda.org",
-    feedUrl: "https://www.radiosvoboda.org/api/zrqiteuuir",
-    category: "society",
-    region: "ukraine",
-    reuseAllowed: true,
-  },
-  {
-    name: "UOKiK",
-    domain: "uokik.gov.pl",
-    feedUrl: "https://uokik.gov.pl/feed",
-    category: "society",
-    region: "poland",
-    reuseAllowed: true,
-  },
-  {
-    name: "GUS",
-    domain: "stat.gov.pl",
-    feedUrl: "https://stat.gov.pl/rss/pl/5438/8.xml",
-    category: "society",
-    region: "poland",
-    reuseAllowed: true,
-  },
-];
-
-const fallbackNews = [
-  {
-    id: "fallback-odesa",
-    title: "Суспільні новини Одеси та півдня України",
-    excerpt: "Останні матеріали про життя громад, міські зміни та важливі події регіону — з переходом до першоджерела.",
-    source: "Укрінформ",
-    originalUrl: "https://www.ukrinform.ua/rss/block-lastnews",
-    publishedAt: new Date().toISOString(),
-    category: "society",
-    region: "ukraine",
-  },
-  {
-    id: "fallback-kherson-radiosvoboda",
-    title: "Політика України та рішення, що впливають на регіони",
-    excerpt: "Добірка політичних новин із відкритих українських джерел, включно з подіями на півдні країни.",
-    source: "Радіо Свобода",
-    originalUrl: "https://www.radiosvoboda.org/api/zrqiteuuir",
-    publishedAt: new Date().toISOString(),
-    category: "politics",
-    region: "ukraine",
-  },
-  {
-    id: "fallback-dnipro-ukrinform",
-    title: "Культурне життя Дніпра та українських громад",
-    excerpt: "Фестивалі, виставки, концерти й культурні ініціативи України та українців у Польщі.",
-    source: "Укрінформ",
-    originalUrl: "https://www.ukrinform.ua/rss/block-lastnews",
-    publishedAt: new Date().toISOString(),
-    category: "culture",
-    region: "ukraine",
-  },
-  {
-    id: "fallback-polish-context-uokik",
-    title: "Корисні суспільні новини для українців у Польщі",
-    excerpt: "Офіційні польські оновлення про права споживачів, послуги та повсякденне життя.",
-    source: "UOKiK",
-    originalUrl: "https://uokik.gov.pl/rss",
-    publishedAt: new Date().toISOString(),
-    category: "society",
-    region: "poland",
-  },
-  {
-    id: "fallback-polish-context-gus",
-    title: "Спортивні новини отримали окрему рубрику",
-    excerpt: "Матеріали про матчі, турніри та українських спортсменів автоматично збираються у вкладці «Спорт».",
-    source: "GUS",
-    originalUrl: "https://stat.gov.pl/rss/",
-    publishedAt: new Date().toISOString(),
-    category: "sport",
-    region: "poland",
-  },
-  {
-    id: "fallback-entertainment",
-    title: "Розваги, подорожі та легкі історії для слухачів",
-    excerpt: "Шоу, гумор, цікаві маршрути й інші легкі матеріали автоматично потрапляють до рубрики «Розваги».",
-    source: "Радіо Свобода",
-    originalUrl: "https://www.radiosvoboda.org/api/zrqiteuuir",
-    publishedAt: new Date().toISOString(),
-    category: "entertainment",
-    region: "ukraine",
-  },
-];
-
-const regionalNewsKeywords = [
-  "одес",
-  "odesa",
-  "одеса",
-  "херсон",
-  "kherson",
-  "дніпр",
-  "днепр",
-  "dnipro",
-  "дніпро",
-  "дніпропетров",
-  "dnipropetrov",
-];
-
-const newsCategoryKeys = ["politics", "society", "culture", "entertainment", "sport"];
-const newsCategoryTranslationKeys = {
-  politics: "newsCategoryPolitics",
-  society: "newsCategorySociety",
-  culture: "newsCategoryCulture",
-  entertainment: "newsCategoryEntertainment",
-  sport: "newsCategorySport",
-};
-const newsCategoryKeywords = {
-  politics: [
-    "політик", "политик", "вибор", "выбор", "уряд", "правительств", "парламент", "депутат", "президент",
-    "minister", "sejm", "senat", "wybor", "rząd", "polityk",
-  ],
-  sport: [
-    "спорт", "футбол", "баскетбол", "теніс", "теннис", "олімп", "олимп", "матч", "чемпіон", "чемпион",
-    "sport", "piłk", "mecz", "liga", "turniej",
-  ],
-  culture: [
-    "культур", "мистец", "искусств", "театр", "кіно", "кино", "літератур", "литератур", "музей", "вистав",
-    "концерт", "фестиваль", "kultur", "teatr", "film", "muze", "wystaw",
-  ],
-  entertainment: [
-    "розваг", "развлеч", "шоу", "гумор", "юмор", "зірк", "звезд", "серіал", "сериал", "рецепт", "подорож",
-    "rozrywk", "gwiazd", "serial", "przepis", "podróż",
-  ],
-  society: [
-    "суспіль", "общество", "громад", "соціаль", "социал", "освіт", "образован", "здоров", "місто", "город",
-    "społecz", "edukac", "zdrow", "miasto", "mieszkań",
-  ],
-};
-
 const memoryStorage = new Map();
 const cookieGet = (key) => {
   const prefix = `${encodeURIComponent(key)}=`;
@@ -552,13 +374,6 @@ let activeBroadcast = null;
 let nowPlayingStatus = null;
 let activePlaylistIndex = 0;
 let currentBroadcastSignature = "";
-let loadedNewsItems = fallbackNews;
-let activeNewsCategory = "all";
-let renderedNewsCount = 4;
-let newsExpanded = false;
-
-const newsPreviewCount = 4;
-const newsBatchSize = 7;
 const cityData = {
   lodz: { name: "Лодзь", latitude: 51.7592, longitude: 19.456 },
   warsaw: { name: "Варшава", latitude: 52.2297, longitude: 21.0122 },
@@ -567,10 +382,6 @@ const cityData = {
   gdansk: { name: "Гданськ", latitude: 54.352, longitude: 18.6466 },
 };
 
-const stripHtml = (value = "") => value.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
-const rssJsonUrl = (url) => `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`;
-const rawProxyUrl = (url) => `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`;
-const normalizeNewsText = (value = "") => value.toLocaleLowerCase("uk-UA");
 const t = (key, replacements = {}) => {
   const value = translations[activeLanguage]?.[key] || translations.uk[key] || "";
   return Object.entries(replacements).reduce(
@@ -630,74 +441,6 @@ const getBroadcastItem = (slot = getActiveBroadcastSlot()) => {
     artist: item.artist || t("ownBroadcastMeta"),
     mode: "playlist",
   };
-};
-
-const getNewsCategoryLabel = (category) => {
-  const key = newsCategoryTranslationKeys[category] || "newsCategorySociety";
-  return t(key);
-};
-
-const getNewsRegion = (item) => {
-  const text = normalizeNewsText(`${item.title} ${item.excerpt} ${item.source}`);
-  if (/лодз|łódź|lodz/.test(text)) {
-    return "lodz";
-  }
-  if (item.region) {
-    return item.region;
-  }
-  return ["UOKiK", "GUS"].includes(item.source) ? "poland" : "ukraine";
-};
-
-const getNewsRegionLabel = (item) => {
-  const region = getNewsRegion(item);
-  if (region === "lodz") {
-    return "Лодзь";
-  }
-  return region === "poland" ? "Польща" : "Україна";
-};
-
-const isRegionalNews = (item) => {
-  const text = normalizeNewsText(`${item.title} ${item.excerpt} ${item.category}`);
-  return regionalNewsKeywords.some((keyword) => text.includes(keyword));
-};
-
-const mixNewsBySource = (items) => {
-  const buckets = newsSources.map((source) => {
-    return items
-      .filter((item) => item.source === source.name)
-      .sort((a, b) => {
-        const regionalDelta = Number(isRegionalNews(b)) - Number(isRegionalNews(a));
-        if (regionalDelta !== 0) {
-          return regionalDelta;
-        }
-        return new Date(b.publishedAt) - new Date(a.publishedAt);
-      });
-  });
-  const mixed = [];
-  let cursor = 0;
-
-  while (buckets.some((bucket) => bucket.length)) {
-    const bucket = buckets[cursor % buckets.length];
-    if (bucket?.length) {
-      mixed.push(bucket.shift());
-    }
-    cursor += 1;
-  }
-
-  return mixed;
-};
-
-const ensureNewsCategoryCoverage = (items, reserveItems) => {
-  const completeItems = [...items];
-  newsCategoryKeys.forEach((category) => {
-    if (!completeItems.some((item) => item.category === category)) {
-      const reserveItem = reserveItems.find((item) => item.category === category);
-      if (reserveItem) {
-        completeItems.push(reserveItem);
-      }
-    }
-  });
-  return completeItems;
 };
 
 const setMenuState = (isOpen) => {
@@ -831,78 +574,6 @@ const updateVolumeState = () => {
   }
 };
 
-const parseFeed = async (source) => {
-  try {
-    const response = await fetch(rssJsonUrl(source.feedUrl));
-    const data = await response.json();
-
-    if (data.status === "ok" && Array.isArray(data.items)) {
-      return data.items.slice(0, 12).map((item) => ({
-        id: `${source.name}-${item.guid || item.link}`,
-        title: stripHtml(item.title) || source.name,
-        excerpt: stripHtml(item.description || item.content).slice(0, 220),
-        source: source.name,
-        originalUrl: item.link || source.feedUrl,
-        publishedAt: item.pubDate || new Date().toISOString(),
-        category: detectNewsCategory(`${item.title} ${item.description || item.content}`) || source.category,
-        region: source.region,
-      }));
-    }
-  } catch {
-    // Fallback below keeps the source readable when the JSON proxy is unavailable.
-  }
-
-  const response = await fetch(rawProxyUrl(source.feedUrl));
-  const xmlText = await response.text();
-  const xml = new DOMParser().parseFromString(xmlText, "text/xml");
-  const entries = Array.from(xml.querySelectorAll("item, entry")).slice(0, 12);
-
-  return entries.map((entry) => {
-    const linkNode = entry.querySelector("link");
-    const originalUrl = linkNode?.getAttribute("href") || linkNode?.textContent || source.feedUrl;
-
-    return {
-      id: `${source.name}-${originalUrl}`,
-      title: stripHtml(entry.querySelector("title")?.textContent) || source.name,
-      excerpt: stripHtml(entry.querySelector("description, summary, content")?.textContent).slice(0, 220),
-      source: source.name,
-      originalUrl,
-      publishedAt: entry.querySelector("pubDate, published, updated")?.textContent || new Date().toISOString(),
-      category: detectNewsCategory(`${entry.querySelector("title")?.textContent || ""} ${entry.querySelector("description, summary, content")?.textContent || ""}`) || source.category,
-      region: source.region,
-    };
-  });
-};
-
-const detectNewsCategory = (value = "") => {
-  const text = normalizeNewsText(value);
-  return newsCategoryKeys.find((category) => {
-    return newsCategoryKeywords[category].some((keyword) => text.includes(keyword));
-  }) || "society";
-};
-
-const formatNewsDate = (dateValue) => {
-  try {
-    return new Intl.DateTimeFormat(activeLanguage === "pl" ? "pl-PL" : "uk-UA", {
-      day: "numeric",
-      month: "short",
-      year: "numeric",
-    }).format(new Date(dateValue));
-  } catch {
-    return "";
-  }
-};
-
-const getFilteredNews = () => {
-  return loadedNewsItems.filter((item) => {
-    const matchesCategory = activeNewsCategory === "all"
-      || (["poland", "ukraine", "lodz"].includes(activeNewsCategory)
-        ? getNewsRegion(item) === activeNewsCategory
-        : item.category === activeNewsCategory);
-    return matchesCategory;
-  });
-};
-
 const renderLocalTime = () => {
   const locale = activeLanguage === "pl" ? "pl-PL" : activeLanguage === "ru" ? "ru-RU" : "uk-UA";
   const now = new Date();
@@ -925,168 +596,6 @@ const renderLocalTime = () => {
       day: "numeric",
       month: "long",
     }).format(now);
-  }
-};
-
-const createNewsSourceLink = (item, className) => {
-  const link = document.createElement("a");
-  link.className = className;
-  link.href = item.originalUrl;
-  link.target = "_blank";
-  link.rel = "noopener";
-  link.textContent = item.source;
-  return link;
-};
-
-const renderFeaturedNews = (item) => {
-  if (!newsFeature) {
-    return;
-  }
-
-  newsFeature.replaceChildren();
-  if (!item) {
-    const empty = document.createElement("div");
-    empty.className = "portal-featured-news__copy";
-    const title = document.createElement("h3");
-    title.textContent = "За вашим запитом новин не знайдено";
-    const text = document.createElement("p");
-    text.textContent = "Спробуйте іншу категорію або коротший пошуковий запит.";
-    empty.append(title, text);
-    newsFeature.append(empty);
-    return;
-  }
-
-  const copy = document.createElement("div");
-  copy.className = "portal-featured-news__copy";
-  const tag = document.createElement("span");
-  tag.className = "news-card__tag";
-  tag.textContent = `${getNewsRegionLabel(item)} · ${getNewsCategoryLabel(item.category)}`;
-  const title = document.createElement("h3");
-  title.textContent = item.title;
-  const excerpt = document.createElement("p");
-  excerpt.textContent = item.excerpt || t("newsFallbackText");
-  const link = document.createElement("a");
-  link.className = "text-link";
-  link.href = item.originalUrl;
-  link.target = "_blank";
-  link.rel = "noopener";
-  link.textContent = `${t("readOriginal")} →`;
-  copy.append(tag, title, excerpt, link);
-
-  const visual = document.createElement("div");
-  visual.className = "portal-featured-news__visual";
-  visual.setAttribute("aria-hidden", "true");
-  visual.innerHTML = `<svg class="icon"><use href="${iconPath}#newspaper"></use></svg>`;
-  newsFeature.append(copy, visual);
-};
-
-const createNewsRow = (item) => {
-  const article = document.createElement("article");
-  article.className = "portal-news-row";
-  const time = document.createElement("time");
-  time.dateTime = item.publishedAt;
-  time.textContent = formatNewsDate(item.publishedAt);
-
-  const body = document.createElement("div");
-  body.className = "portal-news-row__body";
-  const title = document.createElement("h3");
-  const titleLink = document.createElement("a");
-  titleLink.href = item.originalUrl;
-  titleLink.target = "_blank";
-  titleLink.rel = "noopener";
-  titleLink.textContent = item.title;
-  title.append(titleLink);
-  const excerpt = document.createElement("p");
-  excerpt.textContent = item.excerpt || t("newsFallbackText");
-  body.append(title, excerpt);
-
-  article.append(time, body, createNewsSourceLink(item, "portal-news-row__source"));
-  return article;
-};
-
-const renderNews = (items, reset = true) => {
-  if (!newsList) {
-    return;
-  }
-
-  loadedNewsItems = items.map((item) => ({ ...item, region: getNewsRegion(item) }));
-  if (reset) {
-    renderedNewsCount = newsExpanded ? newsBatchSize + 1 : newsPreviewCount;
-  }
-
-  const filteredItems = getFilteredNews();
-  const featuredItem = filteredItems[0];
-  const rows = filteredItems.slice(1, renderedNewsCount);
-  renderFeaturedNews(featuredItem);
-  newsList.replaceChildren(...rows.map(createNewsRow));
-
-  const hasMore = newsExpanded && renderedNewsCount < filteredItems.length;
-  newsExpandButton?.classList.toggle("portal-news-expand--hidden", newsExpanded || filteredItems.length <= newsPreviewCount);
-  newsLoader?.classList.toggle("portal-news-loader--hidden", !newsExpanded);
-  newsLoader?.classList.toggle("portal-news-loader--complete", newsExpanded && !hasMore);
-  if (newsLoaderText) {
-    newsLoaderText.textContent = hasMore
-      ? "Прокрутіть нижче, щоб завантажити більше"
-      : (filteredItems.length ? `Показано ${filteredItems.length} матеріалів` : "Нічого не знайдено");
-  }
-};
-
-const loadMoreNews = () => {
-  const filteredItems = getFilteredNews();
-  if (renderedNewsCount >= filteredItems.length) {
-    return;
-  }
-  renderedNewsCount += newsBatchSize;
-  renderNews(loadedNewsItems, false);
-};
-
-const loadVisibleNewsBatches = () => {
-  if (!newsSentinel || !newsExpanded) {
-    return;
-  }
-
-  let sentinelTop = newsSentinel.getBoundingClientRect().top;
-  while (sentinelTop < window.innerHeight + 600 && renderedNewsCount < getFilteredNews().length) {
-    loadMoreNews();
-    sentinelTop = newsSentinel.getBoundingClientRect().top;
-  }
-};
-
-const loadNews = async () => {
-  const cacheKey = "prywoz-news-feed-ua-pl-v5";
-  const cached = storageJson(cacheKey);
-  const cacheMaxAge = 30 * 60 * 1000;
-
-  if (cached && Date.now() - cached.createdAt < cacheMaxAge) {
-    renderNews(cached.items);
-    return;
-  }
-
-  let staticCache = fallbackNews;
-
-  try {
-    const response = await fetch("./assets/data/news-cache.json");
-    staticCache = await response.json();
-    renderNews(staticCache);
-  } catch {
-    renderNews(staticCache);
-  }
-
-  try {
-    const feedGroups = await Promise.allSettled(newsSources.filter((source) => source.reuseAllowed).map(parseFeed));
-    const items = feedGroups
-      .filter((result) => result.status === "fulfilled")
-      .flatMap((result) => result.value)
-      .filter((item, index, all) => all.findIndex((nextItem) => nextItem.id === item.id) === index)
-      .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
-
-    const safeItems = items.length
-      ? mixNewsBySource(ensureNewsCategoryCoverage(items, staticCache))
-      : staticCache;
-    storageSet(cacheKey, JSON.stringify({ createdAt: Date.now(), items: safeItems }));
-    renderNews(safeItems);
-  } catch {
-    renderNews(staticCache);
   }
 };
 
@@ -1158,7 +667,7 @@ const loadPortalWidgets = async (cityKey = "lodz") => {
 
 const loadCurrencyWidget = async () => {
   try {
-    const { loadHeaderCurrency } = await import("../currency/currency-header.js?v=20261005-currency2");
+    const { loadHeaderCurrency } = await import("../currency/currency-header.js?v=20261005-currency3");
     await loadHeaderCurrency();
   } catch {
     if (currencyTitle) currencyTitle.textContent = "Курси валют";
@@ -1185,7 +694,6 @@ const applyLanguage = (language) => {
 
   renderStationMeta();
   updateVolumeState();
-  renderNews(loadedNewsItems);
   renderLocalTime();
   updateThemeToggle();
   document.dispatchEvent(new CustomEvent("prywoz:languagechange", { detail: { language: activeLanguage } }));
@@ -1218,41 +726,6 @@ systemTheme.addEventListener?.("change", (event) => {
   if (!storageGet("prywoz-theme")) setTheme(event.matches ? "dark" : "light", false);
 });
 
-newsFilter?.addEventListener("click", (event) => {
-  const button = event.target.closest("[data-news-category]");
-  if (!button) {
-    return;
-  }
-
-  activeNewsCategory = button.dataset.newsCategory || "all";
-  newsFilterButtons.forEach((item) => {
-    const isActive = item === button;
-    item.classList.toggle("news-filter__button--active", isActive);
-    item.setAttribute("aria-pressed", String(isActive));
-  });
-  renderNews(loadedNewsItems);
-});
-
-newsExpandButton?.addEventListener("click", () => {
-  newsExpanded = true;
-  newsExpandButton.setAttribute("aria-expanded", "true");
-  renderedNewsCount = newsBatchSize + 1;
-  document.querySelector(".portal-news")?.classList.add("portal-news--expanded");
-  renderNews(loadedNewsItems, false);
-  loadVisibleNewsBatches();
-});
-
-if (newsSentinel && "IntersectionObserver" in window) {
-  const newsObserver = new IntersectionObserver((entries) => {
-    if (entries.some((entry) => entry.isIntersecting)) {
-      loadVisibleNewsBatches();
-    }
-  }, { rootMargin: "500px 0px" });
-  newsObserver.observe(newsSentinel);
-}
-
-window.addEventListener("scroll", loadVisibleNewsBatches, { passive: true });
-
 citySelect?.addEventListener("change", () => {
   loadPortalWidgets(citySelect.value);
 });
@@ -1265,4 +738,3 @@ if (citySelect && cityData[savedCity]) {
 }
 loadPortalWidgets(savedCity);
 loadCurrencyWidget();
-loadNews();

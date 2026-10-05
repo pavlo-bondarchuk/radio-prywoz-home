@@ -441,7 +441,7 @@
   const shell = document.querySelector("[data-site-header]");
   if (shell)
     shell.innerHTML = `<div class="container site-header__inner portal-header portal-header--currency"><a class="logo" href="./index.html" aria-label="РАДИО ПРИВОЗ ФМ"><img class="logo__main" src="./assets/images/radio-pryvoz-fm-logo.png" alt="РАДИО ПРИВОЗ ФМ" width="1312" height="1199"><span class="logo__tagline" data-i18n="firstRadio"></span></a><div class="portal-local-time"><span class="portal-local-time__icon"><svg class="icon"><use href="${iconPath}#clock"></use></svg></span><div><strong>Лодзь · <time data-local-time>--:--</time></strong><span data-local-date></span></div></div><a class="header-currency" href="./currency.html" aria-label="Курси валют" data-i18n-aria="currency"><strong data-header-currency>—</strong><span data-i18n="currency"></span></a><button class="header-radio" type="button" data-radio-toggle data-state="idle" aria-pressed="false"><span class="header-radio__dot"></span><span class="header-radio__copy"><strong data-radio-status data-i18n="radioOff"></strong><span data-radio-track>РАДИО ПРИВОЗ ФМ</span></span><svg class="icon"><use href="${iconPath}#play"></use></svg></button><button class="theme-toggle" type="button" data-theme-toggle><svg class="icon theme-toggle__icon--sun"><use href="${iconPath}#sun"></use></svg><svg class="icon theme-toggle__icon--moon"><use href="${iconPath}#moon"></use></svg></button><div class="language-switcher" aria-label="Language"><button class="language-switcher__item" data-language="uk">UA</button><button class="language-switcher__item" data-language="pl">PL</button><button class="language-switcher__item" data-language="ru">RU</button></div><button class="site-header__menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu"><svg class="icon site-header__menu-icon--open"><use href="${iconPath}#menu"></use></svg><svg class="icon site-header__menu-icon--close"><use href="${iconPath}#x"></use></svg></button></div><div class="site-header__panel" id="mobile-menu"><div class="container portal-nav-row"><nav class="main-nav">${["home", "listen", "news", "services", "business", "programs", "about", "contacts", "card"].map((k) => `<a class="main-nav__link ${page() === k ? "main-nav__link--active" : ""}" href="${k === "home" ? "./index.html" : k === "card" ? "./index.html#card" : `./${k}.html`}" data-i18n="${k}"></a>`).join("")}</nav></div></div>`;
-    import("../currency/currency-header.js?v=20261005-currency2").then(({ loadHeaderCurrency }) => loadHeaderCurrency()).catch(() => {});
+    import("../currency/currency-header.js?v=20261005-currency3").then(({ loadHeaderCurrency }) => loadHeaderCurrency()).catch(() => {});
   if (!document.querySelector(".site-footer"))
     document.body.insertAdjacentHTML(
       "beforeend",
@@ -516,6 +516,7 @@
       cookie.querySelector('[data-consent-choice="accepted"]').textContent =
         t("accept");
     }
+    document.dispatchEvent(new CustomEvent("prywoz:languagechange", { detail: { language } }));
     renderTime();
     renderProgram();
     document.dispatchEvent(
@@ -619,180 +620,9 @@
       menu.setAttribute("aria-expanded", String(open));
     }
   });
-  const initNews = () => {
-    const root = document.querySelector("[data-inner-news]");
-    if (!root || root.dataset.ready) return;
-    root.dataset.ready = "1";
-    const filterButtons = [
-      ...document.querySelectorAll(".inner-filter [data-news-filter]"),
-    ];
-    const feedSources = [
-      {
-        name: "Укрінформ",
-        url: "https://www.ukrinform.ua/rss/block-lastnews",
-        region: "ukraine",
-      },
-      {
-        name: "Радіо Свобода",
-        url: "https://www.radiosvoboda.org/api/zrqiteuuir",
-        region: "ukraine",
-      },
-      { name: "UOKiK", url: "https://uokik.gov.pl/feed", region: "poland" },
-      {
-        name: "GUS",
-        url: "https://stat.gov.pl/rss/pl/5438/8.xml",
-        region: "poland",
-      },
-    ];
-    const categoryKeywords = {
-      politics: [
-        "політик", "политик", "вибор", "выбор", "уряд", "парламент", "президент", "minister", "sejm", "senat", "wybor", "rząd",
-      ],
-      sport: [
-        "спорт", "футбол", "баскетбол", "теніс", "олімп", "матч", "чемпіон", "sport", "piłk", "mecz", "liga", "turniej",
-      ],
-      culture: [
-        "культур", "мистец", "театр", "кіно", "літератур", "музей", "вистав", "концерт", "фестиваль", "kultur", "teatr", "film", "muze", "wystaw",
-      ],
-      society: [
-        "суспіль", "громад", "соціаль", "освіт", "здоров", "місто", "społecz", "edukac", "zdrow", "miasto", "mieszkań",
-      ],
-    };
-    const stripHtml = (value = "") => {
-      const holder = document.createElement("div");
-      holder.innerHTML = value;
-      return (holder.textContent || "").replace(/\s+/g, " ").trim();
-    };
-    const detectCategory = (value = "") => {
-      const text = value.toLocaleLowerCase("uk-UA");
-      return (
-        Object.entries(categoryKeywords).find(([, keywords]) =>
-          keywords.some((keyword) => text.includes(keyword)),
-        )?.[0] || "society"
-      );
-    };
-    const fetchFeed = async (source) => {
-      const endpoint = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(source.url)}`;
-      const response = await fetch(endpoint);
-      if (!response.ok) throw new Error("Feed unavailable");
-      const data = await response.json();
-      if (data.status !== "ok" || !Array.isArray(data.items))
-        throw new Error("Invalid feed");
-      return data.items.slice(0, 12).map((item) => ({
-        id: `${source.name}-${item.guid || item.link}`,
-        title: stripHtml(item.title) || source.name,
-        excerpt: stripHtml(item.description || item.content).slice(0, 220),
-        source: source.name,
-        originalUrl: item.link,
-        publishedAt: item.pubDate || new Date().toISOString(),
-        category: detectCategory(
-          `${item.title || ""} ${item.description || item.content || ""}`,
-        ),
-        region: source.region,
-      }));
-    };
-    let items = [],
-      shown = 9,
-      filter = "all";
-    const setActiveFilter = (activeFilter) => {
-      filter = activeFilter;
-      filterButtons.forEach((button) => {
-        const isActive = button.dataset.newsFilter === activeFilter;
-        button.classList.toggle("is-active", isActive);
-        button.setAttribute("aria-pressed", String(isActive));
-      });
-    };
-    const draw = () => {
-      const list =
-        filter === "all"
-          ? items
-          : items.filter(
-              (x) =>
-                x.category === filter ||
-                (x.region ||
-                  (/uokik|gus|gov\.pl|\.pl\//i.test(
-                    `${x.source} ${x.originalUrl}`,
-                  )
-                    ? "poland"
-                    : "ukraine")) === filter,
-            );
-      root.replaceChildren();
-      list.slice(0, shown).forEach((x) => {
-        const a = document.createElement("article"),
-          d = document.createElement("div"),
-          h = document.createElement("h2"),
-          p = document.createElement("p"),
-          s = document.createElement("small"),
-          l = document.createElement("a");
-        h.textContent = x.title || "";
-        p.textContent = x.excerpt || "";
-        s.textContent = x.source || "";
-        l.href = x.originalUrl || x.url;
-        l.target = "_blank";
-        l.rel = "noopener";
-        l.textContent = t("source");
-        d.append(h, p, s);
-        a.append(d, l);
-        root.append(a);
-      });
-      if (!root.children.length) root.textContent = t("noMaterials");
-      const more = document.querySelector("[data-news-more]");
-      if (more) more.hidden = shown >= list.length;
-    };
-    fetch("./assets/data/news-cache.json", { cache: "no-store" })
-      .then((r) => {
-        if (!r.ok) throw 0;
-        return r.json();
-      })
-      .then((d) => {
-        items = Array.isArray(d) ? d : d.items || [];
-        draw();
-      })
-      .catch(() => (root.textContent = t("newsError")));
-    Promise.allSettled(feedSources.map(fetchFeed)).then((results) => {
-      const liveItems = results
-        .filter((result) => result.status === "fulfilled")
-        .flatMap((result) => result.value)
-        .filter(
-          (item) =>
-            item.originalUrl &&
-            !feedSources.some((source) => item.originalUrl === source.url),
-        )
-        .filter(
-          (item, index, all) =>
-            all.findIndex((candidate) => candidate.id === item.id) === index,
-        )
-        .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
-      if (!liveItems.length) return;
-      items = liveItems;
-      shown = 9;
-      draw();
-      try {
-        localStorage.setItem(
-          "prywoz-news-feed-ua-pl-v5",
-          JSON.stringify({ createdAt: Date.now(), items: liveItems }),
-        );
-      } catch {}
-    });
-    setActiveFilter("all");
-    filterButtons.forEach((button) =>
-      button.addEventListener("click", () => {
-        setActiveFilter(button.dataset.newsFilter);
-        shown = 9;
-        draw();
-      }),
-    );
-    document
-      .querySelector("[data-news-more]")
-      ?.addEventListener("click", () => {
-        shown += 9;
-        draw();
-      });
-  };
   const init = () => {
     annotate();
     applyLanguage(language);
-    initNews();
     updateProgram();
   };
   document.addEventListener("prywoz:navigation", init);
