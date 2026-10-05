@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Курси валют PLN, USD, UAH — конвертер і курс НБУ | PRYWOZ</title>
+  <meta name="description" content="Актуальний курс злотого до гривні, долара США та UAH за даними НБУ. Конвертер валют PLN, USD, UAH і історія зміни курсу.">
+  <meta name="robots" content="index,follow"><link rel="canonical" href="https://prywoz.fm/currency.html">
+  <meta property="og:title" content="Курси валют PLN, USD, UAH | PRYWOZ"><meta property="og:description" content="Актуальні курси НБУ, конвертер PLN, USD, UAH та історія змін."><meta property="og:type" content="website"><meta property="og:url" content="https://prywoz.fm/currency.html">
+  <script>try{const t=localStorage.getItem('prywoz-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.dataset.theme=t;document.documentElement.style.colorScheme=t}catch{}</script>
+  <link rel="icon" href="./assets/images/favicon-pryvoz.png"><link rel="stylesheet" href="./assets/styles/tokens.css"><link rel="stylesheet" href="./assets/styles/main.css"><link rel="stylesheet" href="./assets/styles/components.css"><link rel="stylesheet" href="./assets/styles/open-fm-redesign.css"><link rel="stylesheet" href="./assets/styles/pages/portal.css"><link rel="stylesheet" href="./assets/styles/pages/inner.css"><link rel="stylesheet" href="./assets/styles/pages/currency.css?v=20261005-currency2">
+</head>
+<body class="page currency-page" data-page="currency">
+  <header class="site-header" data-site-header></header>
+  <main class="currency-main" data-no-auto-i18n>
+    <div class="container">
+      <nav class="currency-breadcrumbs" aria-label="Навігаційний шлях" data-c-i18n-aria="breadcrumbs"><a href="./index.html" data-c-i18n="home">Головна</a><span aria-hidden="true">/</span><span data-c-i18n="title">Курси валют</span></nav>
+      <header class="currency-heading"><div><p class="inner-kicker" data-c-i18n="kicker">Офіційні дані НБУ</p><h1 data-c-i18n="title">Курси валют</h1><p data-c-i18n="intro">Актуальний курс гривні, злотого та долара</p></div><div class="currency-update-wrap"><span class="currency-updated" data-c-updated data-c-i18n="updating">Завантажуємо курси…</span><span class="currency-data-date" data-c-date></span><span class="currency-stale" data-c-stale hidden></span></div></header>
+      <div class="currency-loading" data-c-loading role="status" aria-live="polite"><span class="currency-skeleton"></span><span class="currency-skeleton"></span><span class="currency-skeleton"></span></div>
+      <div class="currency-error" data-c-error role="alert" hidden></div>
+      <div class="currency-content" data-c-content hidden>
+        <section class="currency-card currency-converter-card" aria-labelledby="converter-title" data-c-current-section>
+          <div class="currency-section-head"><div><p class="currency-eyebrow" data-c-i18n="kicker">Офіційні дані НБУ</p><h2 id="converter-title" data-c-i18n="converter">Конвертер валют</h2></div></div>
+          <div class="currency-converter-inputs"><div class="currency-rows" data-converter>
+            <div class="currency-row is-active" data-currency-row="PLN"><span class="currency-flag" aria-hidden="true">🇵🇱</span><label for="currency-pln"><strong>PLN</strong><span data-c-label="PLN">Польський злотий</span></label><input id="currency-pln" data-currency-input="PLN" type="text" inputmode="decimal" autocomplete="off" value="1 000,00" aria-label="Польський злотий (PLN)"></div>
+            <div class="currency-row" data-currency-row="USD"><span class="currency-flag" aria-hidden="true">🇺🇸</span><label for="currency-usd"><strong>USD</strong><span data-c-label="USD">Долар США</span></label><input id="currency-usd" data-currency-input="USD" type="text" inputmode="decimal" autocomplete="off" value="" aria-label="Долар США (USD)"></div>
+            <div class="currency-row" data-currency-row="UAH"><span class="currency-flag" aria-hidden="true">🇺🇦</span><label for="currency-uah"><strong>UAH</strong><span data-c-label="UAH">Українська гривня</span></label><input id="currency-uah" data-currency-input="UAH" type="text" inputmode="decimal" autocomplete="off" value="" aria-label="Українська гривня (UAH)"></div>
+          </div>
+          <div class="currency-quick"><span data-c-i18n="quick">Швидкі суми</span><div><button type="button" data-quick-value="100">100</button><button type="button" data-quick-value="500">500</button><button type="button" data-quick-value="1000">1 000</button><button type="button" data-quick-value="5000">5 000</button></div></div></div>
+          <div class="currency-live-rates" aria-labelledby="current-rates-title"><h3 id="current-rates-title" data-c-i18n="currentRates">Курси сьогодні</h3><dl data-c-rates><div><dt>1 PLN</dt><dd>—</dd></div><div><dt>1 USD</dt><dd>—</dd></div><div><dt>1 USD</dt><dd>—</dd></div></dl></div>
+        </section>
+        <section class="currency-card currency-history-card" aria-labelledby="history-title">
+          <div class="currency-section-head"><div><h2 id="history-title" data-c-i18n="history">Історія курсу</h2><p class="currency-selector-label" data-c-i18n="pair">Валютна пара</p></div><label class="visually-hidden" for="currency-pair" data-c-i18n="pair">Валютна пара</label><select id="currency-pair" data-c-pair><option value="PLN-UAH">PLN / UAH</option><option value="USD-UAH">USD / UAH</option><option value="USD-PLN">USD / PLN</option></select></div>
+          <div class="currency-periods" role="group" aria-label="Період" data-c-i18n-aria="period" data-c-periods><button type="button" data-period="7d">7Д</button><button type="button" data-period="30d" class="is-active">1М</button><button type="button" data-period="90d">3М</button><button type="button" data-period="180d">6М</button><button type="button" data-period="365d">1Р</button></div>
+          <div class="currency-chart-wrap" data-c-chart><p class="currency-skeleton">Завантажуємо історію…</p></div>
+          <dl class="currency-stats" data-c-stats><div><dt data-c-i18n="now">Зараз</dt><dd>—</dd></div><div><dt data-c-i18n="change">Зміна за період</dt><dd>—</dd></div><div><dt data-c-i18n="minimum">Мінімум</dt><dd>—</dd></div><div><dt data-c-i18n="maximum">Максимум</dt><dd>—</dd></div></dl>
+          <p class="currency-history-updated" data-c-history-updated></p>
+        </section>
+        <section class="currency-popular" aria-labelledby="popular-title" data-c-popular><h2 id="popular-title" data-c-i18n="popular">Популярні конвертації</h2><div class="currency-popular-grid"><article class="currency-card"><h3 data-c-i18n="popularPln">Злотий → гривня</h3><dl data-popular="PLN-UAH"></dl></article><article class="currency-card"><h3 data-c-i18n="popularUah">Гривня → злотий</h3><dl data-popular="UAH-PLN"></dl></article><article class="currency-card"><h3 data-c-i18n="popularUsd">Долар → гривня</h3><dl data-popular="USD-UAH"></dl></article></div></section>
+      </div>
+      <aside class="currency-disclaimer"><p data-c-i18n="disclaimer">Курси наведені за офіційними даними НБУ. Фактичний курс банку, картки або обмінного пункту може відрізнятися.</p><p data-c-i18n="sourceText">Джерело: офіційні дані Національного банку України — bank.gov.ua. PRYWOZ не здійснює обмін валют.</p></aside>
+    </div>
+  </main>
+  <script src="./assets/scripts/radio-persistence.js?v=20261004-navigation-fix"></script><script src="./assets/scripts/pages/inner.js?v=20261004-units-footer"></script><script type="module" src="./assets/scripts/currency/currency-page.js?v=20261005-currency2"></script>
+</body></html>

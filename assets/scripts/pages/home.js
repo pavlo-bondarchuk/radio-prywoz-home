@@ -1158,15 +1158,10 @@ const loadPortalWidgets = async (cityKey = "lodz") => {
 
 const loadCurrencyWidget = async () => {
   try {
-    const response = await fetch("https://api.nbp.pl/api/exchangerates/rates/a/uah/?format=json", { cache: "no-store" });
-    if (!response.ok) throw new Error("Currency unavailable");
-    const data = await response.json();
-    const rate = Number(data.rates?.[0]?.mid);
-    if (currencyTitle && Number.isFinite(rate)) {
-      currencyTitle.textContent = `UAH ${rate.toLocaleString("uk-UA", { minimumFractionDigits: 4, maximumFractionDigits: 4 })} PLN`;
-    }
+    const { loadHeaderCurrency } = await import("../currency/currency-header.js?v=20261005-currency2");
+    await loadHeaderCurrency();
   } catch {
-    // The last known reference value remains visible when NBP is temporarily unavailable.
+    if (currencyTitle) currencyTitle.textContent = "Курси валют";
   }
 };
 

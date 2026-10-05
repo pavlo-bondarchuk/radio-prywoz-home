@@ -1,6 +1,7 @@
 .site-header {
   background: rgba(255, 250, 242, 0.96);
 }
+.header-currency{display:grid;gap:2px;max-width:156px;padding:7px 10px;border:1px solid var(--ds-color-border);border-radius:var(--ds-radius-md);color:var(--ds-color-text);text-decoration:none;line-height:1.2}.header-currency strong{font-size:12px;white-space:nowrap}.header-currency span{color:var(--ds-color-text-muted);font-size:10px}.header-currency:hover{border-color:var(--ds-color-primary)}.portal-utility--currency{color:inherit;text-decoration:none}.portal-utility--currency:hover{background:rgba(20,99,255,.06)}
 
 /* Commercial demo placements */
 .promo-slot {
@@ -928,7 +929,13 @@ html[data-theme="dark"] .portal-local-time__icon {
   }
 }
 
+/* The inner-page currency item gets one extra desktop track; homepage grid stays unchanged. */
+.portal-header--currency { grid-template-columns: minmax(100px,1fr) max-content max-content minmax(190px,240px) 46px auto; }
+@media (max-width:1120px) and (min-width:901px) { .portal-header--currency { grid-template-columns:minmax(90px,1fr) max-content max-content minmax(160px,200px) 46px auto; gap:10px; } }
+
 @media (max-width: 900px) {
+  .header-currency { display: none; }
+  .portal-header--currency { grid-template-columns:minmax(90px,1fr) max-content minmax(150px,200px) 46px auto auto; }
   .portal-header {
     min-height: auto;
     grid-template-columns: minmax(90px, 1fr) max-content minmax(150px, 200px) 46px auto auto;
@@ -992,6 +999,7 @@ html[data-theme="dark"] .portal-local-time__icon {
   .portal-header {
     grid-template-columns: minmax(0, 1fr) auto auto auto;
   }
+  .portal-header--currency { grid-template-columns:minmax(0,1fr) auto auto auto; }
 
   .portal-header .logo__description {
     display: none;
@@ -1066,6 +1074,10 @@ html[data-theme="dark"] .portal-local-time__icon {
   .portal-header {
     gap: 9px;
   }
+
+  .portal-header--currency { grid-template-columns:72px 40px minmax(0,1fr) 40px; }
+  .portal-header--currency .portal-local-time { gap:4px; padding-inline:7px; }
+  .portal-header--currency .portal-local-time__icon { display:none; }
 
   .logo {
     gap: 9px;

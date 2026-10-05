@@ -3,6 +3,8 @@ node_modules/
 dist/
 *.log
 *.php
+!api/currency.php
+!tests/currency-cache.php
 !api/
 !api/weather.php
 !tests/weather-cache.php
