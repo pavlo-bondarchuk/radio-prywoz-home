@@ -1,8 +1,10 @@
-import{fetchForecast,fetchHistory,fetchWarnings,fetchAir}from"./weather-api.js?v=20261004-2";
-import{renderForecast,renderHistory,renderWarnings,renderAir,error}from"./weather-render.js?v=20261004-units-footer";
-import{applyWeatherTranslations,t}from"./weather-i18n.js?v=20261004-units-footer";
+import{fetchForecast,fetchHistory,fetchWarnings,fetchAir}from"./weather-api.js?v=20261004-polish";
+import{renderForecast,renderHistory,renderWarnings,renderAir,error}from"./weather-render.js?v=20261004-polish";
+import{applyWeatherTranslations,t}from"./weather-i18n.js?v=20261004-polish";
 
 let forecastData=null,historyData=null,warningsData=null,airData=null,historyDays=14;
+const failed=new Set();
+const renderFailures=()=>{for(const name of failed){if(name==='forecast'){error('[data-weather-current]',t('forecastError'));document.querySelector('[data-weather-updated]').textContent=t('unavailable');['metrics','hourly','daily','chart','sun'].forEach(part=>error('[data-weather-'+part+']',t('temporaryUnavailable')))}else error('[data-weather-'+name+']',t({history:'historyError',warnings:'warningError',air:'airError'}[name]))}};
 const notice=document.querySelector("[data-weather-notice]");
 
 const renderAll=()=>{
@@ -11,6 +13,7 @@ const renderAll=()=>{
   if(historyData)renderHistory(historyData,historyDays);
   if(warningsData)renderWarnings(warningsData);
   if(airData)renderAir(airData);
+  renderFailures();
 };
 
 const activateTab=(name,focus=false)=>{
@@ -38,11 +41,13 @@ tabs.forEach((button,index)=>{
 applyWeatherTranslations();
 Promise.allSettled([fetchForecast(),fetchHistory(),fetchWarnings(),fetchAir()]).then(results=>{
   const[f,h,w,a]=results;
+  results.forEach((result,i)=>{if(result.status==="rejected")failed.add(["forecast","history","warnings","air"][i])});
   if(results.some(x=>x.status==="fulfilled"&&x.value.stale)){notice.hidden=false;notice.textContent=t("stale")}
   if(f.status==="fulfilled"){forecastData=f.value.data;renderForecast(forecastData)}else{error("[data-weather-current]",t("forecastError"));["[data-weather-metrics]","[data-weather-hourly]","[data-weather-daily]","[data-weather-chart]","[data-weather-sun]"].forEach(selector=>error(selector,t("temporaryUnavailable")))}
   if(h.status==="fulfilled"){historyData=h.value.data;renderHistory(historyData,historyDays)}else error("[data-weather-history]",t("historyError"));
   if(w.status==="fulfilled"){warningsData=w.value.data;renderWarnings(warningsData)}else error("[data-weather-warnings]",t("warningError"));
   if(a.status==="fulfilled"){airData=a.value.data;renderAir(airData)}else error("[data-weather-air]",t("airError"));
+  renderFailures();
 });
 
 document.querySelectorAll("[data-history-range]").forEach(button=>button.addEventListener("click",()=>{
@@ -51,3 +56,5 @@ document.querySelectorAll("[data-history-range]").forEach(button=>button.addEven
   if(historyData)renderHistory(historyData,historyDays);
 }));
 document.addEventListener("prywoz:language-change",()=>{renderAll();if(!notice.hidden)notice.textContent=t("stale")});
+let resizeTimer;
+window.addEventListener("resize",()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>{if(forecastData)renderForecast(forecastData)},100)});

@@ -19,7 +19,13 @@ const dictionaries = {
   }
 };
 
-export const language = () => ["uk", "pl", "ru"].includes(localStorage.getItem("prywoz-language")) ? localStorage.getItem("prywoz-language") : "uk";
+const polishPass = {
+  uk: {city:"Лодзь",country:"Польща",uvLow:"низький",uvModerate:"помірний",uvHigh:"високий",uvVeryHigh:"дуже високий",uvExtreme:"екстремальний",lineChartLabel:"Графік температури та відчутної температури, °C",chartTable:"Дані графіка у таблиці",hour:"Час",warningsTitle:"Попередження для Лодзі",historyLead:"Історія погодних умов за модельними даними",sourceForecast:"Прогноз: Open-Meteo · Історія: Open-Meteo Historical Forecast",warningLanguage:"Оригінальний текст IMGW польською",airUnknown:"Індекс якості повітря недоступний"},
+  pl: {city:"Łódź",country:"Polska",uvLow:"niski",uvModerate:"umiarkowany",uvHigh:"wysoki",uvVeryHigh:"bardzo wysoki",uvExtreme:"ekstremalny",lineChartLabel:"Wykres temperatury i temperatury odczuwalnej, °C",chartTable:"Dane wykresu w tabeli",hour:"Godzina",warningsTitle:"Ostrzeżenia dla Łodzi",historyLead:"Historia warunków pogodowych na podstawie danych modelowych",sourceForecast:"Prognoza: Open-Meteo · Historia: Open-Meteo Historical Forecast",warningLanguage:"Oryginalny tekst IMGW po polsku",airUnknown:"Indeks jakości powietrza niedostępny"},
+  ru: {city:"Лодзь",country:"Польша",uvLow:"низкий",uvModerate:"умеренный",uvHigh:"высокий",uvVeryHigh:"очень высокий",uvExtreme:"экстремальный",lineChartLabel:"График температуры и ощущаемой температуры, °C",chartTable:"Данные графика в таблице",hour:"Время",warningsTitle:"Предупреждения для Лодзи",historyLead:"История погодных условий по модельным данным",sourceForecast:"Прогноз: Open-Meteo · История: Open-Meteo Historical Forecast",warningLanguage:"Оригинальный текст IMGW на польском",airUnknown:"Индекс качества воздуха недоступен"}
+};
+Object.keys(polishPass).forEach(lang=>Object.assign(dictionaries[lang],polishPass[lang]));
+export const language = () => {try{const value=localStorage.getItem("prywoz-language");return ["uk","pl","ru"].includes(value)?value:"uk"}catch{return"uk"}};
 export const locale = () => ({ uk: "uk-UA", pl: "pl-PL", ru: "ru-RU" })[language()];
 export const t = (key, values = {}) => Object.entries(values).reduce((text, [name, value]) => text.replace(`{${name}}`, value), dictionaries[language()][key] || dictionaries.uk[key] || key);
 export function applyWeatherTranslations() {
