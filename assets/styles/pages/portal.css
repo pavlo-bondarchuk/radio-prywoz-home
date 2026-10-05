@@ -316,6 +316,50 @@ html[data-theme="dark"] .theme-toggle__icon--sun {
   background: var(--ds-color-surface, var(--color-surface, #fff));
 }
 
+/* The useful-services disclosure stays text-only in every navigation state. */
+.portal-nav-row .main-nav__link.main-nav__disclosure,
+.portal-nav-row .main-nav__link.main-nav__disclosure:hover,
+.portal-nav-row .main-nav__link.main-nav__disclosure:focus-visible,
+.portal-nav-row .main-nav__link.main-nav__disclosure[aria-expanded="true"] {
+  background: transparent;
+}
+
+.portal-nav-row .main-nav__link.main-nav__disclosure::after,
+.portal-nav-row .main-nav__link.main-nav__disclosure:hover::after,
+.portal-nav-row .main-nav__link.main-nav__disclosure:focus-visible::after {
+  position: static;
+  right: auto;
+  bottom: auto;
+  left: auto;
+  width: 7px;
+  height: 7px;
+  margin-top: -4px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  background: transparent;
+  opacity: 1;
+  transform: rotate(45deg);
+}
+
+.portal-nav-row .main-nav__link.main-nav__disclosure[aria-expanded="true"]::after {
+  margin-top: 4px;
+  transform: rotate(225deg);
+}
+
+.portal-nav-row .main-nav__disclosure:focus-visible {
+  outline: 2px solid var(--color-primary, var(--ds-color-accent));
+  outline-offset: 3px;
+  z-index: 1;
+}
+
+/* Keep the useful section selected on its calculator/guide pages without a bar. */
+body[data-page="pit"] .portal-nav-row .main-nav__disclosure,
+body[data-page="salary-calculator"] .portal-nav-row .main-nav__disclosure,
+body[data-page="work-calendar"] .portal-nav-row .main-nav__disclosure,
+body[data-page="rent-calculator"] .portal-nav-row .main-nav__disclosure {
+  color: var(--ds-color-accent, var(--color-accent));
+}
+
 .portal-live {
   padding-block: 28px 18px;
 }
