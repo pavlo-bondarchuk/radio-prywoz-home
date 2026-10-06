@@ -12,3 +12,4 @@ dist/
 !tests/news-backend.php
 submissions/
 test-artifacts/
+codex-bench/

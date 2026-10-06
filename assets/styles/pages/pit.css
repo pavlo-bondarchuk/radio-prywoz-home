@@ -92,6 +92,7 @@
 .pit-sources a { overflow-wrap: anywhere; }
 .pit-disclaimer { margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--color-border); font-weight: 650; line-height: 1.55; }
 .pit-page a:focus-visible, .pit-page button:focus-visible, .pit-page input:focus-visible, .pit-page select:focus-visible { outline: 3px solid var(--color-primary, var(--ds-color-primary)); outline-offset: 3px; }
+.pit-print-sheet { display: none; }
 @media (max-width: 900px) {
   .pit-type-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .pit-flow { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
@@ -107,4 +108,33 @@
   .pit-flow li { padding-block: 14px; }
   .pit-timeline li { grid-template-columns: minmax(0, 1fr); gap: 4px; padding-inline: 4px; }
   .pit-quiz-actions { display: grid; grid-template-columns: 1fr 1fr; }
+}
+
+@media print {
+  @page { size: A4 portrait; margin: 14mm; }
+  html, body { width: auto !important; min-width: 0 !important; margin: 0 !important; padding: 0 !important; background: #fff !important; color: #111 !important; }
+  body.pit-print-mode > :not(.pit-print-sheet) { display: none !important; }
+  body.pit-print-mode > .pit-print-sheet { display: block !important; width: 100% !important; max-width: none !important; margin: 0 !important; padding: 0 !important; border: 0 !important; background: #fff !important; color: #111 !important; font: 10.5pt/1.42 Arial, sans-serif !important; }
+  body.pit-print-mode > .pit-print-sheet,
+  body.pit-print-mode > .pit-print-sheet * { visibility: visible !important; box-shadow: none !important; text-shadow: none !important; }
+  .pit-print-sheet[hidden] { display: block !important; }
+  .pit-print-header { margin: 0 0 7mm; padding: 0 0 4mm; border-bottom: 2px solid #111; }
+  .pit-print-brand { margin: 0 0 2mm !important; font-size: 11pt !important; font-weight: 800 !important; letter-spacing: .12em; }
+  .pit-print-header h1 { margin: 0 0 2mm !important; color: #111 !important; font-size: 19pt !important; line-height: 1.15 !important; }
+  .pit-print-header p:last-child { margin: 0 !important; color: #333 !important; font-size: 9pt !important; }
+  .pit-print-section { margin: 0 0 5mm; padding: 0; border: 0; break-inside: auto; page-break-inside: auto; }
+  .pit-print-section h2 { margin: 0 0 2mm !important; color: #111 !important; font-size: 12pt !important; line-height: 1.2 !important; break-after: avoid; page-break-after: avoid; }
+  .pit-print-section p { margin: 0 0 2mm !important; color: #222 !important; font-size: 10pt !important; }
+  .pit-print-result { font-size: 13pt !important; font-weight: 800 !important; }
+  .pit-print-suggested { margin-top: 2mm !important; font-weight: 700 !important; }
+  .pit-print-list { display: grid; gap: 1mm; margin: 0 !important; padding: 0 !important; list-style: none !important; }
+  .pit-print-list li { display: flex; align-items: flex-start; gap: 2mm; margin: 0; padding: 0; color: #111 !important; font-size: 9.5pt !important; line-height: 1.35 !important; break-inside: avoid; page-break-inside: avoid; }
+  .pit-print-mark { flex: 0 0 4mm; font-weight: 800; }
+  .pit-print-box { display: inline-flex; flex: 0 0 4mm; align-items: center; justify-content: center; width: 4mm; height: 4mm; margin: .3mm 0 0; border: .35mm solid #111; color: #111 !important; font-size: 9pt; font-weight: 800; line-height: 1; }
+  .pit-print-note { color: #333 !important; font-size: 8.5pt !important; }
+  .pit-print-official { padding: 3mm; border: .35mm solid #111; break-inside: avoid; page-break-inside: avoid; }
+  .pit-print-url { overflow-wrap: anywhere; font-weight: 700; }
+  .pit-print-footer { margin-top: 5mm; padding-top: 3mm; border-top: .3mm solid #555; color: #222 !important; font-size: 8pt !important; }
+  .pit-print-footer p { margin: 0 0 2mm !important; color: #222 !important; font-size: 8pt !important; }
+  .pit-print-footer a { color: #111 !important; text-decoration: underline !important; }
 }

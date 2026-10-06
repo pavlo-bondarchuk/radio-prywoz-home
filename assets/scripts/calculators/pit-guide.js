@@ -60,6 +60,16 @@ Object.assign(QUIZ_FLOW_WORDS.uk,{pit11Partial:"Отримав(-ла) PIT-11, а
 Object.assign(QUIZ_FLOW_WORDS.pl,{pit11Partial:"Mam PIT-11, ale nie wiem, czy od wszystkich płatników",pit11Confirmed:"Wskazano, że otrzymano PIT-11 od wszystkich płatników",workStepTitle:"Dochód od polskiego płatnika",activityStepTitle:"Działalność i najem",otherIncomeStepTitle:"Pozostałe dochody",reportedTitle:"Co wskazano",pit11Partial:"Mam PIT-11, ale nie wiem, czy od wszystkich płatników",reasonWork:"Wskazano dochód od polskiego płatnika. PIT-37 może być punktem odniesienia, jeśli dochód nie łączy się z dochodem z działalności opodatkowanej skalą w PIT-36.",reasonBusiness:"Wskazano dochód z działalności. Formularz zależy od wybranej metody; dochody opodatkowane skalą, w tym z pracy, mogą być łączone w PIT-36.",reasonForeign:"Wskazano dochód zagraniczny. Formularz zależy od rezydencji, rodzaju dochodu i umowy podatkowej; możliwe formularze należy sprawdzić w oficjalnych zasadach.",pit11Partial:"Mam PIT-11, ale nie wiem, czy od wszystkich płatników",pit11Confirmed:"Wskazano, że otrzymano PIT-11 od wszystkich płatników",type36:"Może dotyczyć działalności opodatkowanej skalą wraz z innymi dochodami opodatkowanymi skalą, w tym z pracy. Dochód zagraniczny ocenia się osobno, zależnie od rezydencji i umowy."});
 Object.assign(QUIZ_FLOW_WORDS.ru,{pit11Partial:"PIT-11 есть, но не знаю, от всех ли плательщиков",pit11Confirmed:"Указано, что PIT-11 получен от всех плательщиков",workStepTitle:"Доход от польского плательщика",activityStepTitle:"Деятельность и аренда",otherIncomeStepTitle:"Другие доходы",reportedTitle:"Что вы указали",pit11Partial:"PIT-11 есть, но не знаю, от всех ли плательщиков",reasonWork:"Вы указали доход от польского плательщика. PIT-37 может быть ориентиром, если доход не объединяется с предпринимательским доходом по шкале в PIT-36.",reasonBusiness:"Вы указали доход от деятельности. Форма зависит от режима; доходы по шкале, включая работу, могут объединяться в PIT-36.",reasonForeign:"Вы указали иностранный доход. Форма зависит от резидентства, вида дохода и налогового соглашения; возможные формы следует проверять по официальным правилам.",pit11Partial:"PIT-11 есть, но не знаю, от всех ли плательщиков",pit11Confirmed:"Указано, что PIT-11 получен от всех плательщиков",type36:"Может относиться к предпринимательскому доходу по шкале вместе с другими доходами по шкале, включая работу. Иностранный доход рассматривается отдельно с учётом резидентства и соглашения."});
 
+Object.assign(QUIZ_FLOW_WORDS.uk, {
+  printButton:"🖨 Роздрукувати / зберегти PDF", printTitle:"PIT у Польщі — персональна пам’ятка", printGenerated:"Сформовано", printResultHeading:"Результат квізу", printSuggested:"Можливі форми для перевірки:", printAnswersTitle:"На основі ваших відповідей", printAlreadyTitle:"Що ви вже маєте", printChecklistTitle:"Ще потрібно перевірити", printQuestionsTitle:"Питання для Urząd Skarbowy / бухгалтера", printBringTitle:"Що взяти із собою", printBringNote:"Перелік залежить від вашої ситуації та способу звернення.", printOfficialTitle:"Офіційний сервіс", printOfficialCopy:"Twój e-PIT — офіційний сервіс Міністерства фінансів Польщі.", printDisclaimer:"Ця пам’ятка сформована сервісом PRYWOZ на основі ваших відповідей і має інформаційний характер. Вона не є податковою декларацією або податковою консультацією. Остаточну форму та дані перевіряйте у Twój e-PIT, Urząd Skarbowy або у фахівця.", printSources:"Офіційні джерела: Ministerstwo Finansów, podatki.gov.pl", printChecked:"Інформацію перевірено", printNoForms:"За вашими відповідями не вдалося визначити форму для перевірки.", printExistingPit11:"Ви вказали, що PIT-11 отримано від усіх роботодавців / замовників.", printExistingContracts:"Ви вказали тип договору", printExistingBusiness:"Ви вказали спосіб оподаткування діяльності", printExistingRental:"Ви вказали тип оренди", printExistingOther:"Ви вказали, що маєте документ про інше джерело доходу.", printNoExisting:"Підтверджених документів у відповідях не зазначено.", printShortCaveat:"Це попередній орієнтир, а не остаточне визначення потрібної декларації.", printQuestionWork:"Чи враховані PIT-11 від усіх роботодавців і замовників?", printQuestionBusiness:"Чи правильно визначено спосіб оподаткування діяльності та пов’язану з ним форму PIT?", printQuestionRental:"Чи є оренда приватною та поза межами підприємницької діяльності?", printQuestionInvestments:"Які саме інвестиційні доходи потрібно відобразити та в якій формі?", printQuestionForeignResidence:"Чи вважаюся я податковим резидентом Польщі за цей рік?", printQuestionForeignZG:"Чи потрібно додати PIT/ZG?", printQuestionUkraine:"Як врахувати дохід з України та правила уникнення подвійного оподаткування?", printQuestionSeveral:"Чи потрібно подати кілька декларацій для різних джерел доходу?", printQuestionOther:"Яка форма декларації стосується цього джерела доходу?", printBringPit11:"PIT-11 від усіх роботодавців / замовників", printBringIdentity:"Документ, що посвідчує особу", printBringBank:"Дані банківського рахунку, якщо потрібно оновити рахунок для zwrot", printBringRelief:"Документи на пільги, якщо вони застосовуються", printBringBusiness:"Облік доходів і документ про спосіб оподаткування діяльності", printBringRental:"Документи про доходи та витрати щодо оренди", printBringInvestment:"Річні відомості від брокера / платника інвестиційного доходу", printBringForeign:"Документи про іноземний дохід і сплачений за кордоном податок"
+});
+Object.assign(QUIZ_FLOW_WORDS.pl, {
+  printButton:"🖨 Wydrukuj / zapisz jako PDF", printTitle:"PIT w Polsce — Twoja osobista notatka", printGenerated:"Utworzono", printResultHeading:"Wynik quizu", printSuggested:"Możliwe formularze do sprawdzenia:", printAnswersTitle:"Na podstawie Twoich odpowiedzi", printAlreadyTitle:"Co już masz", printChecklistTitle:"Co jeszcze sprawdzić", printQuestionsTitle:"Pytania do Urzędu Skarbowego / księgowego", printBringTitle:"Co zabrać ze sobą", printBringNote:"Lista zależy od Twojej sytuacji i sposobu kontaktu z urzędem.", printOfficialTitle:"Oficjalna usługa", printOfficialCopy:"Twój e-PIT — oficjalna usługa Ministerstwa Finansów Polski.", printDisclaimer:"Ta notatka została przygotowana przez PRYWOZ na podstawie Twoich odpowiedzi i ma charakter informacyjny. Nie jest zeznaniem podatkowym ani poradą podatkową. Ostateczny formularz i dane sprawdź w Twój e-PIT, Urzędzie Skarbowym lub u specjalisty.", printSources:"Oficjalne źródła: Ministerstwo Finansów, podatki.gov.pl", printChecked:"Informacje sprawdzono", printNoForms:"Na podstawie odpowiedzi nie udało się wskazać formularza do sprawdzenia.", printExistingPit11:"Wskazano, że PIT-11 otrzymano od wszystkich pracodawców / zleceniodawców.", printExistingContracts:"Wskazany rodzaj umowy", printExistingBusiness:"Wskazano sposób opodatkowania działalności", printExistingRental:"Wskazano rodzaj najmu", printExistingOther:"Wskazano, że posiadasz dokument dotyczący innego źródła dochodu.", printNoExisting:"W odpowiedziach nie wskazano potwierdzonych dokumentów.", printShortCaveat:"To wstępna wskazówka, a nie ostateczne ustalenie właściwego zeznania.", printQuestionWork:"Czy uwzględniono PIT-11 od wszystkich pracodawców i zleceniodawców?", printQuestionBusiness:"Czy prawidłowo ustalono sposób opodatkowania działalności i powiązany formularz PIT?", printQuestionRental:"Czy najem jest prywatny i poza działalnością gospodarczą?", printQuestionInvestments:"Jakie dochody kapitałowe należy wykazać i w którym formularzu?", printQuestionForeignResidence:"Czy jestem polskim rezydentem podatkowym w tym roku?", printQuestionForeignZG:"Czy trzeba dołączyć PIT/ZG?", printQuestionUkraine:"Jak rozliczyć dochód z Ukrainy i zasady unikania podwójnego opodatkowania?", printQuestionSeveral:"Czy trzeba złożyć kilka zeznań dla różnych źródeł dochodu?", printQuestionOther:"Który formularz dotyczy tego źródła dochodu?", printBringPit11:"PIT-11 od wszystkich pracodawców / zleceniodawców", printBringIdentity:"Dokument tożsamości", printBringBank:"Dane rachunku bankowego, jeśli trzeba zaktualizować go do zwrotu", printBringRelief:"Dokumenty potwierdzające ulgi, jeśli mają zastosowanie", printBringBusiness:"Ewidencja dochodów i dokument określający sposób opodatkowania", printBringRental:"Dokumenty dotyczące przychodów i kosztów najmu", printBringInvestment:"Roczne informacje od brokera / płatnika dochodów kapitałowych", printBringForeign:"Dokumenty o dochodzie zagranicznym i zapłaconym podatku"
+});
+Object.assign(QUIZ_FLOW_WORDS.ru, {
+  printButton:"🖨 Распечатать / сохранить PDF", printTitle:"PIT в Польше — персональная памятка", printGenerated:"Сформировано", printResultHeading:"Результат квиза", printSuggested:"Возможные формы для проверки:", printAnswersTitle:"На основе ваших ответов", printAlreadyTitle:"Что у вас уже есть", printChecklistTitle:"Что ещё проверить", printQuestionsTitle:"Вопросы для Urząd Skarbowy / бухгалтера", printBringTitle:"Что взять с собой", printBringNote:"Список зависит от вашей ситуации и способа обращения.", printOfficialTitle:"Официальный сервис", printOfficialCopy:"Twój e-PIT — официальный сервис Министерства финансов Польши.", printDisclaimer:"Эта памятка сформирована сервисом PRYWOZ на основе ваших ответов и носит информационный характер. Это не налоговая декларация и не налоговая консультация. Окончательную форму и данные проверьте в Twój e-PIT, Urząd Skarbowy или у специалиста.", printSources:"Официальные источники: Ministerstwo Finansów, podatki.gov.pl", printChecked:"Информация проверена", printNoForms:"По вашим ответам не удалось определить форму для проверки.", printExistingPit11:"Вы указали, что PIT-11 получен от всех работодателей / заказчиков.", printExistingContracts:"Вы указали тип договора", printExistingBusiness:"Вы указали способ налогообложения деятельности", printExistingRental:"Вы указали тип аренды", printExistingOther:"Вы указали, что у вас есть документ по другому источнику дохода.", printNoExisting:"Подтверждённые документы в ответах не указаны.", printShortCaveat:"Это предварительный ориентир, а не окончательное определение нужной декларации.", printQuestionWork:"Учтены ли PIT-11 от всех работодателей и заказчиков?", printQuestionBusiness:"Правильно ли определён способ налогообложения деятельности и связанная с ним форма PIT?", printQuestionRental:"Является ли аренда частной и не связанной с предпринимательством?", printQuestionInvestments:"Какие именно инвестиционные доходы нужно указать и в какой форме?", printQuestionForeignResidence:"Считаюсь ли я налоговым резидентом Польши в этом году?", printQuestionForeignZG:"Нужно ли приложить PIT/ZG?", printQuestionUkraine:"Как учесть доход из Украины и правила предотвращения двойного налогообложения?", printQuestionSeveral:"Нужно ли подать несколько деклараций для разных источников дохода?", printQuestionOther:"Какая форма декларации относится к этому источнику дохода?", printBringPit11:"PIT-11 от всех работодателей / заказчиков", printBringIdentity:"Документ, удостоверяющий личность", printBringBank:"Банковские реквизиты, если нужно обновить счёт для zwrot", printBringRelief:"Документы, подтверждающие льготы, если они применяются", printBringBusiness:"Учёт доходов и документ о способе налогообложения деятельности", printBringRental:"Документы о доходах и расходах по аренде", printBringInvestment:"Годовые сведения от брокера / плательщика инвестиционного дохода", printBringForeign:"Документы об иностранном доходе и налоге, уплаченном за рубежом"
+});
+
 const getLanguage = () => {
   try {
     const saved = localStorage.getItem("prywoz-language");
@@ -69,6 +79,7 @@ const getLanguage = () => {
 };
 const root = document.querySelector(".pit-main");
 const helper = root?.querySelector("[data-pit-helper]");
+const printSheet = document.querySelector("[data-pit-print-sheet]");
 const checklistKey = "prywoz-pit-checklist-v1";
 const quizAnswersStorageKey = "prywoz-pit-quiz-answers-v1";
 const quizChecklistStoragePrefix = "prywoz-pit-quiz-checklist-v1";
@@ -78,7 +89,7 @@ const tr = key => EXTRA_WORDS[language]?.[key] || QUIZ_FLOW_WORDS[language]?.[ke
 function applyLanguage(next = getLanguage()) {
   language = LANGS.includes(next) ? next : "uk";
   document.documentElement.lang = language;
-  root?.querySelectorAll("[data-pit]").forEach(node => { node.textContent = tr(node.dataset.pit); });
+  document.querySelectorAll(".pit-main [data-pit], .pit-print-sheet [data-pit]").forEach(node => { node.textContent = tr(node.dataset.pit); });
   const quizHeading = root?.querySelector("[data-pit=helperEyebrow]");
   const quizTitle = root?.querySelector("[data-pit=helperTitle]");
   const quizIntro = root?.querySelector("[data-pit=helperIntro]");
@@ -345,6 +356,108 @@ function renderFinal(final) {
   }));
 }
 
+function renderPrintList(list, items, mode = "plain") {
+  if (!list) return;
+  list.replaceChildren(...items.map(item => {
+    const row = document.createElement("li");
+    if (mode === "checklist") {
+      const box = document.createElement("span");
+      box.className = `pit-print-box${item.checked ? " is-checked" : ""}`;
+      box.setAttribute("aria-hidden", "true");
+      if (item.checked) box.textContent = "✓";
+      row.append(box, document.createTextNode(item.text));
+    } else if (mode === "answers" || mode === "confirmed") {
+      const mark = document.createElement("span");
+      mark.className = "pit-print-mark";
+      mark.setAttribute("aria-hidden", "true");
+      mark.textContent = "✓";
+      row.append(mark, document.createTextNode(typeof item === "string" ? item : item.text));
+    } else {
+      row.textContent = typeof item === "string" ? item : item.text;
+    }
+    return row;
+  }));
+  list.hidden = items.length === 0;
+}
+
+function printQuestions(outcome) {
+  const items = [];
+  const a = quizState.answers;
+  if (selected("work") && a.pit11 !== "yes") items.push(tr("printQuestionWork"));
+  if (selected("business")) items.push(tr("printQuestionBusiness"));
+  if (selected("rental") && a.rentalType !== "private") items.push(tr("printQuestionRental"));
+  if (selected("investments")) items.push(tr("printQuestionInvestments"));
+  if (selected("foreign")) items.push(tr("printQuestionForeignResidence"), tr("printQuestionForeignZG"), tr("printQuestionUkraine"));
+  if (selected("other")) items.push(tr("printQuestionOther"));
+  if (quizState.answers.sources.length > 1) items.push(tr("printQuestionSeveral"));
+  if (outcome.complex && items.length === 0) items.push(tr("printQuestionOther"));
+  return items;
+}
+
+function printBringItems() {
+  const a = quizState.answers;
+  const items = [tr("printBringIdentity"), tr("printBringBank")];
+  if (selected("work")) items.unshift(tr("printBringPit11"));
+  if (selected("business")) items.push(tr("printBringBusiness"));
+  if (selected("rental")) items.push(tr("printBringRental"));
+  if (selected("investments")) items.push(tr("printBringInvestment"));
+  if (selected("foreign")) items.push(tr("printBringForeign"));
+  if (a.family.some(item => ["children", "reliefs", "spouse"].includes(item))) items.push(tr("printBringRelief"));
+  return items;
+}
+
+function renderPrintSheet() {
+  if (!printSheet || !quizState.complete) return false;
+  const outcome = makeOutcome();
+  const setText = (selector, value) => {
+    const node = printSheet.querySelector(selector);
+    if (node) node.textContent = value;
+  };
+  const generatedParts = Object.fromEntries(new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/Warsaw", day: "2-digit", month: "2-digit", year: "numeric" }).formatToParts(new Date()).filter(part => part.type !== "literal").map(part => [part.type, part.value]));
+  const generated = `${generatedParts.day}.${generatedParts.month}.${generatedParts.year}`;
+  const verifiedText = root?.querySelector('[data-pit="verified"]')?.textContent || "";
+  const verifiedDate = verifiedText.match(/\b\d{2}\.\d{2}\.\d{4}\b/)?.[0] || "—";
+  setText("[data-pit-print-date]", generated);
+  setText("[data-pit-print-verified]", verifiedDate);
+  setText("[data-pit-print-result]", tr(outcome.title));
+  setText("[data-pit-print-explanation]", `${outcome.reasons.map(key => tr(key)).join(" ")} ${tr("printShortCaveat")}`.trim());
+  const printForms = outcome.forms.map(key => tr(key));
+  if (!printForms.length) printForms.push(tr("printNoForms"));
+  renderPrintList(printSheet.querySelector("[data-pit-print-forms]"), printForms);
+  renderPrintList(printSheet.querySelector("[data-pit-print-answers]"), makeReportedList(), "answers");
+
+  const existing = [];
+  const a = quizState.answers;
+  if (selected("work") && a.pit11 === "yes") existing.push(tr("printExistingPit11"));
+  if (selected("work") && a.contracts.length) existing.push(`${tr("printExistingContracts")}: ${a.contracts.map(value => tr(`contract_${value}`)).join(", ")}`);
+  if (selected("business") && a.businessMethod && a.businessMethod !== "unknown") existing.push(`${tr("printExistingBusiness")}: ${tr(`business_${a.businessMethod}`)}`);
+  if (selected("rental") && a.rentalType && a.rentalType !== "unknown") existing.push(`${tr("printExistingRental")}: ${tr(`rental_${a.rentalType}`)}`);
+  if (selected("other") && a.otherDocument === "yes") existing.push(tr("printExistingOther"));
+  renderPrintList(printSheet.querySelector("[data-pit-print-existing]"), existing.length ? existing : [tr("printNoExisting")], existing.length ? "confirmed" : "plain");
+
+  const checklist = [...(root?.querySelectorAll("[data-pit-final] [data-pit-check]") || [])].map(input => ({ text: tr(input.dataset.pitCheck), checked: input.checked }));
+  renderPrintList(printSheet.querySelector("[data-pit-print-checklist]"), checklist, "checklist");
+  const questions = printQuestions(outcome);
+  const questionsList = printSheet.querySelector("[data-pit-print-questions]");
+  renderPrintList(questionsList, questions.map(text => ({ text, checked: false })), "checklist");
+  if (questionsList?.closest(".pit-print-section")) questionsList.closest(".pit-print-section").hidden = questions.length === 0;
+  renderPrintList(printSheet.querySelector("[data-pit-print-bring]"), printBringItems().map(text => ({ text, checked: false })), "checklist");
+  printSheet.hidden = false;
+  printSheet.setAttribute("aria-hidden", "false");
+  return true;
+}
+
+function printQuizResult() {
+  if (!renderPrintSheet()) return;
+  document.body.classList.add("pit-print-mode");
+  try { window.print(); }
+  finally {
+    printSheet.hidden = true;
+    printSheet.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("pit-print-mode");
+  }
+}
+
 function updateAnswer(input) {
   const a = quizState.answers;
   if (input.name === "pit-source") {
@@ -435,6 +548,7 @@ helper?.querySelector("[data-pit-next]")?.addEventListener("click", moveNext);
 helper?.querySelector("[data-pit-back]")?.addEventListener("click", moveBack);
 root?.querySelector("[data-pit-edit]")?.addEventListener("click", () => { quizState.complete = false; quizState.step = "sources"; persistQuiz(); renderQuiz(); helper.querySelector('[data-pit-step="sources"] input')?.focus(); });
 root?.querySelector("[data-pit-restart]")?.addEventListener("click", restartQuiz);
+root?.querySelector("[data-pit-print]")?.addEventListener("click", printQuizResult);
 root?.querySelector("[data-pit-final]")?.addEventListener("change", event => {
   const key = event.target.dataset.pitCheck;
   if (!key) return;
