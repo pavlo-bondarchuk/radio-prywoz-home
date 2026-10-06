@@ -53,6 +53,11 @@ const QUIZ_FLOW_WORDS = {
   pl:{helperEyebrow:"Quiz PIT",helperTitle:"Sprawdź, co warto zweryfikować w swoim PIT",helperIntro:"Zaznacz wszystkie źródła dochodu i przejdź 3–5 krótkich kroków. Zobaczysz tylko pytania dotyczące wybranych źródeł, a na końcu otrzymasz wstępną wskazówkę i własną listę spraw do sprawdzenia. Odpowiedzi nie są weryfikowane dokumentami i nie stanowią porady podatkowej.",sourcesQuestion:"Z jakich źródeł uzyskiwałeś(-aś) dochód? Zaznacz wszystkie właściwe odpowiedzi.",sourceWork:"Praca lub umowy przez polskiego płatnika",sourceBusiness:"Własna działalność",sourceRental:"Najem prywatny",sourceInvestments:"Inwestycje / dochody kapitałowe",sourceForeign:"Dochód poza Polską",sourceOther:"Inne lub nie mam pewności",detailsQuestion:"Doprecyzuj wybrane źródła dochodu",workDetailsTitle:"Praca przez polskiego płatnika",pit11Question:"Czy otrzymałeś(-aś) PIT-11 od wszystkich pracodawców / zleceniodawców?",contractsQuestion:"Jakie umowy Cię dotyczyły? Zaznacz wszystkie właściwe.",businessDetailsTitle:"Jak opodatkowana była działalność?",businessMethodQuestion:"Wybierz znany Ci sposób",methodScale:"Skala podatkowa",methodLinear:"Podatek liniowy",methodLump:"Ryczałt",rentalDetailsTitle:"Jakiego rodzaju był najem?",rentalTypeQuestion:"Doprecyzuj rodzaj najmu",rentalPrivate:"Najem prywatny poza działalnością gospodarczą",rentalBusiness:"Najem w ramach własnej działalności",investmentDetailsTitle:"Dochód z inwestycji",capitalQuestion:"Czy chodzi o akcje, papiery wartościowe lub inny dochód kapitałowy?",foreignNote:"Dochód zagraniczny wymaga osobnej weryfikacji rezydencji podatkowej i zasad międzynarodowych.",otherNote:"To źródło wymaga dodatkowych informacji, dlatego quiz nie określi formularza zeznania.",familyQuestion:"Jakie sytuacje rodzinne lub ulgi chcesz uwzględnić? Zaznacz wszystkie właściwe.",familyChildren:"Mam dzieci / chcę sprawdzić ulgę na dzieci",familySpouse:"Chcę sprawdzić wspólne rozliczenie z małżonkiem",familyReliefs:"Chcę sprawdzić inne ulgi podatkowe",familyOpp:"Chcę przekazać 1,5% OPP",familyNone:"Żadne z powyższych",unsure:"Nie mam pewności",step:"Krok {current} z {total}",done:"Quiz zakończony · kroków: {total}",continue:"Dalej",showResult:"Pokaż wynik",back:"Wstecz",restart:"Rozpocznij quiz ponownie",editAnswers:"Zmień odpowiedzi",answerError:"Odpowiedz w każdym widocznym bloku, aby przejść dalej.",resultEyebrow:"Twój wynik",initialTitle:"Najpierw wybierz źródła dochodu",initialCopy:"Quiz przygotuje wskazówkę dopiero po udzieleniu odpowiedzi.",reportedTitle:"Co wskazałeś(-aś) / już masz",verifyTitle:"Co sprawdzić dalej",resultComplex:"Potrzebna jest dodatkowa weryfikacja",resultSingle:"Wstępna wskazówka",resultMultiple:"Może być potrzebnych kilka formularzy",resultForeign:"Dochód zagraniczny wymaga osobnej weryfikacji",reasonWork:"Dla dochodu od polskiego płatnika PIT-37 jest częstym punktem wyjścia; sprawdź, czy uwzględniono wszystkie PIT-11 i umowy.",reasonBusiness:"Formularz zależy od sposobu opodatkowania działalności; wskazówka nie zastępuje sprawdzenia oficjalnych warunków.",reasonRental:"PIT-28 może dotyczyć wyłącznie potwierdzonego najmu prywatnego; rodzaj działalności może zmienić formularz.",reasonInvestment:"PIT-38 może dotyczyć potwierdzonych dochodów kapitałowych, w tym papierów wartościowych.",reasonForeign:"W zależności od rezydencji, rodzaju dochodu i umów międzynarodowych mogą mieć zastosowanie PIT-36 i PIT/ZG. Sprawdź oficjalne zasady.",reasonOther:"Na podstawie odpowiedzi nie można wiarygodnie określić formularza. Sprawdź dokumenty i oficjalne informacje.",form37:"Możliwa wskazówka: PIT-37",form36:"Możliwa wskazówka: PIT-36",form36l:"Możliwa wskazówka: PIT-36L",form28:"Możliwa wskazówka: PIT-28",form38:"Możliwa wskazówka: PIT-38",formNeedCheck:"Formularz wymaga ustalenia",answerWork:"Praca przez polskiego płatnika",answerBusiness:"Własna działalność",answerRental:"Najem",answerInvestments:"Dochód z inwestycji",answerForeign:"Dochód zagraniczny",answerOther:"Inne / brak pewności",yes:"Tak",no:"Nie",unsureAnswer:"Nie wiem",familyLabel:"Sytuacje rodzinne / ulgi",contractsLabel:"Wybrane umowy",pit11Label:"PIT-11 od wszystkich płatników",businessMethodLabel:"Sposób opodatkowania",rentalTypeLabel:"Rodzaj najmu",capitalLabel:"Dochód kapitałowy",checkWork:"Porównaj otrzymane PIT-11 ze wszystkimi umowami i sprawdź, czy płatnik dosłał brakujące dokumenty.",checkContract:"Sprawdź, czy każdy rodzaj umowy i płatnika uwzględniono w rocznych informacjach.",checkBusinessScale:"Sprawdź oficjalną instrukcję PIT-36 dla wybranej formy opodatkowania.",checkBusinessLinear:"Sprawdź oficjalne warunki PIT-36L i czy dodatkowe dochody wymagają innych formularzy.",checkBusinessLump:"Sprawdź oficjalne warunki PIT-28 dla Twojego ryczałtu.",checkBusinessUnknown:"Ustal sposób opodatkowania na podstawie dokumentów lub z księgowym przed wyborem formularza.",checkPrivateRental:"Potwierdź, że to najem prywatny poza działalnością gospodarczą, i sprawdź ewidencję dochodu.",checkBusinessRental:"Ponieważ najem wskazano jako część działalności, sprawdź formularz łącznie z zasadami opodatkowania firmy.",checkCapitalYes:"Porównaj rodzaj dochodu kapitałowego z informacją od brokera / płatnika i warunkami PIT-38.",checkCapitalNo:"Sprawdź, czy nie wystąpił inny dochód kapitałowy wymagający osobnego wykazania.",checkCapitalUnknown:"Ustal charakter dochodu inwestycyjnego na podstawie rocznej informacji od płatnika.",checkForeign:"Sprawdź rezydencję, zagraniczne informacje roczne i właściwe umowy o unikaniu podwójnego opodatkowania.",checkOther:"Ustal źródło dochodu na podstawie oficjalnej informacji i sprawdź instrukcję Ministerstwa Finansów.",checkChildren:"Sprawdź prawo do ulgi na dzieci i dane wymagane za dany rok.",checkSpouse:"Sprawdź warunki wspólnego rozliczenia dla Twojej sytuacji rodzinnej.",checkReliefs:"Sprawdź warunki i dokumenty dla każdej ulgi, którą planujesz zastosować.",checkOpp:"Sprawdź numer KRS wybranej organizacji OPP i zasady przekazania 1,5%.",checkUpo:"Po wysłaniu zachowaj UPO — urzędowe potwierdzenie odbioru zeznania.",upoNote:"UPO (Urzędowe Poświadczenie Odbioru) potwierdza, że oficjalna usługa otrzymała wysłane zeznanie. Zapisz potwierdzenie po wysłaniu.",resultOfficial:"Otwórz oficjalny Twój e-PIT",noData:"Nie wpisuj PESEL-u, NIP-u, kwot dochodu ani danych dokumentów."},
   ru:{helperEyebrow:"Квиз PIT",helperTitle:"Узнайте, что проверить в своей декларации PIT",helperIntro:"Отметьте все источники дохода и пройдите 3–5 коротких шагов. Вы увидите только вопросы по выбранным источникам, а в конце — предварительный ориентир и персональный список проверок. Ответы не сверяются с документами и не являются налоговой консультацией.",sourcesQuestion:"Из каких источников вы получали доход? Отметьте все подходящие варианты.",sourceWork:"Работа или договоры через польского плательщика",sourceBusiness:"Собственная деятельность",sourceRental:"Частная аренда",sourceInvestments:"Инвестиции / доходы от капитала",sourceForeign:"Доход за пределами Польши",sourceOther:"Другое или не уверен(-а)",detailsQuestion:"Уточните выбранные источники дохода",workDetailsTitle:"Работа через польского плательщика",pit11Question:"Получили ли вы PIT-11 от всех работодателей / заказчиков?",contractsQuestion:"Какие договоры у вас были? Отметьте все подходящие.",businessDetailsTitle:"Как облагалась налогом деятельность?",businessMethodQuestion:"Выберите известный вам способ",methodScale:"Skala podatkowa",methodLinear:"Podatek liniowy",methodLump:"Ryczałt",rentalDetailsTitle:"Какой была аренда?",rentalTypeQuestion:"Уточните тип аренды",rentalPrivate:"Частная аренда вне предпринимательской деятельности",rentalBusiness:"Аренда в рамках собственной деятельности",investmentDetailsTitle:"Доход от инвестиций",capitalQuestion:"Идёт ли речь об акциях, ценных бумагах или другом доходе от капитала?",foreignNote:"Зарубежный доход требует отдельной проверки налогового резидентства и международных правил.",otherNote:"Для этого источника нужны дополнительные сведения, поэтому квиз не определяет форму декларации.",familyQuestion:"Какие семейные обстоятельства или льготы учесть? Отметьте все подходящие.",familyChildren:"Есть дети / хочу проверить льготу на детей",familySpouse:"Хочу проверить совместный расчёт с супругом(-ой)",familyReliefs:"Хочу проверить другие налоговые льготы",familyOpp:"Хочу передать 1,5% OPP",familyNone:"Ничего из перечисленного",unsure:"Не уверен(-а)",step:"Шаг {current} из {total}",done:"Квиз завершён · шагов: {total}",continue:"Продолжить",showResult:"Показать результат",back:"Назад",restart:"Пройти квиз заново",editAnswers:"Изменить ответы",answerError:"Ответьте в каждом видимом блоке, чтобы продолжить.",resultEyebrow:"Ваш результат",initialTitle:"Сначала выберите источники дохода",initialCopy:"Квиз подготовит ориентир только после ваших ответов.",reportedTitle:"Что вы указали / уже имеете",verifyTitle:"Что проверить дальше",resultComplex:"Нужна дополнительная проверка",resultSingle:"Предварительный ориентир",resultMultiple:"Могут потребоваться несколько форм",resultForeign:"Зарубежный доход требует отдельной проверки",reasonWork:"Для дохода от польского плательщика PIT-37 часто служит отправной точкой; проверьте полноту PIT-11 и договоров.",reasonBusiness:"Форма зависит от способа налогообложения деятельности; ориентир не заменяет проверку официальных условий.",reasonRental:"PIT-28 может относиться только к подтверждённой частной аренде; тип деятельности может изменить форму.",reasonInvestment:"PIT-38 может относиться к подтверждённым доходам от капитала, включая ценные бумаги.",reasonForeign:"В зависимости от резидентства, вида дохода и международных соглашений могут применяться PIT-36 и PIT/ZG. Проверьте официальные правила.",reasonOther:"По ответам нельзя надёжно определить форму. Сверьте документы и официальные пояснения.",form37:"Возможный ориентир: PIT-37",form36:"Возможный ориентир: PIT-36",form36l:"Возможный ориентир: PIT-36L",form28:"Возможный ориентир: PIT-28",form38:"Возможный ориентир: PIT-38",formNeedCheck:"Форму нужно уточнить",answerWork:"Работа через польского плательщика",answerBusiness:"Собственная деятельность",answerRental:"Аренда",answerInvestments:"Инвестиционный доход",answerForeign:"Доход за рубежом",answerOther:"Другое / нет уверенности",yes:"Да",no:"Нет",unsureAnswer:"Не знаю",familyLabel:"Семейные обстоятельства / льготы",contractsLabel:"Выбранные договоры",pit11Label:"PIT-11 от всех плательщиков",businessMethodLabel:"Способ налогообложения",rentalTypeLabel:"Тип аренды",capitalLabel:"Доходы от капитала",checkWork:"Сопоставьте полученные PIT-11 со всеми договорами и проверьте, прислал ли плательщик недостающие документы.",checkContract:"Убедитесь, что каждый тип договора и плательщик учтены в годовых сведениях.",checkBusinessScale:"Проверьте официальную инструкцию PIT-36 для выбранного способа налогообложения.",checkBusinessLinear:"Проверьте официальные условия PIT-36L и необходимость других форм для дополнительных доходов.",checkBusinessLump:"Проверьте официальные условия PIT-28 для вашего ryczałt.",checkBusinessUnknown:"До выбора формы уточните способ налогообложения по документам или у бухгалтера.",checkPrivateRental:"Подтвердите, что это частная аренда вне деятельности, и сверьте учёт дохода.",checkBusinessRental:"Поскольку аренда указана в рамках деятельности, проверьте её вместе с правилами налогообложения бизнеса.",checkCapitalYes:"Сверьте тип дохода от капитала со сведениями брокера / плательщика и условиями PIT-38.",checkCapitalNo:"Проверьте, не было ли другого дохода от капитала, который нужно указать отдельно.",checkCapitalUnknown:"Уточните характер инвестиционного дохода по годовым сведениям плательщика.",checkForeign:"Проверьте резидентство, зарубежные годовые сведения и применимые соглашения об избежании двойного налогообложения.",checkOther:"Уточните источник по официальной справке и найдите соответствующую инструкцию Министерства финансов.",checkChildren:"Проверьте право на льготу на детей и нужные сведения за соответствующий год.",checkSpouse:"Проверьте условия совместного расчёта для вашей семейной ситуации.",checkReliefs:"Проверьте условия и подтверждения для каждой планируемой налоговой льготы.",checkOpp:"Сверьте номер KRS выбранной организации OPP и правила передачи 1,5%.",checkUpo:"После отправки сохраните UPO — официальное подтверждение получения декларации.",upoNote:"UPO (Urzędowe Poświadczenie Odbioru) подтверждает, что официальный сервис получил отправленную декларацию. Сохраните это подтверждение.",resultOfficial:"Открыть официальный Twój e-PIT",noData:"Не вводите PESEL, NIP, суммы дохода или данные документов."}
 };
+const UX_WORDS = {
+  uk: { shortLead:"Дізнайтеся за кілька запитань, яка декларація може вам знадобитися та що перевірити перед поданням.", heroMeta:"Кілька коротких запитань · без PESEL та фінансових даних", privacyTitle:"Без персональних даних", privacyCopy:"Ми не запитуємо PESEL, NIP, адресу, суми доходу чи номер банківського рахунку.", seasonYearTitle:"PIT за 2026 рік", seasonYearCopy:"Очікуваний період подання за 2026 рік: 15.02–30.04.2027. Дати наступного сезону слід перевіряти в офіційних повідомленнях.", quizEyebrow:"PIT-навігатор", quizTitle:"Допоможемо зорієнтуватися з PIT", quizIntro:"Відповідайте на кілька простих запитань. Ми покажемо, яка декларація може стосуватися вашої ситуації та що перевірити.", resultEyebrow:"Ваш результат", resultLikelyPrefix:"Ймовірно може стосуватися:", resultMultiplePrefix:"Можливі форми:", resultFormsTitle:"Чому ми показали цей орієнтир", answerSummaryTitle:"За вашими відповідями", planTitle:"Ваш план перед поданням PIT", clarifyTitle:"Що варто уточнити", nextActionTitle:"Готові перевірити декларацію?", nextActionCopy:"Відкрийте офіційний сервіс Міністерства фінансів Польщі, щоб переглянути підготовлену декларацію, внести зміни та подати її.", printHint:"Збережіть результат як PDF або візьміть пам’ятку до Urzędu Skarbowego чи бухгалтера.", officialCta:"Відкрити Twój e-PIT ↗", typesSubheading:"Поширені типи декларацій", checkedProgress:"{checked} з {total} перевірено", clarificationForeignResidence:"Чи є Польща моєю податковою резиденцією?", clarificationForeignZG:"Чи потрібен додаток PIT/ZG?", clarificationUkraine:"Як врахувати дохід з України та правила уникнення подвійного оподаткування?", clarificationBusinessMethod:"Який спосіб оподаткування діяльності застосовувався?", clarificationBusinessForm:"Чи стосуються мене PIT-36, PIT-36L або PIT-28?", clarificationRental:"Чи була оренда приватною та поза підприємницькою діяльністю?", clarificationInvestments:"Які доходи від капіталу потрібно зазначити та в якій формі?", clarificationOther:"Яка форма декларації стосується цього джерела доходу?", clarificationSeveral:"Чи потрібно подати окремі декларації для різних джерел доходу?" },
+  pl: { shortLead:"Odpowiedz na kilka pytań, aby sprawdzić, jaki formularz może Cię dotyczyć i co warto zweryfikować przed złożeniem.", heroMeta:"Kilka krótkich pytań · bez PESEL-u i danych finansowych", privacyTitle:"Bez danych osobowych", privacyCopy:"Nie pytamy o PESEL, NIP, adres, kwoty dochodu ani numer rachunku bankowego.", seasonYearTitle:"PIT za 2026 rok", seasonYearCopy:"Przewidywany okres składania zeznań za 2026 rok: 15.02–30.04.2027. Daty kolejnego sezonu sprawdzaj w oficjalnych komunikatach.", quizEyebrow:"Nawigator PIT", quizTitle:"Pomożemy Ci zorientować się w PIT", quizIntro:"Odpowiedz na kilka prostych pytań. Pokażemy, jaki formularz może dotyczyć Twojej sytuacji i co warto sprawdzić.", resultEyebrow:"Twój wynik", resultLikelyPrefix:"Możliwa wskazówka:", resultMultiplePrefix:"Możliwe formularze:", resultFormsTitle:"Dlaczego pokazujemy tę wskazówkę", answerSummaryTitle:"Na podstawie Twoich odpowiedzi", planTitle:"Twoja lista przed złożeniem PIT", clarifyTitle:"Co warto wyjaśnić", nextActionTitle:"Chcesz sprawdzić zeznanie?", nextActionCopy:"Otwórz oficjalną usługę Ministerstwa Finansów, aby sprawdzić przygotowane zeznanie, wprowadzić zmiany i je złożyć.", printHint:"Zapisz wynik jako PDF lub zabierz notatkę do Urzędu Skarbowego albo księgowego.", officialCta:"Otwórz Twój e-PIT ↗", typesSubheading:"Popularne formularze PIT", checkedProgress:"Sprawdzono {checked} z {total}", clarificationForeignResidence:"Czy jestem polskim rezydentem podatkowym?", clarificationForeignZG:"Czy potrzebuję załącznika PIT/ZG?", clarificationUkraine:"Jak rozliczyć dochód z Ukrainy i zasady unikania podwójnego opodatkowania?", clarificationBusinessMethod:"Jaka forma opodatkowania działalności była stosowana?", clarificationBusinessForm:"Czy dotyczą mnie formularze PIT-36, PIT-36L lub PIT-28?", clarificationRental:"Czy najem był prywatny i poza działalnością gospodarczą?", clarificationInvestments:"Jakie dochody kapitałowe należy wykazać i w którym formularzu?", clarificationOther:"Który formularz dotyczy tego źródła dochodu?", clarificationSeveral:"Czy trzeba złożyć osobne zeznania dla różnych źródeł dochodu?" },
+  ru: { shortLead:"Ответьте на несколько вопросов, чтобы узнать, какая декларация может вам понадобиться и что проверить перед подачей.", heroMeta:"Несколько коротких вопросов · без PESEL и финансовых данных", privacyTitle:"Без персональных данных", privacyCopy:"Мы не спрашиваем PESEL, NIP, адрес, суммы дохода или номер банковского счёта.", seasonYearTitle:"PIT за 2026 год", seasonYearCopy:"Ожидаемый период подачи декларации за 2026 год: 15.02–30.04.2027. Даты следующего сезона проверяйте в официальных сообщениях.", quizEyebrow:"Навигатор PIT", quizTitle:"Поможем разобраться с PIT", quizIntro:"Ответьте на несколько простых вопросов. Мы покажем, какая форма может относиться к вашей ситуации и что проверить.", resultEyebrow:"Ваш результат", resultLikelyPrefix:"Возможный ориентир:", resultMultiplePrefix:"Возможные формы:", resultFormsTitle:"Почему мы показываем этот ориентир", answerSummaryTitle:"По вашим ответам", planTitle:"Ваш план перед подачей PIT", clarifyTitle:"Что стоит уточнить", nextActionTitle:"Готовы проверить декларацию?", nextActionCopy:"Откройте официальный сервис Министерства финансов Польши, чтобы проверить подготовленную декларацию, внести изменения и подать её.", printHint:"Сохраните результат как PDF или возьмите памятку в Urząd Skarbowy или к бухгалтеру.", officialCta:"Открыть Twój e-PIT ↗", typesSubheading:"Популярные формы PIT", checkedProgress:"Проверено {checked} из {total}", clarificationForeignResidence:"Считаюсь ли я налоговым резидентом Польши?", clarificationForeignZG:"Нужно ли приложение PIT/ZG?", clarificationUkraine:"Как учесть доход из Украины и правила предотвращения двойного налогообложения?", clarificationBusinessMethod:"Какой способ налогообложения деятельности применялся?", clarificationBusinessForm:"Относятся ли ко мне PIT-36, PIT-36L или PIT-28?", clarificationRental:"Была ли аренда частной и вне предпринимательской деятельности?", clarificationInvestments:"Какие доходы от капитала нужно указать и в какой форме?", clarificationOther:"Какая форма декларации относится к этому источнику дохода?", clarificationSeveral:"Нужно ли подать отдельные декларации для разных источников дохода?" }
+};
 Object.assign(QUIZ_FLOW_WORDS.uk,{quizPrivacy:"Ваші відповіді та позначки чек-листа зберігаються лише у браузері на цьому пристрої.",pit11Unknown:"Не знаю, що таке PIT-11",foreignDetailsTitle:"Дохід з-за кордону",foreignResidentQuestion:"Чи маєте ви інформацію про своє податкове резидентство за цей рік?",foreignResidentLabel:"Інформація про податкове резидентство",otherDetailsTitle:"Інший або невідомий вид доходу",otherDocumentQuestion:"Чи маєте ви офіційний документ або річну довідку про це джерело?",otherDocumentLabel:"Документ про інше джерело",pit11Hint:"PIT-11 — це інформація від роботодавця або іншого платника про доходи, податки та внески.",type36l:"Може стосуватися діяльності, оподатковуваної за лінійною ставкою, якщо виконані офіційні умови.",formsTitle:"Можливі форми для перевірки",reportedTitle:"Що ви вказали / вже маєте",verifyTitle:"Що перевірити далі",form37:"Можливий орієнтир: PIT-37",form36:"Можливий орієнтир: PIT-36",form36l:"Можливий орієнтир: PIT-36L",form28:"Можливий орієнтир: PIT-28",form38:"Можливий орієнтир: PIT-38",formPITZG:"Перевірте, чи потрібен додаток PIT/ZG",formNeedCheck:"Форму потрібно уточнити",contract_employment:"Umowa o pracę",contract_mandate:"Umowa zlecenie",contract_work:"Umowa o dzieło",contract_unknown:"Не знаю",business_scale:"Skala podatkowa",business_linear:"Podatek liniowy",business_lump:"Ryczałt",business_unknown:"Не знаю",rental_private:"Приватна оренда",rental_business:"Оренда в межах діяльності",rental_unknown:"Не знаю",capital_yes:"Так",capital_no:"Ні",capital_unknown:"Не впевнений(-а)",family_children:"Діти",family_spouse:"Спільне розрахування з чоловіком / дружиною",family_reliefs:"Інші податкові пільги",family_opp:"Передача 1,5% OPP",family_none:"Нічого з переліченого",reasonWork:"Для доходу від польського платника PIT-37 часто є відправною точкою; перевірте, чи всі PIT-11 і договори охоплено.",reasonBusiness:"Форма залежить від способу оподаткування діяльності; орієнтир не замінює перевірки офіційних умов.",reasonRental:"PIT-28 можливий лише для підтвердженої приватної оренди; тип діяльності може змінити форму.",reasonInvestment:"PIT-38 може стосуватися підтверджених доходів від капіталу, зокрема цінних паперів.",reasonForeign:"Можуть застосовуватися PIT-36 та PIT/ZG залежно від резидентства, виду доходу й угод про уникнення подвійного оподаткування. Перевірте офіційні правила.",reasonOther:"За відповідями неможливо надійно визначити форму. Звірте документи й офіційні пояснення.",checkWork:"Зіставте отримані PIT-11 з усіма договорами й перевірте, чи платник надіслав відсутні документи.",checkContract:"Звірте, що кожен тип договору та платника враховано у річних відомостях.",checkBusinessScale:"Перевірте офіційну інструкцію PIT-36 для вашого способу оподаткування.",checkBusinessLinear:"Перевірте офіційні умови PIT-36L і чи не потрібні інші форми для додаткових доходів.",checkBusinessLump:"Перевірте офіційні умови PIT-28 для вашого ryczałt.",checkBusinessUnknown:"З’ясуйте спосіб оподаткування за документами або з бухгалтером перед вибором форми.",checkPrivateRental:"Підтвердьте, що це приватна оренда поза господарською діяльністю, та звірте облік доходу.",checkBusinessRental:"Оскільки оренду позначено як частину діяльності, перевірте її форму разом із правилами оподаткування бізнесу.",checkCapitalYes:"Звірте тип доходу від капіталу з інформацією від брокера / платника та умовами PIT-38.",checkCapitalNo:"Перевірте, чи немає іншого доходу від капіталу, який потрібно задекларувати окремо.",checkCapitalUnknown:"Уточніть природу інвестиційного доходу за річною довідкою платника.",checkForeign:"Перевірте резидентство, іноземні річні довідки та застосовні угоди про уникнення подвійного оподаткування.",checkOther:"Визначте назву джерела за офіційною довідкою та перевірте відповідну інструкцію Міністерства фінансів.",checkChildren:"Перевірте право на пільгу на дітей і потрібні дані для відповідного року.",checkSpouse:"Перевірте умови спільного розрахування для вашої сімейної ситуації.",checkReliefs:"Перевірте умови й підтвердження для кожної пільги, яку плануєте застосувати.",checkOpp:"Звірте номер KRS обраної організації OPP та правила передачі 1,5%.",checkUpo:"Після подання збережіть UPO — офіційне підтвердження отримання декларації.",upoNote:"UPO (Urzędowe Poświadczenie Odbioru) підтверджує, що офіційний сервіс отримав надіслану декларацію. Збережіть підтвердження після відправлення.",resultOfficial:"Відкрити офіційний Twój e-PIT",editAnswers:"Змінити відповіді",restart:"Почати квіз знову",yes:"Так",no:"Ні",unsureAnswer:"Не знаю",pit11Label:"PIT-11 від усіх платників",contractsLabel:"Вибрані договори",businessMethodLabel:"Спосіб оподаткування",rentalTypeLabel:"Тип оренди",capitalLabel:"Доходи від капіталу",familyLabel:"Сімейні обставини / пільги"});
 Object.assign(QUIZ_FLOW_WORDS.pl,{quizPrivacy:"Odpowiedzi i zaznaczenia listy kontrolnej są przechowywane tylko w przeglądarce na tym urządzeniu.",pit11Unknown:"Nie wiem, czym jest PIT-11",foreignDetailsTitle:"Dochód zagraniczny",foreignResidentQuestion:"Czy masz informacje o swojej rezydencji podatkowej za ten rok?",foreignResidentLabel:"Informacje o rezydencji podatkowej",otherDetailsTitle:"Inny lub nieznany rodzaj dochodu",otherDocumentQuestion:"Czy masz oficjalny dokument lub roczną informację o tym źródle?",otherDocumentLabel:"Dokument dotyczący innego źródła",pit11Hint:"PIT-11 to informacja od pracodawcy lub innego płatnika o dochodach, podatkach i składkach.",type36l:"Może dotyczyć działalności opodatkowanej podatkiem liniowym, jeśli spełnione są oficjalne warunki.",formsTitle:"Możliwe formularze do sprawdzenia",reportedTitle:"Co wskazałeś(-aś) / już masz",verifyTitle:"Co sprawdzić dalej",form37:"Możliwa wskazówka: PIT-37",form36:"Możliwa wskazówka: PIT-36",form36l:"Możliwa wskazówka: PIT-36L",form28:"Możliwa wskazówka: PIT-28",form38:"Możliwa wskazówka: PIT-38",formPITZG:"Sprawdź, czy potrzebny jest załącznik PIT/ZG",formNeedCheck:"Formularz wymaga ustalenia",contract_employment:"Umowa o pracę",contract_mandate:"Umowa zlecenie",contract_work:"Umowa o dzieło",contract_unknown:"Nie wiem",business_scale:"Skala podatkowa",business_linear:"Podatek liniowy",business_lump:"Ryczałt",business_unknown:"Nie wiem",rental_private:"Najem prywatny",rental_business:"Najem w ramach działalności",rental_unknown:"Nie wiem",capital_yes:"Tak",capital_no:"Nie",capital_unknown:"Nie mam pewności",family_children:"Dzieci",family_spouse:"Wspólne rozliczenie z małżonkiem",family_reliefs:"Inne ulgi podatkowe",family_opp:"Przekazanie 1,5% OPP",family_none:"Żadne z powyższych",reasonWork:"Przy dochodzie od polskiego płatnika PIT-37 jest częstym punktem wyjścia; sprawdź kompletność PIT-11 i umów.",reasonBusiness:"Formularz zależy od sposobu opodatkowania działalności; wskazówka nie zastępuje sprawdzenia oficjalnych warunków.",reasonRental:"PIT-28 może dotyczyć wyłącznie potwierdzonego najmu prywatnego; rodzaj działalności może zmienić formularz.",reasonInvestment:"PIT-38 może dotyczyć potwierdzonych dochodów kapitałowych, w tym papierów wartościowych.",reasonForeign:"W zależności od rezydencji, rodzaju dochodu i umów międzynarodowych mogą mieć zastosowanie PIT-36 i PIT/ZG. Sprawdź oficjalne zasady.",reasonOther:"Na podstawie odpowiedzi nie można wiarygodnie określić formularza. Sprawdź dokumenty i oficjalne informacje.",checkWork:"Porównaj otrzymane PIT-11 ze wszystkimi umowami i sprawdź, czy płatnik dosłał brakujące dokumenty.",checkContract:"Sprawdź, czy każdy rodzaj umowy i płatnika uwzględniono w rocznych informacjach.",checkBusinessScale:"Sprawdź oficjalną instrukcję PIT-36 dla wybranej formy opodatkowania.",checkBusinessLinear:"Sprawdź oficjalne warunki PIT-36L i czy dodatkowe dochody wymagają innych formularzy.",checkBusinessLump:"Sprawdź oficjalne warunki PIT-28 dla Twojego ryczałtu.",checkBusinessUnknown:"Ustal sposób opodatkowania na podstawie dokumentów lub z księgowym przed wyborem formularza.",checkPrivateRental:"Potwierdź, że to najem prywatny poza działalnością gospodarczą, i sprawdź ewidencję dochodu.",checkBusinessRental:"Ponieważ najem wskazano jako część działalności, sprawdź formularz łącznie z zasadami opodatkowania firmy.",checkCapitalYes:"Porównaj rodzaj dochodu kapitałowego z informacją od brokera / płatnika i warunkami PIT-38.",checkCapitalNo:"Sprawdź, czy nie wystąpił inny dochód kapitałowy wymagający osobnego wykazania.",checkCapitalUnknown:"Ustal charakter dochodu inwestycyjnego na podstawie rocznej informacji od płatnika.",checkForeign:"Sprawdź rezydencję, zagraniczne informacje roczne i właściwe umowy o unikaniu podwójnego opodatkowania.",checkOther:"Ustal źródło dochodu na podstawie oficjalnej informacji i sprawdź instrukcję Ministerstwa Finansów.",checkChildren:"Sprawdź prawo do ulgi na dzieci i dane wymagane za dany rok.",checkSpouse:"Sprawdź warunki wspólnego rozliczenia dla Twojej sytuacji rodzinnej.",checkReliefs:"Sprawdź warunki i dokumenty dla każdej ulgi, którą planujesz zastosować.",checkOpp:"Sprawdź numer KRS wybranej organizacji OPP i zasady przekazania 1,5%.",checkUpo:"Po wysłaniu zachowaj UPO — urzędowe potwierdzenie odbioru zeznania.",upoNote:"UPO (Urzędowe Poświadczenie Odbioru) potwierdza, że oficjalna usługa otrzymała wysłane zeznanie. Zapisz potwierdzenie.",resultOfficial:"Otwórz oficjalny Twój e-PIT",editAnswers:"Zmień odpowiedzi",restart:"Rozpocznij quiz ponownie",yes:"Tak",no:"Nie",unsureAnswer:"Nie wiem",pit11Label:"PIT-11 od wszystkich płatników",contractsLabel:"Wybrane umowy",businessMethodLabel:"Sposób opodatkowania",rentalTypeLabel:"Rodzaj najmu",capitalLabel:"Dochód kapitałowy",familyLabel:"Sytuacje rodzinne / ulgi"});
 Object.assign(QUIZ_FLOW_WORDS.ru,{quizPrivacy:"Ваши ответы и отметки чек-листа сохраняются только в браузере на этом устройстве.",pit11Unknown:"Не знаю, что такое PIT-11",foreignDetailsTitle:"Доход из-за границы",foreignResidentQuestion:"Есть ли у вас информация о налоговом резидентстве за этот год?",foreignResidentLabel:"Информация о налоговом резидентстве",otherDetailsTitle:"Другой или неизвестный вид дохода",otherDocumentQuestion:"Есть ли у вас официальный документ или годовая справка об этом источнике?",otherDocumentLabel:"Документ о другом источнике",pit11Hint:"PIT-11 — это сведения работодателя или другого плательщика о доходах, налогах и взносах.",type36l:"Может относиться к деятельности с линейным налогообложением при соблюдении официальных условий.",formsTitle:"Возможные формы для проверки",reportedTitle:"Что вы указали / уже имеете",verifyTitle:"Что проверить дальше",form37:"Возможный ориентир: PIT-37",form36:"Возможный ориентир: PIT-36",form36l:"Возможный ориентир: PIT-36L",form28:"Возможный ориентир: PIT-28",form38:"Возможный ориентир: PIT-38",formPITZG:"Проверьте, требуется ли приложение PIT/ZG",formNeedCheck:"Форму нужно уточнить",contract_employment:"Umowa o pracę",contract_mandate:"Umowa zlecenie",contract_work:"Umowa o dzieło",contract_unknown:"Не знаю",business_scale:"Skala podatkowa",business_linear:"Podatek liniowy",business_lump:"Ryczałt",business_unknown:"Не знаю",rental_private:"Частная аренда",rental_business:"Аренда в рамках деятельности",rental_unknown:"Не знаю",capital_yes:"Да",capital_no:"Нет",capital_unknown:"Не уверен(-а)",family_children:"Дети",family_spouse:"Совместный расчёт с супругом(-ой)",family_reliefs:"Другие налоговые льготы",family_opp:"Передача 1,5% OPP",family_none:"Ничего из перечисленного",reasonWork:"Для дохода от польского плательщика PIT-37 часто служит отправной точкой; проверьте полноту PIT-11 и договоров.",reasonBusiness:"Форма зависит от способа налогообложения деятельности; ориентир не заменяет проверку официальных условий.",reasonRental:"PIT-28 может относиться только к подтверждённой частной аренде; вид деятельности может изменить форму.",reasonInvestment:"PIT-38 может относиться к подтверждённым доходам от капитала, включая ценные бумаги.",reasonForeign:"В зависимости от резидентства, вида дохода и международных соглашений могут применяться PIT-36 и PIT/ZG. Проверьте официальные правила.",reasonOther:"По ответам нельзя надёжно определить форму. Сверьте документы и официальные пояснения.",checkWork:"Сопоставьте PIT-11 со всеми договорами и проверьте, прислал ли плательщик недостающие документы.",checkContract:"Убедитесь, что каждый тип договора и плательщик учтены в годовых сведениях.",checkBusinessScale:"Проверьте официальную инструкцию PIT-36 для выбранного способа налогообложения.",checkBusinessLinear:"Проверьте официальные условия PIT-36L и необходимость других форм для дополнительных доходов.",checkBusinessLump:"Проверьте официальные условия PIT-28 для вашего ryczałt.",checkBusinessUnknown:"До выбора формы уточните способ налогообложения по документам или у бухгалтера.",checkPrivateRental:"Подтвердите, что это частная аренда вне деятельности, и сверьте учёт дохода.",checkBusinessRental:"Поскольку аренда указана в рамках деятельности, проверьте её вместе с правилами налогообложения бизнеса.",checkCapitalYes:"Сверьте тип дохода от капитала со сведениями брокера / плательщика и условиями PIT-38.",checkCapitalNo:"Проверьте, не было ли другого дохода от капитала, который нужно указать отдельно.",checkCapitalUnknown:"Уточните характер инвестиционного дохода по годовым сведениям плательщика.",checkForeign:"Проверьте резидентство, зарубежные годовые сведения и применимые соглашения об избежании двойного налогообложения.",checkOther:"Уточните источник по официальной справке и найдите соответствующую инструкцию Министерства финансов.",checkChildren:"Проверьте право на льготу на детей и нужные сведения за соответствующий год.",checkSpouse:"Проверьте условия совместного расчёта для вашей семейной ситуации.",checkReliefs:"Проверьте условия и подтверждения для каждой планируемой налоговой льготы.",checkOpp:"Сверьте номер KRS выбранной организации OPP и правила передачи 1,5%.",checkUpo:"После отправки сохраните UPO — официальное подтверждение получения декларации.",upoNote:"UPO (Urzędowe Poświadczenie Odbioru) подтверждает, что официальный сервис получил отправленную декларацию. Сохраните это подтверждение.",resultOfficial:"Открыть официальный Twój e-PIT",editAnswers:"Изменить ответы",restart:"Пройти квиз заново",yes:"Да",no:"Нет",unsureAnswer:"Не знаю",pit11Label:"PIT-11 от всех плательщиков",contractsLabel:"Выбранные договоры",businessMethodLabel:"Способ налогообложения",rentalTypeLabel:"Тип аренды",capitalLabel:"Доходы от капитала",familyLabel:"Семейные обстоятельства / льготы"});
@@ -80,11 +85,10 @@ const getLanguage = () => {
 const root = document.querySelector(".pit-main");
 const helper = root?.querySelector("[data-pit-helper]");
 const printSheet = document.querySelector("[data-pit-print-sheet]");
-const checklistKey = "prywoz-pit-checklist-v1";
 const quizAnswersStorageKey = "prywoz-pit-quiz-answers-v1";
 const quizChecklistStoragePrefix = "prywoz-pit-quiz-checklist-v1";
 let language = getLanguage();
-const tr = key => EXTRA_WORDS[language]?.[key] || QUIZ_FLOW_WORDS[language]?.[key] || QUIZ_WORDS[language]?.[key] || WORDS[language]?.[key] || EXTRA_WORDS.uk[key] || QUIZ_FLOW_WORDS.uk[key] || QUIZ_WORDS.uk[key] || WORDS.uk[key] || key;
+const tr = key => EXTRA_WORDS[language]?.[key] || UX_WORDS[language]?.[key] || QUIZ_FLOW_WORDS[language]?.[key] || QUIZ_WORDS[language]?.[key] || WORDS[language]?.[key] || EXTRA_WORDS.uk[key] || UX_WORDS.uk[key] || QUIZ_FLOW_WORDS.uk[key] || QUIZ_WORDS.uk[key] || WORDS.uk[key] || key;
 
 function applyLanguage(next = getLanguage()) {
   language = LANGS.includes(next) ? next : "uk";
@@ -102,6 +106,8 @@ function applyLanguage(next = getLanguage()) {
     ru: { breadcrumbLabel: "Навигационная цепочка", relatedLabel: "Полезные сервисы PRYWOZ" }
   }[language];
   root?.querySelectorAll("[data-pit-aria]").forEach(node => { node.setAttribute("aria-label", ariaLabels[node.dataset.pitAria]); });
+  root?.querySelector(".pit-privacy")?.setAttribute("aria-label", tr("privacyTitle"));
+  root?.querySelector("[data-pit-check-progressbar]")?.setAttribute("aria-label", tr("planTitle"));
   const labels = {
     uk: { timeline: ["До кінця лютого", "15 лютого", "15 лютого — 30 квітня", "30 квітня"], sources: ["Ministerstwo Finansów — Twój e-PIT", "Ministerstwo Finansów — форми у Twój e-PIT", "Ministerstwo Finansów — інформація PIT-11 для платників", "podatki.gov.pl — доходи від роботи та строки", "Ministerstwo Finansów — діяльність за шкалою", "Ministerstwo Finansów — діяльність на лінійному податку", "Ministerstwo Finansów — приватна оренда", "Ministerstwo Finansów — інструкція PIT-38", "Ministerstwo Finansów — довідник для громадян України"] },
     pl: { timeline: ["Do końca lutego", "15 lutego", "15 lutego — 30 kwietnia", "30 kwietnia"], sources: ["Ministerstwo Finansów — Twój e-PIT", "Ministerstwo Finansów — formularze w Twój e-PIT", "Ministerstwo Finansów — informacje PIT-11 dla płatników", "podatki.gov.pl — dochody z pracy i terminy", "Ministerstwo Finansów — działalność opodatkowana skalą", "Ministerstwo Finansów — podatek liniowy", "Ministerstwo Finansów — najem prywatny", "Ministerstwo Finansów — informacja PIT-38", "Ministerstwo Finansów — poradnik dla obywateli Ukrainy"] },
@@ -133,11 +139,8 @@ function renderSeason() {
   const season = SEASONS[2026];
   const status = today < season.start ? "before" : today <= season.deadline ? "open" : "after";
   const titleKey = status === "before" ? "seasonBefore" : status === "open" ? "seasonOpen" : "seasonAfter";
-  const copyKey = status === "before" ? "seasonCopy" : status === "open" ? "seasonOpenCopy" : "seasonAfterCopy";
   const title = root?.querySelector("[data-pit-season-title]");
-  const copy = root?.querySelector("[data-pit-season-copy]");
   if (title) title.textContent = tr(titleKey);
-  if (copy) copy.textContent = tr(copyKey);
   const countdown = root?.querySelector("[data-pit-countdown]");
   if (!countdown) return;
   if (status === "after") {
@@ -165,17 +168,30 @@ function restoreQuiz() {
     const saved = JSON.parse(localStorage.getItem(quizAnswersStorageKey) || "null");
     const savedAnswers = saved?.answers && typeof saved.answers === "object" ? saved.answers : saved;
     if (savedAnswers && Array.isArray(savedAnswers.sources) && Array.isArray(savedAnswers.family)) {
-      quizState.answers = { ...quizState.answers, ...savedAnswers };
-      quizState.answers.sources = quizState.answers.sources.filter(key => SOURCE_KEYS.includes(key));
-      quizState.answers.contracts = Array.isArray(quizState.answers.contracts) ? quizState.answers.contracts : [];
-      quizState.answers.family = quizState.answers.family.filter(key => FAMILY_KEYS.includes(key));
-      const checklist = JSON.parse(localStorage.getItem(scenarioChecklistKey(quizState.answers)) || "[]");
-      quizState.checks = Array.isArray(checklist) ? checklist : [];
+      const validList = (value, allowed) => Array.isArray(value) ? [...new Set(value.filter(item => allowed.includes(item)))] : [];
+      const validChoice = (value, allowed) => allowed.includes(value) ? value : "";
+      const answers = {
+        sources: validList(savedAnswers.sources, SOURCE_KEYS),
+        family: validList(savedAnswers.family, FAMILY_KEYS),
+        contracts: validList(savedAnswers.contracts, ["employment", "mandate", "work", "unknown"]),
+        pit11: validChoice(savedAnswers.pit11, ["yes", "no", "partial", "unknown"]),
+        businessMethod: validChoice(savedAnswers.businessMethod, ["scale", "linear", "lump", "unknown"]),
+        rentalType: validChoice(savedAnswers.rentalType, ["private", "business", "unknown"]),
+        capital: validChoice(savedAnswers.capital, ["yes", "no", "unknown"]),
+        foreignResident: validChoice(savedAnswers.foreignResident, ["yes", "no", "unknown"]),
+        otherDocument: validChoice(savedAnswers.otherDocument, ["yes", "no", "unknown"])
+      };
+      if (answers.family.includes("none")) answers.family = ["none"];
+      if (answers.contracts.includes("unknown")) answers.contracts = ["unknown"];
+      quizState.answers = answers;
+      const checklist = JSON.parse(localStorage.getItem(scenarioChecklistKey(answers)) || "[]");
+      const validChecks = new Set(makeOutcome().checks);
+      quizState.checks = Array.isArray(checklist) ? [...new Set(checklist.filter(key => typeof key === "string" && validChecks.has(key)))] : [];
       quizState.step = typeof saved.step === "string" ? saved.step : "sources";
       quizState.complete = saved.complete === true;
-      syncQuizControls();
       if (!activeQuizSteps().includes(quizState.step)) quizState.step = activeQuizSteps()[0] || "sources";
       if (quizState.complete && !answersComplete()) quizState.complete = false;
+      syncQuizControls();
     }
   } catch { /* Keep the empty quiz available when local storage is unavailable. */ }
 }
@@ -207,8 +223,22 @@ function syncQuizControls() {
   }
 }
 
-function resetChecklistForChangedAnswers() {
-  quizState.checks = [];
+function readChecklistForScenario(answers) {
+  try {
+    const saved = JSON.parse(localStorage.getItem(scenarioChecklistKey(answers)) || "[]");
+    const validChecks = new Set(makeOutcome().checks);
+    return Array.isArray(saved) ? [...new Set(saved.filter(key => typeof key === "string" && validChecks.has(key)))] : [];
+  } catch { return []; }
+}
+
+function clearDeselectedBranchAnswers(previousSources, nextSources) {
+  const a = quizState.answers;
+  if (previousSources.includes("work") && !nextSources.includes("work")) { a.pit11 = ""; a.contracts = []; }
+  if (previousSources.includes("business") && !nextSources.includes("business")) a.businessMethod = "";
+  if (previousSources.includes("rental") && !nextSources.includes("rental")) a.rentalType = "";
+  if (previousSources.includes("investments") && !nextSources.includes("investments")) a.capital = "";
+  if (previousSources.includes("foreign") && !nextSources.includes("foreign")) a.foreignResident = "";
+  if (previousSources.includes("other") && !nextSources.includes("other")) a.otherDocument = "";
 }
 
 function makeReportedList() {
@@ -290,6 +320,38 @@ function makeOutcome() {
   return { title, forms: uniqueForms, reasons, checks: [...checks], complex };
 }
 
+function makeClarifications(outcome = makeOutcome()) {
+  const a = quizState.answers;
+  const items = [];
+  if (selected("foreign")) items.push("clarificationForeignResidence", "clarificationForeignZG", "clarificationUkraine");
+  if (selected("business") && (a.businessMethod === "unknown" || !a.businessMethod)) items.push("clarificationBusinessMethod", "clarificationBusinessForm");
+  if (selected("rental") && a.rentalType !== "private") items.push("clarificationRental");
+  if (selected("investments") && a.capital !== "yes") items.push("clarificationInvestments");
+  if (selected("other")) items.push("clarificationOther");
+  if (a.sources.length > 1) items.push("clarificationSeveral");
+  if (outcome.complex && items.length === 0) items.push("clarificationOther");
+  return [...new Set(items)];
+}
+
+function updateChecklistProgress(checklist) {
+  if (!checklist) return;
+  const controls = [...checklist.querySelectorAll("[data-pit-check]")];
+  const checked = controls.filter(input => input.checked).length;
+  const total = controls.length;
+  const text = root?.querySelector("[data-pit-check-progress]");
+  if (text) text.textContent = tr("checkedProgress").replace("{checked}", checked).replace("{total}", total);
+  const bar = root?.querySelector("[data-pit-check-progressbar]");
+  if (bar) {
+    bar.setAttribute("role", "progressbar");
+    bar.setAttribute("aria-valuemin", "0");
+    bar.setAttribute("aria-valuemax", String(total));
+    bar.setAttribute("aria-valuenow", String(checked));
+    bar.setAttribute("aria-valuetext", tr("checkedProgress").replace("{checked}", checked).replace("{total}", total));
+    if ("value" in bar) { bar.max = total || 1; bar.value = checked; }
+    else bar.style.setProperty("--pit-progress", `${total ? (checked / total) * 100 : 0}%`);
+  }
+}
+
 function activeQuizSteps() {
   const steps = ["sources"];
   if (selected("work")) steps.push("work");
@@ -321,7 +383,7 @@ function renderQuiz() {
   const branchStep = quizState.step === "work" ? ["work"] : quizState.step === "activity" ? ["business", "rental"] : quizState.step === "other" ? ["investments", "foreign", "other"] : [];
   helper.querySelectorAll("[data-pit-branch]").forEach(node => { node.hidden = !branchStep.includes(node.dataset.pitBranch) || !selected(node.dataset.pitBranch); });
   const progress = helper.querySelector("[data-pit-progress]");
-  if (progress) progress.textContent = tr("step").replace("{current}", currentIndex + 1).replace("{total}", Math.max(3, active.length));
+  if (progress) progress.textContent = tr("step").replace("{current}", currentIndex + 1).replace("{total}", active.length);
   const back = helper.querySelector("[data-pit-back]");
   const next = helper.querySelector("[data-pit-next]");
   if (back) { back.textContent = tr("back"); back.hidden = currentIndex === 0; }
@@ -334,19 +396,33 @@ function renderQuiz() {
   else if (final) final.querySelector("[data-pit-result-title]").textContent = tr("initialTitle");
 }
 
+function formatResultTitle(outcome) {
+  const codes = { form37: "PIT-37", form36: "PIT-36", form36l: "PIT-36L", form28: "PIT-28", form38: "PIT-38" };
+  const names = outcome.forms.filter(key => codes[key]).map(key => codes[key]);
+  if (!outcome.complex && names.length) return `${tr(names.length > 1 ? "resultMultiplePrefix" : "resultLikelyPrefix")} ${names.join(" + ")}`;
+  return tr(outcome.title);
+}
+
 function renderFinal(final) {
   const outcome = makeOutcome();
   const title = final.querySelector("[data-pit-result-title]");
-  const reasons = final.querySelector("[data-pit-result-reasons]");
+  const forms = final.querySelector("[data-pit-result-forms], [data-pit-result-reasons]");
   const reported = final.querySelector("[data-pit-reported]");
   const checklist = final.querySelector("[data-pit-result-checklist]");
-  if (title) title.textContent = tr(outcome.title);
+  if (title) title.textContent = formatResultTitle(outcome);
   const copy = final.querySelector("[data-pit-result-copy]");
-  if (copy) copy.textContent = outcome.reasons.map(key => tr(key)).join(" ");
+  if (copy) { copy.textContent = ""; copy.hidden = true; }
   const reasonList = final.querySelector("[data-pit-reasons]");
-  if (reasonList) reasonList.replaceChildren(...outcome.reasons.map(key => { const li = document.createElement("li"); li.textContent = tr(key); return li; }));
-  if (reasons) reasons.replaceChildren(...outcome.forms.map(key => { const li = document.createElement("li"); li.textContent = tr(key); return li; }));
+  if (reasonList) { reasonList.replaceChildren(); reasonList.hidden = true; }
+  if (forms) forms.replaceChildren(...outcome.reasons.map(key => { const li = document.createElement("li"); li.textContent = tr(key); return li; }));
   if (reported) reported.replaceChildren(...makeReportedList().map(text => { const li = document.createElement("li"); li.textContent = text; return li; }));
+  const clarificationSection = final.querySelector("[data-pit-clarifications]");
+  const clarifications = clarificationSection?.querySelector("[data-pit-clarification-items]");
+  if (clarificationSection && clarifications) {
+    const items = makeClarifications(outcome);
+    clarifications.replaceChildren(...items.map(key => { const li = document.createElement("li"); li.textContent = tr(key); return li; }));
+    clarificationSection.hidden = items.length === 0;
+  }
   if (checklist) checklist.replaceChildren(...outcome.checks.map(key => {
     const label = document.createElement("label");
     const input = document.createElement("input");
@@ -354,6 +430,7 @@ function renderFinal(final) {
     const text = document.createElement("span"); text.textContent = tr(key);
     label.append(input, text); return label;
   }));
+  updateChecklistProgress(checklist);
 }
 
 function renderPrintList(list, items, mode = "plain") {
@@ -380,20 +457,6 @@ function renderPrintList(list, items, mode = "plain") {
   list.hidden = items.length === 0;
 }
 
-function printQuestions(outcome) {
-  const items = [];
-  const a = quizState.answers;
-  if (selected("work") && a.pit11 !== "yes") items.push(tr("printQuestionWork"));
-  if (selected("business")) items.push(tr("printQuestionBusiness"));
-  if (selected("rental") && a.rentalType !== "private") items.push(tr("printQuestionRental"));
-  if (selected("investments")) items.push(tr("printQuestionInvestments"));
-  if (selected("foreign")) items.push(tr("printQuestionForeignResidence"), tr("printQuestionForeignZG"), tr("printQuestionUkraine"));
-  if (selected("other")) items.push(tr("printQuestionOther"));
-  if (quizState.answers.sources.length > 1) items.push(tr("printQuestionSeveral"));
-  if (outcome.complex && items.length === 0) items.push(tr("printQuestionOther"));
-  return items;
-}
-
 function printBringItems() {
   const a = quizState.answers;
   const items = [tr("printBringIdentity"), tr("printBringBank")];
@@ -407,7 +470,7 @@ function printBringItems() {
 }
 
 function renderPrintSheet() {
-  if (!printSheet || !quizState.complete) return false;
+  if (!printSheet || !quizState.complete || !answersComplete()) return false;
   const outcome = makeOutcome();
   const setText = (selector, value) => {
     const node = printSheet.querySelector(selector);
@@ -419,8 +482,8 @@ function renderPrintSheet() {
   const verifiedDate = verifiedText.match(/\b\d{2}\.\d{2}\.\d{4}\b/)?.[0] || "—";
   setText("[data-pit-print-date]", generated);
   setText("[data-pit-print-verified]", verifiedDate);
-  setText("[data-pit-print-result]", tr(outcome.title));
-  setText("[data-pit-print-explanation]", `${outcome.reasons.map(key => tr(key)).join(" ")} ${tr("printShortCaveat")}`.trim());
+  setText("[data-pit-print-result]", formatResultTitle(outcome));
+  setText("[data-pit-print-explanation]", tr("printShortCaveat"));
   const printForms = outcome.forms.map(key => tr(key));
   if (!printForms.length) printForms.push(tr("printNoForms"));
   renderPrintList(printSheet.querySelector("[data-pit-print-forms]"), printForms);
@@ -437,7 +500,7 @@ function renderPrintSheet() {
 
   const checklist = [...(root?.querySelectorAll("[data-pit-final] [data-pit-check]") || [])].map(input => ({ text: tr(input.dataset.pitCheck), checked: input.checked }));
   renderPrintList(printSheet.querySelector("[data-pit-print-checklist]"), checklist, "checklist");
-  const questions = printQuestions(outcome);
+  const questions = makeClarifications(outcome).map(key => tr(key));
   const questionsList = printSheet.querySelector("[data-pit-print-questions]");
   renderPrintList(questionsList, questions.map(text => ({ text, checked: false })), "checklist");
   if (questionsList?.closest(".pit-print-section")) questionsList.closest(".pit-print-section").hidden = questions.length === 0;
@@ -460,20 +523,23 @@ function printQuizResult() {
 
 function updateAnswer(input) {
   const a = quizState.answers;
+  const previousScenario = scenarioChecklistKey(a);
+  try { localStorage.setItem(previousScenario, JSON.stringify(quizState.checks)); } catch { /* Keep current checks in memory when storage is unavailable. */ }
   if (input.name === "pit-source") {
+    const previousSources = [...a.sources];
     a.sources = [...helper.querySelectorAll('[name="pit-source"]:checked')].map(node => node.value);
-    a.pit11 = ""; a.contracts = []; a.businessMethod = ""; a.rentalType = ""; a.capital = ""; a.foreignResident = ""; a.otherDocument = ""; a.family = [];
-    helper.querySelectorAll("input:not([name=pit-source])").forEach(node => { node.checked = false; });
-    resetChecklistForChangedAnswers();
+    clearDeselectedBranchAnswers(previousSources, a.sources);
+    syncQuizControls();
   } else if (input.name === "pit-family") {
     a.family = [...helper.querySelectorAll('[name="pit-family"]:checked')].map(node => node.value);
-    if (a.family.includes("none") && a.family.length > 1) {
+    if (input.value === "none" && input.checked) {
       a.family = ["none"];
       helper.querySelectorAll('[name="pit-family"]').forEach(node => { node.checked = node.value === "none"; });
-    } else if (a.family.includes("none") === false) {
-      helper.querySelector('[name="pit-family"][value="none"]').checked = false;
+    } else if (input.value !== "none" && input.checked) {
+      a.family = a.family.filter(value => value !== "none");
+      const none = helper.querySelector('[name="pit-family"][value="none"]');
+      if (none) none.checked = false;
     }
-    resetChecklistForChangedAnswers();
   } else {
     const fields = { "pit11":"pit11", "pit-contract":"contracts", "pit-business-method":"businessMethod", "pit-rental-type":"rentalType", "pit-capital":"capital", "pit-foreign-resident":"foreignResident", "pit-other-document":"otherDocument" };
     const key = fields[input.name];
@@ -483,8 +549,9 @@ function updateAnswer(input) {
       a.contracts = [...helper.querySelectorAll('[name="pit-contract"]:checked')].map(node => node.value);
     }
     else if (key) a[key] = input.value;
-    resetChecklistForChangedAnswers();
   }
+  const nextScenario = scenarioChecklistKey(a);
+  if (nextScenario !== previousScenario) quizState.checks = readChecklistForScenario(a);
   persistQuiz();
   renderQuiz();
 }
@@ -509,7 +576,8 @@ function focusMissingAnswer(step) {
   helper.querySelector(candidates[step])?.focus();
 }
 
-function moveNext() {
+function moveNext(event) {
+  event?.preventDefault();
   if (!stepIsValid(quizState.step)) { helper.querySelector("[data-pit-error]").hidden = false; focusMissingAnswer(quizState.step); return; }
   const steps = activeQuizSteps();
   const index = steps.indexOf(quizState.step);
@@ -518,7 +586,7 @@ function moveNext() {
   persistQuiz();
   renderQuiz();
   if (quizState.complete) root.querySelector("[data-pit-result-title]")?.focus();
-  else helper.querySelector(`[data-pit-step="${quizState.step}"] input`)?.focus();
+  else focusStepHeading(quizState.step);
 }
 
 function moveBack() {
@@ -527,7 +595,14 @@ function moveBack() {
   if (index > 0) quizState.step = steps[index - 1];
   persistQuiz();
   renderQuiz();
-  helper.querySelector(`[data-pit-step="${quizState.step}"] input`)?.focus();
+  focusStepHeading(quizState.step);
+}
+
+function focusStepHeading(step) {
+  const section = helper?.querySelector(`[data-pit-step="${step}"]`);
+  const heading = section?.querySelector(":scope > legend");
+  if (heading) { heading.focus(); return; }
+  [...(section?.querySelectorAll("input, button, select, textarea, a[href]") || [])].find(node => !node.closest("[hidden]"))?.focus();
 }
 
 function restartQuiz() {
@@ -541,10 +616,10 @@ function restartQuiz() {
   helper.querySelector("input")?.focus();
 }
 
+helper?.addEventListener("submit", event => moveNext(event));
 helper?.addEventListener("change", event => {
   if (event.target.matches("input")) updateAnswer(event.target);
 });
-helper?.querySelector("[data-pit-next]")?.addEventListener("click", moveNext);
 helper?.querySelector("[data-pit-back]")?.addEventListener("click", moveBack);
 root?.querySelector("[data-pit-edit]")?.addEventListener("click", () => { quizState.complete = false; quizState.step = "sources"; persistQuiz(); renderQuiz(); helper.querySelector('[data-pit-step="sources"] input')?.focus(); });
 root?.querySelector("[data-pit-restart]")?.addEventListener("click", restartQuiz);
@@ -554,22 +629,10 @@ root?.querySelector("[data-pit-final]")?.addEventListener("change", event => {
   if (!key) return;
   quizState.checks = event.target.checked ? [...new Set([...quizState.checks, key])] : quizState.checks.filter(item => item !== key);
   persistQuiz();
+  updateChecklistProgress(event.currentTarget.querySelector("[data-pit-result-checklist]"));
+  if (printSheet && !printSheet.hidden) renderPrintSheet();
 });
 
-function loadChecklist() {
-  let saved = {};
-  try { saved = JSON.parse(localStorage.getItem(checklistKey) || "{}"); } catch { saved = {}; }
-  root?.querySelectorAll("[data-check]").forEach(input => { input.checked = saved[input.dataset.check] === true; });
-}
-
-function saveChecklist() {
-  const values = {};
-  root?.querySelectorAll("[data-check]").forEach(input => { values[input.dataset.check] = input.checked; });
-  try { localStorage.setItem(checklistKey, JSON.stringify(values)); } catch { /* Checklist remains usable if storage is unavailable. */ }
-}
-
-root?.querySelector("[data-pit-checklist]")?.addEventListener("change", saveChecklist);
 document.addEventListener("prywoz:language-change", event => applyLanguage(event.detail?.language));
-loadChecklist();
 restoreQuiz();
 applyLanguage();
