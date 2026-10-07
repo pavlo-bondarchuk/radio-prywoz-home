@@ -17,9 +17,58 @@
     </script>
     <meta
       name="description"
-      content="РАДИО ПРИВОЗ ФМ — українське інтернет-радіо в Польщі: музика, гумор, культура, люди."
+      content="PRYWOZ — українське радіо та корисний портал у Польщі. Слухайте ефір, читайте новини, перевіряйте погоду й курси валют, користуйтеся PIT та практичними сервісами."
     >
-    <title>РАДИО ПРИВОЗ ФМ — українське радіо в Польщі</title>
+    <title>PRYWOZ — українське радіо та портал для українців у Польщі</title>
+    <link rel="canonical" href="https://prywoz.fm/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="PRYWOZ">
+    <meta property="og:title" content="PRYWOZ — радіо і корисний портал для українців у Польщі">
+    <meta property="og:description" content="Українське радіо, новини та корисні сервіси для життя у Польщі.">
+    <meta property="og:url" content="https://prywoz.fm/">
+    <meta property="og:locale" content="uk_UA">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="PRYWOZ — українське радіо та портал у Польщі">
+    <meta name="twitter:description" content="Слухайте ефір, читайте новини та користуйтеся практичними сервісами для життя у Польщі.">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://prywoz.fm/#website",
+            "url": "https://prywoz.fm/",
+            "name": "PRYWOZ",
+            "alternateName": ["PRYWOZ FM", "РАДИО ПРИВОЗ ФМ", "prywoz.fm"],
+            "publisher": { "@id": "https://prywoz.fm/#organization" }
+          },
+          {
+            "@type": "Organization",
+            "@id": "https://prywoz.fm/#organization",
+            "name": "PRYWOZ",
+            "alternateName": "PRYWOZ FM",
+            "url": "https://prywoz.fm/",
+            "email": "hello@prywoz.fm",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://prywoz.fm/assets/images/favicon-pryvoz.png",
+              "width": 512,
+              "height": 512
+            }
+          },
+          {
+            "@type": "RadioBroadcastService",
+            "@id": "https://prywoz.fm/#radio",
+            "name": "PRYWOZ FM",
+            "broadcastDisplayName": "PRYWOZ FM",
+            "url": "https://prywoz.fm/listen.html",
+            "broadcastTimezone": "Europe/Warsaw",
+            "inLanguage": "uk",
+            "broadcaster": { "@id": "https://prywoz.fm/#organization" }
+          }
+        ]
+      }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -33,7 +82,7 @@
     <link rel="stylesheet" href="./assets/styles/pages/questionnaire.css?v=20261004-font">
     <link rel="stylesheet" href="./assets/styles/components.css?v=20261005-utility-breadcrumbs">
     <link rel="stylesheet" href="./assets/styles/open-fm-redesign.css">
-    <link rel="stylesheet" href="./assets/styles/pages/portal.css?v=20261005-nav8">
+    <link rel="stylesheet" href="./assets/styles/pages/portal.css?v=20261007-home-seo1">
     <link rel="stylesheet" href="./assets/styles/pages/news.css?v=20261005-news7">
     <link rel="stylesheet" href="./assets/styles/pages/inner.css?v=20260905-radio">
     <link rel="stylesheet" href="./assets/styles/cookie-consent.css?v=20260907-volume-theme">
@@ -46,7 +95,7 @@
           <span class="logo__tagline" data-i18n="brandTagline">Перше українське<br>радіо в Польщі</span>
         </a>
 
-        <div class="portal-local-time" aria-live="off" aria-label="Локальний час у Лодзі">
+        <div class="portal-local-time" data-nosnippet aria-live="off" aria-label="Локальний час у Лодзі">
           <span class="portal-local-time__icon" aria-hidden="true"><svg class="icon"><use href="./assets/icons/lucide-sprite.svg#clock"></use></svg></span>
           <div>
             <strong><span data-local-time-city>Лодзь</span> · <time data-local-time>--:--</time></strong>
@@ -56,7 +105,7 @@
 
         <button class="header-radio" type="button" data-radio-toggle data-state="idle" aria-label="Увімкнути ефір" aria-pressed="false">
           <span class="header-radio__dot" aria-hidden="true"></span>
-          <span class="header-radio__copy"><strong data-radio-status>Радіо вимкнено</strong><span data-radio-track>РАДИО ПРИВОЗ ФМ</span></span>
+          <span class="header-radio__copy" data-nosnippet><strong data-radio-status>Радіо вимкнено</strong><span data-radio-track>РАДИО ПРИВОЗ ФМ</span></span>
           <svg class="icon" aria-hidden="true"><use href="./assets/icons/lucide-sprite.svg#play"></use></svg>
         </button>
 
@@ -119,7 +168,6 @@
     <main>
       <section class="portal-live" id="top" aria-labelledby="hero-title">
         <div class="container">
-          <h1 class="visually-hidden" id="hero-title">РАДИО ПРИВОЗ ФМ — український портал і радіо в Польщі</h1>
             <div class="live-player" id="live">
               <div class="live-player__record live-player__record--vinyl" aria-hidden="true">
                 <img
@@ -133,9 +181,9 @@
 
               <div class="live-player__meta" aria-live="polite">
                 <span class="live-player__label" data-i18n="nowOnAir">Зараз в ефірі</span>
-                <strong class="live-player__track">РАДИО ПРИВОЗ ФМ</strong>
-                <span class="live-player__host">Денний ефір · 10:00–20:00</span>
-                <span class="live-player__badge">On air</span>
+                <span class="live-player__track" data-nosnippet>РАДИО ПРИВОЗ ФМ</span>
+                <span class="live-player__host" data-nosnippet>Денний ефір · 10:00–20:00</span>
+                <span class="live-player__badge" data-nosnippet>On air</span>
               </div>
 
               <div class="live-player__controls">
@@ -171,6 +219,10 @@
                 </div>
               </div>
             </div>
+          <div class="portal-home-intro">
+            <h1 class="portal-home-intro__title" id="hero-title" data-i18n="homePositioningTitle">PRYWOZ — радіо і корисний портал для українців у Польщі</h1>
+            <p class="portal-home-intro__text" data-i18n="homePositioningLead">Слухайте українське радіо онлайн, стежте за новинами та користуйтеся сервісами для життя в Польщі.</p>
+          </div>
         </div>
       </section>
 
@@ -178,15 +230,15 @@
         <div class="container portal-utilities__grid">
           <a class="portal-utility portal-utility--weather" href="./weather.html" aria-label="Докладна погода в Лодзі">
             <span class="portal-utility__icon"><svg class="icon" aria-hidden="true"><use href="./assets/icons/lucide-sprite.svg#globe"></use></svg></span>
-            <div><strong data-weather-title>Лодзь · +18°</strong><span data-weather-meta>Мінлива хмарність</span></div>
+            <div><strong data-weather-title data-nosnippet>Лодзь · +18°</strong><span data-weather-meta data-nosnippet>Мінлива хмарність</span></div>
           </a>
           <a class="portal-utility portal-utility--currency" href="./currency.html" aria-label="Курси валют">
             <span class="portal-utility__icon"><svg class="icon" aria-hidden="true"><use href="./assets/icons/lucide-sprite.svg#credit-card"></use></svg></span>
-            <div><strong data-currency-title>Курси валют</strong><span data-currency-meta>НБУ · bank.gov.ua</span></div>
+            <div><strong data-currency-title data-nosnippet>Курси валют</strong><span data-currency-meta>НБУ · bank.gov.ua</span></div>
           </a>
           <article class="portal-utility portal-utility--air">
             <span class="portal-utility__icon"><svg class="icon" aria-hidden="true"><use href="./assets/icons/lucide-sprite.svg#radio-tower"></use></svg></span>
-            <div><strong data-air-title>Якість повітря</strong><span data-air-meta>Оновлюємо дані</span></div>
+            <div><strong data-air-title>Якість повітря</strong><span data-air-meta data-nosnippet>Оновлюємо дані</span></div>
           </article>
           <a class="portal-utility portal-utility--warning" href="https://meteo.imgw.pl/" target="_blank" rel="noopener">
             <span class="portal-utility__icon"><svg class="icon" aria-hidden="true"><use href="./assets/icons/lucide-sprite.svg#clock"></use></svg></span>
@@ -209,7 +261,7 @@
             <div>
               <strong data-pit-title>Річний PIT у Польщі</strong>
               <span data-pit-summary>PIT-11 · Перевірити →</span>
-              <span data-pit-status role="status" aria-live="polite"></span>
+              <span data-pit-status data-nosnippet role="status" aria-live="polite"></span>
             </div>
           </a>
         </div>
@@ -224,7 +276,7 @@
                 <h2 id="news-title" data-news-copy="homeTitle">Головне сьогодні</h2>
               </div>
               <div class="portal-news__head-actions">
-                <span class="news-health" id="news-health" role="status" aria-live="polite">Завантажуємо новини…</span>
+                <span class="news-health" id="news-health" data-nosnippet role="status" aria-live="polite">Завантажуємо новини…</span>
                 <a class="portal-section-link" href="./news-sources.html" data-news-copy="sources">Джерела</a>
               </div>
             </div>
@@ -241,7 +293,7 @@
             </div>
 
             <article class="portal-featured-news" id="news-feature" aria-live="polite" aria-busy="true">
-              <div class="portal-featured-news__copy">
+              <div class="portal-featured-news__copy" data-nosnippet>
                 <h3>Завантажуємо головні новини</h3>
                 <p>Новини з посиланнями на оригінальні матеріали.</p>
               </div>
@@ -551,7 +603,7 @@
       </div>
     </footer>
 
-    <section class="cookie-consent" data-cookie-consent hidden aria-label="Налаштування аналітичних cookie">
+    <section class="cookie-consent" data-cookie-consent data-nosnippet hidden aria-label="Налаштування аналітичних cookie">
       <div class="cookie-consent__copy">
         <strong>Аналітичні cookie</strong>
         <p>Допоможіть нам зрозуміти, як відвідувачі користуються сайтом. Рекламні cookie не використовуються.</p>
@@ -581,7 +633,7 @@
     </div>
 
     <script src="./assets/scripts/radio-persistence.js?v=20261004-navigation-fix"></script>
-    <script src="./assets/scripts/pages/home.js?v=20261005-nav3"></script>
+    <script src="./assets/scripts/pages/home.js?v=20261007-home-seo1"></script>
     <script src="./assets/scripts/pages/inner.js?v=20261005-nav3"></script>
     <script type="module" src="./assets/scripts/news/news-render.js?v=20261005-news7"></script>
     <script src="./assets/scripts/pages/questionnaire.js?v=20260824-card"></script>
