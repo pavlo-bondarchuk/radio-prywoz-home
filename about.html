@@ -47,7 +47,16 @@
         document.documentElement.style.colorScheme = t;
       } catch {}
     </script>
-    <title>Про нас — РАДИО ПРИВОЗ ФМ</title>
+    <title>Про PRYWOZ — українське радіо і корисний портал у Польщі</title>
+    <meta name="description" content="PRYWOZ — українське радіо та практичний портал для українців у Польщі: ефір, новини, корисні сервіси й інформація з першоджерел.">
+    <link rel="canonical" href="https://prywoz.fm/about.html">
+    <meta property="og:title" content="Про PRYWOZ — українське радіо і корисний портал у Польщі">
+    <meta property="og:description" content="Радіо, новини та корисні сервіси для українців у Польщі — в одному місці.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://prywoz.fm/about.html">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Про PRYWOZ — радіо і портал у Польщі">
+    <meta name="twitter:description" content="Українське радіо, новини та практичні сервіси для життя в Польщі.">
     <link
       rel="icon"
       type="image/png"
@@ -62,13 +71,13 @@
       rel="stylesheet"
       href="./assets/styles/pages/portal.css?v=20261005-nav8"
     />
-    <link rel="stylesheet" href="./assets/styles/pages/inner.css?v=20261004-unified-footer" />
+    <link rel="stylesheet" href="./assets/styles/pages/inner.css?v=20261007-about-redesign" />
     <link
       rel="stylesheet"
       href="./assets/styles/cookie-consent.css?v=20260907-volume-theme"
     />
   </head>
-  <body class="page" data-page="about">
+  <body class="page about-page" data-page="about">
     <!-- Google Tag Manager (noscript) --><noscript
       ><iframe
         src="https://www.googletagmanager.com/ns.html?id=GTM-ML3C4NWZ"
@@ -78,58 +87,148 @@
       ></iframe></noscript
     ><!-- End Google Tag Manager (noscript) -->
     <header class="site-header" data-site-header></header>
-    <main class="inner-main">
+    <main class="inner-main about-main">
       <div class="container">
         <nav class="utility-breadcrumbs" aria-label="Навігаційний шлях" data-i18n-aria="breadcrumbsAria"><a href="./index.html" data-i18n="home">Головна</a><span aria-hidden="true">/</span><span aria-current="page" data-i18n="project">Про проєкт</span></nav>
-        <header class="inner-hero">
-          <p class="inner-kicker">Про проєкт</p>
-          <h1 class="inner-title">Радіо для наших у Польщі</h1>
-          <p class="inner-lead">
-            РАДИО ПРИВОЗ ФМ об’єднує українську музику, корисні новини, культуру
-            та практичні сервіси для життя в Польщі.
-          </p>
+        <header class="about-brand">
+          <p class="inner-kicker" data-i18n="aboutKicker">Українське медіа в Польщі</p>
+          <h1 class="inner-title" data-i18n="aboutHeroTitle">PRYWOZ — для своїх у Польщі</h1>
+          <p class="inner-lead" data-i18n="aboutHeroLead">Радіо, новини та корисні сервіси для українців у Польщі — в одному місці.</p>
+          <p class="about-brand__tagline" data-i18n="aboutTagline">Слухати. Знати. Вирішувати.</p>
         </header>
-        <div class="inner-grid">
-          <article class="inner-card">
-            <h2>Живий ефір 24/7</h2>
-            <p>Денна власна програма й нічний музичний потік.</p>
+
+        <section class="about-story" aria-labelledby="about-story-title">
+          <p class="inner-kicker" data-i18n="aboutRadioOrigin">Усе почалося з радіо</p>
+          <h2 id="about-story-title" data-i18n="aboutStoryTitle">Радіо залишається серцем PRYWOZ</h2>
+          <p data-i18n="aboutStoryStart">PRYWOZ народився як українське радіо в Польщі — з музикою, гумором, живим словом і відчуттям дому.</p>
+          <p data-i18n="aboutStoryNeeds">А життя слухачів — це ще робота, документи, новини, погода, транспорт і щоденні питання.</p>
+          <p data-i18n="aboutStoryPortal">Тому навколо радіо виріс корисний портал для українців, які живуть у Польщі.</p>
+          <p data-i18n="aboutStoryClose">Радіо — наше серце. Сайт допомагає з усім іншим.</p>
+        </section>
+
+        <section class="about-pillars" aria-label="Слухати, знати, вирішувати" data-i18n-aria="aboutPillarsLabel">
+          <article class="about-pillar">
+            <h2 data-i18n="aboutListenTitle">Слухати</h2>
+            <p data-i18n="aboutListenText">Живий ефір, музика, програми, розмови й люди, яких цікаво слухати.</p>
+            <a href="./listen.html" data-i18n="aboutListenCta">Слухати ефір →</a>
           </article>
-          <article class="inner-card">
-            <h2>Українською</h2>
-            <p>Зрозуміло про життя, документи й можливості в Польщі.</p>
+          <article class="about-pillar">
+            <h2 data-i18n="aboutKnowTitle">Знати</h2>
+            <p data-i18n="aboutKnowText">Важливе з Польщі, України та світу з посиланнями на джерела.</p>
+            <a href="./news.html" data-i18n="aboutNewsDirection">Новини</a>
           </article>
-          <article class="inner-card">
-            <h2>Для громади</h2>
-            <p>Новини, ініціативи, події та контакти українського бізнесу.</p>
+          <article class="about-pillar">
+            <h2 data-i18n="aboutSolveTitle">Вирішувати</h2>
+            <p data-i18n="aboutSolveText">Практичні сервіси, щоб швидше розібратися з повсякденними справами в Польщі.</p>
+            <a href="./pit.html" data-i18n="aboutServicesDirection">Корисні сервіси</a>
           </article>
-        </div>
-        <section class="inner-section">
-          <div class="inner-section__head"><h2>Як долучитися</h2></div>
-          <div class="inner-list">
-            <article>
-              <div>
-                <h3>Стати гостем ефіру</h3>
-                <p>Розкажіть про свій проєкт, подію або корисну ініціативу.</p>
-              </div>
-              <a href="mailto:hello@prywoz.fm?subject=Гість ефіру"
-                >Написати →</a
-              >
+        </section>
+
+        <section class="about-directions" aria-labelledby="about-directions-title">
+          <div class="inner-section__head"><h2 id="about-directions-title" data-i18n="aboutDirectionsTitle">Що є на PRYWOZ</h2></div>
+          <div class="about-directions__grid">
+            <article class="about-direction">
+              <h3 data-i18n="aboutRadioDirection">Радіо</h3>
+              <p data-i18n="aboutRadioDirectionText">Живий ефір, музика, авторські програми та розмови.</p>
+              <a href="./programs.html" data-i18n="aboutListenCta">Слухати ефір →</a>
             </article>
-            <article>
-              <div>
-                <h3>Додати бізнес</h3>
-                <p>Запропонуйте компанію чи фахівця для каталогу.</p>
+            <article class="about-direction">
+              <h3 data-i18n="aboutNewsDirection">Новини</h3>
+              <p data-i18n="aboutNewsDirectionText">Публікації з Польщі, України та світу; джерело й перехід до оригіналу вказані в матеріалах.</p>
+              <a href="./news-sources.html" data-i18n="aboutNewsSourcesLink">Джерела новин →</a>
+            </article>
+            <article class="about-direction">
+              <h3 data-i18n="aboutServicesDirection">Корисні сервіси</h3>
+              <p data-i18n="aboutServicesDirectionText">Погода, валюти, калькулятори та навігатор PIT.</p>
+              <div class="about-direction__links">
+                <a href="./weather.html" data-i18n="aboutWeatherLink">Погода</a>
+                <a href="./currency.html" data-i18n="aboutCurrencyLink">Курси валют</a>
+                <a href="./salary-calculator.html" data-i18n="aboutSalaryLink">Калькулятор зарплати</a>
+                <a href="./work-calendar.html" data-i18n="aboutCalendarLink">Робочий календар</a>
+                <a href="./rent-calculator.html" data-i18n="aboutRentLink">Калькулятор оренди</a>
+                <a href="./pit.html" data-i18n="aboutPitLink">Навігатор PIT</a>
               </div>
-              <a href="mailto:hello@prywoz.fm?subject=Додати бізнес"
-                >Подати →</a
-              >
+            </article>
+            <article class="about-direction">
+              <h3 data-i18n="aboutLifeDirection">Життя у Польщі</h3>
+              <p data-i18n="aboutLifeDirectionText">Добірка міських і державних сервісів для практичних повсякденних питань.</p>
+              <a href="./services.html" data-i18n="aboutCityServicesLink">Міські сервіси →</a>
+            </article>
+            <article class="about-direction">
+              <h3 data-i18n="aboutCommunityDirection">Український бізнес і громада</h3>
+              <p data-i18n="aboutCommunityDirectionText">Категорії для пошуку компаній і фахівців та можливість запропонувати редакції нову компанію.</p>
+              <a href="./business.html" data-i18n="aboutBusinessLink">Бізнес-каталог →</a>
             </article>
           </div>
+        </section>
+
+        <section class="about-trust" aria-labelledby="about-trust-title">
+          <p class="inner-kicker" data-i18n="aboutTrustEyebrow">Прозорість і джерела</p>
+          <h2 id="about-trust-title" data-i18n="aboutTrustTitle">Як ми працюємо з інформацією</h2>
+          <p data-i18n="aboutTrustLead">Для нас важливо не лише показати відповідь, а й пояснити, звідки вона взялася.</p>
+          <ul class="about-trust__sources">
+            <li><a href="https://www.gov.pl/" target="_blank" rel="noopener noreferrer" data-i18n="aboutSourceGov">Державна інформація Польщі · gov.pl</a></li>
+            <li><a href="https://www.podatki.gov.pl/" target="_blank" rel="noopener noreferrer" data-i18n="aboutSourceFinance">Податкова інформація · Ministerstwo Finansów</a></li>
+            <li><a href="https://bank.gov.ua/" target="_blank" rel="noopener noreferrer" data-i18n="aboutSourceUkrNbu">Курси валют · Національний банк України</a></li>
+            <li><a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer" data-i18n="aboutSourceWeather">Прогноз · Open-Meteo</a></li>
+            <li><a href="./news-sources.html" data-i18n="aboutSourceNews">Новини · список джерел PRYWOZ</a></li>
+          </ul>
+          <p class="about-trust__updated" data-i18n="aboutTrustUpdated">Якщо дані можуть змінюватися, ми намагаємося показувати час оновлення та посилання на першоджерело.</p>
+          <div class="about-trust__disclaimer">
+            <h3 data-i18n="aboutTrustDisclaimerTitle">Перевіряйте першоджерело</h3>
+            <p data-i18n="aboutTrustDisclaimer">PRYWOZ допомагає швидше знайти інформацію, але не замінює державні установи, банки, лікарів, бухгалтерів або юридичних консультантів. Перед важливим рішенням перевірте першоджерело.</p>
+          </div>
+        </section>
+
+        <section class="about-ownership" aria-labelledby="about-ownership-title">
+          <div class="inner-section__head"><h2 id="about-ownership-title" data-i18n="aboutOwnershipTitle">Що створюємо ми, а що надходить із джерел</h2></div>
+          <div class="about-ownership__grid">
+            <article class="about-ownership__column">
+              <h3 data-i18n="aboutOwnershipPrywozTitle">Контент PRYWOZ</h3>
+              <p data-i18n="aboutOwnershipPrywozText">Ми створюємо радіоефір, програми, інтерв’ю, власні пояснювальні матеріали та інтерфейси сервісів.</p>
+            </article>
+            <article class="about-ownership__column">
+              <h3 data-i18n="aboutOwnershipExternalTitle">Зовнішні дані та публікації</h3>
+              <p data-i18n="aboutOwnershipExternalText">Курси, погода, офіційні відомості й новини можуть надходити від зовнішніх джерел. Ми намагаємося чітко позначати джерело та відрізняти такі матеріали від власного контенту PRYWOZ.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="about-culture">
+          <p class="inner-kicker" data-i18n="aboutCultureEyebrow">Наш характер</p>
+          <h2 data-i18n="aboutCultureTitle">Український характер. Польське сьогодення.</h2>
+          <p data-i18n="aboutCultureText">Ми говоримо про життя українців у Польщі без зайвого офіціозу — з повагою до країни, у якій живемо, і любов’ю до культури, яку привезли із собою.</p>
+          <p data-i18n="aboutCultureClose">PRYWOZ — місце, де можна почути своїх і знайти щось корисне для себе.</p>
+        </section>
+
+        <section class="about-privacy" aria-labelledby="about-privacy-title">
+          <h2 id="about-privacy-title" data-i18n="aboutPrivacyTitle">Приватність</h2>
+          <p data-i18n="aboutPrivacyCookies">Аналітичні cookie працюють лише за вашою згодою; рекламне сховище вимкнене.</p>
+          <p data-i18n="aboutPrivacyLocal">Відповіді PIT-навігатора зберігаються локально у браузері та не надсилаються на сервер PRYWOZ.</p>
+          <p data-i18n="aboutPrivacyPit">Для роботи PIT-навігатора не потрібні PESEL, NIP, адреса чи суми доходу.</p>
+        </section>
+
+        <section class="about-join" aria-labelledby="about-join-title">
+          <div class="inner-section__head"><h2 id="about-join-title" data-i18n="aboutJoinTitle">Як долучитися</h2></div>
+          <div class="about-join__list">
+            <article class="about-join__item"><h3 data-i18n="aboutGuestTitle">Стати гостем ефіру</h3><p data-i18n="aboutGuestText">Розкажіть про свій проєкт, подію або корисну ініціативу.</p></article>
+            <article class="about-join__item"><h3 data-i18n="aboutBusinessTitle">Додати бізнес</h3><p data-i18n="aboutBusinessText">Запропонуйте компанію чи фахівця для каталогу PRYWOZ.</p></article>
+            <article class="about-join__item"><h3 data-i18n="aboutTopicTitle">Запропонувати тему</h3><p data-i18n="aboutTopicText">Підкажіть новину, проблему або тему, про яку варто розповісти.</p></article>
+            <article class="about-join__item"><h3 data-i18n="aboutErrorTitle">Повідомити про помилку</h3><p data-i18n="aboutErrorText">Якщо інформація застаріла або ми помилилися — напишіть нам, ми перевіримо.</p></article>
+            <article class="about-join__item"><h3 data-i18n="aboutPartnerTitle">Партнерство і співпраця</h3></article>
+          </div>
+          <a class="button button--primary" href="mailto:hello@prywoz.fm" data-i18n="aboutContactAction">Написати редакції →</a>
+        </section>
+
+        <section class="about-closing" aria-label="PRYWOZ">
+          <h2 data-i18n="aboutClosingTitle">Радіо для своїх.</h2>
+          <p data-i18n="aboutClosingLead">Портал для життя.</p>
+          <a href="./listen.html" data-i18n="aboutListenCta">Слухати ефір →</a>
         </section>
       </div>
     </main>
     <script src="./assets/scripts/radio-persistence.js?v=20261004-navigation-fix"></script>
-    <script src="./assets/scripts/pages/inner.js?v=20261005-nav3"></script>
+    <script src="./assets/scripts/pages/inner.js?v=20261007-about-redesign-i18n"></script>
     <section
       class="cookie-consent"
       data-cookie-consent
