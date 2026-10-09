@@ -26,6 +26,7 @@
     languageChoice: ["Вибір мови", "Wybór języka", "Выбор языка"],
     mainNavigation: ["Основна навігація", "Nawigacja główna", "Основная навигация"],
     business: ["Бізнес", "Biznes", "Бизнес"],
+    businessPartnership: ["Для бізнесу", "Dla biznesu", "Для бизнеса"],
     programs: ["Програми", "Programy", "Программы"],
     about: ["Про нас", "O nas", "О нас"],
     contacts: ["Контакти", "Kontakt", "Контакты"],
@@ -545,6 +546,9 @@
     );
 
   document.querySelector('.site-footer__bottom')?.insertAdjacentHTML('beforeend', '<p class="site-footer__credits"><span data-i18n="siteVersion"></span> · <span data-i18n="designCredit"></span> <a href="https://bonddesign.top" target="_blank" rel="noopener noreferrer" data-design-credit>bonddesign</a></p>');
+  if (!document.querySelector('.site-footer a[href="./business-partnership.html"]')) {
+    document.querySelector('.footer-contacts')?.insertAdjacentHTML('beforeend', '<a class="footer-contacts__link" href="./business-partnership.html" data-i18n="businessPartnership"></a>');
+  }
 
   const annotate = () =>
     document

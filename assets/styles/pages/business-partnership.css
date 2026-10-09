@@ -1,0 +1,30 @@
+.business-partnership-page .partnership-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.business-partnership-page .partnership-grid .inner-card {
+  min-width: 0;
+}
+
+.business-partnership-page .partnership-grid .inner-card:last-child {
+  grid-column: 1 / -1;
+}
+
+.business-partnership-page .partnership-grid .inner-card p {
+  overflow-wrap: anywhere;
+}
+
+.business-partnership-page .partnership-grid .inner-card a.button--primary {
+  color: var(--ds-color-text-inverse);
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 680px) {
+  .business-partnership-page .partnership-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .business-partnership-page .partnership-grid .inner-card:last-child {
+    grid-column: auto;
+  }
+}
