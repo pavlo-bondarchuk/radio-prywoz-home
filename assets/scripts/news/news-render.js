@@ -1,6 +1,7 @@
 import { getNews } from "./news-api.js?v=20261005-news6";
-import { getNewsLanguage, newsText } from "./news-i18n.js?v=20261005-news6";
+import { getNewsLanguage, newsText } from "./news-i18n.js?v=20261009-hot1";
 import { externalNewsLink, filterNews, newsDate, newsTimestamp, normalizeNewsItems, rankTodayNews } from "./news-utils.js?v=20261005-news6";
+import { renderHotNews, renderHotNewsLoading } from "./news-hot.js?v=20261009-hot1";
 
 const byId = (id) => document.getElementById(id);
 const node = (tag, className, text) => {
@@ -277,6 +278,8 @@ const startFeedPage = (home) => {
   const list = byId("news-list");
   const archive = byId("news-feed");
   const todayStories = byId("news-today-stories");
+  const hotRoot = document.querySelector("[data-news-hot]");
+  const hotRail = document.querySelector("[data-news-hot-stories]");
   const more = byId("news-more");
   const health = byId("news-health");
   const filterButtons = [...document.querySelectorAll("[data-news-filter-button]")];
@@ -319,6 +322,7 @@ const startFeedPage = (home) => {
       } else {
         renderState(archive, newsText("loading", language), { language });
         renderLoadingStories(todayStories);
+        renderHotNewsLoading(hotRoot, hotRail, language);
       }
       if (list) list.replaceChildren();
       if (more) more.hidden = true;
@@ -330,11 +334,13 @@ const startFeedPage = (home) => {
         renderState(archive, newsText("apiError", language), { error: true, retry: true, language });
         todayStories?.replaceChildren();
       }
+      if (hotRoot) hotRoot.hidden = true;
       if (list) list.replaceChildren();
       if (more) more.hidden = true;
       return;
     }
     const { priority, remaining } = orderedItems();
+    if (!home && hotRoot && hotRail) renderHotNews(hotRoot, hotRail, items, priority, language, rankTodayNews, Boolean(responseData?.stale || failure));
     if (home) {
       renderFeatured(feature, priority[0], language);
       list.replaceChildren(...[...priority.slice(1), ...remaining.slice(0, Math.max(0, pageSize - priority.length))].map((item) => renderHomeRow(item, language)));
