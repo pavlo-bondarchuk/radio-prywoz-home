@@ -1,5 +1,5 @@
 import { getNews } from "./news-api.js?v=20261005-news6";
-import { getNewsLanguage, newsText } from "./news-i18n.js?v=20261010-hot-carousel1";
+import { getNewsLanguage, newsText } from "./news-i18n.js?v=20261010-videos1";
 import { externalNewsLink, filterNews, newsDate, newsTimestamp, normalizeNewsItems, rankTodayNews } from "./news-utils.js?v=20261005-news6";
 import { renderHotNews, renderHotNewsLoading } from "./news-hot.js?v=20261010-hot-carousel2";
 
@@ -271,6 +271,13 @@ const updateCopy = (language) => {
   });
   document.querySelectorAll("[data-news-filters]").forEach((group) => group.setAttribute("aria-label", newsText("filters", language)));
   document.querySelectorAll("[data-news-archive-label]").forEach((region) => region.setAttribute("aria-label", newsText("archiveLabel", language)));
+  document.querySelectorAll("[data-news-video-title-placeholder]").forEach((element) => { element.textContent = newsText("videoTitle", language); });
+  document.querySelectorAll("[data-news-video-label-floating]").forEach((element) => { element.textContent = newsText("videoTag", language); });
+  document.querySelectorAll("[data-news-video-label-section]").forEach((element) => { element.textContent = newsText("videoTitle", language); });
+  document.querySelectorAll("[data-news-video-tag]").forEach((element) => { element.setAttribute("aria-label", newsText("videoOpen", language)); });
+  document.querySelectorAll("[data-news-video-track]").forEach((element) => { element.setAttribute("aria-label", newsText("videoShelf", language)); });
+  document.querySelectorAll("[data-news-video-prev]").forEach((element) => { element.setAttribute("aria-label", newsText("videoPrevious", language)); element.title = newsText("videoPrevious", language); });
+  document.querySelectorAll("[data-news-video-next]").forEach((element) => { element.setAttribute("aria-label", newsText("videoNext", language)); element.title = newsText("videoNext", language); });
 };
 
 const startFeedPage = (home) => {
