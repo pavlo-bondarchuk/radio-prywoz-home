@@ -83,4 +83,124 @@ export const newsVideos = [
     url: "https://www.ukrinform.ua/rubric-ato/4170968-sili-bezpilotnih-sistem-urazili-majze-piv-tisaci-energovuzliv-u-rosii-ta-na-tot-za-tri-misaci.html",
     thumbnail: "https://i.ytimg.com/vi/5DPCIEP-s0E/hqdefault.jpg", publishedAt: "2026-10-04", videoId: "5DPCIEP-s0E", source: { uk: "Укрінформ", pl: "Ukrinform", ru: "Укринформ" },
   },
+  {
+    id: "ukrinform-thousand-spring-rules", enabled: true, featured: false,
+    title: {
+      uk: "Чи змінять правила «Тисячовесни»? Ризик маніпуляцій з балами",
+      pl: "Czy zmienią się zasady „Tysiącowiosny”? Ryzyko manipulacji punktacją",
+      ru: "Изменят ли правила «Тысячи весен»? Риск манипуляций с баллами",
+    },
+    url: "https://www.youtube.com/watch?v=6Erbtq3frbQ",
+    thumbnail: "https://i.ytimg.com/vi/6Erbtq3frbQ/hqdefault.jpg", publishedAt: "2026-09-24", videoId: "6Erbtq3frbQ", source: { uk: "Укрінформ", pl: "Ukrinform", ru: "Укринформ" },
+  },
+  {
+    id: "ukrinform-zelensky-macron-new-york", enabled: true, featured: false,
+    title: {
+      uk: "Зустріч Зеленського і Макрона на полях ООН",
+      pl: "Spotkanie Zełenskiego i Macrona podczas Zgromadzenia ONZ",
+      ru: "Встреча Зеленского и Макрона на полях ООН",
+    },
+    url: "https://www.youtube.com/watch?v=qUw7dLfl-5U",
+    thumbnail: "https://i.ytimg.com/vi/qUw7dLfl-5U/hqdefault.jpg", publishedAt: "2026-09-22", videoId: "qUw7dLfl-5U", source: { uk: "Укрінформ", pl: "Ukrinform", ru: "Укринформ" },
+  },
+  {
+    id: "ukrinform-gostomel-book-prague", enabled: true, featured: false,
+    title: {
+      uk: "У Празі презентували книгу «Вижити в Гостомелі»",
+      pl: "W Pradze zaprezentowano książkę „Przeżyć w Hostomlu”",
+      ru: "В Праге представили книгу «Выжить в Гостомеле»",
+    },
+    url: "https://www.youtube.com/watch?v=v-qyFcVivzs",
+    thumbnail: "https://i.ytimg.com/vi/v-qyFcVivzs/hqdefault.jpg", publishedAt: "2026-09-20", videoId: "v-qyFcVivzs", source: { uk: "Укрінформ", pl: "Ukrinform", ru: "Укринформ" },
+  },
+  {
+    id: "ukrinform-dpsu-belarus-brigade", enabled: true, featured: false,
+    title: {
+      uk: "Білорусь формує бригаду за 40 км від кордону: що відомо",
+      pl: "Białoruś tworzy brygadę 40 km od granicy: co wiadomo",
+      ru: "Беларусь формирует бригаду в 40 км от границы: что известно",
+    },
+    url: "https://www.youtube.com/watch?v=gZbiv8wscBQ",
+    thumbnail: "https://i.ytimg.com/vi/gZbiv8wscBQ/hqdefault.jpg", publishedAt: "2026-09-19", videoId: "gZbiv8wscBQ", source: { uk: "Укрінформ", pl: "Ukrinform", ru: "Укринформ" },
+  },
+  {
+    id: "ukrinform-fuel-reserves-analysis", enabled: true, featured: false,
+    title: {
+      uk: "Чи варто запасатися пальним? Понад 300 ударів по АЗС",
+      pl: "Czy warto gromadzić paliwo? Ponad 300 ataków na stacje",
+      ru: "Стоит ли запасаться топливом? Более 300 атак на АЗС",
+    },
+    url: "https://www.youtube.com/watch?v=yuM10Mpr5gU",
+    thumbnail: "https://i.ytimg.com/vi/yuM10Mpr5gU/hqdefault.jpg", publishedAt: "2026-09-15", videoId: "yuM10Mpr5gU", source: { uk: "Укрінформ", pl: "Ukrinform", ru: "Укринформ" },
+  },
+  {
+    id: "ukrinform-tank-forces-day", enabled: true, featured: false,
+    title: {
+      uk: "Українські танкісти на захисті України: День танкових військ",
+      pl: "Ukraińscy czołgiści w obronie kraju: Dzień Wojsk Pancernych",
+      ru: "Украинские танкисты на защите страны: День танковых войск",
+    },
+    url: "https://www.youtube.com/watch?v=MJyt68EjEE4",
+    thumbnail: "https://i.ytimg.com/vi/MJyt68EjEE4/hqdefault.jpg", publishedAt: "2026-09-14", videoId: "MJyt68EjEE4", source: { uk: "Укрінформ", pl: "Ukrinform", ru: "Укринформ" },
+  },
+  {
+    id: "ukrinform-rosh-hashanah-uman", enabled: true, featured: false,
+    title: {
+      uk: "Рош га-Шана в Умані: паломники святкують єврейський Новий рік",
+      pl: "Rosz ha-Szana w Humaniu: pielgrzymi świętują żydowski Nowy Rok",
+      ru: "Рош ха-Шана в Умани: паломники отмечают еврейский Новый год",
+    },
+    url: "https://www.youtube.com/watch?v=aXtk75uqauc",
+    thumbnail: "https://i.ytimg.com/vi/aXtk75uqauc/hqdefault.jpg", publishedAt: "2026-09-12", videoId: "aXtk75uqauc", source: { uk: "Укрінформ", pl: "Ukrinform", ru: "Укринформ" },
+  },
+  {
+    id: "ukrinform-chestnuts-september-bloom", enabled: true, featured: false,
+    title: {
+      uk: "Каштани знову зацвіли у вересні: аномалія чи диво?",
+      pl: "Kasztany znów zakwitły we wrześniu: anomalia czy cud?",
+      ru: "Каштаны снова зацвели в сентябре: аномалия или чудо?",
+    },
+    url: "https://www.youtube.com/watch?v=w0GYCFc23BQ",
+    thumbnail: "https://i.ytimg.com/vi/w0GYCFc23BQ/hqdefault.jpg", publishedAt: "2026-09-06", videoId: "w0GYCFc23BQ", source: { uk: "Укрінформ", pl: "Ukrinform", ru: "Укринформ" },
+  },
+  {
+    id: "ukrinform-kyiv-church-bell", enabled: true, featured: false,
+    title: {
+      uk: "У Києві відтворили дзвін Десятинної церкви",
+      pl: "W Kijowie odtworzono dzwon cerkwi Dziesięcinnej",
+      ru: "В Киеве воссоздали колокол Десятинной церкви",
+    },
+    url: "https://www.youtube.com/watch?v=xWtBni1nrss",
+    thumbnail: "https://i.ytimg.com/vi/xWtBni1nrss/hqdefault.jpg", publishedAt: "2026-09-04", videoId: "xWtBni1nrss", source: { uk: "Укрінформ", pl: "Ukrinform", ru: "Укринформ" },
+  },
+  {
+    id: "ukrinform-veteran-teren-ptsd", enabled: true, featured: false,
+    title: {
+      uk: "Олександр Терен: не всі ветерани мають ПТСР",
+      pl: "Ołeksandr Teren: nie każdy weteran ma PTSD",
+      ru: "Александр Терен: не у всех ветеранов есть ПТСР",
+    },
+    url: "https://www.youtube.com/watch?v=ldmexWoq6yo",
+    thumbnail: "https://i.ytimg.com/vi/ldmexWoq6yo/hqdefault.jpg", publishedAt: "2026-08-29", videoId: "ldmexWoq6yo", source: { uk: "Укрінформ", pl: "Ukrinform", ru: "Укринформ" },
+  },
+  {
+    id: "ukrinform-mountain-wind-farm", enabled: true, featured: false,
+    title: {
+      uk: "Вітропарк у горах: чи не зашкодять турбіни природі?",
+      pl: "Park wiatrowy w górach: czy turbiny zaszkodzą przyrodzie?",
+      ru: "Ветряной парк в горах: не навредят ли турбины природе?",
+    },
+    url: "https://www.youtube.com/watch?v=XQbPHqg-O78",
+    thumbnail: "https://i.ytimg.com/vi/XQbPHqg-O78/hqdefault.jpg", publishedAt: "2026-08-29", videoId: "XQbPHqg-O78", source: { uk: "Укрінформ", pl: "Ukrinform", ru: "Укринформ" },
+  },
+  {
+    id: "ukrinform-police-phantom-system", enabled: true, featured: false,
+    title: {
+      uk: "Поліцейські «Фантоми» повернулися на дороги",
+      pl: "Policyjne „Phantomy” wróciły na drogi",
+      ru: "Полицейские «Фантомы» вернулись на дороги",
+    },
+    url: "https://www.youtube.com/watch?v=Zm1Uu4a6NpE",
+    thumbnail: "https://i.ytimg.com/vi/Zm1Uu4a6NpE/hqdefault.jpg", publishedAt: "2026-08-30", videoId: "Zm1Uu4a6NpE", source: { uk: "Укрінформ", pl: "Ukrinform", ru: "Укринформ" },
+  },
 ];

@@ -1,5 +1,5 @@
 import { getNewsLanguage, newsLocale, newsText } from "./news-i18n.js?v=20261010-videos1";
-import { newsVideos } from "./news-videos.js?v=20261010-videos2";
+import { newsVideos } from "./news-videos.js?v=20261010-videos3";
 
 const shelf = document.querySelector("[data-news-video-shelf]");
 const track = shelf?.querySelector("[data-news-video-track]");
