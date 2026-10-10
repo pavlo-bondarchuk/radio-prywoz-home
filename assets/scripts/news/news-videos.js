@@ -43,4 +43,44 @@ export const newsVideos = [
     url: "https://www.ukrinform.ua/rubric-other_news/4171351-tureli-zbivaut-reaktivni-bpla-nobelivska-premia-z-medicini-udar-po-harkovu-koti-z-olesok.html",
     thumbnail: "https://i.ytimg.com/vi/aGhsDkLRdNU/hqdefault.jpg", publishedAt: "2026-10-05", videoId: "aGhsDkLRdNU", source: { uk: "Укрінформ", pl: "Ukrinform", ru: "Укринформ" },
   },
+  {
+    id: "ukrinform-life-film-teaser", enabled: true, featured: false,
+    title: {
+      uk: "Вийшов тизер фільму «Дні нашого життя»",
+      pl: "Ukazał się teaser filmu „Dni naszego życia”",
+      ru: "Вышел тизер фильма «Дни нашей жизни»",
+    },
+    url: "https://www.ukrinform.ua/rubric-culture/4172731-vijsov-tizer-filmu-dni-nasogo-zitta.html",
+    thumbnail: "https://i.ytimg.com/vi/09pNi8xYHNo/hqdefault.jpg", publishedAt: "2026-10-09", videoId: "09pNi8xYHNo", source: { uk: "Укрінформ", pl: "Ukrinform", ru: "Укринформ" },
+  },
+  {
+    id: "ukrinform-nato-committee-kyiv", enabled: true, featured: false,
+    title: {
+      uk: "Делегація Військового комітету НАТО у Києві",
+      pl: "Delegacja Komitetu Wojskowego NATO w Kijowie",
+      ru: "Делегация Военного комитета НАТО в Киеве",
+    },
+    url: "https://www.ukrinform.ua/rubric-polytics/4171857-delegacia-vijskovogo-komitetu-nato-u-kievi-rosii-ne-vdastsa-pidirvati-nasu-pidtrimku-ukraini.html",
+    thumbnail: "https://i.ytimg.com/vi/YlmDWoeE-iw/hqdefault.jpg", publishedAt: "2026-10-07", videoId: "YlmDWoeE-iw", source: { uk: "Укрінформ", pl: "Ukrinform", ru: "Укринформ" },
+  },
+  {
+    id: "ukrinform-darnytsia-missile", enabled: true, featured: false,
+    title: {
+      uk: "У Києві вилучили бойову частину ракети серед житлових будинків",
+      pl: "W Kijowie saperzy usunęli głowicę rakiety spomiędzy budynków mieszkalnych",
+      ru: "В Киеве извлекли боевую часть ракеты среди жилых домов",
+    },
+    url: "https://www.ukrinform.ua/rubric-regions/4171873-fahivci-vilucili-bojovu-castinu-balisticnoi-raketi-sered-budinkiv-u-darnickomu-rajoni-kieva.html",
+    thumbnail: "https://i.ytimg.com/vi/MeuVzW61_3k/hqdefault.jpg", publishedAt: "2026-10-07", videoId: "MeuVzW61_3k", source: { uk: "Укрінформ", pl: "Ukrinform", ru: "Укринформ" },
+  },
+  {
+    id: "ukrinform-energy-nodes-strikes", enabled: true, featured: false,
+    title: {
+      uk: "Сили безпілотних систем уразили майже пів тисячі енерговузлів",
+      pl: "Siły Systemów Bezzałogowych uderzyły w prawie pół tysiąca węzłów energetycznych",
+      ru: "Силы беспилотных систем поразили почти полтысячи энергоузлов",
+    },
+    url: "https://www.ukrinform.ua/rubric-ato/4170968-sili-bezpilotnih-sistem-urazili-majze-piv-tisaci-energovuzliv-u-rosii-ta-na-tot-za-tri-misaci.html",
+    thumbnail: "https://i.ytimg.com/vi/5DPCIEP-s0E/hqdefault.jpg", publishedAt: "2026-10-04", videoId: "5DPCIEP-s0E", source: { uk: "Укрінформ", pl: "Ukrinform", ru: "Укринформ" },
+  },
 ];

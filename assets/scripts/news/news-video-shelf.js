@@ -1,5 +1,5 @@
 import { getNewsLanguage, newsLocale, newsText } from "./news-i18n.js?v=20261010-videos1";
-import { newsVideos } from "./news-videos.js?v=20261010-videos1";
+import { newsVideos } from "./news-videos.js?v=20261010-videos2";
 
 const shelf = document.querySelector("[data-news-video-shelf]");
 const track = shelf?.querySelector("[data-news-video-track]");
@@ -11,6 +11,7 @@ const previousButton = shelf?.querySelector("[data-news-video-prev]");
 const nextButton = shelf?.querySelector("[data-news-video-next]");
 const seenKey = "prywoz-video-shelf-seen";
 const supportedLanguages = ["uk", "pl", "ru"];
+const maxShelfVideos = 20;
 const safeHttpsUrl = (value) => {
   try {
     return new URL(value).protocol === "https:";
@@ -18,7 +19,7 @@ const safeHttpsUrl = (value) => {
     return false;
   }
 };
-const videos = newsVideos.filter((video) => video?.enabled && safeHttpsUrl(video.url) && safeHttpsUrl(video.thumbnail) && video.title && video.id);
+const videos = newsVideos.filter((video) => video?.enabled && safeHttpsUrl(video.url) && safeHttpsUrl(video.thumbnail) && video.title && video.id).slice(0, maxShelfVideos);
 
 if (shelf && track && tag && titlePlaceholder && floatingLabel && sectionLabel && videos.length) {
   shelf.hidden = false;
@@ -216,11 +217,18 @@ if (shelf && track && tag && titlePlaceholder && floatingLabel && sectionLabel &
   }
 
   const scrollOneCard = (direction) => {
-    const card = track.querySelector(".news-video__card");
-    const styles = window.getComputedStyle(track);
-    const gap = Number.parseFloat(styles.columnGap || styles.gap) || 0;
-    const distance = card ? card.getBoundingClientRect().width + gap : track.clientWidth;
-    track.scrollBy({ left: direction * distance, behavior: reducedMotion?.matches ? "auto" : "smooth" });
+    const cards = [...track.querySelectorAll(".news-video__card")];
+    if (!cards.length) return;
+    const trackLeft = track.getBoundingClientRect().left;
+    const currentIndex = cards.reduce((nearestIndex, card, index) => {
+      const nearestDistance = Math.abs(cards[nearestIndex].getBoundingClientRect().left - trackLeft);
+      const distance = Math.abs(card.getBoundingClientRect().left - trackLeft);
+      return distance < nearestDistance ? index : nearestIndex;
+    }, 0);
+    const targetIndex = Math.min(cards.length - 1, Math.max(0, currentIndex + direction));
+    if (targetIndex === currentIndex) return;
+    const delta = cards[targetIndex].getBoundingClientRect().left - cards[currentIndex].getBoundingClientRect().left;
+    track.scrollTo({ left: track.scrollLeft + delta, behavior: reducedMotion?.matches ? "auto" : "smooth" });
   };
 
   previousButton.addEventListener("click", () => scrollOneCard(-1));
