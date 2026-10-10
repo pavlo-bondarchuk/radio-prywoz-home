@@ -240,31 +240,38 @@ if (shelf && track && tag && titlePlaceholder && floatingLabel && sectionLabel &
   let pointerStartX = 0;
   let pointerStartScroll = 0;
   let pointerDragging = false;
+  let activePointerId = null;
   let suppressClick = false;
   track.addEventListener("pointerdown", (event) => {
     if (event.pointerType !== "mouse" || event.button !== 0) return;
     pointerStartX = event.clientX;
     pointerStartScroll = track.scrollLeft;
     pointerDragging = false;
-    track.setPointerCapture(event.pointerId);
+    activePointerId = event.pointerId;
   });
   track.addEventListener("pointermove", (event) => {
-    if (!track.hasPointerCapture(event.pointerId) || event.pointerType !== "mouse") return;
+    if (activePointerId !== event.pointerId || event.pointerType !== "mouse") return;
     const deltaX = event.clientX - pointerStartX;
-    if (Math.abs(deltaX) > 4) pointerDragging = true;
+    if (Math.abs(deltaX) > 4 && !pointerDragging) {
+      pointerDragging = true;
+      // Capture only after a real drag begins. Capturing on pointerdown can
+      // retarget a normal anchor click to the track and prevent navigation.
+      track.setPointerCapture(event.pointerId);
+    }
     if (pointerDragging) {
       track.scrollLeft = pointerStartScroll - deltaX;
       event.preventDefault();
     }
   });
   const endPointerDrag = (event) => {
-    if (event.pointerType !== "mouse" || !track.hasPointerCapture(event.pointerId)) return;
+    if (event.pointerType !== "mouse" || activePointerId !== event.pointerId) return;
     if (pointerDragging) {
       suppressClick = true;
       window.setTimeout(() => { suppressClick = false; }, 0);
     }
     pointerDragging = false;
-    track.releasePointerCapture(event.pointerId);
+    activePointerId = null;
+    if (track.hasPointerCapture(event.pointerId)) track.releasePointerCapture(event.pointerId);
   };
   track.addEventListener("pointerup", endPointerDrag);
   track.addEventListener("pointercancel", endPointerDrag);
