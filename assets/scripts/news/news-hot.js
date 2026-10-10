@@ -98,6 +98,7 @@ const carouselStep = (rail, slides) => {
 
 const configureHotCarousel = (root, rail, language) => {
   const toggle = root.querySelector("[data-news-hot-toggle]");
+  const countdown = root.querySelector("[data-news-hot-countdown]");
   const icon = toggle?.querySelector("[data-news-hot-toggle-icon]");
   const label = toggle?.querySelector("[data-news-hot-toggle-label]");
   if (!toggle || typeof rail.scrollBy !== "function") return;
@@ -124,6 +125,7 @@ const configureHotCarousel = (root, rail, language) => {
     state.clearTimer = () => {
       window.clearTimeout(state.timer);
       state.timer = 0;
+      countdown?.classList.remove("is-running");
     };
     state.updateToggle = () => {
       const key = state.userPaused ? "hotPlay" : "hotPause";
@@ -137,7 +139,12 @@ const configureHotCarousel = (root, rail, language) => {
     state.canAdvance = () => state.slides.length > 1 && !state.userPaused && !state.hoverPaused && !state.focusPaused && !state.hiddenPaused;
     state.schedule = () => {
       state.clearTimer();
-      if (state.canAdvance()) state.timer = window.setTimeout(state.advance, hotCarouselDelay);
+      if (state.canAdvance()) {
+        countdown?.classList.remove("is-running");
+        if (countdown) void countdown.offsetWidth;
+        countdown?.classList.add("is-running");
+        state.timer = window.setTimeout(state.advance, hotCarouselDelay);
+      }
     };
     state.settleScroll = () => {
       if (!state.scrollPending) return;
@@ -163,7 +170,7 @@ const configureHotCarousel = (root, rail, language) => {
       state.settleTimer = window.setTimeout(state.settleScroll, 700);
     };
     state.advance = () => {
-      state.timer = 0;
+      state.clearTimer();
       if (!state.canAdvance()) return;
       state.scrollBySlides(1);
     };
@@ -241,6 +248,10 @@ const configureHotCarousel = (root, rail, language) => {
     state.clone = clone;
   }
   toggle.hidden = state.slides.length < 2;
+  if (countdown) {
+    countdown.hidden = state.slides.length < 2;
+    countdown.setAttribute("aria-hidden", "true");
+  }
   const step = carouselStep(rail, state.slides);
   state.index = step ? Math.min(state.slides.length - 1, Math.max(0, Math.round(rail.scrollLeft / step))) : 0;
   state.updateToggle();

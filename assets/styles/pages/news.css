@@ -148,6 +148,14 @@
 .news-hot__title { margin: 0; color: var(--ds-color-text); font-size: 16px; font-weight: 900; letter-spacing: .075em; line-height: 1; }
 .news-hot__caption { margin: 0; color: var(--ds-color-text-muted); font-size: 12px; font-weight: 650; }
 .news-hot__tools { display: flex; align-items: center; justify-content: flex-end; gap: 12px; min-width: 0; }
+.news-hot__countdown { display: inline-grid; flex: 0 0 16px; width: 16px; height: 16px; place-items: center; color: var(--ds-color-primary); }
+.news-hot__countdown[hidden] { display: none; }
+.news-hot__countdown svg { display: block; width: 100%; height: 100%; transform: rotate(-90deg); }
+.news-hot__countdown-track, .news-hot__countdown-progress { fill: none; stroke-width: 2.5; }
+.news-hot__countdown-track { stroke: var(--ds-color-border); }
+.news-hot__countdown-progress { stroke: currentColor; stroke-dasharray: 50.27; stroke-dashoffset: 50.27; stroke-linecap: round; }
+.news-hot__countdown.is-running .news-hot__countdown-progress { animation: news-hot-countdown 5s linear forwards; }
+@keyframes news-hot-countdown { to { stroke-dashoffset: 0; } }
 .news-hot__toggle { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 32px; padding: 5px 9px; border: 1px solid var(--ds-color-border); border-radius: 999px; color: var(--ds-color-text); background: var(--ds-color-surface); font: inherit; font-size: 11px; font-weight: 750; cursor: pointer; }
 .news-hot__toggle:hover { border-color: var(--ds-color-primary); color: var(--ds-color-primary); }
 .news-hot__toggle:focus-visible { outline: 3px solid var(--ds-color-primary); outline-offset: 2px; }
@@ -228,7 +236,7 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .news-hot__track { scroll-behavior: auto; }
-  .news-hot__link, .news-hot__item::before { transition: none; }
+  .news-hot__link, .news-hot__item::before, .news-hot__countdown-progress { transition: none; animation: none !important; }
   .news-hot__link:hover, .news-hot__link:focus-visible { transform: none; }
 }
 .news-feed-card--skeleton { min-height: 278px; }
