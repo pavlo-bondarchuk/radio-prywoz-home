@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 
 import { rankTodayNews } from "../assets/scripts/news/news-utils.js?v=20261005-news5";
-import { selectHotNews, renderHotNews } from "../assets/scripts/news/news-hot.js?v=20261009-hot1";
+import { selectHotNews, renderHotNews } from "../assets/scripts/news/news-hot.js?v=20261010-hot-carousel1";
 
 const article = (id, minutesAgo, overrides = {}) => ({
   id,

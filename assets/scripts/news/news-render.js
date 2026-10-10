@@ -1,7 +1,7 @@
 import { getNews } from "./news-api.js?v=20261005-news6";
-import { getNewsLanguage, newsText } from "./news-i18n.js?v=20261009-hot1";
+import { getNewsLanguage, newsText } from "./news-i18n.js?v=20261010-hot-carousel1";
 import { externalNewsLink, filterNews, newsDate, newsTimestamp, normalizeNewsItems, rankTodayNews } from "./news-utils.js?v=20261005-news6";
-import { renderHotNews, renderHotNewsLoading } from "./news-hot.js?v=20261009-hot1";
+import { renderHotNews, renderHotNewsLoading } from "./news-hot.js?v=20261010-hot-carousel1";
 
 const byId = (id) => document.getElementById(id);
 const node = (tag, className, text) => {

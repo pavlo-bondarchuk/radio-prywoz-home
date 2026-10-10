@@ -1,5 +1,8 @@
 import { newsDate, safeNewsUrl } from "./news-utils.js?v=20261005-news6";
-import { newsLocale, newsText } from "./news-i18n.js?v=20261009-hot1";
+import { newsLocale, newsText } from "./news-i18n.js?v=20261010-hot-carousel1";
+
+const hotCarouselStates = new WeakMap();
+const hotCarouselDelay = 5000;
 
 const canonicalUrl = (value) => {
   const safe = safeNewsUrl(value);
@@ -84,6 +87,166 @@ const renderCard = (item, language, position) => {
   return card;
 };
 
+const carouselSlides = (rail) => [...rail.querySelectorAll(".news-hot__item:not(.news-hot__item--clone)")];
+
+const carouselStep = (rail, slides) => {
+  if (!slides.length) return 0;
+  const style = getComputedStyle(rail);
+  const gap = Number.parseFloat(style.columnGap || style.gap) || 0;
+  return slides[0].getBoundingClientRect().width + gap;
+};
+
+const configureHotCarousel = (root, rail, language) => {
+  const toggle = root.querySelector("[data-news-hot-toggle]");
+  const icon = toggle?.querySelector("[data-news-hot-toggle-icon]");
+  const label = toggle?.querySelector("[data-news-hot-toggle-label]");
+  if (!toggle || typeof rail.scrollBy !== "function") return;
+
+  let state = hotCarouselStates.get(root);
+  if (!state) {
+    const motion = window.matchMedia?.("(prefers-reduced-motion: reduce)");
+    state = {
+      language,
+      motion,
+      slides: [],
+      clone: null,
+      index: 0,
+      timer: 0,
+      settleTimer: 0,
+      scrollPending: false,
+      userPaused: Boolean(motion?.matches),
+      hoverPaused: false,
+      focusPaused: false,
+      hiddenPaused: Boolean(document.hidden),
+    };
+    hotCarouselStates.set(root, state);
+
+    state.clearTimer = () => {
+      window.clearTimeout(state.timer);
+      state.timer = 0;
+    };
+    state.updateToggle = () => {
+      const key = state.userPaused ? "hotPlay" : "hotPause";
+      const text = newsText(key, state.language);
+      toggle.setAttribute("aria-label", text);
+      toggle.title = text;
+      toggle.dataset.paused = String(state.userPaused);
+      if (icon) icon.textContent = state.userPaused ? "▶" : "Ⅱ";
+      if (label) label.textContent = text;
+    };
+    state.canAdvance = () => state.slides.length > 1 && !state.userPaused && !state.hoverPaused && !state.focusPaused && !state.hiddenPaused;
+    state.schedule = () => {
+      state.clearTimer();
+      if (state.canAdvance()) state.timer = window.setTimeout(state.advance, hotCarouselDelay);
+    };
+    state.settleScroll = () => {
+      if (!state.scrollPending) return;
+      state.scrollPending = false;
+      window.clearTimeout(state.settleTimer);
+      const step = carouselStep(rail, state.slides);
+      const visibleIndex = step ? Math.round(rail.scrollLeft / step) : 0;
+      if (visibleIndex >= state.slides.length) rail.scrollTo({ left: 0, behavior: "instant" });
+      state.index = visibleIndex >= state.slides.length ? 0 : Math.max(0, Math.min(visibleIndex, state.slides.length - 1));
+      state.schedule();
+    };
+    state.onScroll = () => {
+      state.scrollPending = true;
+      window.clearTimeout(state.settleTimer);
+      state.settleTimer = window.setTimeout(state.settleScroll, 350);
+    };
+    state.scrollBySlides = (count) => {
+      const step = carouselStep(rail, state.slides);
+      if (!step || !count) return;
+      state.scrollPending = true;
+      rail.scrollBy({ left: count * step, behavior: state.motion?.matches ? "auto" : "smooth" });
+      window.clearTimeout(state.settleTimer);
+      state.settleTimer = window.setTimeout(state.settleScroll, 700);
+    };
+    state.advance = () => {
+      state.timer = 0;
+      if (!state.canAdvance()) return;
+      state.scrollBySlides(1);
+    };
+    const pauseForUser = () => {
+      state.userPaused = true;
+      state.clearTimer();
+      state.updateToggle();
+    };
+
+    toggle.addEventListener("click", () => {
+      state.userPaused = !state.userPaused;
+      state.updateToggle();
+      state.schedule();
+    });
+    root.addEventListener("mouseenter", () => { state.hoverPaused = true; state.clearTimer(); });
+    root.addEventListener("mouseleave", () => { state.hoverPaused = false; state.schedule(); });
+    root.addEventListener("focusin", (event) => {
+      state.focusPaused = true;
+      state.clearTimer();
+    });
+    root.addEventListener("focusout", () => window.setTimeout(() => {
+      state.focusPaused = root.contains(document.activeElement);
+      state.schedule();
+    }, 0));
+    rail.addEventListener("pointerdown", pauseForUser, { passive: true });
+    rail.addEventListener("wheel", pauseForUser, { passive: true });
+    rail.addEventListener("keydown", (event) => {
+      if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+      event.preventDefault();
+      pauseForUser();
+      const nextIndex = event.key === "ArrowRight"
+        ? Math.min(state.index + 1, state.slides.length)
+        : Math.max(state.index - 1, 0);
+      state.scrollBySlides(nextIndex - state.index);
+    });
+    rail.addEventListener("scroll", state.onScroll, { passive: true });
+    rail.addEventListener("scrollend", state.settleScroll);
+    document.addEventListener("visibilitychange", () => {
+      state.hiddenPaused = Boolean(document.hidden);
+      state.schedule();
+    });
+    if (state.motion?.addEventListener) {
+      state.motion.addEventListener("change", (event) => {
+        if (event.matches) state.userPaused = true;
+        state.updateToggle();
+        state.schedule();
+      });
+    } else {
+      state.motion?.addListener?.((event) => {
+        if (event.matches) state.userPaused = true;
+        state.updateToggle();
+        state.schedule();
+      });
+    }
+  }
+
+  state.language = language;
+  state.slides = carouselSlides(rail);
+  state.clone?.remove();
+  state.clone = null;
+  if (state.slides.length > 1) {
+    const clone = state.slides[0].cloneNode(true);
+    clone.classList.add("news-hot__item--clone");
+    clone.setAttribute("aria-hidden", "true");
+    const cloneLink = clone.querySelector("[data-news-hot-link]");
+    if (cloneLink) {
+      cloneLink.removeAttribute("data-news-hot-link");
+      cloneLink.removeAttribute("data-news-hot-key");
+      cloneLink.removeAttribute("data-news-hot-source");
+      cloneLink.removeAttribute("data-news-hot-region");
+      cloneLink.removeAttribute("data-news-hot-position");
+      cloneLink.tabIndex = -1;
+    }
+    rail.append(clone);
+    state.clone = clone;
+  }
+  toggle.hidden = state.slides.length < 2;
+  const step = carouselStep(rail, state.slides);
+  state.index = step ? Math.min(state.slides.length - 1, Math.max(0, Math.round(rail.scrollLeft / step))) : 0;
+  state.updateToggle();
+  state.schedule();
+};
+
 export const renderHotNews = (root, rail, items, excludedItems, language, rankTodayNews, stale = false) => {
   if (!root || !rail) return;
   const focusedLink = rail.contains(document.activeElement) ? document.activeElement.closest("[data-news-hot-link]") : null;
@@ -112,6 +275,7 @@ export const renderHotNews = (root, rail, items, excludedItems, language, rankTo
   rail.setAttribute("aria-label", newsText("hotTitle", language));
   if (!stories.length) {
     rail.replaceChildren();
+    configureHotCarousel(root, rail, language);
     return;
   }
   rail.replaceChildren(...cards);
@@ -124,6 +288,7 @@ export const renderHotNews = (root, rail, items, excludedItems, language, rankTo
   root.dataset.stale = String(Boolean(stale));
   const hint = root.querySelector("[data-news-hot-hint]");
   if (hint) hint.textContent = stale ? newsText("hotStale", language) : newsText("hotScrollHint", language);
+  configureHotCarousel(root, rail, language);
   if (!root.dataset.analyticsBound) {
     root.dataset.analyticsBound = "true";
     rail.addEventListener("click", (event) => {
@@ -151,4 +316,12 @@ export const renderHotNewsLoading = (root, rail, language) => {
   const status = element("li", "news-hot__item news-hot__item--loading", newsText("hotLoading", language));
   status.setAttribute("role", "status");
   rail.replaceChildren(status);
+  const state = hotCarouselStates.get(root);
+  if (state) {
+    window.clearTimeout(state.timer);
+    state.timer = 0;
+    state.clone?.remove();
+    state.clone = null;
+    state.slides = [];
+  }
 };
