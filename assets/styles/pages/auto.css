@@ -1,0 +1,318 @@
+/* Editorial pages for the "Авто в Польщі" information cluster. */
+.auto-page,
+.auto-article {
+  --auto-card-bg: var(--ds-color-surface, #fffdf8);
+  --auto-soft-bg: var(--ds-color-bg-elevated, #fffaf2);
+  --auto-border: var(--ds-color-border, rgba(122, 82, 45, 0.18));
+  --auto-text: var(--ds-color-text, #171126);
+  --auto-muted: var(--ds-color-text-muted, rgba(23, 17, 38, 0.66));
+  --auto-accent: var(--ds-color-primary, #1463ff);
+  padding-bottom: clamp(42px, 7vw, 76px);
+  color: var(--auto-text);
+}
+
+.auto-page .inner-hero,
+.auto-article .inner-hero {
+  max-width: 900px;
+  margin-bottom: clamp(28px, 5vw, 46px);
+}
+
+.auto-page .inner-kicker,
+.auto-article .inner-kicker {
+  letter-spacing: 0.075em;
+}
+
+.auto-page .inner-title,
+.auto-article .inner-title {
+  max-width: 19ch;
+  text-wrap: balance;
+}
+
+.auto-page .inner-lead,
+.auto-article .inner-lead {
+  max-width: 72ch;
+  line-height: 1.55;
+}
+
+.auto-page__content {
+  max-width: 1040px;
+  margin-inline: auto;
+}
+
+.auto-article__content {
+  width: min(100%, 800px);
+  margin-inline: auto;
+}
+
+.auto-page__section,
+.auto-article__section {
+  margin-top: clamp(34px, 5vw, 54px);
+}
+
+.auto-page__section > h2,
+.auto-article__section > h2,
+.auto-article__sources h2,
+.auto-article__related h2 {
+  margin: 0 0 16px;
+  font-size: clamp(24px, 3.4vw, 32px);
+  line-height: 1.18;
+  text-wrap: balance;
+}
+
+.auto-page__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.auto-page__card {
+  display: flex;
+  min-width: 0;
+  min-height: 250px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding: clamp(20px, 3vw, 28px);
+  border: 1px solid var(--auto-border);
+  border-top: 4px solid var(--auto-accent);
+  border-radius: var(--ds-radius-lg, 21px);
+  background: var(--auto-card-bg);
+  box-shadow: var(--ds-shadow-card, 0 14px 36px rgba(82, 49, 24, 0.08));
+}
+
+.auto-page__card:nth-child(even) {
+  border-top-color: var(--ds-color-accent, #ff4fa3);
+}
+
+.auto-page__card > :first-child { margin-top: 0; }
+.auto-page__card > :last-child { margin-bottom: 0; }
+
+.auto-page__category {
+  margin: 0;
+  color: var(--auto-accent);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.auto-page__card h3 {
+  margin: 0;
+  font-size: clamp(20px, 2.5vw, 24px);
+  line-height: 1.25;
+  text-wrap: balance;
+}
+
+.auto-page__card p {
+  margin: 0;
+  color: var(--auto-muted);
+  line-height: 1.6;
+}
+
+.auto-page__card a,
+.auto-page__future-item a,
+.auto-article__content a {
+  color: var(--auto-accent);
+  font-weight: 700;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+}
+
+.auto-page__card > a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 44px;
+  margin-top: auto;
+  padding-top: 8px;
+  text-decoration: none;
+}
+
+.auto-page__card > a:hover,
+.auto-page__future-item a:hover,
+.auto-article__content a:hover {
+  text-decoration: underline;
+}
+
+.auto-page__future-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.auto-page__future-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-width: 0;
+  padding: 14px 16px;
+  border: 1px solid var(--auto-border);
+  border-radius: var(--ds-radius-md, 8px);
+  background: var(--auto-soft-bg);
+  line-height: 1.4;
+}
+
+.auto-page__status {
+  flex: 0 0 auto;
+  color: var(--auto-muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.auto-article__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px 16px;
+  margin: -8px 0 24px;
+  color: var(--auto-muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.auto-article__meta p { margin: 0; }
+
+.auto-article__content {
+  font-size: 17px;
+  line-height: 1.72;
+  overflow-wrap: anywhere;
+}
+
+.auto-article__content > * { max-width: 100%; }
+.auto-article__content p { margin: 0 0 1.1em; }
+.auto-article__content h2 {
+  margin: clamp(34px, 5vw, 48px) 0 12px;
+  font-size: clamp(24px, 3.3vw, 30px);
+  line-height: 1.22;
+  text-wrap: balance;
+}
+.auto-article__content h3 {
+  margin: 26px 0 8px;
+  font-size: clamp(19px, 2.6vw, 22px);
+  line-height: 1.3;
+}
+.auto-article__content ul,
+.auto-article__content ol {
+  display: grid;
+  gap: 9px;
+  margin: 0 0 1.35em;
+  padding-inline-start: 1.35em;
+}
+.auto-article__content li { padding-inline-start: 3px; }
+.auto-article__content li::marker { color: var(--auto-accent); font-weight: 800; }
+
+.auto-article__steps {
+  display: grid;
+  gap: 0;
+  margin: 18px 0 26px;
+  padding-inline-start: 1.5em;
+  list-style: decimal;
+}
+
+.auto-article__steps li {
+  min-width: 0;
+  padding: 17px 18px;
+  border: 1px solid var(--auto-border);
+  border-bottom: 0;
+  background: var(--auto-card-bg);
+}
+
+.auto-article__steps li:first-child { border-radius: var(--ds-radius-md, 8px) var(--ds-radius-md, 8px) 0 0; }
+.auto-article__steps li:last-child { border-bottom: 1px solid var(--auto-border); border-radius: 0 0 var(--ds-radius-md, 8px) var(--ds-radius-md, 8px); }
+
+.auto-article__callout {
+  margin: 22px 0;
+  padding: 17px 20px;
+  border: 1px solid var(--auto-border);
+  border-inline-start: 4px solid var(--auto-accent);
+  border-radius: 0 var(--ds-radius-md, 8px) var(--ds-radius-md, 8px) 0;
+  background: var(--auto-soft-bg);
+}
+
+.auto-article__callout > :first-child { margin-top: 0; }
+.auto-article__callout > :last-child { margin-bottom: 0; }
+.auto-article__callout h2,
+.auto-article__callout h3 { margin-top: 0; }
+.auto-article__callout--important { border-inline-start-color: var(--ds-color-accent, #ff4fa3); }
+
+.auto-article__checklist {
+  display: grid;
+  gap: 10px;
+  margin: 16px 0 24px;
+  padding-inline-start: 1.35em;
+  list-style: disc;
+}
+
+.auto-article__sources,
+.auto-article__related {
+  margin-top: 34px;
+  padding: clamp(18px, 3vw, 24px);
+  border: 1px solid var(--auto-border);
+  border-radius: var(--ds-radius-lg, 21px);
+  background: var(--auto-soft-bg);
+}
+
+.auto-article__sources h2,
+.auto-article__related h2 { margin-bottom: 12px; font-size: 21px; }
+.auto-article__sources ul { display: grid; gap: 9px; margin: 0; padding-inline-start: 20px; line-height: 1.5; }
+.auto-article__related p { margin: 8px 0 0; }
+.auto-article__related > a { display: inline-flex; align-items: center; min-height: 44px; }
+
+.auto-page a:focus-visible,
+.auto-article a:focus-visible,
+.auto-page button:focus-visible,
+.auto-article button:focus-visible {
+  outline: 3px solid var(--ds-color-primary, #1463ff);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+html[data-theme="dark"] .auto-page,
+html[data-theme="dark"] .auto-article {
+  --auto-card-bg: var(--ds-color-surface, #1a2026);
+  --auto-soft-bg: var(--ds-color-bg-elevated, #151a20);
+  --auto-border: var(--ds-color-border, rgba(255, 255, 255, 0.14));
+  --auto-text: var(--ds-color-text, #f4f5f7);
+  --auto-muted: var(--ds-color-text-muted, rgba(244, 245, 247, 0.7));
+}
+
+@media (max-width: 760px) {
+  .auto-page__future-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 680px) {
+  .auto-page,
+  .auto-article { padding-bottom: 42px; }
+  .auto-page .inner-hero,
+  .auto-article .inner-hero { gap: 10px; margin-bottom: 28px; }
+  .auto-page .inner-title,
+  .auto-article .inner-title { max-width: none; font-size: clamp(34px, 9vw, 42px); }
+  .auto-page__grid,
+  .auto-page__future-list { grid-template-columns: minmax(0, 1fr); }
+  .auto-page__card { min-height: 0; padding: 20px; }
+  .auto-page__future-item { padding: 13px 14px; }
+  .auto-article__meta { gap: 4px 12px; margin-top: -3px; font-size: 13px; }
+  .auto-article__content { font-size: 16px; line-height: 1.68; }
+  .auto-article__content h2 { margin-top: 34px; }
+  .auto-article__steps li { padding: 15px 14px; }
+  .auto-article__callout { padding: 15px 16px; }
+  .auto-article__sources,
+  .auto-article__related { padding: 17px; border-radius: var(--ds-radius-md, 8px); }
+}
+
+@media (max-width: 380px) {
+  .auto-page .inner-title,
+  .auto-article .inner-title { font-size: 34px; }
+  .auto-page__card { padding: 18px 16px; }
+  .auto-page__future-item { align-items: flex-start; flex-direction: column; gap: 5px; }
+  .auto-article__content { font-size: 15.5px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .auto-page *,
+  .auto-article * { scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
+}
