@@ -21,12 +21,16 @@
   }
 
   function updateConsent(choice) {
-    window.gtag("consent", "update", {
-      analytics_storage: choice === "accepted" ? "granted" : "denied",
-      ad_storage: "denied",
-      ad_user_data: "denied",
-      ad_personalization: "denied"
-    });
+    if (typeof window.gtag !== "function") return;
+
+    try {
+      window.gtag("consent", "update", {
+        analytics_storage: choice === "accepted" ? "granted" : "denied",
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied"
+      });
+    } catch (error) {}
   }
 
   if (!getStoredChoice()) {
@@ -38,8 +42,10 @@
     if (!button) return;
 
     var choice = button.dataset.consentChoice;
+    if (choice !== "accepted" && choice !== "declined") return;
+
     storeChoice(choice);
-    updateConsent(choice);
     banner.hidden = true;
+    updateConsent(choice);
   });
 }());
