@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <script>try{const t=localStorage.getItem("prywoz-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.dataset.theme=t;document.documentElement.style.colorScheme=t}catch{}</script>
+  <title>Концерти та події у Польщі — афіша | PRYWOZ</title>
+  <meta name="description" content="Афіша концертів, шоу та подій у Польщі. Варшава, Лодзь, Краків, Вроцлав, Познань, Гданськ: дати, майданчики та офіційні квитки.">
+  <link rel="canonical" href="https://prywoz.fm/events.html">
+  <meta property="og:type" content="website"><meta property="og:locale" content="uk_UA">
+  <meta property="og:title" content="Концерти та події у Польщі — афіша | PRYWOZ">
+  <meta property="og:description" content="Афіша концертів, шоу та подій у Польщі. Дати, міста, майданчики та офіційні квитки.">
+  <meta property="og:url" content="https://prywoz.fm/events.html"><meta name="twitter:card" content="summary">
+  <link rel="icon" type="image/png" href="./assets/images/favicon-pryvoz.png">
+  <link rel="stylesheet" href="./assets/styles/tokens.css"><link rel="stylesheet" href="./assets/styles/main.css?v=20261005-nav5-disclosure-specificity"><link rel="stylesheet" href="./assets/styles/components.css?v=20261005-utility-breadcrumbs"><link rel="stylesheet" href="./assets/styles/open-fm-redesign.css"><link rel="stylesheet" href="./assets/styles/pages/portal.css?v=20261005-nav8"><link rel="stylesheet" href="./assets/styles/pages/inner.css?v=20261004-unified-footer"><link rel="stylesheet" href="./assets/styles/pages/events.css?v=20261012-events1"><link rel="stylesheet" href="./assets/styles/cookie-consent.css?v=20260907-volume-theme">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://prywoz.fm/events.html#webpage","url":"https://prywoz.fm/events.html","name":"Концерти та події у Польщі","description":"Афіша концертів, шоу та подій у Польщі. Варшава, Лодзь, Краків, Вроцлав, Познань, Гданськ.","inLanguage":"uk","isPartOf":{"@id":"https://prywoz.fm/#website"},"breadcrumb":{"@id":"https://prywoz.fm/events.html#breadcrumb"},"publisher":{"@id":"https://prywoz.fm/#organization"}},{"@type":"BreadcrumbList","@id":"https://prywoz.fm/events.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Головна","item":"https://prywoz.fm/"},{"@type":"ListItem","position":2,"name":"Афіша","item":"https://prywoz.fm/events.html"}]}]}</script>
+</head>
+<body class="page" data-page="events">
+  <header class="site-header" data-site-header></header>
+  <main class="inner-main events-page" data-events-page>
+    <div class="container">
+      <nav class="utility-breadcrumbs" aria-label="Навігаційний шлях" data-i18n-aria="breadcrumbsAria"><a href="./index.html" data-i18n="home">Головна</a><span aria-hidden="true">/</span><span aria-current="page" data-event-copy="crumb">Афіша</span></nav>
+      <header class="inner-hero events-hero">
+        <p class="inner-kicker" data-event-copy="eyebrow">АФІША PRYWOZ</p>
+        <h1 class="inner-title" data-event-copy="title">Концерти та події у Польщі</h1>
+        <p class="inner-lead" data-event-copy="lead">Концерти, шоу, фестивалі та цікаві події у Польщі — дати, міста, майданчики та офіційні квитки.</p>
+      </header>
+
+      <section class="events-controls" aria-label="Фільтри афіші" data-events-controls>
+        <div class="events-filter"><label for="events-city" data-event-copy="cityLabel">Місто</label><select id="events-city" data-events-city><option value="all">Уся Польща</option><option value="lodz">Лодзь</option><option value="warszawa">Варшава</option><option value="krakow">Краків</option><option value="wroclaw">Вроцлав</option><option value="poznan">Познань</option><option value="gdansk">Гданськ</option></select></div>
+        <div class="events-filter"><label for="events-category" data-event-copy="categoryLabel">Категорія</label><select id="events-category" data-events-category><option value="all">Усі події</option><option value="music">Концерти</option><option value="comedy">Stand-up</option><option value="festivals">Фестивалі</option><option value="shows">Шоу та культура</option><option value="family">Для дітей</option><option value="other">Інше</option></select></div>
+      </section>
+
+      <p class="events-status" data-events-status role="status" aria-live="polite">Завантажуємо афішу…</p>
+      <section class="events-section events-featured-section" data-events-featured-section aria-labelledby="events-featured-title" hidden>
+        <div class="events-section__heading"><p class="inner-kicker" data-event-copy="featuredLabel">НАЙБЛИЖЧА ПОДІЯ</p><h2 id="events-featured-title" data-event-copy="featuredTitle">Варто побачити</h2></div>
+        <div class="events-featured" data-events-featured></div>
+      </section>
+      <section class="events-section" data-events-week-section aria-labelledby="events-week-title" hidden>
+        <div class="events-section__heading"><p class="inner-kicker" data-event-copy="weekLabel">ЦЬОГО ТИЖНЯ</p><h2 id="events-week-title" data-event-copy="weekTitle">Найближчі сім днів</h2></div>
+        <div class="events-grid events-grid--week" data-events-week></div>
+      </section>
+      <section class="events-section" aria-labelledby="events-all-title">
+        <div class="events-section__heading"><p class="inner-kicker" data-event-copy="allLabel">ПЛАНУЙТЕ ЗАЗДАЛЕГІДЬ</p><h2 id="events-all-title" data-event-copy="allTitle">Усі події</h2></div>
+        <div class="events-grid" data-events-list></div>
+      </section>
+      <footer class="events-data-note"><p><span data-event-copy="sourceLabel">Джерела даних:</span> <span data-events-sources>Джерело ще не підключено.</span></p><p><span data-event-copy="updatedLabel">Останнє оновлення:</span> <time data-events-updated>—</time><span class="events-cache-note" data-events-cache></span></p></footer>
+    </div>
+  </main>
+  <script src="./assets/scripts/radio-persistence.js"></script><script src="./assets/scripts/pages/inner.js?v=20261012-events-nav"></script><script type="module" src="./assets/scripts/pages/events.js?v=20261012-events1"></script><script src="./assets/scripts/cookie-consent.js?v=20261005-cookie-banner"></script><script src="./assets/scripts/analytics-events.js?v=20260907"></script>
+</body>
+</html>

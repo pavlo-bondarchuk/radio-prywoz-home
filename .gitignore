@@ -10,6 +10,9 @@ dist/
 !tests/weather-cache.php
 !api/news.php
 !tests/news-backend.php
+!api/events.php
+!api/events/*.php
+!tests/events-backend.php
 submissions/
 test-artifacts/
 codex-bench/
