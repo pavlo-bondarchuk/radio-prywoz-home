@@ -63,6 +63,8 @@ try {
     $again = events_merge_response($dir,['city'=>'lodz','category'=>'music'],'test-key',$tmFetch2,static fn()=>['events'=>[]],$now);
     events_test_check($again['data']['cached']===true,'Provider cache prevents repeat upstream calls');
     events_cached($dir,'stale-fixture',static fn()=>['events'=>[$ticket]],'events_valid_cache',$now);
+    $dailyHit = events_cached($dir,'stale-fixture',static function(){throw new RuntimeException('cache should still be fresh');},'events_valid_cache',$now + EVENTS_CACHE_TTL - 1);
+    events_test_check($dailyHit['cached']===true && $dailyHit['stale']===false,'Provider cache remains fresh until the daily refresh boundary');
     $stale = events_cached($dir,'stale-fixture',static function(){throw new RuntimeException('fixture outage');},'events_valid_cache',$now + EVENTS_CACHE_TTL + 1);
     events_test_check($stale['stale']===true && count($stale['data']['events'])===1,'Expired provider cache is served when refresh fails');
     echo "Events backend normalization, XML safety, filters, cache and provider isolation: PASS\n";

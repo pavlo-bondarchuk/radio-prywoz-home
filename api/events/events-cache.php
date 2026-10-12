@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-const EVENTS_CACHE_TTL = 2400;
+const EVENTS_CACHE_TTL = 86400;
 const EVENTS_CACHE_RETRY = 60;
 
 /** A provider-scoped JSON cache with atomic writes and stale-if-error behavior. */
