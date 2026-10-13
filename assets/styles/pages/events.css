@@ -23,7 +23,7 @@
 .events-card__place { margin:10px 0 0; color:var(--ds-color-text); font-weight:750; overflow-wrap:anywhere; }
 .events-card__address { margin:4px 0 0; color:var(--ds-color-text-muted); font-size:13px; overflow-wrap:anywhere; }
 .events-card__footer { display:flex; width:100%; min-width:0; align-items:center; justify-content:space-between; gap:10px; margin-top:auto; padding-top:16px; }
-.events-card__source { min-width:0; color:var(--ds-color-text-muted); font-size:12px; font-weight:700; overflow-wrap:anywhere; }
+.events-card__source { min-width:0; color:var(--ds-color-text-muted); font-size:12px; font-weight:700; overflow-wrap:normal; word-break:normal; }
 .events-card__footer a { flex:0 0 auto; color:var(--ds-color-primary); font-size:13px; font-weight:850; text-decoration:none; }
 .events-card__footer a:hover { text-decoration:underline; }
 .events-card--featured { display:grid; grid-template-columns:minmax(0,1.2fr) minmax(0,1fr); }
@@ -35,5 +35,5 @@
 .events-data-note p { margin:0; }
 .events-cache-note { font-weight:700; }
 @media(max-width:900px){.events-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.events-featured .events-card--featured{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
-@media(max-width:600px){.events-grid{grid-template-columns:minmax(0,1fr)}.events-card--featured{grid-template-columns:minmax(0,1fr)}.events-card--featured .events-card__image,.events-card--featured .events-card__visual{height:auto;min-height:0;aspect-ratio:16/9}.events-card--featured .events-card__body{padding:18px}.events-card__footer{align-items:flex-end}.events-data-note{display:grid}}
+@media(max-width:600px){.events-grid{grid-template-columns:minmax(0,1fr)}.events-featured .events-card--featured{grid-template-columns:minmax(0,1fr)}.events-card--featured .events-card__image,.events-card--featured .events-card__visual{height:auto;min-height:0;aspect-ratio:16/9}.events-card--featured .events-card__body{padding:18px}.events-card__footer{align-items:flex-end}.events-data-note{display:grid}}
 @media(max-width:380px){.events-card__body{padding:14px}.events-card--featured .events-card__body{padding:16px}}
